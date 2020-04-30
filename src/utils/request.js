@@ -54,10 +54,11 @@ service.interceptors.response.use(
         res = JSON.stringify(res);
       }
 
-      if (res.statusCode === 302) { // 302表示未登录
+      if (res.httpCode === 302) { // 302表示未登录
         store.dispatch('user/resetToken').then(() => {
           const frontUrl = addParamToUrl({ sso_type: 'front' });
           const redirectUrl = addParamToUrl({ backurl: frontUrl }, res.data.sso_redirect_url);
+          console.log(redirectUrl)
           window.location.href = redirectUrl;
         });
         return false;

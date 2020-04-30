@@ -15,6 +15,7 @@ import router from './router'
 import i18n from './lang' // 国际化
 import '@/icons' // icon
 import '@/permission' // permission control
+import '@/socket'
 import './utils/error-log'; // error log
 
 // set ElementUI lang to EN

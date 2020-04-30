@@ -12,9 +12,9 @@
   },
   {
     "id": "e2a33c33d9304902a1836e580401b13c",
-    "menuName": "应用客户端管理",
+    "menuName": "告警",
     "menuType": "url",
-    "menuValue": "appclient/index",
+    "menuValue": "/warn",
     "pxNum": 1,
     "icon": "icon_cone",
     "memo": null,
@@ -65,9 +65,9 @@
   },
   {
     "id": "994d64ba8ce0499e9487d506e6d428e5",
-    "menuName": "用户登录信息",
+    "menuName": "设备",
     "menuType": "url",
-    "menuValue": "userLogin/index",
+    "menuValue": "/device",
     "pxNum": 2,
     "icon": "icon_pin",
     "memo": null,

@@ -8,6 +8,7 @@ const getters = {
   permission_routes: state => state.permission.routes,
   title: state => state.settings.title,
   showSettings: state => state.settings.showSettings,
-  errorLogs: state => state.errorLog.logs
+  errorLogs: state => state.errorLog.logs,
+  warnList: state => state.socket.warnList
 }
 export default getters

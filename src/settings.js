@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: '前端脚手架',
+  title: '安放运维',
 
   /**
    * @type {boolean} true | false
