@@ -49,11 +49,11 @@ export function permitThrough () {
   // return Promise.resolve(false);
 }
 export function loadButton () {
-  return request({
-    url: '/loadButton',
-    method: 'get'
-  });
-  // return Promise.resolve(false);
+  // return request({
+  //   url: '/loadButton',
+  //   method: 'get'
+  // });
+  return Promise.resolve([]);
 }
 export function getInfo () {
   // 因为后端暂时未提供登陆接口，暂时返回模式数据

@@ -14,15 +14,15 @@
       <el-col :span="8">
         <h3>设备名称:{{ jappName }}</h3>
         <h4 class="title">web请求 top5</h4>
-        <el-table :data="resList" tooltip-effect="dark" style="width: 100%" class="echartPie">
+        <el-table :data="resList" tooltip-effect="dark" style="width: 100%">
           <el-table-column label="请求url" prop="reqUrl" />
-          <el-table-column label="请求时间" prop="reqTime" />
+          <el-table-column label="请求时间" prop="reqTime" width="180" />
           <el-table-column label="调用耗时(s)" prop="costTime" />
         </el-table>
         <h4 class="title">方法调用 top5</h4>
         <el-table :data="funList" tooltip-effect="dark" style="width: 100%">
           <el-table-column label="方法名" prop="methodName" />
-          <el-table-column label="请求时间" prop="reqTime" />
+          <el-table-column label="请求时间" prop="reqTime" width="180" />
           <el-table-column label="调用耗时(s)" prop="costTime" />
         </el-table>
       </el-col>
@@ -37,7 +37,7 @@
           style="width: 100%"
           @row-click="changeIndex"
         >
-          <el-table-column label="端口" prop="portName" />
+          <el-table-column label="端口" prop="portName" width="180" />
           <el-table-column label="速率" prop="portRate" />
           <el-table-column label="每5分钟出向速率(Mbps)" prop="outRate" />
         </el-table>
@@ -77,7 +77,7 @@ export default {
           name: '(min)'
         },
         grid: {
-          left: '0',
+          left: 'auto',
           right: '12%',
           bottom: '3%',
           containLabel: true
@@ -168,13 +168,8 @@ export default {
   },
   methods: {
     changeIndex (row, column, event) {
-      // var data = [
-      //   { time: '2020-04-30 14:01:32.0', inRate: '0.1' },
-      //   { time: '2020-04-30 14:01:32.0', inRate: '0.2' },
-      //   { time: '2020-04-30 14:01:32.0', inRate: '0.31' },
-      //   { time: '2020-04-30 14:01:32.0', inRate: '0.4' }
-      // ]
       this.setLineData(row.inRateList);
+      this.portName = row.portName
     },
     initLine () {
       this.echart_line = echarts.init(this.$refs.echartLine, 'light');
@@ -187,11 +182,16 @@ export default {
     setLineData (data) {
       console.log(data)
       this.lineOption.series[0].data = [];
-      this.lineOption.xAxis.data = [];
-      data.forEach((item) => {
-        this.lineOption.series[0].data.push(item.inRate)
-        // this.lineOption.xAxis.data.push(item.minute)
-      })
+      // this.lineOption.xAxis.data = [];
+      if (data && data.length > 0) {
+        data.forEach((item) => {
+          this.lineOption.series[0].data.push(item.inRate)
+          // this.lineOption.xAxis.data.push(item.minute)
+        })
+      } else {
+        this.lineOption.series[0].data = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      }
+
       this.echart_line.setOption(this.lineOption);
     },
     bytesToSize (bytes) {

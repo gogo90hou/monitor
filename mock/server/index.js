@@ -63,7 +63,7 @@ app.get('/checkFrontSso', function (req, res) {
     res.send({ 'statusCode': 0, 'statusText': '检测成功', 'data': true });
   } else {
     log(`token检测不通过,请跳转到cas登陆 token:${token}`);
-    res.send({ 'statusCode': 302, 'statusText': '重定向到CAS服务器进行验证', 'data': { 'sso_redirect_url': 'http://' + settings.cas.host + ':' + settings.cas.port + '/cas/retrieveToken?appId=back-server-sso' } });
+    res.send({ 'httpCode': 302, 'statusText': '重定向到CAS服务器进行验证', 'data': { 'sso_redirect_url': 'http://' + settings.cas.host + ':' + settings.cas.port + '/cas/retrieveToken?appId=back-server-sso' } });
   }
 });
 
