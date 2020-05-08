@@ -3,7 +3,6 @@ const path = require('path')
 const defaultSettings = require('./src/settings.js')
 const $themes = require('./src/styles/variables.scss.js')
 const styles = `$themes:${JSON.stringify($themes).replace(/{/g, '(').replace(/}/g, ')').replace(/"/g, '')};`;
-console.log(styles)
 function resolve (dir) {
   return path.join(__dirname, dir)
 }
@@ -40,8 +39,8 @@ module.exports = {
     sourceMap: true,
     loaderOptions: {
       sass: {
-        data: `@import "@/styles/index.scss";
-          ${styles}
+        data: `${styles}
+        @import "@/styles/index.scss";
         `
       }
     }

@@ -30,8 +30,10 @@ function getRouter (json, parentId) {
       meta: { title: item.menuName, icon: item.icon },
       children: getRouter(json, item.id)
     })
+    menus.sort(function (a, b) {
+      return a.data.pxNum - b.data.pxNum
+    })
   })
-  // console.log(menus)
   return menus
 }
 export function login () {

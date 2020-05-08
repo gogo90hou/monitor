@@ -63,3 +63,86 @@ div:focus {
 .app-container {
   padding: 20px;
 }
+html {
+  overflow-x: auto;
+  overflow-y: scroll;
+  }
+  body,
+  dl,
+  dt,
+  dd,
+  ul,
+  ol,
+  li,
+  pre,
+  form,
+  fieldset,
+  input,
+  p,
+  blockquote,
+  th,
+  td {
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h4,
+  h5 {
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  font-weight: normal;
+  }
+  select {
+  font-size: 12px;
+  }
+  table {
+  border-collapse: collapse;
+  }
+  fieldset,
+  img {
+  border: none;
+  }
+  fieldset {
+  margin: 0;
+  padding: 0;
+  }
+  fieldset p {
+  margin: 0;
+  padding: 0008px;
+  }
+  legend {
+  display: none;
+  }
+  address,
+  caption,
+  em,
+  strong,
+  th,
+  i {
+  font-style: normal;
+  font-weight: 400;
+  }
+  table caption {
+  margin-left: -1px;
+  }
+  ol,
+  ul {
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  }
+  caption,
+  th {
+  text-align: left;
+  }
+  q:before,
+  q:after,
+  blockquote:before,
+  blockquote:after {
+  content: ””;
+  }
