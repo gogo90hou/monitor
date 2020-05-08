@@ -1,60 +1,14 @@
-const Mock = require('mockjs');
-
 const data = [
-  {
-    'id': 'fb344731ec2e4bc6b25dc1a08f3be65a',
-    'menuName': '安防运维',
-    'menuType': 'directory',
-    'menuValue': null,
-    'pxNum': 1,
-    'icon': null,
-    'memo': null,
-    'parent': null,
-    'appClientId': '0'
-  },
-  {
-    'id': 'fb344731ec2e4bc6b25dc1a08f3be65aaa',
-    'menuName': '报警',
-    'menuType': 'url',
-    'menuValue': '/warn',
-    'pxNum': 1,
-    'icon': null,
-    'memo': null,
-    'parent': {
-      'id': 'fb344731ec2e4bc6b25dc1a08f3be65a',
-      'menuName': '安防运维',
-      'menuType': 'directory',
-      'menuValue': null,
-      'pxNum': 1,
-      'icon': null,
-      'memo': null,
-      'parent': null,
-      'appClientId': '0'
-    },
-    'appClientId': '0'
-  },
-  {
-    'id': 'fb344731ec2e4bc6b25dc1a08f3be65aaa123',
-    'menuName': '设备',
-    'menuType': 'url',
-    'menuValue': '/device',
-    'pxNum': 1,
-    'icon': null,
-    'memo': null,
-    'parent': {
-      'id': 'fb344731ec2e4bc6b25dc1a08f3be65a',
-      'menuName': '安防运维',
-      'menuType': 'directory',
-      'menuValue': null,
-      'pxNum': 1,
-      'icon': null,
-      'memo': null,
-      'parent': null,
-      'appClientId': '0'
-    },
-    'appClientId': '0'
-  }
-]
+  { 'id': 'b0770135887744d9b58e4b2f229f2144', 'menuName': '应用软件', 'menuType': 'url', 'menuValue': '/device', 'pxNum': 1, 'icon': null, 'memo': null, 'parent': { 'id': 'd17f488a0b184193bfd4a1c3477faf41', 'menuName': '监控', 'menuType': 'directory', 'menuValue': null, 'pxNum': 1, 'icon': null, 'memo': null, 'parent': null, 'appClientId': '2493ebd832074abbbeffbb06da88245c' }, 'appClientId': '2493ebd832074abbbeffbb06da88245c' },
+  { 'id': '1b82365c00254b83ad9f262a315db439', 'menuName': '安防运维', 'menuType': 'url', 'menuValue': '/warn', 'pxNum': 1, 'icon': null, 'memo': null, 'parent': { 'id': 'd17f488a0b184193bfd4a1c3477faf41', 'menuName': '监控', 'menuType': 'directory', 'menuValue': null, 'pxNum': 1, 'icon': null, 'memo': null, 'parent': null, 'appClientId': '2493ebd832074abbbeffbb06da88245c' }, 'appClientId': '2493ebd832074abbbeffbb06da88245c' },
+  { 'id': 'd17f488a0b184193bfd4a1c3477faf41', 'menuName': '监控', 'menuType': 'directory', 'menuValue': null, 'pxNum': 1, 'icon': null, 'memo': null, 'parent': null, 'appClientId': '2493ebd832074abbbeffbb06da88245c' },
+  { 'id': '7fb75e78a6904e9ba00ce71763893c63', 'menuName': '云平台', 'menuType': 'url', 'menuValue': '/device', 'pxNum': 1, 'icon': null, 'memo': null, 'parent': { 'id': 'd17f488a0b184193bfd4a1c3477faf41', 'menuName': '监控', 'menuType': 'directory', 'menuValue': null, 'pxNum': 1, 'icon': null, 'memo': null, 'parent': null, 'appClientId': '2493ebd832074abbbeffbb06da88245c' }, 'appClientId': '2493ebd832074abbbeffbb06da88245c' },
+  { 'id': '4fa18174cacc4a8e822d25fb7f577bd7', 'menuName': '系统设置', 'menuType': 'directory', 'menuValue': null, 'pxNum': 1, 'icon': null, 'memo': null, 'parent': null, 'appClientId': '2493ebd832074abbbeffbb06da88245c' },
+  { 'id': 'b43928f434c9474a8c0c9c3620f41500', 'menuName': '拓扑图', 'menuType': 'url', 'menuValue': '/device', 'pxNum': 1, 'icon': null, 'memo': null, 'parent': null, 'appClientId': '2493ebd832074abbbeffbb06da88245c' },
+  { 'id': '05030ded3e264f5fb90bbf593de54303', 'menuName': 'IT设备', 'menuType': 'url', 'menuValue': '/device', 'pxNum': 1, 'icon': null, 'memo': null, 'parent': { 'id': 'd17f488a0b184193bfd4a1c3477faf41', 'menuName': '监控', 'menuType': 'directory', 'menuValue': null, 'pxNum': 1, 'icon': null, 'memo': null, 'parent': null, 'appClientId': '2493ebd832074abbbeffbb06da88245c' }, 'appClientId': '2493ebd832074abbbeffbb06da88245c' },
+  { 'id': '18dfc283163a4d4a9aec5f24cd35f655', 'menuName': '中间件', 'menuType': 'url', 'menuValue': '/device', 'pxNum': 1, 'icon': null, 'memo': null, 'parent': { 'id': 'd17f488a0b184193bfd4a1c3477faf41', 'menuName': '监控', 'menuType': 'directory', 'menuValue': null, 'pxNum': 1, 'icon': null, 'memo': null, 'parent': null, 'appClientId': '2493ebd832074abbbeffbb06da88245c' }, 'appClientId': '2493ebd832074abbbeffbb06da88245c' },
+  { 'id': '9deffc76ec6d4be1bdc564b9fda0d788', 'menuName': '告警', 'menuType': 'url', 'menuValue': '/warn', 'pxNum': 1, 'icon': null, 'memo': null, 'parent': null, 'appClientId': '2493ebd832074abbbeffbb06da88245c' },
+  { 'id': '287925e40cff48a6aa476d9d39607eb4', 'menuName': '操作系统和数据库', 'menuType': 'url', 'menuValue': '/device', 'pxNum': 1, 'icon': null, 'memo': null, 'parent': { 'id': 'd17f488a0b184193bfd4a1c3477faf41', 'menuName': '监控', 'menuType': 'directory', 'menuValue': null, 'pxNum': 1, 'icon': null, 'memo': null, 'parent': null, 'appClientId': '2493ebd832074abbbeffbb06da88245c' }, 'appClientId': '2493ebd832074abbbeffbb06da88245c' }]
 const permList =
   [
     { 'isParent': false, 'name': '新增', 'id': '92DF91A44283412BE053D000A8C0C1C3' },

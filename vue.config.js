@@ -1,7 +1,9 @@
 'use strict'
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
-
+const $themes = require('./src/styles/variables.scss.js')
+const styles = `$themes:${JSON.stringify($themes).replace(/{/g, '(').replace(/}/g, ')').replace(/"/g, '')};`;
+console.log(styles)
 function resolve (dir) {
   return path.join(__dirname, dir)
 }
@@ -34,6 +36,16 @@ module.exports = {
   indexPath: 'templates/index.html',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
+  css: {
+    sourceMap: true,
+    loaderOptions: {
+      sass: {
+        data: `@import "@/styles/index.scss";
+          ${styles}
+        `
+      }
+    }
+  },
   devServer: {
     open: false,
     contentBase: path.join(__dirname, 'public'),
