@@ -16,7 +16,12 @@ const $themes = {
     'normal': '#E1800E',
     'healthy': '#21f358',
     'navHighColor': '#1BD0DB',
-    'navColor': '#076C73'
+    'navColor': '#076C73',
+    'tableColor': '#232626',
+    'tbaleBorder': '#0e1111',
+    'state1': '#F59A23',
+    'state2': '#FF1C1C',
+    'state3': '#FFFF80'
   }
 }
 module.exports = $themes;
