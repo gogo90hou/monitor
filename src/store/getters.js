@@ -9,6 +9,7 @@ const getters = {
   title: state => state.settings.title,
   showSettings: state => state.settings.showSettings,
   errorLogs: state => state.errorLog.logs,
-  warnList: state => state.socket.warnList
+  warnList: state => state.socket.warnList,
+  themeGroup: state => state.settings.themeGroup
 }
 export default getters

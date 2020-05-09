@@ -18,7 +18,7 @@
             >{{ i.label }}</el-button>
           </div>
           <div v-else-if="item.formatter">
-            <div v-html="$options.filters.format(scope.row[item.key],item.formatter,scope.row)" />
+            <div v-format="[scope.row[item.key],item.formatter,scope.row,themeGroup]" />
           </div>
           <div v-else>{{ scope.row[item.key] }}</div>
         </template>
@@ -27,6 +27,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   filters: {
     format (key, arr, data) {
@@ -36,13 +37,63 @@ export default {
         let str = arr;
         arrName.forEach((item) => {
           str = str.replace(`(${item})`, data[item])
-          console.log(data[item])
         })
         return `<span>${str}</span>`
       } else {
+        console.log(this.themeGroup)
         const obj = arr.find((item) => { return item.key === key });
-        obj.color = obj.color ? obj.color : this.$theme.highLight;
+        obj.color = obj.color ? this.themeGroup[obj.color] : this.themeGroup.highLight;
         return `<span style="color:${obj.color}">${obj.label}</span>`
+      }
+    }
+  },
+  directives: {
+    format: {
+      inserted: function (el, bingind, vnode) {
+        const key = bingind.value[0];
+        const arr = bingind.value[1];
+        const data = bingind.value[2];
+        const themeGroup = bingind.value[3];
+        if (typeof arr === 'string') {
+          const reg = /[^\(\)]+(?=\))/g;
+          const arrName = arr.match(reg);
+          let str = arr;
+          arrName.forEach((item) => {
+            str = str.replace(`(${item})`, data[item])
+          })
+          el.innerHTML = `<span>${str}</span>`
+        } else {
+          const obj = arr.find((item) => { return item.key === key });
+          const color = obj.color ? themeGroup[obj.color] : themeGroup.highLight;
+          el.innerHTML = `<span style="color:${color}">${obj.label}</span>`
+        }
+      },
+      bind: function () {
+      },
+      update: function (el, bingind, vnode) {
+        if (JSON.stringify(bingind.oldValue) !== JSON.stringify(bingind.value)) {
+          const key = bingind.value[0];
+          const arr = bingind.value[1];
+          const data = bingind.value[2];
+          const themeGroup = bingind.value[3];
+          if (typeof arr === 'string') {
+            const reg = /[^\(\)]+(?=\))/g;
+            const arrName = arr.match(reg);
+            let str = arr;
+            arrName.forEach((item) => {
+              str = str.replace(`(${item})`, data[item])
+            })
+            el.innerHTML = `<span>${str}</span>`
+          } else {
+            const obj = arr.find((item) => { return item.key === key });
+            const color = obj.color ? themeGroup[obj.color] : themeGroup.highLight;
+            el.innerHTML = `<span style="color:${color}">${obj.label}</span>`
+          }
+        }
+      },
+      componentUpdated: function (el, bingind, vnode) {
+      },
+      unbind: function () {
       }
     }
   },
@@ -68,44 +119,27 @@ export default {
       }
     }
   },
-
   data () {
     return {
-      tableData: [{
-        id: '1',
-        name: '会见系统',
-        area: '所在区域',
-        runState: '运行',
-        num: '2',
-        resState: '1',
-        time: '10ms',
-        reason: '数据库占用内存过大',
-        err: '2'
-      },
-      {
-        id: '2',
-        name: '会见系统',
-        area: '所在区域',
-        runState: '运行',
-        num: '2',
-        resState: '2',
-        time: '10ms',
-        reason: '数据库占用内存过大',
-        err: '2'
-      },
-      {
-        name: '会见系统',
-        area: '所在区域',
-        runState: '运行',
-        num: '2',
-        resState: '3',
-        time: '10ms',
-        reason: '数据库占用内存过大',
-        err: '2'
-      }]
+      tableData: [
+        {
+          id: '2',
+          name: '会见系统',
+          area: '所在区域',
+          runState: '运行',
+          num: '2',
+          resState: '2',
+          time: '10ms',
+          reason: '数据库占用内存过大',
+          err: '2'
+        }
+      ]
     }
   },
-  created () {
+  computed: {
+    ...mapGetters([
+      'themeGroup'
+    ])
   },
   methods: {
     handleClick (i, data) {

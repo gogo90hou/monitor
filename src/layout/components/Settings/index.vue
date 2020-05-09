@@ -28,8 +28,9 @@
     </div>
   </div>
 </template>
-
 <script>
+import Vue from 'vue';
+import theme from '../../../styles/variables.scss.js'
 export default {
   data () {
     return {};
@@ -40,7 +41,9 @@ export default {
         return this.$store.state.settings.theme;
       },
       set (val) {
-        window.document.documentElement.setAttribute('data-theme', val === '1' ? 'dark' : 'light');
+        const type = val === '1' ? 'dark' : 'light'
+        Object.assign(Vue.prototype, { $theme: theme[type] });
+        window.document.documentElement.setAttribute('data-theme', type);
         this.$store.dispatch('settings/changeSetting', {
           key: 'theme',
           value: val
@@ -80,6 +83,10 @@ export default {
         });
       }
     }
+  },
+  mounted () {
+    Object.assign(Vue.prototype, { $theme: theme.dark });
+    console.log(this.$theme)
   },
   methods: {
     themeChange (val) {

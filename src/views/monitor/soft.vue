@@ -34,19 +34,19 @@ export default {
           formatter: [{
             key: '1',
             label: '正常',
-            color: this.$theme.highLight
+            color: 'highLight'
           }, {
             key: '2',
             label: '缓慢',
-            color: this.$theme.state3
+            color: 'state3'
           }, {
             key: '3',
             label: '错误',
-            color: this.$theme.state2
+            color: 'state2'
           }, {
             key: '4',
             label: '非常慢',
-            color: this.$theme.state1
+            color: 'state1'
           }]
         }, {
           label: '响应时间',

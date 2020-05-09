@@ -15,5 +15,6 @@ module.exports = {
   sidebarLogo: true,
   tagsView: true,
   showSettings: true,
-  errorLog: 'development'
+  errorLog: 'development',
+  theme: '1'
 }
