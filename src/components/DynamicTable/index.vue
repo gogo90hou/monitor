@@ -28,6 +28,25 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+function format (el, bingind, vnode) {
+  const key = bingind.value[0];
+  const arr = bingind.value[1];
+  const data = bingind.value[2];
+  const themeGroup = bingind.value[3];
+  if (typeof arr === 'string') {
+    const reg = /[^\(\)]+(?=\))/g;
+    const arrName = arr.match(reg);
+    let str = arr;
+    arrName.forEach((item) => {
+      str = str.replace(`(${item})`, data[item])
+    })
+    el.innerHTML = `<span>${str}</span>`
+  } else {
+    const obj = arr.find((item) => { return item.key === key });
+    const color = obj.color ? themeGroup[obj.color] : themeGroup.highLight;
+    el.innerHTML = `<span style="color:${color}">${obj.label}</span>`
+  }
+}
 export default {
   filters: {
     format (key, arr, data) {
@@ -50,45 +69,13 @@ export default {
   directives: {
     format: {
       inserted: function (el, bingind, vnode) {
-        const key = bingind.value[0];
-        const arr = bingind.value[1];
-        const data = bingind.value[2];
-        const themeGroup = bingind.value[3];
-        if (typeof arr === 'string') {
-          const reg = /[^\(\)]+(?=\))/g;
-          const arrName = arr.match(reg);
-          let str = arr;
-          arrName.forEach((item) => {
-            str = str.replace(`(${item})`, data[item])
-          })
-          el.innerHTML = `<span>${str}</span>`
-        } else {
-          const obj = arr.find((item) => { return item.key === key });
-          const color = obj.color ? themeGroup[obj.color] : themeGroup.highLight;
-          el.innerHTML = `<span style="color:${color}">${obj.label}</span>`
-        }
+        format(el, bingind, vnode)
       },
       bind: function () {
       },
       update: function (el, bingind, vnode) {
         if (JSON.stringify(bingind.oldValue) !== JSON.stringify(bingind.value)) {
-          const key = bingind.value[0];
-          const arr = bingind.value[1];
-          const data = bingind.value[2];
-          const themeGroup = bingind.value[3];
-          if (typeof arr === 'string') {
-            const reg = /[^\(\)]+(?=\))/g;
-            const arrName = arr.match(reg);
-            let str = arr;
-            arrName.forEach((item) => {
-              str = str.replace(`(${item})`, data[item])
-            })
-            el.innerHTML = `<span>${str}</span>`
-          } else {
-            const obj = arr.find((item) => { return item.key === key });
-            const color = obj.color ? themeGroup[obj.color] : themeGroup.highLight;
-            el.innerHTML = `<span style="color:${color}">${obj.label}</span>`
-          }
+          format(el, bingind, vnode)
         }
       },
       componentUpdated: function (el, bingind, vnode) {
