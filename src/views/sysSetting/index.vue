@@ -4,17 +4,28 @@
       <system-bar />
     </div>
     <div class="content">
-      <log-manage />
+      <log-manage v-if="currentRoute === '/logManage'" />
+      <version-manage v-if="currentRoute === '/versionManage'" />
+      <sys-install v-if="currentRoute === '/sysInstall'" />
     </div>
   </div>
 </template>
 <script>
 import SystemBar from '@/components/SystemBar';
-import logManage from './sysManage/logManage';
+import LogManage from './sysManage/LogManage';
+import VersionManage from './sysManage/VersionManage';
+import SysInstall from './sysManage/SysInstall';
 export default {
   components: {
     SystemBar,
-    logManage
+    VersionManage,
+    SysInstall,
+    LogManage
+  },
+  data () {
+    return {
+      currentRoute: this.$route.path
+    }
   }
 }
 </script>
