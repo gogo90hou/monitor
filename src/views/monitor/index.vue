@@ -44,14 +44,16 @@ export default {
   .bar {
     display: inline-block;
     width: 150px;
-    vertical-align: middle;
+    vertical-align: top;
     font-size: 14px;
   }
   .content {
     width: calc(100% - 150px);
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
     font-size: 14px;
+    padding: 0 10px;
+    box-sizing: border-box;
   }
 }
 </style>

@@ -84,7 +84,7 @@ export default {
     }
   },
   props: {
-    requestUrl: {
+    getters: {
       type: String,
       default: ''
     },
@@ -94,10 +94,6 @@ export default {
         return {}
       }
     },
-    reqMethod: {
-      type: String,
-      default: 'post'
-    },
     fieldArr: {
       type: Array,
       default: () => {
@@ -105,27 +101,13 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      tableData: [
-        {
-          id: '2',
-          name: '会见系统',
-          area: '所在区域',
-          runState: '运行',
-          num: '2',
-          resState: '2',
-          time: '10ms',
-          reason: '数据库占用内存过大',
-          err: '2'
-        }
-      ]
-    }
-  },
   computed: {
-    ...mapGetters([
-      'themeGroup'
-    ])
+    ...mapGetters({
+      'themeGroup': 'themeGroup'
+    }),
+    tableData: function () {
+      return this.$store.getters[this.getters]
+    }
   },
   methods: {
     handleClick (i, data) {

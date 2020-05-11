@@ -1,6 +1,13 @@
 <template>
   <div>
-    <dynamic-table :field-arr="fieldArr" @edit="edit" />
+    <div class="publicheader">
+      <h2>应用软件监控列表</h2>
+      <div class="right-wrapper">
+        <input type="text" placeholder="输入要搜索的关键字" />
+        <el-button>管理软件</el-button>
+      </div>
+    </div>
+    <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
   </div>
 </template>
 <script>
@@ -9,8 +16,10 @@ export default {
   components: {
     DynamicTable
   },
+
   data () {
     return {
+      getters: 'monitor/soft/list',
       fieldArr: [
         {
           label: '应用软件名称',
@@ -79,6 +88,9 @@ export default {
       ]
     }
   },
+  created () {
+    this.$store.dispatch('monitor/soft/getList')
+  },
   methods: {
     edit (data) {
       console.log(data)
@@ -86,3 +98,15 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.publicheader {
+  overflow: hidden;
+  padding: 10px 0;
+  h2 {
+    float: left;
+  }
+  .right-wrapper {
+    float: right;
+  }
+}
+</style>
