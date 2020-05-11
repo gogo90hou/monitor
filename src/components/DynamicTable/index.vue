@@ -7,6 +7,8 @@
         :prop="item.key"
         :label="item.label"
         :width="item.width"
+        :filters="item.filters"
+        :filter-method="item.filters?filterTag:''"
       >
         <template slot-scope="scope">
           <div v-if="item.key=='operation'">
@@ -121,6 +123,9 @@ export default {
       if (i.type === 'button') {
         this.$emit(i.method, data)
       }
+    },
+    filterTag () {
+
     }
   }
 }

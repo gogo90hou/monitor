@@ -47,3 +47,9 @@
 .el-range-separator {
   box-sizing: content-box;
 }
+
+.el-table__column-filter-trigger i{
+  @include themeify {
+    color: themed("highLight");
+  }
+}
