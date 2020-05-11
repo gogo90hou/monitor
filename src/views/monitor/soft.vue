@@ -3,7 +3,7 @@
     <div class="publicheader">
       <h2>应用软件监控列表</h2>
       <div class="right-wrapper">
-        <input type="text" placeholder="输入要搜索的关键字" />
+        <el-input type="text" placeholder="输入要搜索的关键字" suffix-icon="el-icon-search" />
         <el-button>管理软件</el-button>
       </div>
     </div>
@@ -24,7 +24,8 @@ export default {
         {
           label: '应用软件名称',
           key: 'name',
-          formatter: ''
+          formatter: '',
+          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
         }, {
           label: '所在区域',
           key: 'area',
@@ -107,6 +108,11 @@ export default {
   }
   .right-wrapper {
     float: right;
+    width: 50%;
+    text-align: right;
+    .el-input {
+      width: 200px;
+    }
   }
 }
 </style>
