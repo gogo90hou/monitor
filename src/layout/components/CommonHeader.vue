@@ -82,8 +82,9 @@ export default {
   },
   methods: {
     linkTo (item) {
+      console.log(item)
       if (item.data && item.data.menuType === 'directory') {
-        this.$router.push(item.children[0].path)
+        this.linkTo(item.children[0])
       } else {
         this.$router.push(item.path)
       }

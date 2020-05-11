@@ -59,7 +59,6 @@ export default {
         })
         return `<span>${str}</span>`
       } else {
-        console.log(this.themeGroup)
         const obj = arr.find((item) => { return item.key === key });
         obj.color = obj.color ? this.themeGroup[obj.color] : this.themeGroup.highLight;
         return `<span style="color:${obj.color}">${obj.label}</span>`

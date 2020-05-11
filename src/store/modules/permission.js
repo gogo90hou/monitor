@@ -10,7 +10,6 @@ export function filterAsyncRoutes (menus) {
     if (!component) {
       continue;
     }
-    console.log(component)
     menus[i].component = (resolve) => {
       let componentPath = '';
       if (component === 'Layout') {

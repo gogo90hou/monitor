@@ -84,10 +84,6 @@ export default {
       }
     }
   },
-  mounted () {
-    Object.assign(Vue.prototype, { $theme: theme.dark });
-    console.log(this.$theme)
-  },
   methods: {
     themeChange (val) {
       this.$store.dispatch('settings/changeSetting', {

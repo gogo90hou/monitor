@@ -63,6 +63,11 @@ export default {
     position: fixed;
     top: 0;
   }
+  .app-wrapper {
+    .header {
+      display: none;
+    }
+  }
 }
 .drawer-bg {
   background: #000;
