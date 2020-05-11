@@ -52,18 +52,18 @@ export default {
   border-right: 1px solid;
   padding: 10px;
   @include themeify {
-    border-color: themed("navColor");
+    border-color: themed('navColor');
   }
   li {
     height: 80px;
     cursor: pointer;
     @include themeify {
-      color: themed("navColor");
+      color: themed('navColor');
     }
     &:hover,
     &.active {
       @include themeify {
-        color: themed("navHighColor");
+        color: themed('navHighColor');
       }
     }
   }

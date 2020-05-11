@@ -47,3 +47,37 @@
 .el-range-separator {
   box-sizing: content-box;
 }
+// .el-upload__input
+.head-menu-right .el-input {
+  width: 360px!important;
+  height: 36px!important;
+  padding: 0;
+  font-family: 'Arial Normal', 'Arial';
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  text-decoration: none;
+  letter-spacing: normal;
+  color: rgba(215, 215, 215, 0.474509803921569);
+  vertical-align: none;
+  text-align: left;
+  text-transform: none;
+  background-color: transparent;
+  border-radius: 0;
+  border: 1px solid rgba(35, 38, 38, 1);
+}
+.el-input__inner {
+  background-color: transparent;
+  color: rgba(215, 215, 215, 0.474509803921569);
+  text-transform: none;
+  border-color: transparent;
+  padding: 0 5px;
+  outline:none!important;
+}
+.el-input.is-active .el-input__inner, .el-input__inner:focus {
+  border-color: transparent;
+  outline: 0;
+}
+.el-input__inner:hover {
+  border-color: transparent;
+}
