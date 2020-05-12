@@ -47,7 +47,6 @@
 .el-range-separator {
   box-sizing: content-box;
 }
-<<<<<<< HEAD
 // .el-upload__input
 .head-menu-right .el-input {
   width: 360px!important;
@@ -81,11 +80,9 @@
 }
 .el-input__inner:hover {
   border-color: transparent;
-=======
-
+}
 .el-table__column-filter-trigger i{
   @include themeify {
     color: themed("highLight");
   }
->>>>>>> b6e89d76ae3b24205b56f90f44f4bce45774a6ff
 }
