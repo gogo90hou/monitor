@@ -8,7 +8,7 @@
         :label="item.label"
         :width="item.width"
         :filters="item.filters"
-        :filter-method="item.filters?filterTag:''"
+        :filter-method="item.filters?filterTag:null"
       >
         <template slot-scope="scope">
           <div v-if="item.key=='operation'">

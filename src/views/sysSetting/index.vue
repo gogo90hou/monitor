@@ -4,9 +4,7 @@
       <system-bar />
     </div>
     <div class="content">
-      <log-manage v-if="currentRoute === '/logManage'" />
-      <version-manage v-if="currentRoute === '/versionManage'" />
-      <sys-install v-if="currentRoute === '/sysInstall'" />
+      <div :is="componentName" />
     </div>
   </div>
 </template>
@@ -15,16 +13,19 @@ import SystemBar from '@/components/SystemBar';
 import LogManage from './sysManage/LogManage';
 import VersionManage from './sysManage/VersionManage';
 import SysInstall from './sysManage/SysInstall';
+import Gateway from './deviceLayout/gateway';
 export default {
   components: {
     SystemBar,
     VersionManage,
     SysInstall,
-    LogManage
+    LogManage,
+    Gateway
   },
   data () {
     return {
-      currentRoute: this.$route.path
+      currentRoute: this.$route.path,
+      componentName: this.$route.path.replace('/', '').firstUpperCase()
     }
   }
 }
