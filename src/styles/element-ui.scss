@@ -47,28 +47,31 @@
 .el-range-separator {
   box-sizing: content-box;
 }
-// .el-upload__input
-.head-menu-right .el-input {
+// Cover the .el-input style 
+.el-input {
   width: 360px!important;
   height: 36px!important;
   padding: 0;
   font-family: 'Arial Normal', 'Arial';
   font-weight: 400;
   font-style: normal;
-  font-size: 13px;
+  font-size: 14px;
   text-decoration: none;
   letter-spacing: normal;
-  color: rgba(215, 215, 215, 0.474509803921569);
   vertical-align: none;
   text-align: left;
   text-transform: none;
   background-color: transparent;
   border-radius: 0;
-  border: 1px solid rgba(35, 38, 38, 1);
+  @include themeify {
+    border: 1px solid themed("inputBorderColor");
+  }
 }
 .el-input__inner {
+  @include themeify {
+    color: themed("inputColor");
+  }
   background-color: transparent;
-  color: rgba(215, 215, 215, 0.474509803921569);
   text-transform: none;
   border-color: transparent;
   padding: 0 5px;
@@ -81,6 +84,17 @@
 .el-input__inner:hover {
   border-color: transparent;
 }
+// Cover the .el-button style
+.el-button--primary {
+  border-radius: 0;
+  @include themeify {
+    color: themed("btnSizeColor");
+    background-color: themed("btnBgColor");
+    border-color: themed("btnBorderColor");
+  }
+}
+
+
 .el-table__column-filter-trigger i{
   @include themeify {
     color: themed("highLight");
