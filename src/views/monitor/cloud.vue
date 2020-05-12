@@ -1,39 +1,11 @@
 <template>
-  <div class="body-content">
-    <div class="head-menu">
-      <div class="head-menu-left">
-        <span class="head-menu-title">云平台监控列表</span>
-      </div>
-      <div class="head-menu-right">
-        <el-input
-          v-model="listQuery.serachName"
-          style="width: 200px;"
-          class="filter-item"
-          @keyup.enter.native="handleSerchKey"
-        >
-          <i slot="suffix" class="el-input__icon el-icon-search" />
-        </el-input>
-        <el-button
-          v-waves
-          class="filter-item"
-          type="primary"
-          style="margin-left: 10px;"
-          @click="handleSerchKey"
-        >管理云平台</el-button>
-        <el-button
-          v-waves
-          class="filter-item"
-          type="primary"
-          style="margin-left: 10px;"
-          @click="handleSerchKey"
-        >管理</el-button>
-      </div>
-    </div>
-  </div>
+  <div class="body-content"><HeadMenu title="云平台监控列表" smalltitle="小标题" :search="true" :btnarr="btnarr" /></div>
 </template>
 
 <script>
+import HeadMenu from '@/components/HeadMenu';
 export default {
+  components: { HeadMenu },
   data () {
     return {
       // 列表查询
@@ -43,7 +15,8 @@ export default {
         total: 0,
         searchEnvironmentId: '',
         serachName: '请输入要搜索的关键字'
-      }
+      },
+      btnarr: [{ id: '1', value: '+ 增加' }, { id: '2', value: '批量导入' }, { id: '3', value: '删除' }]
     }
   },
   created: {},
@@ -70,18 +43,5 @@ export default {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-}
-.head-menu-left {
-  float: left;
-}
-.head-menu-right {
-  float: right;
-}
-.head-menu-title {
-  font-family: 'PingFangSC-Semibold', 'PingFang SC Semibold', 'PingFang SC';
-  font-weight: 650;
-  font-style: normal;
-  font-size: 18px;
-  color: #bdc8c8;
 }
 </style>
