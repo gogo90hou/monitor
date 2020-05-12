@@ -4,7 +4,7 @@
       <h2>应用软件监控列表</h2>
       <div class="right-wrapper">
         <el-input type="text" placeholder="输入要搜索的关键字" suffix-icon="el-icon-search" />
-        <el-button>管理软件</el-button>
+        <el-button class="filter-item" type="primary" style="margin-left: 10px;">管理软件</el-button>
       </div>
     </div>
     <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
