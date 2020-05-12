@@ -2,7 +2,7 @@
   <div class="head-menu">
     <div class="head-menu-left">
       <span class="head-menu-title">{{ title }}</span>
-      <span class="head-menu-smalltitle">{{ smalltitle || '' }}</span>
+      <span class="head-menu-smalltitle" @click="listDetails(smalltitle.path)">{{ smalltitle.name || '' }}</span>
     </div>
     <div class="head-menu-right">
       <el-input
@@ -21,7 +21,7 @@
         class="filter-item"
         type="primary"
         style="margin-left: 10px;"
-        @click="handleSerchKey"
+        @click="btnHandle(item.eventName)"
       >{{ item.value }}</el-button>
     </div>
   </div>
@@ -36,8 +36,10 @@ export default {
       type: String
     },
     smalltitle: {
-      type: String,
-      default: ''
+      type: Object,
+      default () {
+        return {}
+      }
     },
     btnarr: {
       type: Array,
@@ -55,10 +57,6 @@ export default {
       props: ['title', 'smalltitle', 'search', 'btnarr'],
       // 列表查询
       listQuery: {
-        page: 1,
-        limit: 20,
-        total: 0,
-        searchEnvironmentId: '',
         serachinputName: '请输入要搜索的关键字'
       }
     }
@@ -66,8 +64,17 @@ export default {
   created () {
   },
   methods: {
+    listDetails (val) {
+      // 直接跳转
+      this.$router.push({ path: val })
+    },
+    // input搜索关键字
     handleSerchKey () {
-      console.log(123);
+      this.$emit('getValue', this.listQuery.serachinputName);
+    },
+    // 点击按钮触发事件
+    btnHandle (val) {
+      this.$emit('getEvent', val);
     }
   }
 }
@@ -91,5 +98,6 @@ export default {
   font-size: 14px;
   color: rgba(27, 208, 219, 1);
   margin-left: 30px;
+  cursor: pointer;
 }
 </style>

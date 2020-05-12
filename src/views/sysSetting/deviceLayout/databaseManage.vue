@@ -1,5 +1,5 @@
 <template>
-  <div class="body-content"><HeadMenu title="云平台" :smalltitle="smalltitle" :btnarr="btnarr" @getValue="searchKey" @getEvent="judgeEvent" /></div>
+  <div class="body-content"><HeadMenu title="操作系统和数据库" :smalltitle="smalltitle" :search="false" :btnarr="btnarr" @getValue="searchKey" @getEvent="judgeEvent" /></div>
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
         serachName: '请输入要搜索的关键字'
       },
       btnarr: [{ id: '1', value: '+ 增加', eventName: 'addHandle' }, { id: '2', value: '批量导入', eventName: 'importHandle' }, { id: '3', value: '删除', eventName: 'deleteHandle' }],
-      smalltitle: { name: '监控列表', path: '/cloud' }
+      smalltitle: { name: '监控列表', path: '/system' }
     }
   },
   created: {},

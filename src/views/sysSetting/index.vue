@@ -18,6 +18,7 @@ import CloudManage from './deviceLayout/cloudManage';
 import ItManage from './deviceLayout/itManage';
 import Safety from './deviceLayout/safety';
 import SoftManage from './deviceLayout/softManage';
+import DatabaseManage from './deviceLayout/databaseManage';
 export default {
   components: {
     SystemBar,
@@ -28,7 +29,8 @@ export default {
     CloudManage,
     ItManage,
     Safety,
-    SoftManage
+    SoftManage,
+    DatabaseManage
   },
   data () {
     return {
@@ -54,6 +56,7 @@ export default {
     min-height: calc(100vh - 78px);
     vertical-align: top;
     font-size: 20px;
+    padding: 50px 30px;
   }
 }
 </style>
