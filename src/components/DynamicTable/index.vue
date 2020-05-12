@@ -1,6 +1,7 @@
 <template>
   <div class="dynamicTable">
-    <el-table :data="tableData" border>
+    <el-table :data="tableData" border @selection-change="handleSelectionChange">
+      <el-table-column v-if="showCheckBox" type="selection" width="55" label="全选" />
       <el-table-column
         v-for="(item,index) in fieldArr"
         :key="index"
@@ -50,23 +51,6 @@ function format (el, bingind, vnode) {
   }
 }
 export default {
-  filters: {
-    format (key, arr, data) {
-      if (typeof arr === 'string') {
-        const reg = /[^\(\)]+(?=\))/g;
-        const arrName = arr.match(reg);
-        let str = arr;
-        arrName.forEach((item) => {
-          str = str.replace(`(${item})`, data[item])
-        })
-        return `<span>${str}</span>`
-      } else {
-        const obj = arr.find((item) => { return item.key === key });
-        obj.color = obj.color ? this.themeGroup[obj.color] : this.themeGroup.highLight;
-        return `<span style="color:${obj.color}">${obj.label}</span>`
-      }
-    }
-  },
   directives: {
     format: {
       inserted: function (el, bingind, vnode) {
@@ -95,6 +79,10 @@ export default {
       default: () => {
         return {}
       }
+    },
+    showCheckBox: {
+      type: Boolean,
+      default: false
     },
     fieldArr: {
       type: Array,
@@ -125,6 +113,9 @@ export default {
       }
     },
     filterTag () {
+
+    },
+    handleSelectionChange () {
 
     }
   }

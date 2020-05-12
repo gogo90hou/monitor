@@ -2,9 +2,9 @@
   <div>
     <div class="publicheader">
       <h2>IT设备监控列表</h2>
-      <div class="right-wrapper">
+      <div class="right-wrapper head-menu-right">
         <el-input type="text" placeholder="输入要搜索的关键字" suffix-icon="el-icon-search" />
-        <el-button>管理软件</el-button>
+        <el-button class="filter-item" type="primary" style="margin-left: 10px;">管理软件</el-button>
       </div>
     </div>
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">

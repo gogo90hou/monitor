@@ -3,7 +3,11 @@
     <el-tree
       :data="showList"
       :props="defaultProps"
+      node-key="path"
+      show-checkbox
+      :highlight-current="true"
       :default-expand-all="true"
+      :default-checked-keys="[currentPath]"
       @node-click="handleNodeClick"
     />
   </div>
@@ -52,6 +56,15 @@ export default {
     }
     @include themeify {
       background-color: themed("bgColor");
+    }
+    .el-checkbox {
+      display: none;
+    }
+    .is-checked > .el-tree-node__content {
+      background-color: #0edcf76b;
+      @include themeify {
+        color: themed("highLight");
+      }
     }
   }
   .el-tree-node__content:hover,

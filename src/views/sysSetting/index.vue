@@ -14,13 +14,21 @@ import LogManage from './sysManage/LogManage';
 import VersionManage from './sysManage/VersionManage';
 import SysInstall from './sysManage/SysInstall';
 import Gateway from './deviceLayout/gateway';
+import CloudManage from './deviceLayout/cloudManage';
+import ItManage from './deviceLayout/itManage';
+import Safety from './deviceLayout/safety';
+import SoftManage from './deviceLayout/softManage';
 export default {
   components: {
     SystemBar,
     VersionManage,
     SysInstall,
     LogManage,
-    Gateway
+    Gateway,
+    CloudManage,
+    ItManage,
+    Safety,
+    SoftManage
   },
   data () {
     return {

@@ -1,7 +1,6 @@
 import defaultSettings from '@/settings'
 import themeStyle from '@/styles/variables.scss.js'
 const { showSettings, fixedHeader, sidebarLogo, title, tagsView, theme } = defaultSettings
-console.log(themeStyle, theme)
 const state = {
   theme: theme,
   showSettings: showSettings,
