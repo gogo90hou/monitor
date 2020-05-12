@@ -8,12 +8,13 @@
       </div>
     </div>
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-      <el-tab-pane label="服务器" name="first">服务器</el-tab-pane>
+      <el-tab-pane label="服务器" name="first">
+        <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
+      </el-tab-pane>
       <el-tab-pane label="交换机" name="second">交换机</el-tab-pane>
       <el-tab-pane label="防火墙" name="third">防火墙</el-tab-pane>
       <el-tab-pane label="存储" name="fourth">存储</el-tab-pane>
     </el-tabs>
-    <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
   </div>
 </template>
 <script>
@@ -26,26 +27,27 @@ export default {
   data () {
     return {
       getters: 'monitor/soft/list',
+      activeName: 'first',
       fieldArr: [
         {
-          label: '应用软件名称',
+          label: '服务器名称',
           key: 'name',
           formatter: '',
           filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
         }, {
-          label: '所在区域',
+          label: '运行状态',
           key: 'area',
           formatter: ''
         }, {
-          label: '运行状态',
+          label: '硬盘状态',
           key: 'runState',
           formatter: ''
         }, {
-          label: '进程数',
+          label: '风扇状态',
           key: 'num',
           formatter: '(num)/(area)'
         }, {
-          label: '响应状态',
+          label: '内存状态',
           key: 'resState',
           formatter: [{
             key: '1',
@@ -65,15 +67,15 @@ export default {
             color: 'state1'
           }]
         }, {
-          label: '响应时间',
+          label: '电源状态',
           key: 'time',
           formatter: ''
         }, {
-          label: '请求异常原因',
+          label: 'cpu温度',
           key: 'reason',
           formatter: ''
         }, {
-          label: '进程异常数',
+          label: 'cpu负载',
           key: 'err',
           formatter: ''
         }, {

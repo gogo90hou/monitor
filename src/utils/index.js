@@ -8,7 +8,7 @@
  * @param {string} cFormat
  * @returns {string | null}
  */
-export function parseTime(time, cFormat) {
+export function parseTime (time, cFormat) {
   if (arguments.length === 0) {
     return null
   }
@@ -37,7 +37,7 @@ export function parseTime(time, cFormat) {
   const time_str = format.replace(/{([ymdhisa])+}/g, (result, key) => {
     const value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value ] }
+    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value] }
     return value.toString().padStart(2, '0')
   })
   return time_str
@@ -48,7 +48,7 @@ export function parseTime(time, cFormat) {
  * @param {string} option
  * @returns {string}
  */
-export function formatTime(time, option) {
+export function formatTime (time, option) {
   if (('' + time).length === 10) {
     time = parseInt(time) * 1000
   } else {
@@ -92,7 +92,7 @@ export function formatTime(time, option) {
  * @param {string} cls
  * @returns {boolean}
  */
-export function hasClass(ele, cls) {
+export function hasClass (ele, cls) {
   return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'))
 }
 
@@ -101,7 +101,7 @@ export function hasClass(ele, cls) {
  * @param {HTMLElement} elm
  * @param {string} cls
  */
-export function addClass(ele, cls) {
+export function addClass (ele, cls) {
   if (!hasClass(ele, cls)) ele.className += ' ' + cls
 }
 
@@ -110,7 +110,7 @@ export function addClass(ele, cls) {
  * @param {HTMLElement} elm
  * @param {string} cls
  */
-export function removeClass(ele, cls) {
+export function removeClass (ele, cls) {
   if (hasClass(ele, cls)) {
     const reg = new RegExp('(\\s|^)' + cls + '(\\s|$)')
     ele.className = ele.className.replace(reg, ' ')
@@ -121,7 +121,7 @@ export function removeClass(ele, cls) {
  * @param {string} url
  * @returns {Object}
  */
-export function param2Obj(url) {
+export function param2Obj (url) {
   const search = url.split('?')[1];
   const params = Object.create(null);
   if (!search) {
@@ -142,7 +142,7 @@ export function param2Obj(url) {
  * @param {*} param
  * @param {*} url
  */
-export function addParamToUrl(param, url) {
+export function addParamToUrl (param, url) {
   url = url == null ? window.location.href : url;
   const originParam = param2Obj(url);
   let originUrl = url.split('?')[0] + '?';
@@ -154,7 +154,7 @@ export function addParamToUrl(param, url) {
   return originUrl;
 }
 
-export function downloadFile(url, data, method = 'GET') {
+export function downloadFile (url, data, method = 'GET') {
   const body = document.getElementsByTagName('body')[0];
   const form = document.createElement('form');
   form.method = method;
@@ -169,4 +169,10 @@ export function downloadFile(url, data, method = 'GET') {
   body.appendChild(form);
   form.submit();
   body.removeChild(form);
+}
+// eslint-disable-next-line no-extend-native
+String.prototype.firstUpperCase = function () {
+  return this.replace(/\b(\w)(\w*)/g, function ($0, $1, $2) {
+    return $1.toUpperCase() + $2;
+  });
 }
