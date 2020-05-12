@@ -20,6 +20,13 @@
           style="margin-left: 10px;"
           @click="handleSerchKey"
         >管理云平台</el-button>
+        <el-button
+          v-waves
+          class="filter-item"
+          type="primary"
+          style="margin-left: 10px;"
+          @click="handleSerchKey"
+        >管理</el-button>
       </div>
     </div>
   </div>
