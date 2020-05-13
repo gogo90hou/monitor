@@ -19,6 +19,7 @@ import ItManage from './deviceLayout/itManage';
 import Safety from './deviceLayout/safety';
 import SoftManage from './deviceLayout/softManage';
 import DatabaseManage from './deviceLayout/databaseManage';
+import ReportVoice from './alarm/reportVoice';
 export default {
   components: {
     SystemBar,
@@ -30,7 +31,8 @@ export default {
     ItManage,
     Safety,
     SoftManage,
-    DatabaseManage
+    DatabaseManage,
+    ReportVoice
   },
   data () {
     return {

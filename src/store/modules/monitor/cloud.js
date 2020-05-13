@@ -4,32 +4,28 @@
 
 * @typedef {(Object)} getSoftlist
 
-* @property {string} id - 系统id.
-* @property {string} sysNum- 系统标识.
-* @property {string} sysCategory- 系统类别.
+* @property {string} id - 云平台id.
+* @property {string} serialNumber- 序号.
+* @property {string} host- 主机信息.
+* @property {string} area- 所在区域.
+* @property {string} runState- 运行状态.
+* @property {string} virtualMachine- 虚拟机.
 * @property {string} disk- 磁盘.
-* @property {string} diskUtilization- 磁盘利用率.
 * @property {string} memory- 内存.
-* @property {string} memoryUtilization- 内存利用率.
-* @property {string} cpuUtilization- CPU利用率.
-* @property {string} processNum - 进程数.
-* @property {string} fileState - 文件状态.
-* @property {string} loginUser - 登录用户.
+* @property {string} networkTraffic - 网卡流量.
 */
 
 const data = [
   {
     id: '1',
-    sysNum: 'k3-3353',
-    sysCategory: 'windows操作系统',
+    serialNumber: '363',
+    host: '省局私有云',
+    area: '锦江监狱',
+    runState: '运行',
+    virtualMachine: '2',
     disk: '32G / 1TB',
-    diskUtilization: '34%',
     memory: '32G / 1TB',
-    memoryUtilization: '34%',
-    cpuUtilization: '40%',
-    processNum: '32',
-    fileState: '只读',
-    loginUser: '3'
+    networkTraffic: '3kb/s'
   }
 ]
 // vuex的基本数据，用来存储变量
