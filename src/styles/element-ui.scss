@@ -93,7 +93,38 @@
     border-color: themed("btnBorderColor");
   }
 }
-
+// Cover the .el-select style
+.el-select {
+  padding-left: 36px;
+  .el-input {
+    width: 120px!important;
+    margin-right: 20px;
+    .el-input__inner {
+      color: #fff!important;
+    }
+  }
+}
+.el-select .el-input__inner:focus {
+  border-color: transparent;
+}
+.el-select .el-input.is-focus .el-input__inner {
+  border-color: transparent;
+}
+.el-popper {
+  min-width: 120px!important;
+}
+.el-popper[x-placement^=bottom] {
+  margin-top: 0;
+}
+.el-popper[x-placement^=bottom] .popper__arrow::after {
+  border-color: transparent;
+}
+.el-popper .popper__arrow {
+  border-width: 0;
+}
+.el-select-dropdown {
+  border-radius: 0;
+}
 
 .el-table__column-filter-trigger i{
   @include themeify {

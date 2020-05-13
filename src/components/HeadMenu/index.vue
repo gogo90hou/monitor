@@ -5,6 +5,14 @@
       <span class="head-menu-smalltitle" @click="listDetails(smalltitle.path)">{{ smalltitle.name || '' }}</span>
     </div>
     <div class="head-menu-right">
+      <el-select v-show="options.length > 0" v-model="selectId" placeholder="选择区域" @change="selectHandle">
+        <el-option
+          v-for="item in options"
+          :key="item.selectId"
+          :label="item.label"
+          :value="item.selectId"
+        />
+      </el-select>
       <el-input
         v-show="search"
         v-model="listQuery.serachinputName"
@@ -41,6 +49,12 @@ export default {
         return {}
       }
     },
+    options: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
     btnarr: {
       type: Array,
       default () {
@@ -54,11 +68,12 @@ export default {
   },
   data () {
     return {
-      props: ['title', 'smalltitle', 'search', 'btnarr'],
+      props: ['title', 'smalltitle', 'search', 'btnarr', 'options'],
       // 列表查询
       listQuery: {
         serachinputName: '请输入要搜索的关键字'
-      }
+      },
+      selectId: ''
     }
   },
   created () {
@@ -75,12 +90,19 @@ export default {
     // 点击按钮触发事件
     btnHandle (val) {
       this.$emit('getEvent', val);
+    },
+    // 级联选择框事件
+    selectHandle (val) {
+      this.$emit('getSelectId', val);
     }
   }
 }
 </script>
 
 <style scoped>
+.head-menu {
+  padding-bottom: 50px;
+}
 .head-menu-left {
   float: left;
 }

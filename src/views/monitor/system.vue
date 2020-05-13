@@ -12,7 +12,7 @@ export default {
       listQuery: {
         serachName: '请输入要搜索的关键字'
       },
-      btnarr: [{ id: '1', value: ' 管理系统和数据库', eventName: 'addHandle' }],
+      btnarr: [{ id: '1', value: ' 管理系统和数据库', eventName: 'addHandle' }]
     }
   },
   created: {},

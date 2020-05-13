@@ -1,12 +1,6 @@
 <template>
   <div>
-    <div class="publicheader">
-      <h2>IT设备监控列表</h2>
-      <div class="right-wrapper head-menu-right">
-        <el-input type="text" placeholder="输入要搜索的关键字" suffix-icon="el-icon-search" />
-        <el-button class="filter-item" type="primary" style="margin-left: 10px;">管理软件</el-button>
-      </div>
-    </div>
+    <div class="body-content"><HeadMenu title="IT设备监控列表" :options="options" :search="true" @getValue="searchKey" @getSelectId="selectIdHandle" /></div>
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
       <el-tab-pane label="服务器" name="first">
         <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
@@ -18,9 +12,11 @@
   </div>
 </template>
 <script>
+import HeadMenu from '@/components/HeadMenu';
 import DynamicTable from '@/components/DynamicTable/index'
 export default {
   components: {
+    HeadMenu,
     DynamicTable
   },
 
@@ -28,6 +24,7 @@ export default {
     return {
       getters: 'monitor/soft/list',
       activeName: 'first',
+      options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '川北监狱' }, { selectId: '3', label: '川西监狱' }],
       fieldArr: [
         {
           label: '服务器名称',
@@ -103,6 +100,12 @@ export default {
   methods: {
     edit (data) {
       console.log(data)
+    },
+    searchKey (val) {
+      console.log(val);
+    },
+    selectIdHandle (id) {
+      console.log(id);
     }
   }
 }
