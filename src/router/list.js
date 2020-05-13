@@ -16,6 +16,10 @@ const routers = [
     'component': '/monitor/index.vue'
   },
   {
+    'path': '/monitor_detail',
+    'component': '/monitor/index.vue'
+  },
+  {
     'path': '/cloud',
     'component': '/monitor/index.vue'
   },

@@ -1,3 +1,17 @@
+/**
+
+* 应用软件api接口字段，表示返回api的数据结构.
+
+* @typedef {(Object)} getSoftlist
+
+* @property {string} id - 软件id.
+* @property {string} name - 应用软件名称.
+* @property {string} area - 所在区域.
+* @property {string} runState - 运行状态.
+* @property {string} processNum - 进程数.
+* @property {string} resState - 响应状态（1.正常，2。错误，3.非常慢，4.缓慢）.
+*/
+
 const data = [
   {
     id: '2',
