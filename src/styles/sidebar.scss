@@ -1,11 +1,7 @@
 #app {
 
   .main-container {
-    min-height: 100%;
     position: relative;
-    @include themeify {
-      background-color: themed("bgColor");
-    }
     @include themeify {
       color: themed("light");
     }

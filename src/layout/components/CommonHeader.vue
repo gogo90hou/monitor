@@ -2,7 +2,7 @@
   <div class="header">
     <el-row>
       <el-col :span="4">
-        <h1>环亚信通</h1>
+        <img src="@/assets/logo.png" alt />
       </el-col>
       <el-col :span="12">
         <ul class="header__list">
@@ -15,7 +15,7 @@
         </ul>
       </el-col>
       <el-col :span="8" class="right-menu">
-        <template v-if="device === 'desktop'">
+        <!-- <template v-if="device === 'desktop'">
           <el-tooltip content="菜单搜索" effect="dark" placement="bottom">
             <search id="header-search" class="right-menu-item" />
           </el-tooltip>
@@ -31,7 +31,7 @@
           <el-tooltip content="字体大小" effect="dark" placement="bottom">
             <size-select id="size-select" class="right-menu-item hover-effect" />
           </el-tooltip>
-        </template>
+        </template>-->
         <el-dropdown class="avatar-container" trigger="click">
           <div class="avatar-wrapper">
             <span>超级管理员</span>
@@ -46,6 +46,7 @@
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
+        <span>欢迎进入系统!</span>
       </el-col>
     </el-row>
   </div>
@@ -138,38 +139,33 @@ export default {
   line-height: 78px;
   width: 100%;
   text-align: center;
-  @include themeify {
-    background-color: themed("bgColor");
-  }
-  @include themeify {
-    color: themed("light");
-  }
-  h1 {
-    font-size: 30px;
-    display: inline;
-    @include themeify {
-      color: themed("highLight");
-    }
+  background-image: url("../../assets/navbar.png");
+  color: #ffffff;
+  img {
+    vertical-align: middle;
   }
   &__list {
-    text-align: left;
+    text-align: center;
     padding: 0;
     margin: 0;
     li {
       display: inline-block;
-      margin-right: 10px;
+      margin-right: 3vw;
+      width: 78px;
+      text-align: center;
       cursor: pointer;
       &:hover,
       &.active {
-        color: themed("highLight");
+        background-color: #12112c;
       }
     }
   }
   .right-menu {
     text-align: right;
     height: 78px;
-    line-height: 50px;
-
+    line-height: 78px;
+    padding-right: 10px;
+    font-size: 12px;
     &:focus {
       outline: none;
     }
@@ -197,11 +193,10 @@ export default {
 
     .avatar-container {
       margin-right: 30px;
-
+      cursor: pointer;
       .avatar-wrapper {
-        margin-top: 5px;
         position: relative;
-
+        color: #ffffff;
         .user-avatar {
           cursor: pointer;
           width: 40px;
@@ -213,7 +208,7 @@ export default {
           cursor: pointer;
           position: absolute;
           right: -20px;
-          top: 25px;
+          top: 33px;
           font-size: 12px;
         }
       }

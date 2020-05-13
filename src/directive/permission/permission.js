@@ -1,5 +1,5 @@
 export default {
-  inserted(el, binding, vnode) {
+  inserted (el, binding, vnode) {
     const { type, permission } = binding.value;
 
     if (type && typeof type === 'string' && permission && permission instanceof Array && permission.length > 0) {

@@ -9,7 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  font-family: Microsoft YaHei, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 }
 
 label {
@@ -126,9 +126,6 @@ html {
   i {
   font-style: normal;
   font-weight: 400;
-  }
-  table caption {
-  margin-left: -1px;
   }
   ol,
   ul {

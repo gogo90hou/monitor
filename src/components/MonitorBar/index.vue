@@ -29,14 +29,6 @@ export default {
     this.permission_routes.forEach((item) => {
       if (item.children && item.children.length > 0) {
         var list = item.children.find((i) => {
-          // let isCurrent = false;
-          // if (i.path === this.$route.path) {
-          //   isCurrent = true
-          // } else if (i.children && i.children.length > 0) {
-          //   isCurrent = !!i.children.find((child) => {
-          //     return child.path === this.$route.path
-          //   })
-          // }
           return this.$route.path.indexOf(i.path) !== -1
         })
         if (list) {
@@ -60,9 +52,10 @@ export default {
   text-align: center;
   border-right: 1px solid;
   padding: 10px;
-  @include themeify {
-    border-color: themed("navColor");
-  }
+  border-image: -webkit-linear-gradient(#111, #1bd0db, #111) 30 30;
+  // @include themeify {
+  //   border-color: themed("navColor");
+  // }
   li {
     height: 80px;
     cursor: pointer;
