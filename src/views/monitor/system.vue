@@ -1,5 +1,13 @@
 <template>
-  <div class="body-content"><HeadMenu title="操作系统和数据库监控列表" :search="true" :btnarr="btnarr" @getValue="searchKey" @getEvent="judgeEvent" /></div>
+  <div class="body-content">
+    <HeadMenu
+      title="操作系统和数据库监控列表"
+      :search="true"
+      :btnarr="btnarr"
+      @getValue="searchKey"
+      @getEvent="judgeEvent"
+    />
+  </div>
 </template>
 
 <script>
@@ -31,5 +39,5 @@ export default {
 </script>
 
 <style scoped>
-@import '~@/styles/element-ui.scss';
+@import "~@/styles/element-ui.scss";
 </style>

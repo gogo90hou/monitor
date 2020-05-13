@@ -4,7 +4,7 @@
       <li
         v-for="(item,key) in showList"
         :key="key"
-        :class="[currentPath==item.path?'active':'']"
+        :class="[currentPath.indexOf(item.path) !== -1?'active':'']"
         @click="jump(item)"
       >{{ item.name }}</li>
     </ul>
@@ -29,10 +29,19 @@ export default {
     this.permission_routes.forEach((item) => {
       if (item.children && item.children.length > 0) {
         var list = item.children.find((i) => {
-          return i.path === this.$route.path
+          // let isCurrent = false;
+          // if (i.path === this.$route.path) {
+          //   isCurrent = true
+          // } else if (i.children && i.children.length > 0) {
+          //   isCurrent = !!i.children.find((child) => {
+          //     return child.path === this.$route.path
+          //   })
+          // }
+          return this.$route.path.indexOf(i.path) !== -1
         })
         if (list) {
           this.showList = item.children;
+          console.log(this.showList)
         }
       }
     })
@@ -52,18 +61,18 @@ export default {
   border-right: 1px solid;
   padding: 10px;
   @include themeify {
-    border-color: themed('navColor');
+    border-color: themed("navColor");
   }
   li {
     height: 80px;
     cursor: pointer;
     @include themeify {
-      color: themed('navColor');
+      color: themed("navColor");
     }
     &:hover,
     &.active {
       @include themeify {
-        color: themed('navHighColor');
+        color: themed("navHighColor");
       }
     }
   }
