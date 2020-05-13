@@ -78,7 +78,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/detail',
+            path: '/monitor_detail',
             query: ['id', 'name']
           }, {
             label: '查看详情',

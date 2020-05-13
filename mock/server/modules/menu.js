@@ -1,4 +1,22 @@
 const data = [{
+  'id': '123',
+  'menuName': '详情',
+  'menuType': 'url',
+  'menuValue': '/monitor_detail',
+  'pxNum': 1,
+  'icon': null,
+  'memo': null,
+  'parent': {
+    'id': '1b82365c00254b83ad9f262a315db439',
+    'menuName': '安防运维',
+    'menuType': 'url',
+    'menuValue': '/monitor',
+    'pxNum': 1,
+    'icon': null,
+    'memo': null
+  },
+  'appClientId': '1b82365c00254b83ad9f262a315db439'
+}, {
   'id': '1b82365c00254b83ad9f262a315db439',
   'menuName': '安防运维',
   'menuType': 'url',
