@@ -48,15 +48,12 @@ export default {
 <style lang="scss">
 .SystemBar {
   width: 100%;
-  height: auto;
+  min-height: calc(100vh - 78px);
   text-align: center;
   .el-tree {
-    @include themeify {
-      color: themed("highColor");
-    }
-    @include themeify {
-      background-color: themed("bgColor");
-    }
+    color: #fff;
+    background-color: #2c2b40;
+    min-height: calc(100vh - 78px);
     .el-checkbox {
       display: none;
     }

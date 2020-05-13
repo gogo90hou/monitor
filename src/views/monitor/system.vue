@@ -1,6 +1,12 @@
 <template>
   <div class="body-content">
-    <HeadMenu title="操作系统和数据库监控列表" :search="true" :btnarr="btnarr" @getValue="searchKey" @getEvent="judgeEvent" />
+    <HeadMenu
+      title="操作系统和数据库监控列表"
+      :search="true"
+      :btnarr="btnarr"
+      @getValue="searchKey"
+      @getEvent="judgeEvent"
+    />
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
       <el-tab-pane label="操作系统" name="first">
         <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
@@ -70,7 +76,6 @@ export default {
         }, {
           label: '操作',
           key: 'operation',
-          needTemp: true,
           width: '200px',
           buttons: [{
             label: '查看详情',
@@ -107,5 +112,5 @@ export default {
 </script>
 
 <style scoped>
-@import '~@/styles/element-ui.scss';
+@import "~@/styles/element-ui.scss";
 </style>

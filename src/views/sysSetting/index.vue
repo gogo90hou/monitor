@@ -54,7 +54,7 @@ export default {
   .content {
     width: calc(100% - 200px);
     display: inline-block;
-    background-color: #1a1c1c;
+    background-color: #fff;
     min-height: calc(100vh - 78px);
     vertical-align: top;
     font-size: 20px;

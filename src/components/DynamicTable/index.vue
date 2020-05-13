@@ -9,6 +9,7 @@
         :label="item.label"
         :width="item.width"
         :filters="item.filters"
+        :filter-multiple="false"
         :filter-method="item.filters?filterTag:null"
       >
         <template slot-scope="scope">
