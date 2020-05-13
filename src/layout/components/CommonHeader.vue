@@ -6,7 +6,12 @@
       </el-col>
       <el-col :span="12">
         <ul class="header__list">
-          <li v-for="(item,key) in showList" :key="key" @click="linkTo(item)">{{ item.name }}</li>
+          <li
+            v-for="(item,key) in showList"
+            :key="key"
+            v-addClass="[item,currentRouter]"
+            @click="linkTo(item)"
+          >{{ item.name }}</li>
         </ul>
       </el-col>
       <el-col :span="8" class="right-menu">
@@ -53,6 +58,19 @@ import SizeSelect from '@/components/SizeSelect';
 import ErrorLog from '@/components/ErrorLog';
 import LangSelect from '@/components/LangSelect';
 import defaultHeadPic from '@/assets/police.png';
+function addClass (el, list, currentRouter) {
+  let isChild = false;
+  if (currentRouter === list.path) {
+    isChild = true;
+  } else if (list.children && list.children.length > 0) {
+    list.children.forEach((item) => {
+      addClass(el, item, currentRouter)
+    })
+  }
+  if (isChild) {
+    el.className = 'active'
+  }
+}
 export default {
   name: 'CommonHeader',
   components: {
@@ -61,6 +79,26 @@ export default {
     SizeSelect,
     Search,
     ErrorLog
+  },
+  directives: {
+    addClass: {
+      inserted: function (el, bingind, vnode) {
+        el.className = '';
+        addClass(el, bingind.value[0], bingind.value[1])
+      },
+      bind: function () {
+      },
+      update: function (el, bingind, vnode) {
+        if (JSON.stringify(bingind.oldValue) !== JSON.stringify(bingind.value)) {
+          el.className = '';
+          addClass(el, bingind.value[0], bingind.value[1])
+        }
+      },
+      componentUpdated: function (el, bingind, vnode) {
+      },
+      unbind: function () {
+      }
+    }
   },
   data () {
     return {
@@ -73,7 +111,10 @@ export default {
       'permission_routes',
       'avatar',
       'device'
-    ])
+    ]),
+    currentRouter () {
+      return this.$route.path
+    }
   },
   mounted () {
     this.showList = this.permission_routes.filter((item) => {
@@ -82,7 +123,6 @@ export default {
   },
   methods: {
     linkTo (item) {
-      console.log(item)
       if (item.data && item.data.menuType === 'directory') {
         this.linkTo(item.children[0])
       } else {
@@ -119,7 +159,8 @@ export default {
       display: inline-block;
       margin-right: 10px;
       cursor: pointer;
-      &:hover {
+      &:hover,
+      &.active {
         color: themed("highLight");
       }
     }
