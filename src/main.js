@@ -10,7 +10,7 @@ import App from './App'
 import store from './store'
 import router from './router'
 
-import '@/font/style.css'
+import '@/font/iconfont.css'
 
 import i18n from './lang' // 国际化
 import '@/icons' // icon

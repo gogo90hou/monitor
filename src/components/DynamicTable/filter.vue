@@ -15,7 +15,7 @@
       </ul>
       <div slot="reference">
         <span>{{ item.label }}</span>
-        <span class="arrow_triangle-down" />
+        <span class="icon iconfont iconarrow_triangle-down" />
       </div>
     </el-popover>
   </div>
