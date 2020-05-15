@@ -2,22 +2,32 @@
   <div class="body-content">
     <HeadMenu title="云平台监控列表" :search="true" :btnarr="btnarr" @getValue="searchKey" @getEvent="judgeEvent" />
     <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
+    <pagination
+      v-show="listQuery.total>0"
+      :total="listQuery.total"
+      :page.sync="listQuery.page"
+      :limit.sync="listQuery.limit"
+      @pagination="pagination"
+    />
   </div>
 </template>
 
 <script>
 import HeadMenu from '@/components/HeadMenu';
 import DynamicTable from '@/components/DynamicTable/index';
+import Pagination from '@/components/Pagination/index';
 export default {
-  components: { HeadMenu, DynamicTable },
+  components: { HeadMenu, DynamicTable, Pagination },
   data () {
     return {
       getters: 'monitor/cloud/list',
-      // 列表查询
+      // 分页列表
       listQuery: {
-        serachName: '请输入要搜索的关键字'
+        total: 36,
+        page: 1,
+        limit: 10
       },
-      btnarr: [{ id: '1', value: ' 管理云平台', eventName: 'addHandle' }],
+      btnarr: [{ id: '1', value: ' 管理云平台', eventName: 'manageHandle', type: 'primary' }],
       fieldArr: [
         {
           label: '序号',
@@ -86,6 +96,10 @@ export default {
     },
     edit (data) {
       console.log(data)
+    },
+    pagination (val) {
+      this.listQuery.page = val.page;
+      console.log(val);
     }
   }
 }

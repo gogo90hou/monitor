@@ -1,8 +1,9 @@
 <template>
   <div class="head-menu">
     <div class="head-menu-left">
+      <!-- <img src="@/assets/icon/headmenuLine.png" /> -->
       <span class="head-menu-title">{{ title }}</span>
-      <span class="head-menu-smalltitle" @click="listDetails(smalltitle.path)">{{ smalltitle.name || '' }}</span>
+      <span v-show="Object.keys(smalltitle).length > 0" class="head-menu-smalltitle" @click="listDetails(smalltitle.path)">( <span>{{ smalltitle.name || '' }}</span> )</span>
     </div>
     <div class="head-menu-right">
       <el-select v-show="options.length > 0" v-model="selectId" placeholder="选择区域" @change="selectHandle">
@@ -15,19 +16,20 @@
       </el-select>
       <el-input
         v-show="search"
-        v-model="listQuery.serachinputName"
+        v-model="serachinputName"
         style="width: 200px;"
         class="filter-item"
         @keyup.enter.native="handleSerchKey"
       >
         <i slot="suffix" class="el-input__icon el-icon-search" @click="handleSerchKey" />
       </el-input>
+      <!-- 为每一个按钮绑定一个事件类型 类型共分为:addHandle importHandle deleteHandle manageHandle -->
       <el-button
         v-for="item in btnarr"
         v-show="btnarr"
         :key="item.id"
         class="filter-item"
-        type="primary"
+        :type="item.type"
         style="margin-left: 10px;"
         @click="btnHandle(item.eventName)"
       >{{ item.value }}</el-button>
@@ -69,10 +71,7 @@ export default {
   data () {
     return {
       props: ['title', 'smalltitle', 'search', 'btnarr', 'options'],
-      // 列表查询
-      listQuery: {
-        serachinputName: '请输入要搜索的关键字'
-      },
+      serachinputName: '请输入要搜索的关键字',
       selectId: ''
     }
   },
@@ -85,7 +84,7 @@ export default {
     },
     // input搜索关键字
     handleSerchKey () {
-      this.$emit('getValue', this.listQuery.serachinputName);
+      this.$emit('getValue', this.serachinputName);
     },
     // 点击按钮触发事件
     btnHandle (val) {
@@ -99,7 +98,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .head-menu {
   padding-bottom: 50px;
 }
@@ -108,18 +107,44 @@ export default {
 }
 .head-menu-right {
   float: right;
+  .el-input {
+    width: 360px !important;
+    height: 36px !important;
+    padding: 0;
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    text-decoration: none;
+    letter-spacing: normal;
+    vertical-align: none;
+    text-align: left;
+    text-transform: none;
+  }
+}
+.head-menu-title:before {
+  content: '';
+  display: inline-block;
+  height: 16px;
+  width: 5px;
+  background-color: #a199d6;
+  margin-right: 10px;
 }
 .head-menu-title {
-  font-family: 'PingFangSC-Semibold', 'PingFang SC Semibold', 'PingFang SC';
-  font-weight: 650;
-  font-style: normal;
-  font-size: 18px;
-  color: #bdc8c8;
+  font-family: 'MicrosoftYaHei-Bold';
+  font-weight: bold;
+  font-size: 20px;
+  color: #a199d6;
 }
 .head-menu-smalltitle {
+  font-family: 'MicrosoftYaHei';
   font-size: 14px;
-  color: rgba(27, 208, 219, 1);
-  margin-left: 30px;
+  color: #46bbf0;
+  margin-left: 20px;
   cursor: pointer;
+  span {
+    text-decoration: underline;
+    text-decoration-color: #46bbf0;
+  }
 }
 </style>

@@ -100,6 +100,7 @@ export default {
 }
 </script>
 <style lang="scss">
+@import '~@/styles/element-ui.scss';
 .publicheader {
   overflow: hidden;
   padding: 10px 0;

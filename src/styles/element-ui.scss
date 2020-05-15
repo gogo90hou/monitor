@@ -49,18 +49,6 @@
 }
 // Cover the .el-input style 
 .el-input {
-  width: 360px!important;
-  height: 36px!important;
-  padding: 0;
-  font-family: 'Arial Normal', 'Arial';
-  font-weight: 400;
-  font-style: normal;
-  font-size: 14px;
-  text-decoration: none;
-  letter-spacing: normal;
-  vertical-align: none;
-  text-align: left;
-  text-transform: none;
   background-color: transparent;
   border-radius: 0;
   @include themeify {
@@ -68,9 +56,6 @@
   }
 }
 .el-input__inner {
-  @include themeify {
-    color: themed("inputColor");
-  }
   background-color: transparent;
   text-transform: none;
   border-color: transparent;
@@ -85,13 +70,22 @@
   border-color: transparent;
 }
 // Cover the .el-button style
+.el-button {
+  height: 34px;
+  padding: 0 23px;
+  border-radius: 17px;
+  font-size: 16px;
+  opacity: 79%;
+  border: none;
+}
 .el-button--primary {
-  border-radius: 0;
-  @include themeify {
-    color: themed("btnSizeColor");
-    background-color: themed("btnBgColor");
-    border-color: themed("btnBorderColor");
-  }
+  background-color: #787ee5;
+}
+.el-button--success {
+  background-color: #14a9ec;
+}
+.el-button--warning {
+  background-color: #f67b12;
 }
 // Cover the .el-select style
 .el-select {
@@ -124,6 +118,27 @@
 }
 .el-select-dropdown {
   border-radius: 0;
+}
+// Cover the .el-pagination style
+.el-pagination__total {
+  float: right;
+  color: #2C2B40;
+}
+.el-pagination button, .el-pagination span:not([class*=suffix]) {
+  font-size: 15px;
+}
+.el-pagination__jump {
+  font-size: 0!important;
+}
+.el-pagination__editor.el-input {
+  width: 101px;
+  height: 33px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(222, 223, 227, 1);
+  .el-input__inner {
+    color: #2C2B40;
+    font-size: 15px;
+  }
 }
 
 .el-table__column-filter-trigger i{

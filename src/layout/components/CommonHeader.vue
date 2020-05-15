@@ -139,7 +139,7 @@ export default {
   line-height: 78px;
   width: 100%;
   text-align: center;
-  background-image: url("../../assets/navbar.png");
+  background-image: url('../../assets/navbar.png');
   color: #ffffff;
   img {
     vertical-align: middle;
@@ -177,7 +177,7 @@ export default {
       line-height: 78px;
       font-size: 18px;
       @include themeify {
-        color: themed("light");
+        color: themed('light');
       }
       vertical-align: middle;
 

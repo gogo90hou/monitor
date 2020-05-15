@@ -24,7 +24,7 @@ export default {
       listQuery: {
         serachName: '请输入要搜索的关键字'
       },
-      btnarr: [{ id: '1', value: '+ 增加', eventName: 'addHandle' }, { id: '2', value: '批量导入', eventName: 'importHandle' }, { id: '3', value: '删除', eventName: 'deleteHandle' }],
+      btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '批量导入', eventName: 'importHandle', type: 'success' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
       smalltitle: { name: '监控列表', path: '/system' },
       fieldArr: [
         {
@@ -78,6 +78,7 @@ export default {
     this.$store.dispatch('sysSetting/deviceLayout/databaseManage/getList')
   },
   methods: {
+    handleClick () { },
     searchKey (val) {
       console.log(val);
     },
@@ -98,6 +99,9 @@ export default {
     },
     deleteHandle () {
       console.log('我是删除事件事件');
+    },
+    edit (data) {
+      console.log(data);
     }
   }
 }
