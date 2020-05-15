@@ -23,7 +23,7 @@ const $themes = {
     'state2': '#FF1C1C',
     'state3': '#FFFF80',
     'inputColor': 'rgba(215, 215, 215, 0.474509803921569)',
-    'inputBorderColor': 'rgba(35, 38, 38, 1)',
+    'inputBorderColor': '#dedfe3',
     'btnSizeColor': 'rgba(27, 208, 219, 1)',
     'btnBorderColor': 'rgba(27, 208, 219, 1)',
     'btnBgColor': 'rgba(20, 23, 23, 1)'

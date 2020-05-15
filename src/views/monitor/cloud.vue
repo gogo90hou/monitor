@@ -99,7 +99,6 @@ export default {
     },
     pagination (val) {
       this.listQuery.page = val.page;
-      console.log(val);
     }
   }
 }

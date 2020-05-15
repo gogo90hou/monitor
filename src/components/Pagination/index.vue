@@ -3,12 +3,23 @@
     <div class="pagination-btn">
       <img v-show="page > 1" src="@/assets/icon/pagebefore.png" @click="firstPage">
       <img v-show="page > 1" src="@/assets/icon/pageone.png" @click="previousPage">
-      <el-input v-model="currentPage" @click="handleCurrentChange" />
+      <el-input v-model="currentPage" @blur="handleCurrentChange" @input="setOnlyNumber" />
       <span>共{{ totalPage }}页</span>
       <img v-show="page < totalPage" src="@/assets/icon/pagelast.png" @click="nextPage">
       <img v-show="page < totalPage" src="@/assets/icon/pageafter.png" @click="lastPage">
     </div>
-    <div class="pagination-total">{{ 10 * (page -1) + 1 }}-{{ page === totalPage ? 10 * (page -1) + total % 10 : 10 * page }}条，总共{{ total }}条</div>
+    <div class="pagination-total">
+      <span>每页显示</span>
+      <el-select v-model="selectValue" placeholder="请选择" @change="selectHandle">
+        <el-option
+          v-for="item in pageSizes"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
+      <span>条，总共{{ total }}条</span>
+    </div>
   </div>
 </template>
 
@@ -30,6 +41,17 @@ export default {
       type: Number,
       default: 10
     },
+    pageSizes: {
+      type: Array,
+      default () {
+        return [
+          { value: 10, label: '10条/页' },
+          { value: 20, label: '20条/页' },
+          { value: 30, label: '30条/页' },
+          { value: 50, label: '50条/页' }
+        ];
+      }
+    },
     background: {
       type: Boolean,
       default: true
@@ -45,52 +67,62 @@ export default {
   },
   data () {
     return {
-      totalPage: 4
+      totalPage: 4,
+      currentPage: 1,
+      selectValue: 10
     }
   },
-  computed: {
-    currentPage: {
-      get () {
-        return this.page ? this.page : 1;
-      },
-      set (val) {
-        this.$emit('update:page', val ? parseInt(val) : 1);
-      }
-    }
-  },
+  computed: {},
   methods: {
-    handleCurrentChange (val) {
-      console.log(val);
-      this.$emit('pagination', { page: parseInt(val), limit: this.limit });
+    setOnlyNumber (val) {
+      // 正则表达式，限制输入数字
+      this.currentPage = val.replace(/[^\d]/g, '');
+    },
+    handleCurrentChange () {
+      if (parseInt(this.currentPage) > this.totalPage) {
+        this.currentPage = this.totalPage;
+        this.$emit('pagination', { page: this.currentPage, limit: this.limit });
+      } else if (parseInt(this.currentPage) >= 1 && parseInt(this.currentPage) <= this.totalPage) {
+        this.$emit('pagination', { page: parseInt(this.currentPage), limit: this.limit });
+      } else {
+        this.currentPage = 1;
+        this.$emit('pagination', { page: this.currentPage, limit: this.limit });
+      }
       if (this.autoScroll) {
         scrollTo(0, 800);
       }
     },
     firstPage () {
+      this.currentPage = 1;
       this.$emit('pagination', { page: 1, limit: this.limit });
       if (this.autoScroll) {
         scrollTo(0, 800);
       }
     },
     previousPage () {
+      this.currentPage = this.page - 1;
       this.$emit('pagination', { page: this.page - 1, limit: this.limit });
       if (this.autoScroll) {
         scrollTo(0, 800);
       }
     },
     nextPage () {
-      // this.page = this.page + 1;
+      this.currentPage = this.page + 1;
       this.$emit('pagination', { page: this.page + 1, limit: this.limit });
       if (this.autoScroll) {
         scrollTo(0, 800);
       }
     },
     lastPage () {
-      // this.page = Math.ceil(this.total / this.limit);
+      this.currentPage = this.totalPage;
       this.$emit('pagination', { page: Math.ceil(this.total / this.limit), limit: this.limit });
       if (this.autoScroll) {
         scrollTo(0, 800);
       }
+    },
+    selectHandle (val) {
+      this.limit = val;
+      this.$emit('pagination', { page: 1, limit: this.limit });
     }
   }
 };
@@ -138,10 +170,5 @@ export default {
   height: 36px;
   vertical-align: middle;
   border: 1px solid #dedfe3 !important;
-}
-.el-input >>> .el-input__inner {
-  width: 100%;
-  height: 36px;
-  color: #2c2b40 !important;
 }
 </style>
