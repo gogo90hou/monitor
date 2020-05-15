@@ -60,7 +60,7 @@ export default {
     .el-checkbox {
       display: none;
     }
-    .is-checked > .el-tree-node__content {
+    .el-tree-node__children .is-checked .el-tree-node__content {
       background-image: url("../../assets/icon/tranBg.png");
       background-size: cover;
     }
