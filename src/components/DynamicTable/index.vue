@@ -6,12 +6,13 @@
         v-for="(item,index) in fieldArr"
         :key="index"
         :prop="item.key"
-        :label="item.label"
         :width="item.width"
-        :filters="item.filters"
-        :filter-multiple="false"
-        :filter-method="item.filters?filterTag:null"
       >
+        <template slot="header" slot-scope="scope">
+          <filtersDrop :item="item" />
+          <!-- <span>{{ item.label }}</span>
+          <span v-if="item.filters" class="arrow_triangle-down" />-->
+        </template>
         <template slot-scope="scope">
           <div v-if="item.key=='operation'">
             <el-button
@@ -32,6 +33,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import filtersDrop from './filter'
 function format (el, bingind, vnode) {
   const key = bingind.value[0];
   const arr = bingind.value[1];
@@ -69,6 +71,9 @@ export default {
       unbind: function () {
       }
     }
+  },
+  components: {
+    filtersDrop
   },
   props: {
     getters: {
@@ -114,7 +119,7 @@ export default {
       }
     },
     filterTag () {
-
+      console.log(1)
     },
     handleSelectionChange () {
 
@@ -122,42 +127,17 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .dynamicTable {
-  .el-table,
-  .el-table tr,
-  .el-table th {
-    @include themeify {
-      color: themed("highLight");
-    }
-    @include themeify {
-      background-color: themed("tableColor");
-    }
-    @include themeify {
-      border-color: themed("tbaleBorder");
-    }
-    &:hover {
-      @include themeify {
-        background-color: themed("tableColor");
-      }
-    }
+  .el-table--medium th {
+    padding: 0;
+    background-color: #e8ebf3;
+  }
+  .el-table th > .cell {
+    padding: 0 !important;
   }
   .el-table thead {
-    @include themeify {
-      color: themed("highLight");
-    }
-  }
-  .el-table--enable-row-hover .el-table__body tr:hover > td {
-    @include themeify {
-      background-color: themed("tableColor");
-    }
-  }
-  .el-table--border::after,
-  .el-table--group::after,
-  .el-table::before {
-    @include themeify {
-      background-color: themed("tableColor");
-    }
+    color: #25243e;
   }
   .el-table--border,
   .el-table--group {
@@ -165,9 +145,8 @@ export default {
   }
   .el-table td,
   .el-table th.is-leaf {
-    @include themeify {
-      border-color: themed("tbaleBorder");
-    }
+    border-color: #dedfe3;
+    text-align: center;
   }
 }
 </style>
