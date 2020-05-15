@@ -1,6 +1,6 @@
 <template>
   <div ref="filters" class="filters">
-    <span v-if="!item.filters">{{ item.label }}</span>
+    <span v-if="!item.filters">{{ showText?showText:item.label }}</span>
     <el-popover
       v-else
       v-model="showPopup"
@@ -11,10 +11,11 @@
     >
       <div class="layPopup" @click="closePopup" />
       <ul class="filters_list">
-        <li v-for="(i,key) in item.filters" :key="key">{{ i.text }}</li>
+        <li @click="changeFilter">全部</li>
+        <li v-for="(i,key) in filters" :key="key" @click="changeFilter(i)">{{ i.text }}</li>
       </ul>
       <div slot="reference">
-        <span>{{ item.label }}</span>
+        <span>{{ showText?showText:item.label }}</span>
         <span class="icon iconfont iconarrow_triangle-down" />
       </div>
     </el-popover>
@@ -33,7 +34,19 @@ export default {
   data () {
     return {
       showPopup: false,
-      width: 0
+      width: 0,
+      showText: ''
+    }
+  },
+  computed: {
+    filters: function () {
+      let filters = [];
+      if (typeof this.item.filters === 'string') {
+        filters = this.$store.getters[this.item.filters]
+      } else {
+        filters = this.item.filters
+      }
+      return filters
     }
   },
   mounted () {
@@ -47,6 +60,14 @@ export default {
     closePopup () {
       console.log(this.showPopup)
       this.showPopup = false
+    },
+    changeFilter (item) {
+      this.showPopup = false
+      if (item) {
+        this.showText = item.text;
+      } else {
+        this.showText = '';
+      }
     }
   }
 }

@@ -37,26 +37,6 @@ const data = [{
   },
   'appClientId': '2493ebd832074abbbeffbb06da88245c'
 }, {
-  'id': '4dc8e8ae46c945f6b88a1cd30353eb12',
-  'menuName': 'liscense管理',
-  'menuType': 'url',
-  'menuValue': '/license',
-  'pxNum': 5,
-  'icon': null,
-  'memo': null,
-  'parent': {
-    'id': '18f866725ab440579a772f180e87ef2f',
-    'menuName': '系统设置',
-    'menuType': 'directory',
-    'menuValue': null,
-    'pxNum': 1,
-    'icon': null,
-    'memo': null,
-    'parent': null,
-    'appClientId': '2493ebd832074abbbeffbb06da88245c'
-  },
-  'appClientId': '2493ebd832074abbbeffbb06da88245c'
-}, {
   'id': '9fcd678aece14725aac625b5a603c00b',
   'menuName': '告警声音设置',
   'menuType': 'url',
@@ -197,26 +177,6 @@ const data = [{
   },
   'appClientId': '2493ebd832074abbbeffbb06da88245c'
 }, {
-  'id': 'ef5ef03fc21f4b0bb5fcee842e8c4d35',
-  'menuName': '系统安装/升级',
-  'menuType': 'url',
-  'menuValue': '/sysInstall',
-  'pxNum': 1,
-  'icon': null,
-  'memo': null,
-  'parent': {
-    'id': '904ffc3dbad04e4aa0c80151d30f4062',
-    'menuName': '系统管理',
-    'menuType': 'directory',
-    'menuValue': null,
-    'pxNum': 1,
-    'icon': null,
-    'memo': null,
-    'parent': null,
-    'appClientId': '2493ebd832074abbbeffbb06da88245c'
-  },
-  'appClientId': '2493ebd832074abbbeffbb06da88245c'
-}, {
   'id': '904ffc3dbad04e4aa0c80151d30f4062',
   'menuName': '系统管理',
   'menuType': 'directory',
@@ -245,26 +205,6 @@ const data = [{
   'icon': null,
   'memo': null,
   'parent': null,
-  'appClientId': '2493ebd832074abbbeffbb06da88245c'
-}, {
-  'id': '3c5e3b08679047ff8e4d18199402238b',
-  'menuName': '数据备份',
-  'menuType': 'url',
-  'menuValue': '/dataBackup',
-  'pxNum': 6,
-  'icon': null,
-  'memo': null,
-  'parent': {
-    'id': '18f866725ab440579a772f180e87ef2f',
-    'menuName': '系统设置',
-    'menuType': 'directory',
-    'menuValue': null,
-    'pxNum': 1,
-    'icon': null,
-    'memo': null,
-    'parent': null,
-    'appClientId': '2493ebd832074abbbeffbb06da88245c'
-  },
   'appClientId': '2493ebd832074abbbeffbb06da88245c'
 }, {
   'id': 'd17f488a0b184193bfd4a1c3477faf41',

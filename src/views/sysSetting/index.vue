@@ -20,6 +20,7 @@ import Safety from './deviceLayout/safety';
 import SoftManage from './deviceLayout/softManage';
 import DatabaseManage from './deviceLayout/databaseManage';
 import ReportVoice from './alarm/reportVoice';
+import Performance from './performance/performance';
 export default {
   components: {
     SystemBar,
@@ -32,7 +33,8 @@ export default {
     Safety,
     SoftManage,
     DatabaseManage,
-    ReportVoice
+    ReportVoice,
+    Performance
   },
   data () {
     return {

@@ -1,26 +1,40 @@
 const state = {
   area: [
     {
-      id: '1',
-      name: '锦江监狱'
+      value: '1',
+      text: '锦江监狱'
     },
     {
-      id: '2',
-      name: '川西监狱'
+      value: '2',
+      text: '川西监狱'
     },
     {
-      id: '3',
-      name: '川北监狱'
+      value: '3',
+      text: '川北监狱'
     }
   ],
   deviceType: [
     {
-      id: '1',
-      name: '门禁'
+      value: '1',
+      text: '门禁'
     },
     {
-      id: '2',
-      name: '报警'
+      value: '2',
+      text: '报警'
+    },
+    {
+      value: '3',
+      text: '周边电网'
+    },
+    {
+      value: '4',
+      text: '广播'
+    }, {
+      value: '5',
+      text: '监控对讲'
+    }, {
+      value: '6',
+      text: '摄像头'
     }
   ]
 }

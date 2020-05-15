@@ -19,6 +19,7 @@
               v-for="(i,k) in item.buttons"
               :key="k"
               type="text"
+              :class="setClass(i.colorType)"
               @click="handleClick(i,scope.row)"
             >{{ i.label }}</el-button>
           </div>
@@ -106,6 +107,11 @@ export default {
     }
   },
   methods: {
+    setClass (item) {
+      const obj = {};
+      obj[item] = true;
+      return obj;
+    },
     handleClick (i, data) {
       if (i.type === 'url') {
         const query = {};
@@ -147,6 +153,12 @@ export default {
   .el-table th.is-leaf {
     border-color: #dedfe3;
     text-align: center;
+  }
+  .edit {
+    color: #7f83d8;
+  }
+  .delete {
+    color: #fe9c02;
   }
 }
 </style>
