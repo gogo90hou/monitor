@@ -1,12 +1,16 @@
 <template>
   <div :class="{'hidden':hidden}" class="pagination-container">
     <div class="pagination-btn">
-      <img v-show="page > 1" src="@/assets/icon/pagebefore.png" @click="firstPage">
-      <img v-show="page > 1" src="@/assets/icon/pageone.png" @click="previousPage">
+      <i class="iconfont iconicon_dislike_alt"></i>
+      <i class="iconfont iconicon_dislike_alt"></i>
+      <!-- <img v-show="page > 1" src="@/assets/icon/pagebefore.png" @click="firstPage">
+      <img v-show="page > 1" src="@/assets/icon/pageone.png" @click="previousPage"> -->
       <el-input v-model="currentPage" @blur="handleCurrentChange" @input="setOnlyNumber" />
       <span>共{{ totalPage }}页</span>
-      <img v-show="page < totalPage" src="@/assets/icon/pagelast.png" @click="nextPage">
-      <img v-show="page < totalPage" src="@/assets/icon/pageafter.png" @click="lastPage">
+      <i class="iconfont iconicon_dislike_alt"></i>
+      <i class="iconfont iconicon_dislike_alt"></i>
+      <!-- <img v-show="page < totalPage" src="@/assets/icon/pagelast.png" @click="nextPage">
+      <img v-show="page < totalPage" src="@/assets/icon/pageafter.png" @click="lastPage"> -->
     </div>
     <div class="pagination-total">
       <span>每页显示</span>
@@ -150,7 +154,8 @@ export default {
   align-items: center; /*定义body的元素垂直居中*/
   justify-content: center; /*定义body的里的元素水平居中*/
 }
-.pagination-btn img {
+.pagination-btn i {
+  display: inline-block;
   width: 16px;
   height: 13px;
   margin-right: 12px;
