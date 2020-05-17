@@ -20,6 +20,21 @@ Created by iconfont
   />
     <missing-glyph />
     
+    <glyph glyph-name="icon_dropDown" unicode="&#59261;" d="M768-128l768 1024H0z"  horiz-adv-x="1536" />
+
+    
+    <glyph glyph-name="icon_lastpage" unicode="&#59259;" d="M866.461538 384L0-128V896zM945.230769 896h236.307693v-945.230769h-236.307693z"  horiz-adv-x="1181" />
+
+    
+    <glyph glyph-name="icon_afterpage" unicode="&#59260;" d="M866.461538 384L0-128V896zM1260.307692 384L393.846154-128V896z"  horiz-adv-x="1260" />
+
+    
+    <glyph glyph-name="icon_firstPage" unicode="&#59257;" d="M315.076923 384L1181.538462-128V896zM0 896h236.307692v-945.230769H0z"  horiz-adv-x="1181" />
+
+    
+    <glyph glyph-name="icon_beforePage" unicode="&#59258;" d="M393.846154 384L1260.307692-128V896zM0 384L866.461538-128V896z"  horiz-adv-x="1260" />
+
+    
     <glyph glyph-name="icon_desktop" unicode="&#59018;" d="M960 832H64a64 64 0 0 1-64-64v-576a64 64 0 0 1 64-64h319.936c-0.128-46.272-1.984-106.368-19.52-128h-12.928A31.744 31.744 0 0 1 320-32c0-17.664 14.08-32 31.488-32h320.96A31.744 31.744 0 0 1 704-32c0 17.664-14.08 32-31.488 32h-12.928c-17.6 21.632-19.392 81.728-19.52 128H960a64 64 0 0 1 64 64V768a64 64 0 0 1-64 64zM448 128l-0.064-0.128L448 128z m128.064-0.128L576 128h0.064v-0.128zM960 256H64V768h896v-512z"  horiz-adv-x="1024" />
 
     

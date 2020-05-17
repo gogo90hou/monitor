@@ -1,16 +1,12 @@
 <template>
-  <div :class="{'hidden':hidden}" class="pagination-container">
+  <div :class="{'hidden':total === 0}" class="pagination-container">
     <div class="pagination-btn">
-      <i class="iconfont iconicon_dislike_alt"></i>
-      <i class="iconfont iconicon_dislike_alt"></i>
-      <!-- <img v-show="page > 1" src="@/assets/icon/pagebefore.png" @click="firstPage">
-      <img v-show="page > 1" src="@/assets/icon/pageone.png" @click="previousPage"> -->
+      <i :class="{'iconDisable': page===1}" class="iconfont iconicon_firstPage" @click="firstPage" />
+      <i :class="{'iconDisable': page===1}" class="iconfont iconicon_beforePage" @click="previousPage" />
       <el-input v-model="currentPage" @blur="handleCurrentChange" @input="setOnlyNumber" />
       <span>共{{ totalPage }}页</span>
-      <i class="iconfont iconicon_dislike_alt"></i>
-      <i class="iconfont iconicon_dislike_alt"></i>
-      <!-- <img v-show="page < totalPage" src="@/assets/icon/pagelast.png" @click="nextPage">
-      <img v-show="page < totalPage" src="@/assets/icon/pageafter.png" @click="lastPage"> -->
+      <i :class="{'iconDisable': page===totalPage}" class="iconfont iconicon_afterpage" @click="nextPage" />
+      <i :class="{'iconDisable': page===totalPage}" class="iconfont iconicon_lastpage" @click="lastPage" />
     </div>
     <div class="pagination-total">
       <span>每页显示</span>
@@ -35,7 +31,8 @@ export default {
   props: {
     total: {
       required: true,
-      type: Number
+      type: Number,
+      default: 0
     },
     page: {
       type: Number,
@@ -71,12 +68,13 @@ export default {
   },
   data () {
     return {
-      totalPage: 4,
+      totalPage: Math.ceil(this.total / this.limit),
       currentPage: 1,
       selectValue: 10
     }
   },
   computed: {},
+  created () { },
   methods: {
     setOnlyNumber (val) {
       // 正则表达式，限制输入数字
@@ -104,29 +102,28 @@ export default {
       }
     },
     previousPage () {
-      this.currentPage = this.page - 1;
-      this.$emit('pagination', { page: this.page - 1, limit: this.limit });
+      this.currentPage = this.page === 1 ? 1 : this.page - 1;
+      this.$emit('pagination', { page: this.page === 1 ? 1 : this.page - 1, limit: this.limit });
       if (this.autoScroll) {
         scrollTo(0, 800);
       }
     },
     nextPage () {
-      this.currentPage = this.page + 1;
-      this.$emit('pagination', { page: this.page + 1, limit: this.limit });
+      this.currentPage = this.page === this.totalPage ? this.page : this.page + 1;
+      this.$emit('pagination', { page: this.page === this.totalPage ? this.page : this.page + 1, limit: this.limit });
       if (this.autoScroll) {
         scrollTo(0, 800);
       }
     },
     lastPage () {
       this.currentPage = this.totalPage;
-      this.$emit('pagination', { page: Math.ceil(this.total / this.limit), limit: this.limit });
+      this.$emit('pagination', { page: this.totalPage, limit: this.limit });
       if (this.autoScroll) {
         scrollTo(0, 800);
       }
     },
     selectHandle (val) {
-      this.limit = val;
-      this.$emit('pagination', { page: 1, limit: this.limit });
+      this.$emit('pagination', { page: 1, limit: val });
     }
   }
 };
@@ -156,9 +153,10 @@ export default {
 }
 .pagination-btn i {
   display: inline-block;
-  width: 16px;
-  height: 13px;
+  font-size: 16px;
   margin-right: 12px;
+  color: #787ee5;
+  cursor: pointer;
 }
 .pagination-btn span {
   margin: 0 12px;
@@ -175,5 +173,9 @@ export default {
   height: 36px;
   vertical-align: middle;
   border: 1px solid #dedfe3 !important;
+}
+.pagination-btn .iconDisable {
+  color: #bbb;
+  cursor: not-allowed;
 }
 </style>

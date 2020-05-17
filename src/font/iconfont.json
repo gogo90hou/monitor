@@ -6,6 +6,41 @@
   "description": "安防运维svg图标",
   "glyphs": [
     {
+      "icon_id": "14741054",
+      "name": "icon_dropDown",
+      "font_class": "icon_dropDown",
+      "unicode": "e77d",
+      "unicode_decimal": 59261
+    },
+    {
+      "icon_id": "14741048",
+      "name": "icon_lastpage",
+      "font_class": "icon_lastpage",
+      "unicode": "e77b",
+      "unicode_decimal": 59259
+    },
+    {
+      "icon_id": "14741049",
+      "name": "icon_afterpage",
+      "font_class": "icon_afterpage",
+      "unicode": "e77c",
+      "unicode_decimal": 59260
+    },
+    {
+      "icon_id": "14740902",
+      "name": "icon_firstPage",
+      "font_class": "icon_firstPage",
+      "unicode": "e779",
+      "unicode_decimal": 59257
+    },
+    {
+      "icon_id": "14740903",
+      "name": "icon_beforePage",
+      "font_class": "icon_beforePage",
+      "unicode": "e77a",
+      "unicode_decimal": 59258
+    },
+    {
       "icon_id": "14723823",
       "name": "icon_desktop",
       "font_class": "icon_desktop",

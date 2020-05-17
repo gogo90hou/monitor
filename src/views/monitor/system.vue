@@ -13,21 +13,31 @@
       </el-tab-pane>
       <el-tab-pane label="数据库" name="second">数据库</el-tab-pane>
     </el-tabs>
+    <pagination
+      v-show="listQuery.total>0"
+      :total="listQuery.total"
+      :page.sync="listQuery.page"
+      :limit.sync="listQuery.limit"
+      @pagination="pagination"
+    />
   </div>
 </template>
 
 <script>
 import HeadMenu from '@/components/HeadMenu';
 import DynamicTable from '@/components/DynamicTable/index';
+import Pagination from '@/components/Pagination/index';
 export default {
-  components: { HeadMenu, DynamicTable },
+  components: { HeadMenu, DynamicTable, Pagination },
   data () {
     return {
       getters: 'monitor/system/list',
       activeName: 'first',
-      // 列表查询
+      // 分页列表
       listQuery: {
-        serachName: '请输入要搜索的关键字'
+        total: 36,
+        page: 1,
+        limit: 10
       },
       btnarr: [{ id: '1', value: ' 管理系统和数据库', eventName: 'manageHandle', type: 'primary' }],
       fieldArr: [
@@ -107,6 +117,9 @@ export default {
     },
     edit (data) {
       console.log(data)
+    },
+    pagination (val) {
+      this.listQuery.page = val.page;
     }
   }
 }
