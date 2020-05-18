@@ -19,6 +19,7 @@
         v-model="serachinputName"
         style="width: 200px;"
         class="filter-item"
+        placeholder="请输入关键字"
         @keyup.enter.native="handleSerchKey"
       >
         <i slot="suffix" class="el-input__icon el-icon-search" @click="handleSerchKey" />
@@ -71,7 +72,7 @@ export default {
   data () {
     return {
       props: ['title', 'smalltitle', 'search', 'btnarr', 'options'],
-      serachinputName: '请输入要搜索的关键字',
+      serachinputName: '',
       selectId: ''
     }
   },

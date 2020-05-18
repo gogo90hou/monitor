@@ -14,39 +14,64 @@
       :visible.sync="dialogVisible"
       width="37.5%"
       :before-close="handleClose"
+      style="height:100%;"
     >
-      <span class="smallTitle">接入信息</span>
-      <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px" class="demo-ruleForm">
-        <el-form-item label="密码 : " prop="pass">
-          <el-input v-model="ruleForm.pass" type="password" autocomplete="off" placeholder="请输入密码" />
-        </el-form-item>
-        <el-col :span="11">
-          <el-form-item label="确认密码 : " prop="checkPass">
-            <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" placeholder="请再次输入密码" />
-          </el-form-item>
-        </el-col>
-        <el-col :span="11" style="float : right;">
-          <el-form-item label="年龄 : " prop="age">
-            <el-input v-model="ruleForm.age" placeholder="请输入年龄" />
-          </el-form-item>
-        </el-col>
-        <el-col :span="11">
-          <el-form-item label="配置信息 :">
-            <el-select v-model="ruleForm.configuration" placeholder="请选择" style="width: 100%;">
-              <el-option label="配置一" value="Windows" />
-              <el-option label="配置二" value="Linux" />
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :span="11" style="float : right;">
-          <el-form-item label="活动区域 :">
-            <el-select v-model="ruleForm.region" placeholder="请选择活动区域" style="width: 100%;">
-              <el-option label="区域一" value="shanghai" />
-              <el-option label="区域二" value="beijing" />
-            </el-select>
-          </el-form-item>
-        </el-col>
-      </el-form>
+      <div class="dialog-from" style="height: 100%;">
+        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px" class="demo-ruleForm">
+          <span style="display : inline-block;">
+            <div>
+              <span class="smallTitle">接入信息</span>
+              <el-col :span="24">
+                <el-form-item label="密码 : " prop="pass">
+                  <el-input v-model="ruleForm.pass" type="password" autocomplete="off" placeholder="请输入密码" />
+                </el-form-item>
+              </el-col>
+              <el-col :span="11">
+                <el-form-item label="确认密码 : " prop="checkPass">
+                  <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" placeholder="请再次输入密码" />
+                </el-form-item>
+              </el-col>
+              <el-col :span="11" style="float : right;">
+                <el-form-item label="年龄 : " prop="age">
+                  <el-input v-model="ruleForm.age" placeholder="请输入年龄" />
+                </el-form-item>
+              </el-col>
+              <el-col :span="11">
+                <el-form-item label="配置信息 :">
+                  <el-select v-model="ruleForm.configuration" placeholder="请选择" style="width: 100%;">
+                    <el-option label="配置一" value="Windows" />
+                    <el-option label="配置二" value="Linux" />
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="11" style="float : right;">
+                <el-form-item label="活动区域 :">
+                  <el-select v-model="ruleForm.region" placeholder="请选择活动区域" style="width: 100%;">
+                    <el-option label="区域一" value="shanghai" />
+                    <el-option label="区域二" value="beijing" />
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="24">
+                <el-form-item label="活动形式">
+                  <el-input v-model="ruleForm.desc" type="textarea" placeholder="请输入活动形式" />
+                </el-form-item>
+              </el-col>
+              <span class="smallTitle">接入配置</span>
+              <el-col :span="24">
+                <el-form-item label="密码 : " prop="pass">
+                  <el-input v-model="ruleForm.pass" type="password" autocomplete="off" placeholder="请输入密码" />
+                </el-form-item>
+              </el-col>
+              <el-col>
+                <el-form-item label="年龄 : " prop="age">
+                  <el-input v-model="ruleForm.age" placeholder="请输入年龄" />
+                </el-form-item>
+              </el-col>
+            </div>
+          </span>
+        </el-form>
+      </div>
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="onSubmit">确 定</el-button>
         <el-button type="warning" @click="dialogVisible = false">关 闭</el-button>
@@ -133,7 +158,8 @@ export default {
         checkPass: '',
         age: '',
         region: '',
-        configuration: ''
+        configuration: '',
+        desc: ''
       },
       rules: {
         pass: [
@@ -141,7 +167,7 @@ export default {
           { min: 6, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur' }
         ],
         checkPass: [
-          { validator: validatePass2, trigger: 'blur' }
+          { required: true, validator: validatePass2, trigger: 'blur' }
         ],
         age: [
           { required: true, message: '请输入年龄', trigger: 'blur' },
@@ -149,6 +175,9 @@ export default {
         ],
         region: [
           { required: true, message: '请选择区域', trigger: 'blur' }
+        ],
+        desc: [
+          { message: '请输入活动形式', trigger: 'blur' }
         ]
       }
     }
@@ -187,11 +216,12 @@ export default {
     },
     // 触发关闭弹窗事件
     handleClose (done) {
-      this.$confirm('确认关闭？')
-        .then(_ => {
-          done();
-        })
-        .catch(_ => { });
+      this.dialogVisible = false;
+      // this.$confirm('确认关闭？')
+      //   .then(_ => {
+      //     done();
+      //   })
+      //   .catch(_ => { });
     },
     // 提交表单
     onSubmit () {
