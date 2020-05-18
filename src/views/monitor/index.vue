@@ -54,7 +54,6 @@ export default {
     font-size: 14px;
     padding: 50px 30px;
     box-sizing: border-box;
-    background-color: rgba(20, 23, 23, 1);
   }
 }
 </style>

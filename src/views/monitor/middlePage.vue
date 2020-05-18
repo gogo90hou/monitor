@@ -19,11 +19,7 @@
   </div>
 </template>
 <script>
-import DynamicTable from '@/components/DynamicTable/index'
 export default {
-  components: {
-    DynamicTable
-  },
 
   data () {
     return {

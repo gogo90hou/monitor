@@ -1,6 +1,12 @@
 <template>
   <div class="body-content">
-    <HeadMenu title="云平台监控列表" :search="true" :btnarr="btnarr" @getValue="searchKey" @getEvent="judgeEvent" />
+    <HeadMenu
+      title="云平台监控列表"
+      :search="true"
+      :btnarr="btnarr"
+      @getValue="searchKey"
+      @getEvent="judgeEvent"
+    />
     <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
     <pagination
       v-show="listQuery.total>0"
@@ -13,11 +19,7 @@
 </template>
 
 <script>
-import HeadMenu from '@/components/HeadMenu';
-import DynamicTable from '@/components/DynamicTable/index';
-import Pagination from '@/components/Pagination/index';
 export default {
-  components: { HeadMenu, DynamicTable, Pagination },
   data () {
     return {
       getters: 'monitor/cloud/list',
@@ -105,5 +107,5 @@ export default {
 </script>
 
 <style scoped>
-@import '~@/styles/element-ui.scss';
+@import "~@/styles/element-ui.scss";
 </style>
