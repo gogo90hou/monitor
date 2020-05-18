@@ -1,7 +1,18 @@
 <template>
   <div class="body-content">
-    <HeadMenu title="云平台" :smalltitle="smalltitle" :btnarr="btnarr" @getValue="searchKey" @getEvent="judgeEvent" />
-    <dynamic-table :show-check-box="showCheckBox" :field-arr="fieldArr" :getters="getters" @edit="edit" />
+    <HeadMenu
+      title="云平台"
+      :smalltitle="smalltitle"
+      :btnarr="btnarr"
+      @getValue="searchKey"
+      @getEvent="judgeEvent"
+    />
+    <dynamic-table
+      :show-check-box="showCheckBox"
+      :field-arr="fieldArr"
+      :getters="getters"
+      @edit="edit"
+    />
     <pagination
       v-show="listQuery.total>0"
       :total="listQuery.total"
@@ -81,11 +92,7 @@
 </template>
 
 <script>
-import HeadMenu from '@/components/HeadMenu';
-import DynamicTable from '@/components/DynamicTable/index';
-import Pagination from '@/components/Pagination/index';
 export default {
-  components: { HeadMenu, DynamicTable, Pagination },
   data () {
     var validatePass2 = (rule, value, callback) => {
       if (value === '') {

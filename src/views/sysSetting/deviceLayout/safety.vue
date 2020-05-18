@@ -18,17 +18,12 @@
       :total="listQuery.total"
       :page.sync="listQuery.page"
       :limit.sync="listQuery.limit"
-      @pagination="pagination"
     />
   </div>
 </template>
 
 <script>
-import HeadMenu from '@/components/HeadMenu';
-import DynamicTable from '@/components/DynamicTable/index';
-import Pagination from '@/components/Pagination/index';
 export default {
-  components: { HeadMenu, DynamicTable, Pagination },
   data () {
     return {
       getters: 'sysSetting/deviceLayout/cloudManage/list',

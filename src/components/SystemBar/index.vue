@@ -15,7 +15,10 @@
           v-if="data.data.icon&&data.data.menuType == 'directory'"
           :src="imgList[data.data.icon]"
         />
-        <span @click="getNode(node,data)">{{ data.name }}</span>
+        <span
+          :class="{'large':data.data.menuType == 'directory'}"
+          @click="getNode(node,data)"
+        >{{ data.name }}</span>
       </span>
     </el-tree>
   </div>
@@ -69,13 +72,16 @@ export default {
 <style lang="scss">
 .SystemBar {
   width: 100%;
-  min-height: calc(100vh - 78px);
+  min-height: calc(100vh - 64px);
   text-align: center;
   .el-tree {
     color: #fff;
     background-color: #2c2b40;
-    min-height: calc(100vh - 78px);
-    font-size: 16px;
+    min-height: calc(100vh - 64px);
+    font-size: 14px;
+    .large {
+      font-size: 16px;
+    }
     img {
       width: 16px;
       height: 16px;
@@ -90,6 +96,7 @@ export default {
     .el-tree-node__children .is-checked .el-tree-node__content {
       background-image: url("../../assets/icon/tranBg.png");
       background-size: cover;
+      font-size: 14px;
     }
   }
   .el-tree--highlight-current
@@ -111,7 +118,7 @@ export default {
   }
   .el-tree-node__content {
     position: relative;
-    height: 52px;
+    height: 42px;
     padding: 0 10px !important;
   }
   .el-tree-node__children .el-tree-node__content {

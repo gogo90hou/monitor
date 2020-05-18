@@ -47,7 +47,7 @@ export default {
 <style lang="scss">
 .sysSetting {
   font-size: 0;
-  min-height: calc(100vh - 78px);
+  min-height: calc(100vh - 64px);
   .bar {
     width: 200px;
     display: inline-block;
@@ -57,7 +57,7 @@ export default {
     width: calc(100% - 200px);
     display: inline-block;
     background-color: #fff;
-    min-height: calc(100vh - 78px);
+    min-height: calc(100vh - 64px);
     vertical-align: top;
     font-size: 20px;
     padding: 50px 30px;

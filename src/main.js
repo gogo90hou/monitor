@@ -10,13 +10,16 @@ import App from './App'
 import store from './store'
 import router from './router'
 
-import '@/font/iconfont.css'
+// 暂时引入在线地址 后续icon更新完成统一下载到本地
+// import '@/font/iconfont.css'
 
 import i18n from './lang' // 国际化
 import '@/icons' // icon
 import '@/permission' // permission control
 import '@/socket'
 import './utils/error-log'; // error log
+import './components/globalComponent'
+
 // set ElementUI lang to EN
 Vue.use(ElementUI, {
   size: Cookies.get('size') || 'medium', // set element-ui default size

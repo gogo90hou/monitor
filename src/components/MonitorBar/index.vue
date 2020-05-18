@@ -6,7 +6,10 @@
         :key="key"
         :class="[currentPath.indexOf(item.path) !== -1?'active':'']"
         @click="jump(item)"
-      >{{ item.name }}</li>
+      >
+        <div class="icon iconfont" :class="setClass(item.data.icon)" />
+        <span>{{ item.name }}</span>
+      </li>
     </ul>
   </div>
 </template>
@@ -41,6 +44,11 @@ export default {
   methods: {
     jump (item) {
       this.$router.push(item.path)
+    },
+    setClass (item) {
+      const obj = {};
+      obj[item] = true;
+      return obj;
     }
   }
 }
@@ -50,23 +58,30 @@ export default {
   width: 100%;
   height: auto;
   text-align: center;
-  border-right: 1px solid;
-  padding: 10px;
-  border-image: -webkit-linear-gradient(#111, #1bd0db, #111) 30 30;
+  padding: 1px;
+  // border-image: -webkit-linear-gradient(#111, #1bd0db, #111) 30 30;
+  background-color: #2c2b40;
+  min-height: 100vh;
   // @include themeify {
   //   border-color: themed("navColor");
   // }
   li {
-    height: 80px;
+    padding: 20px 0;
+    background-color: rgba(128, 107, 253, 0.2);
+    margin-bottom: 1px;
+    color: #fff;
     cursor: pointer;
-    @include themeify {
-      color: themed("navColor");
-    }
     &:hover,
     &.active {
-      @include themeify {
-        color: themed("navHighColor");
-      }
+      background: -webkit-linear-gradient(
+        left,
+        rgba(128, 107, 253, 0.7) 0%,
+        rgba(128, 107, 253, 0.2) 100%
+      );
+    }
+    .icon {
+      font-size: 30px;
+      margin-bottom: 5px;
     }
   }
 }

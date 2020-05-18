@@ -22,7 +22,7 @@ const data = [{
   'menuType': 'url',
   'menuValue': '/monitor',
   'pxNum': 1,
-  'icon': null,
+  'icon': 'iconicon_Security_maintenance',
   'memo': null,
   'parent': {
     'id': 'd17f488a0b184193bfd4a1c3477faf41',
@@ -201,8 +201,8 @@ const data = [{
   'menuName': '操作系统和数据库',
   'menuType': 'url',
   'menuValue': '/system',
-  'pxNum': 1,
-  'icon': null,
+  'pxNum': 6,
+  'icon': 'iconicon_operating_system',
   'memo': null,
   'parent': {
     'id': 'd17f488a0b184193bfd4a1c3477faf41',
@@ -282,7 +282,7 @@ const data = [{
   'menuType': 'url',
   'menuValue': '/soft',
   'pxNum': 2,
-  'icon': null,
+  'icon': 'iconicon_Application_software',
   'memo': null,
   'parent': {
     'id': 'd17f488a0b184193bfd4a1c3477faf41',
@@ -302,7 +302,7 @@ const data = [{
   'menuType': 'url',
   'menuValue': '/it',
   'pxNum': 3,
-  'icon': null,
+  'icon': 'iconicon_IT_equipment',
   'memo': null,
   'parent': {
     'id': 'd17f488a0b184193bfd4a1c3477faf41',
@@ -362,7 +362,7 @@ const data = [{
   'menuType': 'url',
   'menuValue': '/middle',
   'pxNum': 4,
-  'icon': null,
+  'icon': 'iconicon_Intermediate_key',
   'memo': null,
   'parent': {
     'id': 'd17f488a0b184193bfd4a1c3477faf41',
@@ -422,7 +422,7 @@ const data = [{
   'menuType': 'url',
   'menuValue': '/cloud',
   'pxNum': 5,
-  'icon': null,
+  'icon': 'iconicon_Cloud_platform',
   'memo': null,
   'parent': {
     'id': 'd17f488a0b184193bfd4a1c3477faf41',
@@ -441,7 +441,7 @@ const data = [{
   'menuName': '云平台',
   'menuType': 'url',
   'menuValue': '/cloudManage',
-  'pxNum': 6,
+  'pxNum': 5,
   'icon': null,
   'memo': null,
   'parent': {
