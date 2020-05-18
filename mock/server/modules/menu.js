@@ -177,26 +177,6 @@ const data = [{
   },
   'appClientId': '2493ebd832074abbbeffbb06da88245c'
 }, {
-  'id': '904ffc3dbad04e4aa0c80151d30f4062',
-  'menuName': '系统管理',
-  'menuType': 'directory',
-  'menuValue': null,
-  'pxNum': 1,
-  'icon': null,
-  'memo': null,
-  'parent': {
-    'id': '18f866725ab440579a772f180e87ef2f',
-    'menuName': '系统设置',
-    'menuType': 'directory',
-    'menuValue': null,
-    'pxNum': 1,
-    'icon': null,
-    'memo': null,
-    'parent': null,
-    'appClientId': '2493ebd832074abbbeffbb06da88245c'
-  },
-  'appClientId': '2493ebd832074abbbeffbb06da88245c'
-}, {
   'id': '9deffc76ec6d4be1bdc564b9fda0d788',
   'menuName': '告警',
   'menuType': 'url',

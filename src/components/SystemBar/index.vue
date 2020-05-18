@@ -6,7 +6,7 @@
       node-key="path"
       show-checkbox
       :highlight-current="true"
-      :default-expand-all="true"
+      :default-expanded-keys="[currentPath]"
       :default-checked-keys="[currentPath]"
       @node-click="handleNodeClick"
     >

@@ -70,7 +70,7 @@
   border-color: transparent;
 }
 // Cover the .el-button style
-.el-button {
+.el-button:not(.el-button--text) {
   height: 34px;
   padding: 0 29px;
   border-radius: 17px;
@@ -79,7 +79,7 @@
   border: none;
   margin: 10px;
 }
-.el-button:nth-last-child(1) {
+.el-button:not(.el-button--text):nth-last-child(1) {
   margin-right: 0;
 }
 .el-button--primary {
@@ -251,4 +251,14 @@
 }
 .el-tabs__header{
   margin: 0;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner{
+  border-color: #B1B1B1;
+  background-color: #fff;
+}
+.el-checkbox__inner::after{
+  border:2px solid #2C2B40;
+  border-left: 0;
+  border-top: 0;
 }
