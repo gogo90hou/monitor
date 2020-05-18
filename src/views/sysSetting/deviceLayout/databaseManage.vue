@@ -129,5 +129,4 @@ export default {
 </script>
 
 <style scoped>
-@import "~@/styles/element-ui.scss";
 </style>

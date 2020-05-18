@@ -34,7 +34,7 @@ const data = [
 ]
 // vuex的基本数据，用来存储变量
 const state = {
-  list: []
+  list: data
 }
 // 同步提交更新数据的方法
 const mutations = {

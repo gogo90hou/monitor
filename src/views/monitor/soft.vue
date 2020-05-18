@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="publicheader">
-      <h2>应用软件监控列表</h2>
-      <div class="right-wrapper">
-        <el-input type="text" placeholder="输入要搜索的关键字" suffix-icon="el-icon-search" />
-        <el-button class="filter-item" type="primary" style="margin-left: 10px;">管理软件</el-button>
-      </div>
-    </div>
+    <HeadMenu
+      title="应用软件监控列表"
+      :search="true"
+      :btnarr="btnarr"
+      @getValue="searchKey"
+      @getEvent="judgeEvent"
+    />
     <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
   </div>
 </template>
@@ -19,6 +19,7 @@ export default {
 
   data () {
     return {
+      btnarr: [{ id: '1', value: ' 管理设备', eventName: 'manageHandle', type: 'primary' }],
       getters: 'monitor/soft/list',
       fieldArr: [
         {
@@ -100,7 +101,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '~@/styles/element-ui.scss';
+@import "~@/styles/element-ui.scss";
 .publicheader {
   overflow: hidden;
   padding: 10px 0;
