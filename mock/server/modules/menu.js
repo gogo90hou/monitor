@@ -82,7 +82,7 @@ const data = [{
   'menuType': 'directory',
   'menuValue': null,
   'pxNum': 4,
-  'icon': null,
+  'icon': 'warn',
   'memo': null,
   'parent': {
     'id': '18f866725ab440579a772f180e87ef2f',
@@ -122,7 +122,7 @@ const data = [{
   'menuType': 'directory',
   'menuValue': null,
   'pxNum': 3,
-  'icon': null,
+  'icon': 'performance',
   'memo': null,
   'parent': {
     'id': '18f866725ab440579a772f180e87ef2f',
@@ -162,7 +162,7 @@ const data = [{
   'menuType': 'directory',
   'menuValue': null,
   'pxNum': 2,
-  'icon': null,
+  'icon': 'setting',
   'memo': null,
   'parent': {
     'id': '18f866725ab440579a772f180e87ef2f',

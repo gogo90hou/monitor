@@ -139,11 +139,15 @@ export default {
     padding: 0;
     background-color: #e8ebf3;
   }
+  .el-table th.gutter {
+    display: table-cell !important;
+  }
   .el-table th > .cell {
     padding: 0 !important;
   }
   .el-table thead {
     color: #25243e;
+    background-color: #e8ebf3;
   }
   .el-table--border,
   .el-table--group {

@@ -9,7 +9,15 @@
       :default-expand-all="true"
       :default-checked-keys="[currentPath]"
       @node-click="handleNodeClick"
-    />
+    >
+      <span slot-scope="{ node, data }" class="custom-tree-node">
+        <img
+          v-if="data.data.icon&&data.data.menuType == 'directory'"
+          :src="imgList[data.data.icon]"
+        />
+        <span @click="getNode(node,data)">{{ data.name }}</span>
+      </span>
+    </el-tree>
   </div>
 </template>
 <script>
@@ -19,6 +27,11 @@ export default {
   data () {
     return {
       showList: [],
+      imgList: {
+        'setting': require('../../assets/icon/setting.png'),
+        'warn': require('../../assets/icon/warn.png'),
+        'performance': require('../../assets/icon/performance.png')
+      },
       currentPath: this.$route.path,
       defaultProps: {
         children: 'children',
@@ -41,6 +54,14 @@ export default {
       if (data.data && data.data.menuType === 'url') {
         this.$router.push(data.path)
       }
+    },
+    getNode (node, data) {
+      console.log(node, data)
+    },
+    setClass (item) {
+      const obj = {};
+      obj[item] = true;
+      return obj;
     }
   }
 }
@@ -54,6 +75,12 @@ export default {
     color: #fff;
     background-color: #2c2b40;
     min-height: calc(100vh - 78px);
+    font-size: 16px;
+    img {
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
+    }
     .is-expanded {
       background-color: #1d1e24;
     }
