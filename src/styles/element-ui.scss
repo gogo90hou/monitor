@@ -104,7 +104,8 @@
 .pagination-total .el-select {
   .el-input {
     box-sizing: border-box;
-    width: 120px!important;
+    width: 78px!important;
+    height: 33px;
     .el-input__inner {
       color: #2c2b40;
       border: none;
@@ -112,11 +113,12 @@
     // 覆盖select下拉框默认的下拉样式 替换成阿里icon图标
     .el-icon-arrow-up:before {
       font-family:"iconfont";
-      content: '\e640;;';
+      content: '\e640;';
       color: #787ee5;
       font-size: 20px;
       display: inline-block;
       width: 20px;
+      height: 100%;
       overflow: hidden;
     }
   }
@@ -127,42 +129,17 @@
     border-color: transparent;
   }
   .el-popper {
-    min-width: 120px!important;
-  }
-  .el-popper[x-placement^=bottom] {
-    margin-top: 0;
+    min-width: 78px!important;
   }
   .el-popper[x-placement^=bottom] .popper__arrow::after {
     border-color: transparent;
-  }
-  .el-popper .popper__arrow {
-    border-width: 0;
   }
   .el-select-dropdown {
     border-radius: 0;
   }
 }
 // Cover the .el-pagination style
-.el-pagination__total {
-  float: right;
-  color: #2C2B40;
-}
-.el-pagination button, .el-pagination span:not([class*=suffix]) {
-  font-size: 15px;
-}
-.el-pagination__jump {
-  font-size: 0!important;
-}
-.el-pagination__editor.el-input {
-  width: 101px;
-  height: 33px;
-  background: rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(222, 223, 227, 1);
-  .el-input__inner {
-    color: #2C2B40;
-    font-size: 15px;
-  }
-}
+
 // Cover the .el-dialog style
 .el-dialog__header {
   background-image: linear-gradient(to right, #1E1D38 , #313048, #24233D);
@@ -180,8 +157,11 @@
 .el-dialog__body {
   padding: 16px 20px;
 }
-.el-dialog__body span {
+.el-dialog__body .smallTitle {
   color: #7E83EA;
+  display: inline-block;
+  margin: 12px 0px;
+  width: 100%;
 }
 .el-dialog__body .smallTitle:before {
   content: '';
@@ -200,6 +180,12 @@
   display: inline-block;
   background-color: #E4E5FA;
   vertical-align: middle;
+}
+.el-form-item__label {
+  color: #5B5B65;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+
 }
 .el-dialog__footer {
   text-align: center;

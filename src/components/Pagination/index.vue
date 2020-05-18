@@ -4,7 +4,7 @@
       <i :class="{'iconDisable': page===1}" class="iconfont iconicon_firstPage" @click="firstPage" />
       <i :class="{'iconDisable': page===1}" class="iconfont iconicon_beforePage" @click="previousPage" />
       <el-input v-model="currentPage" @blur="handleCurrentChange" @input="setOnlyNumber" />
-      <span>共{{ totalPage }}页</span>
+      <span class="totalPage">共{{ totalPage }}页</span>
       <i :class="{'iconDisable': page===totalPage}" class="iconfont iconicon_afterpage" @click="nextPage" />
       <i :class="{'iconDisable': page===totalPage}" class="iconfont iconicon_lastpage" @click="lastPage" />
     </div>
@@ -46,10 +46,10 @@ export default {
       type: Array,
       default () {
         return [
-          { value: 10, label: '10条/页' },
-          { value: 20, label: '20条/页' },
-          { value: 30, label: '30条/页' },
-          { value: 50, label: '50条/页' }
+          { value: 10, label: '10' },
+          { value: 20, label: '20' },
+          { value: 30, label: '30' },
+          { value: 50, label: '50' }
         ];
       }
     },
@@ -129,13 +129,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .pagination-container {
   position: relative;
+  font-size: 15px;
   color: #2c2b40;
   background-color: #fff;
   height: 88px;
-  padding: 32px 16px;
+  padding: 24px 0;
   box-sizing: border-box;
   display: flex;
   align-items: center; /*定义body的元素垂直居中*/
@@ -145,7 +146,7 @@ export default {
   display: none;
 }
 .pagination-btn {
-  width: 360px;
+  width: 460px;
   height: 66px;
   display: flex;
   align-items: center; /*定义body的元素垂直居中*/
@@ -158,21 +159,36 @@ export default {
   color: #787ee5;
   cursor: pointer;
 }
-.pagination-btn span {
+.pagination-btn .totalPage {
   margin: 0 12px;
+}
+.pagination-btn .el-input {
+  width: 101px;
+  height: 33px;
+  box-sizing: border-box;
+}
+.pagination-btn .el-input >>> .el-input__inner {
+  height: 33px;
 }
 .pagination-total {
   position: absolute;
-  height: 20px;
-  top: 50%;
+  display: flex;
+  align-items: center; /*定义body的元素垂直居中*/
+  justify-content: center; /*定义body的里的元素水平居中*/
   right: 0;
-  transform: translateY(-50%);
 }
-.el-input {
-  width: 101px;
-  height: 36px;
-  vertical-align: middle;
-  border: 1px solid #dedfe3 !important;
+.el-select {
+  width: 78px;
+  margin: 0 16px;
+}
+.el-select >>> .el-input {
+  width: 78px;
+  height: 33px;
+  box-sizing: border-box;
+}
+.el-select >>> .el-input__inner {
+  height: 33px;
+  padding-right: 0;
 }
 .pagination-btn .iconDisable {
   color: #bbb;
