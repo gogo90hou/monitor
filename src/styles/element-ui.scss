@@ -183,7 +183,7 @@
 .el-dialog__body span {
   color: #7E83EA;
 }
-.el-dialog__body span:before {
+.el-dialog__body .smallTitle:before {
   content: '';
   width: 4px;
   height: 12px;
@@ -192,7 +192,7 @@
   background-color: #7E83EA;
   vertical-align: middle;
 }
-.el-dialog__body span:after {
+.el-dialog__body .smallTitle:after {
   content: '';
   height: 1px;
   width: calc(100% - 88px);

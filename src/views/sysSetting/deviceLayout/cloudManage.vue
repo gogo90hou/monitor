@@ -15,7 +15,7 @@
       width="37.5%"
       :before-close="handleClose"
     >
-      <span>接入信息</span>
+      <span class="smallTitle">接入信息</span>
       <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px" class="demo-ruleForm">
         <el-form-item label="密码 : " prop="pass">
           <el-input v-model="ruleForm.pass" type="password" autocomplete="off" placeholder="请输入密码" />
@@ -31,7 +31,15 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="活动区域">
+          <el-form-item label="配置信息 :">
+            <el-select v-model="ruleForm.configuration" placeholder="请选择配置参数">
+              <el-option label="配置一" value="Windows" />
+              <el-option label="配置二" value="Linux" />
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="活动区域 :">
             <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
               <el-option label="区域一" value="shanghai" />
               <el-option label="区域二" value="beijing" />
@@ -124,7 +132,8 @@ export default {
         pass: '',
         checkPass: '',
         age: '',
-        region: ''
+        region: '',
+        configuration: ''
       },
       rules: {
         pass: [
