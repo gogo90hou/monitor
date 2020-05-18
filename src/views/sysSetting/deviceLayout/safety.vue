@@ -18,7 +18,6 @@
       :total="listQuery.total"
       :page.sync="listQuery.page"
       :limit.sync="listQuery.limit"
-      @pagination="pagination"
     />
   </div>
 </template>

@@ -10,7 +10,8 @@ import App from './App'
 import store from './store'
 import router from './router'
 
-import '@/font/iconfont.css'
+// 暂时引入在线地址 后续icon更新完成统一下载到本地
+// import '@/font/iconfont.css'
 
 import i18n from './lang' // 国际化
 import '@/icons' // icon
