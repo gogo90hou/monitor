@@ -111,7 +111,7 @@ export default {
   }
   .el-tree-node__content {
     position: relative;
-    height: 52px;
+    height: 42px;
     padding: 0 10px !important;
   }
   .el-tree-node__children .el-tree-node__content {

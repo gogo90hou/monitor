@@ -1,7 +1,18 @@
 <template>
   <div class="body-content">
-    <HeadMenu title="云平台" :smalltitle="smalltitle" :btnarr="btnarr" @getValue="searchKey" @getEvent="judgeEvent" />
-    <dynamic-table :show-check-box="showCheckBox" :field-arr="fieldArr" :getters="getters" @edit="edit" />
+    <HeadMenu
+      title="云平台"
+      :smalltitle="smalltitle"
+      :btnarr="btnarr"
+      @getValue="searchKey"
+      @getEvent="judgeEvent"
+    />
+    <dynamic-table
+      :show-check-box="showCheckBox"
+      :field-arr="fieldArr"
+      :getters="getters"
+      @edit="edit"
+    />
     <pagination
       v-show="listQuery.total>0"
       :total="listQuery.total"
@@ -16,13 +27,24 @@
       :before-close="handleClose"
     >
       <span class="smallTitle">接入信息</span>
-      <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px" class="demo-ruleForm">
+      <el-form
+        ref="ruleForm"
+        :model="ruleForm"
+        :rules="rules"
+        label-width="100px"
+        class="demo-ruleForm"
+      >
         <el-form-item label="密码 : " prop="pass">
           <el-input v-model="ruleForm.pass" type="password" autocomplete="off" placeholder="请输入密码" />
         </el-form-item>
         <el-col :span="11">
           <el-form-item label="确认密码 : " prop="checkPass">
-            <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" placeholder="请再次输入密码" />
+            <el-input
+              v-model="ruleForm.checkPass"
+              type="password"
+              autocomplete="off"
+              placeholder="请再次输入密码"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="11" style="float : right;">
@@ -56,11 +78,7 @@
 </template>
 
 <script>
-import HeadMenu from '@/components/HeadMenu';
-import DynamicTable from '@/components/DynamicTable/index';
-import Pagination from '@/components/Pagination/index';
 export default {
-  components: { HeadMenu, DynamicTable, Pagination },
   data () {
     var validatePass2 = (rule, value, callback) => {
       if (value === '') {
@@ -202,5 +220,5 @@ export default {
 </script>
 
 <style scoped>
-@import '~@/styles/element-ui.scss';
+@import "~@/styles/element-ui.scss";
 </style>

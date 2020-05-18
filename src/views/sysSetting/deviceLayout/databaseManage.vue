@@ -1,9 +1,21 @@
 <template>
   <div class="body-content">
-    <HeadMenu title="操作系统和数据库" :smalltitle="smalltitle" :search="false" :btnarr="btnarr" @getValue="searchKey" @getEvent="judgeEvent" />
+    <HeadMenu
+      title="操作系统和数据库"
+      :smalltitle="smalltitle"
+      :search="false"
+      :btnarr="btnarr"
+      @getValue="searchKey"
+      @getEvent="judgeEvent"
+    />
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
       <el-tab-pane label="操作系统" name="first">
-        <dynamic-table :field-arr="fieldArr" :show-check-box="showCheckBox" :getters="getters" @edit="edit" />
+        <dynamic-table
+          :field-arr="fieldArr"
+          :show-check-box="showCheckBox"
+          :getters="getters"
+          @edit="edit"
+        />
       </el-tab-pane>
       <el-tab-pane label="数据库" name="second">数据库</el-tab-pane>
     </el-tabs>
@@ -18,11 +30,7 @@
 </template>
 
 <script>
-import HeadMenu from '@/components/HeadMenu';
-import DynamicTable from '@/components/DynamicTable/index';
-import Pagination from '@/components/Pagination/index';
 export default {
-  components: { HeadMenu, DynamicTable, Pagination },
   data () {
     return {
       getters: 'sysSetting/deviceLayout/databaseManage/list',
@@ -121,5 +129,5 @@ export default {
 </script>
 
 <style scoped>
-@import '~@/styles/element-ui.scss';
+@import "~@/styles/element-ui.scss";
 </style>

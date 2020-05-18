@@ -17,6 +17,8 @@ import '@/icons' // icon
 import '@/permission' // permission control
 import '@/socket'
 import './utils/error-log'; // error log
+import './components/globalComponent'
+
 // set ElementUI lang to EN
 Vue.use(ElementUI, {
   size: Cookies.get('size') || 'medium', // set element-ui default size

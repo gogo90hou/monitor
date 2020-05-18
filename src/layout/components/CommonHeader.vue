@@ -135,14 +135,15 @@ export default {
 </script>
 <style lang="scss">
 .header {
-  height: 78px;
-  line-height: 78px;
+  height: 64px;
+  line-height: 64px;
   width: 100%;
   text-align: center;
-  background-image: url('../../assets/navbar.png');
+  background-image: url("../../assets/navbar.png");
   color: #ffffff;
   img {
     vertical-align: middle;
+    width: 160px;
   }
   &__list {
     text-align: center;
@@ -162,8 +163,8 @@ export default {
   }
   .right-menu {
     text-align: right;
-    height: 78px;
-    line-height: 78px;
+    height: 64x;
+    line-height: 64px;
     padding-right: 10px;
     font-size: 12px;
     &:focus {
@@ -173,11 +174,11 @@ export default {
     .right-menu-item {
       display: inline-block;
       padding: 0 8px;
-      height: 78px;
-      line-height: 78px;
+      height: 64px;
+      line-height: 64px;
       font-size: 18px;
       @include themeify {
-        color: themed('light');
+        color: themed("light");
       }
       vertical-align: middle;
 

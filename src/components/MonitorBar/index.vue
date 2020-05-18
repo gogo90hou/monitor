@@ -50,23 +50,24 @@ export default {
   width: 100%;
   height: auto;
   text-align: center;
-  border-right: 1px solid;
-  padding: 10px;
-  border-image: -webkit-linear-gradient(#111, #1bd0db, #111) 30 30;
+  // border-image: -webkit-linear-gradient(#111, #1bd0db, #111) 30 30;
+  background-color: #2c2b40;
+  min-height: 100vh;
   // @include themeify {
   //   border-color: themed("navColor");
   // }
   li {
-    height: 80px;
+    padding: 30px 0;
+    background-color: rgba(128, 107, 253, 0.2);
+    color: #fff;
     cursor: pointer;
-    @include themeify {
-      color: themed("navColor");
-    }
     &:hover,
     &.active {
-      @include themeify {
-        color: themed("navHighColor");
-      }
+      background: -webkit-linear-gradient(
+        left,
+        rgba(128, 107, 253, 0.7) 0%,
+        rgba(128, 107, 253, 0.2) 100%
+      );
     }
   }
 }
