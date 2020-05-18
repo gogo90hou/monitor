@@ -82,7 +82,7 @@ const data = [{
   'menuType': 'directory',
   'menuValue': null,
   'pxNum': 4,
-  'icon': null,
+  'icon': 'warn',
   'memo': null,
   'parent': {
     'id': '18f866725ab440579a772f180e87ef2f',
@@ -122,7 +122,7 @@ const data = [{
   'menuType': 'directory',
   'menuValue': null,
   'pxNum': 3,
-  'icon': null,
+  'icon': 'performance',
   'memo': null,
   'parent': {
     'id': '18f866725ab440579a772f180e87ef2f',
@@ -162,27 +162,7 @@ const data = [{
   'menuType': 'directory',
   'menuValue': null,
   'pxNum': 2,
-  'icon': null,
-  'memo': null,
-  'parent': {
-    'id': '18f866725ab440579a772f180e87ef2f',
-    'menuName': '系统设置',
-    'menuType': 'directory',
-    'menuValue': null,
-    'pxNum': 1,
-    'icon': null,
-    'memo': null,
-    'parent': null,
-    'appClientId': '2493ebd832074abbbeffbb06da88245c'
-  },
-  'appClientId': '2493ebd832074abbbeffbb06da88245c'
-}, {
-  'id': '904ffc3dbad04e4aa0c80151d30f4062',
-  'menuName': '系统管理',
-  'menuType': 'directory',
-  'menuValue': null,
-  'pxNum': 1,
-  'icon': null,
+  'icon': 'setting',
   'memo': null,
   'parent': {
     'id': '18f866725ab440579a772f180e87ef2f',

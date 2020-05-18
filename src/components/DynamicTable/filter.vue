@@ -8,6 +8,7 @@
       trigger="click"
       :width="width"
       popper-class="filter-popup"
+      @show="show"
     >
       <div class="layPopup" @click="closePopup" />
       <ul class="filters_list">
@@ -49,17 +50,12 @@ export default {
       return filters
     }
   },
-  mounted () {
-    if (this.item.filters) {
-      this.$nextTick(function () {
-        this.width = this.$refs.filters.clientWidth
-      })
-    }
-  },
   methods: {
     closePopup () {
-      console.log(this.showPopup)
       this.showPopup = false
+    },
+    show () {
+      this.width = this.$refs.filters.clientWidth
     },
     changeFilter (item) {
       this.showPopup = false
@@ -80,6 +76,7 @@ export default {
   text-align: center;
   line-height: 50px;
   box-shadow: 0px 0px 5px 0px rgba(44, 43, 64, 0.55);
+  box-sizing: border-box;
   .el-popover__reference {
     position: absolute;
     width: 100%;
@@ -91,9 +88,14 @@ export default {
 .filter-popup {
   border-radius: 0;
   box-shadow: 0px 0px 5px 0px rgba(44, 43, 64, 0.55);
+  box-sizing: border-box;
   background: transparent;
   margin-top: -50px !important;
   padding: 0 !important;
+  min-width: 0;
+  .popper__arrow {
+    display: none;
+  }
   .layPopup {
     height: 50px;
     background: transparent;

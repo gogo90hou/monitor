@@ -8,7 +8,7 @@
         :prop="item.key"
         :width="item.width"
       >
-        <template slot="header" slot-scope="scope">
+        <template slot="header">
           <filtersDrop :item="item" />
           <!-- <span>{{ item.label }}</span>
           <span v-if="item.filters" class="arrow_triangle-down" />-->
@@ -139,15 +139,15 @@ export default {
     padding: 0;
     background-color: #e8ebf3;
   }
+  .el-table th.gutter {
+    display: table-cell !important;
+  }
   .el-table th > .cell {
     padding: 0 !important;
   }
   .el-table thead {
     color: #25243e;
-  }
-  .el-table--border,
-  .el-table--group {
-    border: none;
+    background-color: #e8ebf3;
   }
   .el-table td,
   .el-table th.is-leaf {

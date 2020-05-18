@@ -13,21 +13,31 @@
       :getters="getters"
       @edit="edit"
     />
+    <pagination
+      v-show="listQuery.total>0"
+      :total="listQuery.total"
+      :page.sync="listQuery.page"
+      :limit.sync="listQuery.limit"
+      @pagination="pagination"
+    />
   </div>
 </template>
 
 <script>
 import HeadMenu from '@/components/HeadMenu';
 import DynamicTable from '@/components/DynamicTable/index';
+import Pagination from '@/components/Pagination/index';
 export default {
-  components: { HeadMenu, DynamicTable },
+  components: { HeadMenu, DynamicTable, Pagination },
   data () {
     return {
       getters: 'sysSetting/deviceLayout/cloudManage/list',
       showCheckBox: true,
       // 列表查询
       listQuery: {
-        serachName: '请输入要搜索的关键字'
+        total: 36,
+        page: 1,
+        limit: 10
       },
       btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '批量导入', eventName: 'importHandle', type: 'success' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
       smalltitle: { name: '查看监控列表', path: '/cloud' },
