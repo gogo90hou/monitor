@@ -61,6 +61,7 @@ export default {
     vertical-align: top;
     font-size: 20px;
     padding: 50px 30px;
+    background-color: #f3f3f9;
   }
 }
 </style>

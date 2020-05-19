@@ -132,7 +132,7 @@ export default {
 <style lang="scss" scoped>
 .pagination-container {
   position: relative;
-  font-size: 15px;
+  font-size: 16px;
   color: #2c2b40;
   background-color: #fff;
   height: 88px;
