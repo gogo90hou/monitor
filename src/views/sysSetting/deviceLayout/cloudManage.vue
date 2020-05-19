@@ -28,18 +28,34 @@
       style="height:100%;"
     >
       <div class="dialog-from" style="height: 100%;">
-        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px" class="demo-ruleForm">
+        <el-form
+          ref="ruleForm"
+          :model="ruleForm"
+          :rules="rules"
+          label-width="100px"
+          class="demo-ruleForm"
+        >
           <span style="display : inline-block;">
             <div>
               <span class="smallTitle">接入信息</span>
               <el-col :span="24">
                 <el-form-item label="密码 : " prop="pass">
-                  <el-input v-model="ruleForm.pass" type="password" autocomplete="off" placeholder="请输入密码" />
+                  <el-input
+                    v-model="ruleForm.pass"
+                    type="password"
+                    autocomplete="off"
+                    placeholder="请输入密码"
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="11">
                 <el-form-item label="确认密码 : " prop="checkPass">
-                  <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" placeholder="请再次输入密码" />
+                  <el-input
+                    v-model="ruleForm.checkPass"
+                    type="password"
+                    autocomplete="off"
+                    placeholder="请再次输入密码"
+                  />
                 </el-form-item>
               </el-col>
               <el-col :span="11" style="float : right;">
@@ -49,7 +65,11 @@
               </el-col>
               <el-col :span="11">
                 <el-form-item label="配置信息 :">
-                  <el-select v-model="ruleForm.configuration" placeholder="请选择" style="width: 100%;">
+                  <el-select
+                    v-model="ruleForm.configuration"
+                    placeholder="请选择"
+                    style="width: 100%;"
+                  >
                     <el-option label="配置一" value="Windows" />
                     <el-option label="配置二" value="Linux" />
                   </el-select>
@@ -71,7 +91,12 @@
               <span class="smallTitle">接入配置</span>
               <el-col :span="24">
                 <el-form-item label="密码 : " prop="pass">
-                  <el-input v-model="ruleForm.pass" type="password" autocomplete="off" placeholder="请输入密码" />
+                  <el-input
+                    v-model="ruleForm.pass"
+                    type="password"
+                    autocomplete="off"
+                    placeholder="请输入密码"
+                  />
                 </el-form-item>
               </el-col>
               <el-col>
@@ -239,5 +264,4 @@ export default {
 </script>
 
 <style scoped>
-@import '~@/styles/element-ui.scss';
 </style>
