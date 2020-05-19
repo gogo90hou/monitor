@@ -2,6 +2,7 @@
 
   .main-container {
     position: relative;
+    // min-height: calc(100vh - 64px);
     @include themeify {
       color: themed("light");
     }
@@ -91,8 +92,6 @@
       width: 54px !important;
     }
 
-    .main-container {
-    }
 
     .submenu-title-noDropdown {
       padding: 0 !important;

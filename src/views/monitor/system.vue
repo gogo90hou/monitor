@@ -24,11 +24,7 @@
 </template>
 
 <script>
-import HeadMenu from '@/components/HeadMenu';
-import DynamicTable from '@/components/DynamicTable/index';
-import Pagination from '@/components/Pagination/index';
 export default {
-  components: { HeadMenu, DynamicTable, Pagination },
   data () {
     return {
       getters: 'monitor/system/list',
@@ -127,5 +123,5 @@ export default {
 </script>
 
 <style scoped>
-@import '~@/styles/element-ui.scss';
+@import "~@/styles/element-ui.scss";
 </style>

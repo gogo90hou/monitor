@@ -61,7 +61,8 @@ export default {
   padding: 1px;
   // border-image: -webkit-linear-gradient(#111, #1bd0db, #111) 30 30;
   background-color: #2c2b40;
-  min-height: 100vh;
+  min-height: calc(100vh - 64px);
+  box-sizing: border-box;
   // @include themeify {
   //   border-color: themed("navColor");
   // }
