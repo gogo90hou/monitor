@@ -101,11 +101,12 @@ export default {
     },
     pagination (val) {
       this.listQuery.page = val.page;
+      this.listQuery.limit = val.limit;
     }
   }
 }
 </script>
 
 <style scoped>
-@import "~@/styles/element-ui.scss";
+@import '~@/styles/element-ui.scss';
 </style>

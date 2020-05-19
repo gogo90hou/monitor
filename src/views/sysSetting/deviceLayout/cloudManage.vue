@@ -131,7 +131,7 @@ export default {
     return {
       getters: 'sysSetting/deviceLayout/cloudManage/list',
       showCheckBox: true,
-      dialogVisible: true,
+      dialogVisible: false,
       // 分页列表
       listQuery: {
         total: 86,
@@ -245,6 +245,7 @@ export default {
     },
     pagination (val) {
       this.listQuery.page = val.page;
+      this.listQuery.limit = val.limit;
     },
     // 触发关闭弹窗事件
     handleClose (done) {

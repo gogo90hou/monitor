@@ -68,13 +68,17 @@ export default {
   },
   data () {
     return {
-      totalPage: Math.ceil(this.total / this.limit),
       currentPage: 1,
       selectValue: 10
     }
   },
-  computed: {},
-  created () { },
+  computed: {
+    totalPage () {
+      return Math.ceil(this.total / this.limit);
+    }
+  },
+  created () {
+  },
   methods: {
     setOnlyNumber (val) {
       // 正则表达式，限制输入数字
@@ -123,6 +127,7 @@ export default {
       }
     },
     selectHandle (val) {
+      this.currentPage = 1;
       this.$emit('pagination', { page: 1, limit: val });
     }
   }

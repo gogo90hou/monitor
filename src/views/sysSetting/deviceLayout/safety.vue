@@ -18,6 +18,7 @@
       :total="listQuery.total"
       :page.sync="listQuery.page"
       :limit.sync="listQuery.limit"
+      @pagination="pagination"
     />
   </div>
 </template>
@@ -115,6 +116,9 @@ export default {
     },
     edit (data) {
       console.log(data)
+    },
+    pagination (val) {
+      this.listQuery.page = val.page;
     }
   }
 }

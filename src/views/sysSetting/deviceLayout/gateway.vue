@@ -3,7 +3,7 @@
     <div class="publicheader">
       <h2>网关配置</h2>
       <div class="right-wrapper">
-        <el-button type="primary" @click="dialogVisible = true">+增加</el-button>
+        <el-button type="primary" @click="dialogVisible = true">增加</el-button>
         <el-button type="primary">批量导入</el-button>
         <el-button type="primary">删除</el-button>
       </div>
