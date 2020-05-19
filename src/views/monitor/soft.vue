@@ -19,7 +19,7 @@ export default {
 
   data () {
     return {
-      btnarr: [{ id: '1', value: ' 管理设备', eventName: 'manageHandle', type: 'primary' }],
+      btnarr: [{ id: '1', value: ' 管理设备', eventName: 'manageHandle', type: 'info' }],
       getters: 'monitor/soft/list',
       fieldArr: [
         {
@@ -101,7 +101,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "~@/styles/element-ui.scss";
+@import '~@/styles/element-ui.scss';
 .publicheader {
   overflow: hidden;
   padding: 10px 0;

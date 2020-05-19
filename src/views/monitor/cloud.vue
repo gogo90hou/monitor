@@ -29,7 +29,7 @@ export default {
         page: 1,
         limit: 10
       },
-      btnarr: [{ id: '1', value: ' 管理云平台', eventName: 'manageHandle', type: 'primary' }],
+      btnarr: [{ id: '1', value: ' 管理云平台', eventName: 'manageHandle', type: 'info' }],
       fieldArr: [
         {
           label: '序号',

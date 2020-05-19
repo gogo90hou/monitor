@@ -11,7 +11,10 @@
       <el-tab-pane label="操作系统" name="first">
         <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
       </el-tab-pane>
-      <el-tab-pane label="数据库" name="second">数据库</el-tab-pane>
+      <el-tab-pane label="数据库" name="second">
+        <div class="database-filter">123</div>
+        <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
+      </el-tab-pane>
     </el-tabs>
     <pagination
       v-show="listQuery.total>0"
@@ -39,7 +42,7 @@ export default {
         page: 1,
         limit: 10
       },
-      btnarr: [{ id: '1', value: ' 管理系统和数据库', eventName: 'manageHandle', type: 'primary' }],
+      btnarr: [{ id: '1', value: ' 管理系统和数据库', eventName: 'manageHandle', type: 'info' }],
       fieldArr: [
         {
           label: '系统标识',
@@ -127,5 +130,11 @@ export default {
 </script>
 
 <style scoped>
-@import '~@/styles/element-ui.scss';
+.database-filter {
+  width: 100%;
+  height: 56px;
+  background-color: #c9cbf5;
+  font-size: 14px;
+  opacity: 20%;
+}
 </style>

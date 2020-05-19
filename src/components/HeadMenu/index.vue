@@ -123,6 +123,18 @@ export default {
     text-transform: none;
   }
 }
+.el-select {
+  height: 36px;
+  >>> .el-input {
+    height: 36px;
+    .el-input__inner {
+      border-color: transparent !important;
+    }
+  }
+}
+.el-select:hover >>> .el-input__inner {
+  border-color: transparent !important;
+}
 .head-menu-title:before {
   content: '';
   display: inline-block;

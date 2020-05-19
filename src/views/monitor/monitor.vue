@@ -30,7 +30,7 @@ export default {
         page: 1,
         limit: 10
       },
-      btnarr: [{ id: '1', value: ' 管理设备', eventName: 'manageHandle', type: 'primary' }],
+      btnarr: [{ id: '1', value: ' 管理设备', eventName: 'manageHandle', type: 'info' }],
       fieldArr: [
         {
           label: '设备名称',
