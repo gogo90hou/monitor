@@ -27,11 +27,7 @@
 </template>
 
 <script>
-import HeadMenu from '@/components/HeadMenu';
-import DynamicTable from '@/components/DynamicTable/index';
-import Pagination from '@/components/Pagination/index';
 export default {
-  components: { HeadMenu, DynamicTable, Pagination },
   data () {
     return {
       getters: 'monitor/system/list',
