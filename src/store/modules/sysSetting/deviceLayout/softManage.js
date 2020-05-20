@@ -17,10 +17,10 @@ const data = [
   {
     id: '1',
     applicationName: '会见系统',
-    gateway: '1',
+    gateway: '网关一',
     accessApplication: '应用软件1',
     serverLocation: '服务器1',
-    area: '1',
+    area: '锦江监狱',
     applicationDescription: '锦江监狱会见系统'
   }
 ]
