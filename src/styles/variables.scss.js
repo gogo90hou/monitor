@@ -26,7 +26,14 @@ const $themes = {
     'inputBorderColor': '#dedfe3',
     'btnSizeColor': 'rgba(27, 208, 219, 1)',
     'btnBorderColor': 'rgba(27, 208, 219, 1)',
-    'btnBgColor': 'rgba(20, 23, 23, 1)'
+    'btnBgColor': 'rgba(20, 23, 23, 1)',
+    'tableFontColor': '#595959',
+    'red': '#FF0000',
+    'levelSerious': '#FA7C00',
+    'levelGeneral': '#FFC600',
+    'levelprompt': '#A09116',
+    'stateNormal': '#14AD00',
+    'stateMaintenance': '#626262'
   }
 }
 module.exports = $themes;

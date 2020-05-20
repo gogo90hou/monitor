@@ -20,6 +20,7 @@ import Safety from './deviceLayout/safety';
 import SoftManage from './deviceLayout/softManage';
 import DatabaseManage from './deviceLayout/databaseManage';
 import ReportVoice from './alarm/reportVoice';
+import ReportRule from './alarm/reportRule';
 import Performance from './performance/performance';
 export default {
   components: {
@@ -34,6 +35,7 @@ export default {
     SoftManage,
     DatabaseManage,
     ReportVoice,
+    ReportRule,
     Performance
   },
   data () {

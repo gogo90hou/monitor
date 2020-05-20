@@ -127,8 +127,10 @@ export default {
       height: 56px;
       line-height: 56px;
       i {
+        display: inline-block;
         font-size: 48px;
         vertical-align: middle;
+        margin-top: -5px;
         margin-right: 20px;
       }
       span {
@@ -145,7 +147,7 @@ export default {
       border-radius: 48px;
       transform: rotate(45deg);
       margin-left: 3px;
-      margin-top: -3px;
+      margin-top: -11px !important;
       -ms-transform: rotate(45deg); /* IE 9 */
       -moz-transform: rotate(45deg); /* Firefox */
       -webkit-transform: rotate(45deg); /* Safari 和 Chrome */
@@ -184,6 +186,8 @@ export default {
     border-radius: 21px;
     font-size: 14px;
     color: #fff;
+    margin-top: 7px;
+    cursor: pointer;
     .isSwitchLeft {
       position: absolute;
       top: 0;

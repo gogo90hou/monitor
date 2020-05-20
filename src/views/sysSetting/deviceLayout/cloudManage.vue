@@ -177,11 +177,13 @@ export default {
             label: '编辑',
             type: 'url',
             path: '/detail',
-            query: ['id', 'name']
+            query: ['id', 'name'],
+            colorType: 'edit'
           }, {
             label: '删除',
             type: 'button',
-            method: 'edit'
+            method: 'delete',
+            colorType: 'delete'
           }]
         }
       ],

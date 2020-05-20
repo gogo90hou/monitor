@@ -50,8 +50,10 @@ function format (el, bingind, vnode) {
     el.innerHTML = `<span>${str}</span>`
   } else {
     const obj = arr.find((item) => { return item.key === key });
-    const color = obj.color ? themeGroup[obj.color] : themeGroup.highLight;
-    el.innerHTML = `<span style="color:${color}">${obj.label}</span>`
+    const color = obj.color ? themeGroup[obj.color] : themeGroup.tableFontColor;
+    const className = obj.className;
+    const iconColor = obj.iconColor ? themeGroup[obj.iconColor] : themeGroup.tableFontColor;
+    el.innerHTML = `<span style="color:${color};"><i class="iconfont ${className}" style="color:${iconColor};position:relative;top:-1px;margin:-2px 6px 0 0;font-size:12px;"></i >${obj.label}</span>`
   }
 }
 export default {
@@ -159,6 +161,12 @@ export default {
   }
   .delete {
     color: #fe9c02;
+  }
+  .tableBlue {
+    color: #7f83d8;
+  }
+  .stop {
+    color: #ff0000;
   }
 }
 </style>

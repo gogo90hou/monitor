@@ -69,7 +69,7 @@ export default {
   data () {
     return {
       currentPage: 1,
-      selectValue: 10
+      selectValue: this.limit
     }
   },
   computed: {

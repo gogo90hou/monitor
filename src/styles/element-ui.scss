@@ -216,6 +216,13 @@
 .dialog__footer {
   display: block;
 }
+
+.el-table {
+  color: #595959;
+  thead {
+    color: #25243E!important;
+  }
+}
 .el-table__column-filter-trigger i{
   @include themeify {
     color: themed("highLight");
