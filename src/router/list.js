@@ -4,6 +4,10 @@ const routers = [
     'component': '/warn/index.vue'
   },
   {
+    'path': '/topo',
+    'component': '/warn/index.vue'
+  },
+  {
     'path': '/device',
     'component': '/device/index.vue'
   },
