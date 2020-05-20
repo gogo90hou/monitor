@@ -230,7 +230,7 @@ const data = [{
   'id': 'b43928f434c9474a8c0c9c3620f41500',
   'menuName': '拓扑图',
   'menuType': 'url',
-  'menuValue': '/warn',
+  'menuValue': '/topo',
   'pxNum': 1,
   'icon': null,
   'memo': null,

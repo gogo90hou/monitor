@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-04-27 15:25:44
+ * @LastEditTime: 2020-05-20 14:52:18
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \monitor\src\api\user.js
+ */
 import request from '@/utils/request';
 import routerList from '@/router/list';
 function getComponent (path) {
@@ -21,15 +29,31 @@ function getRouter (json, parentId) {
     // const children = json.filter((i) => { return i.parent && item.id === i.parent.id });
     // console.log(children)
     // console.log(item)
-    menus.push({
-      path: item.menuType === 'directory' ? '/Layout' + index : item.menuValue,
-      component: item.menuType === 'directory' ? 'Layout' : getComponent(item.menuValue),
-      redirect: item.menuType === 'directory' ? 'noRedirect' : '',
-      name: item.menuName,
-      data: item,
-      meta: { title: item.menuName, icon: item.icon },
-      children: getRouter(json, item.id)
-    })
+    if (!item.parent && item.menuType === 'url') {
+      menus.push({
+        path: item.menuValue,
+        component: 'Layout',
+        name: item.menuName,
+        redirect: item.menuValue,
+        data: item,
+        children: [{
+          path: item.menuValue,
+          name: item.menuName,
+          component: getComponent(item.menuValue)
+        }]
+      })
+    } else {
+      menus.push({
+        path: item.menuType === 'directory' ? '/Layout' + index : item.menuValue,
+        component: item.menuType === 'directory' ? 'Layout' : getComponent(item.menuValue),
+        redirect: item.menuType === 'directory' ? 'noRedirect' : '',
+        name: item.menuName,
+        data: item,
+        meta: { title: item.menuName, icon: item.icon },
+        children: getRouter(json, item.id)
+      })
+    }
+
     menus.sort(function (a, b) {
       return a.data.pxNum - b.data.pxNum
     })
