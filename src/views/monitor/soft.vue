@@ -25,22 +25,9 @@ export default {
         {
           label: '应用软件名称',
           key: 'name',
-          formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
-        }, {
-          label: '所在区域',
-          key: 'area',
           formatter: ''
         }, {
           label: '运行状态',
-          key: 'runState',
-          formatter: ''
-        }, {
-          label: '进程数',
-          key: 'num',
-          formatter: '(num)/(area)'
-        }, {
-          label: '响应状态',
           key: 'resState',
           formatter: [{
             key: '1',
@@ -58,18 +45,23 @@ export default {
             key: '4',
             label: '非常慢',
             color: 'state1'
-          }]
+          }],
+          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
+
         }, {
-          label: '响应时间',
+          label: '当前审批流程',
+          key: 'runState',
+          formatter: ''
+        }, {
+          label: '今日访问量',
+          key: 'num',
+          formatter: '(num)/(area)'
+        }, {
+          label: '所在区域',
+          key: 'resState'
+        }, {
+          label: '所在位置',
           key: 'time',
-          formatter: ''
-        }, {
-          label: '请求异常原因',
-          key: 'reason',
-          formatter: ''
-        }, {
-          label: '进程异常数',
-          key: 'err',
           formatter: ''
         }, {
           label: '操作',
@@ -81,10 +73,6 @@ export default {
             type: 'url',
             path: '/monitor_detail',
             query: ['id', 'name']
-          }, {
-            label: '查看详情',
-            type: 'button',
-            method: 'edit'
           }]
         }
       ]
