@@ -53,7 +53,7 @@ function format (el, bingind, vnode) {
     const color = obj.color ? themeGroup[obj.color] : themeGroup.tableFontColor;
     const className = obj.className;
     const iconColor = obj.iconColor ? themeGroup[obj.iconColor] : themeGroup.tableFontColor;
-    el.innerHTML = `<span style="color:${color};"><i class="iconfont ${className}" style="color:${iconColor};position:relative;top:-1px;margin:-2px 6px 0 0;font-size:12px;"></i >${obj.label}</span>`
+    el.innerHTML = `<span style="color:${color};"><i class="iconfont ${className}" style="color:${iconColor};position:relative;top:-1px;margin:-2px 6px 0 0;font-size:12px;${className ? '' : 'display:none;'}"></i >${obj.label}</span>`
   }
 }
 export default {
