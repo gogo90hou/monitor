@@ -2,7 +2,7 @@
   <div class="header">
     <el-row>
       <el-col :span="4">
-        <img src="@/assets/logo.png" />
+        <img src="@/assets/logo.png">
       </el-col>
       <el-col :span="12">
         <ul class="header__list">
@@ -55,11 +55,6 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-// import Search from '@/components/HeaderSearch';
-// import Screenfull from '@/components/Screenfull';
-// import SizeSelect from '@/components/SizeSelect';
-// import ErrorLog from '@/components/ErrorLog';
-// import LangSelect from '@/components/LangSelect';
 import defaultHeadPic from '@/assets/police.png';
 function addClass (el, list, currentRouter) {
   let isChild = false;
@@ -76,13 +71,8 @@ function addClass (el, list, currentRouter) {
 }
 export default {
   name: 'CommonHeader',
-  // components: {
-  //   LangSelect,
-  //   Screenfull,
-  //   SizeSelect,
-  //   Search,
-  //   ErrorLog
-  // },
+  components: {
+  },
   directives: {
     addClass: {
       inserted: function (el, bingind, vnode) {

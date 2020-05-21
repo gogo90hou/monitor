@@ -14,7 +14,7 @@
         <img
           v-if="data.data.icon&&data.data.menuType == 'directory'"
           :src="imgList[data.data.icon]"
-        />
+        >
         <span
           :class="{'large':data.data.menuType == 'directory'}"
           @click="getNode(node,data)"

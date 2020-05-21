@@ -79,6 +79,7 @@ service.interceptors.response.use(
   error => {
     console.log('err' + error); // for debug
     Message({
+      showClose: true,
       message: i18n.t('request.networkErr'),
       type: 'error',
       duration: 5 * 1000

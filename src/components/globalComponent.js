@@ -10,7 +10,7 @@ function changeStr (str) {
         arg2 - 是否遍历文件的子目录
         arg3 - 匹配文件的正则
 */
-const requireComponent = require.context('.', true, /index.vue/)
+const requireComponent = require.context('.', true, /^(?!.*topo).*$index.vue/)
 requireComponent.keys().forEach(fileName => {
   const config = requireComponent(fileName)
   const componentName = changeStr(
