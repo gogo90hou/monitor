@@ -76,7 +76,7 @@ export default {
   text-align: center;
   .el-tree {
     color: #fff;
-    background-color: #2c2b40;
+    background-color: #242938;
     min-height: calc(100vh - 64px);
     font-size: 14px;
     .large {
@@ -88,13 +88,14 @@ export default {
       vertical-align: middle;
     }
     .is-expanded {
-      background-color: #1d1e24;
+      background-color: #181d2b;
     }
     .el-checkbox {
       display: none;
     }
     .el-tree-node__children .is-checked .el-tree-node__content {
-      background-image: url("../../assets/icon/tranBg.png");
+      // background-image: url("../../assets/icon/tranBg.png");
+      background: -webkit-linear-gradient(left, #3c4998 0%, #191e2e 100%);
       background-size: cover;
       font-size: 14px;
     }
@@ -102,16 +103,16 @@ export default {
   .el-tree--highlight-current
     .el-tree-node.is-current
     > .el-tree-node__content {
-    background-color: #2c2b40;
+    background-color: #242938;
   }
   .el-tree--highlight-current
     .el-tree-node.is-current.is-expanded
     > .el-tree-node__content {
-    background-color: #1d1e24;
+    background-color: #181d2b;
   }
   .el-tree-node__content:hover,
   .el-tree-node:focus > .el-tree-node__content {
-    background-color: #2c2b40;
+    background-color: #242938;
     @include themeify {
       color: themed("highLight");
     }
@@ -124,7 +125,7 @@ export default {
   .el-tree-node__children .el-tree-node__content {
     justify-content: center;
     &:hover {
-      background-image: url("../../assets/icon/tranBg.png");
+      background: -webkit-linear-gradient(left, #3c4998 0%, #191e2e 100%);
       background-size: cover;
     }
   }

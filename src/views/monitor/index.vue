@@ -1,3 +1,4 @@
+
 <template>
   <div class="monitor">
     <div class="bar">
@@ -41,14 +42,15 @@ export default {
 <style lang="scss">
 .monitor {
   font-size: 0;
+  background-color: #eff0f5;
   .bar {
     display: inline-block;
-    width: 150px;
+    width: 120px;
     vertical-align: top;
     font-size: 14px;
   }
   .content {
-    width: calc(100% - 150px);
+    width: calc(100% - 120px);
     display: inline-block;
     vertical-align: top;
     font-size: 14px;

@@ -2,7 +2,7 @@
   <div class="header">
     <el-row>
       <el-col :span="4">
-        <img src="@/assets/logo.png" alt />
+        <img src="@/assets/logo.png" />
       </el-col>
       <el-col :span="12">
         <ul class="header__list">
@@ -11,7 +11,9 @@
             :key="key"
             v-addClass="[item,currentRouter]"
             @click="linkTo(item)"
-          >{{ item.name }}</li>
+          >
+            <span>{{ item.name }}</span>
+          </li>
         </ul>
       </el-col>
       <el-col :span="8" class="right-menu">
@@ -35,7 +37,7 @@
         <el-dropdown class="avatar-container" trigger="click">
           <div class="avatar-wrapper">
             <span>超级管理员</span>
-            <i class="el-icon-caret-bottom" />
+            <i class="el-icon-caret-bottom"></i>
           </div>
           <el-dropdown-menu slot="dropdown" class="user-dropdown">
             <router-link to="/">
@@ -53,11 +55,11 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import Search from '@/components/HeaderSearch';
-import Screenfull from '@/components/Screenfull';
-import SizeSelect from '@/components/SizeSelect';
-import ErrorLog from '@/components/ErrorLog';
-import LangSelect from '@/components/LangSelect';
+// import Search from '@/components/HeaderSearch';
+// import Screenfull from '@/components/Screenfull';
+// import SizeSelect from '@/components/SizeSelect';
+// import ErrorLog from '@/components/ErrorLog';
+// import LangSelect from '@/components/LangSelect';
 import defaultHeadPic from '@/assets/police.png';
 function addClass (el, list, currentRouter) {
   let isChild = false;
@@ -74,13 +76,13 @@ function addClass (el, list, currentRouter) {
 }
 export default {
   name: 'CommonHeader',
-  components: {
-    LangSelect,
-    Screenfull,
-    SizeSelect,
-    Search,
-    ErrorLog
-  },
+  // components: {
+  //   LangSelect,
+  //   Screenfull,
+  //   SizeSelect,
+  //   Search,
+  //   ErrorLog
+  // },
   directives: {
     addClass: {
       inserted: function (el, bingind, vnode) {
@@ -135,12 +137,13 @@ export default {
 </script>
 <style lang="scss">
 .header {
-  height: 64px;
-  line-height: 64px;
+  height: $navBar;
+  line-height: $navBar;
   width: 100%;
   text-align: center;
-  background-image: url("../../assets/navbar.png");
+  background: linear-gradient(-90deg, rgba(47, 53, 72, 1), rgba(37, 42, 57, 1));
   color: #ffffff;
+  overflow: hidden;
   img {
     vertical-align: middle;
     width: 160px;
@@ -155,18 +158,28 @@ export default {
       width: 78px;
       text-align: center;
       cursor: pointer;
+      color: #adb0b6;
+      font-size: 18px;
       &:hover,
       &.active {
-        background-color: #12112c;
+        span {
+          border-bottom: 2px solid #5466e0;
+          color: #fff;
+        }
+      }
+      span {
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
       }
     }
   }
   .right-menu {
     text-align: right;
-    height: 64x;
+    height: 64px;
     line-height: 64px;
-    padding-right: 10px;
-    font-size: 12px;
+    padding-right: 20px;
+    font-size: 16px;
     &:focus {
       outline: none;
     }
@@ -176,7 +189,7 @@ export default {
       padding: 0 8px;
       height: 64px;
       line-height: 64px;
-      font-size: 18px;
+      font-size: 16px;
       @include themeify {
         color: themed("light");
       }
@@ -195,6 +208,7 @@ export default {
     .avatar-container {
       margin-right: 30px;
       cursor: pointer;
+      font-size: 18px;
       .avatar-wrapper {
         position: relative;
         color: #ffffff;
