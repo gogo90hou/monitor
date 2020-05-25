@@ -16,6 +16,7 @@ import SysInstall from './sysManage/SysInstall';
 import Gateway from './deviceLayout/gateway';
 import CloudManage from './deviceLayout/cloudManage';
 import ItManage from './deviceLayout/itManage';
+import MiddleManage from './deviceLayout/middleManage';
 import Safety from './deviceLayout/safety';
 import SoftManage from './deviceLayout/softManage';
 import DatabaseManage from './deviceLayout/databaseManage';
@@ -36,7 +37,8 @@ export default {
     DatabaseManage,
     ReportVoice,
     ReportRule,
-    Performance
+    Performance,
+    MiddleManage
   },
   data () {
     return {
