@@ -1,7 +1,6 @@
 <template>
   <div class="head-menu">
     <div class="head-menu-left">
-      <!-- <img src="@/assets/icon/headmenuLine.png" /> -->
       <span class="head-menu-title">{{ title }}</span>
       <span v-show="Object.keys(smalltitle).length > 0" class="head-menu-smalltitle" @click="listDetails(smalltitle.path)">( <span>{{ smalltitle.name || '' }}</span> )</span>
     </div>
@@ -29,9 +28,8 @@
         v-for="item in btnarr"
         v-show="btnarr"
         :key="item.id"
-        class="filter-item"
+        class="btnStyle"
         :type="item.type"
-        style="margin-left: 10px;"
         @click="btnHandle(item.eventName)"
       >{{ item.value }}</el-button>
     </div>
@@ -105,6 +103,27 @@ export default {
 }
 .head-menu-left {
   float: left;
+  .head-menu-title:before {
+    content: '';
+    display: inline-block;
+    height: 16px;
+    width: 5px;
+    background-color: #5466e0;
+    margin-right: 10px;
+  }
+  .head-menu-title {
+    font-size: 20px;
+    color: #38393a;
+  }
+  .head-menu-smalltitle {
+    font-size: 14px;
+    color: #5466e0;
+    cursor: pointer;
+    span {
+      text-decoration: underline;
+      text-decoration-color: #5466e0;
+    }
+  }
 }
 .head-menu-right {
   float: right;
@@ -122,42 +141,25 @@ export default {
     text-align: left;
     text-transform: none;
   }
-}
-.el-select {
-  height: 36px;
-  >>> .el-input {
+  .btnStyle {
+    margin-left: 10px;
+    background-color: #5466e0;
+    border-radius: 5px;
+    opacity: 0.79;
+    font-size: 14px;
+    color: #fff;
+  }
+  .el-select {
     height: 36px;
-    .el-input__inner {
-      border-color: transparent !important;
+    >>> .el-input {
+      height: 36px;
+      .el-input__inner {
+        border-color: transparent !important;
+      }
     }
   }
-}
-.el-select:hover >>> .el-input__inner {
-  border-color: transparent !important;
-}
-.head-menu-title:before {
-  content: '';
-  display: inline-block;
-  height: 16px;
-  width: 5px;
-  background-color: #a199d6;
-  margin-right: 10px;
-}
-.head-menu-title {
-  font-family: 'MicrosoftYaHei-Bold';
-  font-weight: bold;
-  font-size: 20px;
-  color: #a199d6;
-}
-.head-menu-smalltitle {
-  font-family: 'MicrosoftYaHei';
-  font-size: 14px;
-  color: #46bbf0;
-  margin-left: 20px;
-  cursor: pointer;
-  span {
-    text-decoration: underline;
-    text-decoration-color: #46bbf0;
+  .el-select:hover >>> .el-input__inner {
+    border-color: transparent !important;
   }
 }
 </style>

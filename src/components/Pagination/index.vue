@@ -161,7 +161,7 @@ export default {
   display: inline-block;
   font-size: 16px;
   margin-right: 12px;
-  color: #787ee5;
+  color: #7583e4;
   cursor: pointer;
 }
 .pagination-btn .totalPage {

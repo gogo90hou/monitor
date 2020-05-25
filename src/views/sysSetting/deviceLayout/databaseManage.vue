@@ -17,7 +17,14 @@
           @edit="edit"
         />
       </el-tab-pane>
-      <el-tab-pane label="数据库" name="second">数据库</el-tab-pane>
+      <el-tab-pane label="数据库" name="second">
+        <dynamic-table
+          :field-arr="fieldArr"
+          :show-check-box="showCheckBox"
+          :getters="getters"
+          @edit="edit"
+        />
+      </el-tab-pane>
     </el-tabs>
     <pagination
       v-show="listQuery.total>0"
