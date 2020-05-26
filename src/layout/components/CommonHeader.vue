@@ -2,7 +2,7 @@
   <div class="header">
     <el-row>
       <el-col :span="4">
-        <img src="@/assets/logo.png">
+        <img src="@/assets/logo.png" />
       </el-col>
       <el-col :span="12">
         <ul class="header__list">

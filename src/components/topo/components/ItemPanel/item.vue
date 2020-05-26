@@ -4,9 +4,9 @@
       <div class="title">
         <span>{{ name }}</span>
       </div>
-      <div class="line" />
+      <div class="line"></div>
       <div class="fold" @click="toggle = !toggle">
-        <span class="icon iconfont" :class="toggle ? 'iconarrow_carrot-down_alt2' : 'iconarrow_carrot-up_alt2'" :title="toggle ? '点击折叠' : '点击展开'" />
+        <span class="icon iconfont" :class="toggle ? 'iconarrow_carrot-down_alt2' : 'iconarrow_carrot-up_alt2'" :title="toggle ? '点击折叠' : '点击展开'"></span>
       </div>
     </div>
     <ul class="items" :class="toggle ? '' : 'toggleFold'">
@@ -17,7 +17,7 @@
         @dragstart="handleDragstart"
         @dragend="handleDragEnd($event,item)"
       >
-        <div class="icon iconfont" :class="item.fontIcon" />
+        <div class="icon iconfont" :class="item.fontIcon"></div>
         <span>{{ item.label }}</span>
       </li>
     </ul>
