@@ -7,14 +7,21 @@
         <item-panel v-if="mode === 'edit'" @toggle="toggleItempanel" />
       </div>
       <div ref="viewContainer" class="viewContainer">
-        <page class="viewport" :style="{ left: sideBarWidth + 'px'}" :height="viewportHeight" :width="viewportWidth" :data="data" :mode="mode">
+        <page
+          class="viewport"
+          :style="{ left: sideBarWidth + 'px'}"
+          :height="viewportHeight"
+          :width="viewportWidth"
+          :data="data"
+          :mode="mode"
+        >
           <div class="mini-viewport">
             <minimap />
           </div>
         </page>
       </div>
     </div>
-    <flow />
+    <flow :mode="mode" />
   </div>
 </template>
 <script>
@@ -47,7 +54,9 @@ export default {
     },
     data: {
       type: Object,
-      default: () => {}
+      default: () => {
+        return null;
+      }
     },
     mode: {
       type: String,
@@ -56,7 +65,7 @@ export default {
       }
     }
   },
-  data() {
+  data () {
     return {
       editor: {},
       command: null,
@@ -65,19 +74,19 @@ export default {
       viewportWidth: 0
     };
   },
-  created() {
+  created () {
     this.init();
   },
-  mounted() {
+  mounted () {
     this.viewportHeight = this.$refs['viewContainer'].offsetHeight;
     this.viewportWidth = this.$refs['viewContainer'].offsetWidth - this.sideBarWidth;
   },
   methods: {
-    init() {
+    init () {
       this.editor = new Editor();
       this.command = new Command(this.editor);
     },
-    toggleItempanel(data) {
+    toggleItempanel (data) {
       this.sideBarWidth = data || 0;
       this.viewportWidth = this.$refs['viewContainer'].offsetWidth - this.sideBarWidth;
     }
@@ -134,5 +143,4 @@ export default {
     }
   }
 }
-
 </style>

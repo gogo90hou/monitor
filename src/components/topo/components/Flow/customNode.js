@@ -2,9 +2,9 @@ import G6 from '@antv/g6/build/g6';
 import { uniqueId } from '&/utils'
 import Shape from '@antv/g/src/shapes'
 const customNode = {
-  init() {
+  init (mode) {
     G6.registerNode('customNode', {
-      draw(cfg, group) {
+      draw (cfg, group) {
         let size = cfg.size;
         if (!size) {
           size = [170, 34]
@@ -175,7 +175,7 @@ const customNode = {
         return shape;
       },
       // 设置状态
-      setState(name, value, item) {
+      setState (name, value, item) {
         const group = item.getContainer();
         const shape = group.get('children')[0]; // 顺序根据 draw 时确定
 
@@ -216,7 +216,7 @@ const customNode = {
       }
     });
     G6.registerNode('monitorNode', {
-      draw(cfg, group) {
+      draw (cfg, group) {
         let size = cfg.size;
         if (!size) {
           size = [36, 36]
@@ -348,7 +348,7 @@ const customNode = {
         return keyShape;
       },
       // 设置状态
-      setState(name, value, item) {
+      setState (name, value, item) {
         const group = item.getContainer();
         const shape = group.get('children')[0]; // 顺序根据 draw 时确定
 
@@ -361,13 +361,15 @@ const customNode = {
         const selectStyles = () => {
           shape.attr('fill', '#f3f9ff');
           shape.attr('stroke', '#6ab7ff');
-          shape.attr('cursor', 'move');
-          children.forEach(child => {
-            child.attr('cursor', 'move');
-          });
-          circles.forEach(circle => {
-            circle.attr('opacity', 1)
-          })
+          if (mode === 'edit') {
+            shape.attr('cursor', 'move');
+            children.forEach(child => {
+              child.attr('cursor', 'move');
+            });
+            circles.forEach(circle => {
+              circle.attr('opacity', 1)
+            })
+          }
         };
         const unSelectStyles = () => {
           shape.attr('fill', '#fff');
