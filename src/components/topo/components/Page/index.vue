@@ -384,7 +384,7 @@ export default {
       defaultBehavors: [
         'drag-canvas',
         'zoom-canvas',
-        'hover-node',
+        // 'hover-node',
         'select-node',
         'hover-edge',
         'keyboard',
@@ -395,6 +395,7 @@ export default {
     };
   },
   created() {
+    // 预览模式下显示tooltip
     if (this.mode === 'view') {
       this.defaultBehavors = this.defaultBehavors.concat([{
         type: 'tooltip', // 提示框
@@ -418,6 +419,9 @@ export default {
           return text;
         }
       }]);
+    } else {
+      // 编辑模式下可以拖动节点
+      this.defaultBehavors.push('hover-node');
     }
     initBehavors();
   },
@@ -442,6 +446,12 @@ export default {
           mulitSelect: ['mulit-select'],
           addEdge: ['add-edge'],
           moveNode: ['drag-item']
+        },
+        layout: {
+          type: 'concentric',
+          center: [0, 0],
+          preventOverlap: true,
+          nodeSize: 30
         }
       });
       const { editor, command } = this.$parent;
