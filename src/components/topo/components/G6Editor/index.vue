@@ -1,8 +1,8 @@
 <template>
   <div class="topo-container">
     <context-menu />
-    <toolbar />
-    <div class="bottom-container">
+    <toolbar v-if="mode === 'edit'" />
+    <div class="bottom-container" :class="mode === 'edit' ? 'edit-statu' : 'view-statu'">
       <div ref="sidebar" class="topo-sidebar">
         <item-panel v-if="mode === 'edit'" @toggle="toggleItempanel" />
       </div>
@@ -70,6 +70,7 @@ export default {
   },
   mounted() {
     this.viewportHeight = this.$refs['viewContainer'].offsetHeight;
+    this.viewportWidth = this.$refs['viewContainer'].offsetWidth - this.sideBarWidth;
   },
   methods: {
     init() {
@@ -95,9 +96,15 @@ export default {
   -ms-user-select: none;
   .bottom-container {
     position: absolute;
-    top: 72px;
-    height: calc(100% - 72px);
     width: 100%;
+    &.edit-statu {
+      top: 72px;
+      height: calc(100% - 72px);
+    }
+    &.view-statu {
+      top: 0px;
+      height: 100%;
+    }
     .topo-sidebar {
       position: absolute;
       left: 0px;
