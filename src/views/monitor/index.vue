@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-05-12 09:27:09
+ * @LastEditTime: 2020-05-26 11:20:05
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \monitor\src\views\monitor\index.vue
+-->
 
 <template>
   <div class="monitor">
@@ -11,6 +19,7 @@
       <monitor v-if="currentRoute == '/monitor'" />
       <soft v-if="currentRoute == '/soft'" />
       <system v-if="currentRoute == '/system'" />
+      <systemDetail v-if="currentRoute == '/system_detail'" />
     </div>
   </div>
 </template>
@@ -22,6 +31,7 @@ import cloud from './cloud';
 import monitor from './monitor';
 import soft from './soft';
 import system from './system';
+import systemDetail from './sysDetail';
 export default {
   components: {
     MonitorBar,
@@ -30,7 +40,8 @@ export default {
     cloud,
     monitor,
     soft,
-    system
+    system,
+    systemDetail
   },
   data () {
     return {

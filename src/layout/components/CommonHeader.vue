@@ -57,8 +57,9 @@
 import { mapGetters } from 'vuex'
 import defaultHeadPic from '@/assets/police.png';
 function addClass (el, list, currentRouter) {
+  console.log(list)
   let isChild = false;
-  if (currentRouter === list.path) {
+  if (currentRouter === list.path || (list.redirect && currentRouter === list.redirect)) {
     isChild = true;
   } else if (list.children && list.children.length > 0) {
     list.children.forEach((item) => {

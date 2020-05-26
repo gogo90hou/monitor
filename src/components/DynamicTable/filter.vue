@@ -10,14 +10,14 @@
       popper-class="filter-popup"
       @show="show"
     >
-      <div class="layPopup" @click="closePopup" />
+      <div class="layPopup" @click="closePopup"></div>
       <ul class="filters_list">
         <li @click="changeFilter">全部</li>
         <li v-for="(i,key) in filters" :key="key" @click="changeFilter(i)">{{ i.text }}</li>
       </ul>
       <div slot="reference">
         <span>{{ showText?showText:item.label }}</span>
-        <span class="icon iconfont iconarrow_triangle-down" />
+        <span class="icon iconfont iconarrow_triangle-down"></span>
       </div>
     </el-popover>
   </div>

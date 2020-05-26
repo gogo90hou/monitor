@@ -1,12 +1,24 @@
 <template>
   <div :class="{'hidden':total === 0}" class="pagination-container">
     <div class="pagination-btn">
-      <i :class="{'iconDisable': page===1}" class="iconfont iconicon_firstPage" @click="firstPage" />
-      <i :class="{'iconDisable': page===1}" class="iconfont iconicon_beforePage" @click="previousPage" />
+      <i :class="{'iconDisable': page===1}" class="iconfont iconicon_firstPage" @click="firstPage"></i>
+      <i
+        :class="{'iconDisable': page===1}"
+        class="iconfont iconicon_beforePage"
+        @click="previousPage"
+      ></i>
       <el-input v-model="currentPage" @blur="handleCurrentChange" @input="setOnlyNumber" />
       <span class="totalPage">共{{ totalPage }}页</span>
-      <i :class="{'iconDisable': page===totalPage}" class="iconfont iconicon_afterpage" @click="nextPage" />
-      <i :class="{'iconDisable': page===totalPage}" class="iconfont iconicon_lastpage" @click="lastPage" />
+      <i
+        :class="{'iconDisable': page===totalPage}"
+        class="iconfont iconicon_afterpage"
+        @click="nextPage"
+      ></i>
+      <i
+        :class="{'iconDisable': page===totalPage}"
+        class="iconfont iconicon_lastpage"
+        @click="lastPage"
+      ></i>
     </div>
     <div class="pagination-total">
       <span>每页显示</span>
