@@ -1,7 +1,7 @@
 <template>
   <div class="head-menu">
     <div class="head-menu-left">
-      <span class="head-menu-title">{{ title }}</span>
+      <span v-show="title !== ''" :class="title !== '' ? 'head-menu-title' : ''">{{ title }}</span>
       <span v-show="Object.keys(smalltitle).length > 0" class="head-menu-smalltitle" @click="listDetails(smalltitle.path)">( <span>{{ smalltitle.name || '' }}</span> )</span>
     </div>
     <div class="head-menu-right">
@@ -21,7 +21,7 @@
         placeholder="请输入关键字"
         @keyup.enter.native="handleSerchKey"
       >
-        <i slot="suffix" class="el-input__icon el-icon-search" @click="handleSerchKey" />
+        <i slot="suffix" class="el-input__icon el-icon-search" style="cursor : pointer;" @click="handleSerchKey" />
       </el-input>
       <!-- 为每一个按钮绑定一个事件类型 类型共分为:addHandle importHandle deleteHandle manageHandle -->
       <el-button
@@ -41,8 +41,8 @@ export default {
   name: 'HeadMenu',
   props: {
     title: {
-      required: true,
-      type: String
+      type: String,
+      default: ''
     },
     smalltitle: {
       type: Object,
@@ -99,7 +99,11 @@ export default {
 
 <style lang="scss" scoped>
 .head-menu {
-  padding-bottom: 50px;
+  height: 54px;
+  line-height: 36px;
+  padding: 9px 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 .head-menu-left {
   float: left;
@@ -127,22 +131,18 @@ export default {
 }
 .head-menu-right {
   float: right;
-  .el-input {
-    width: 360px !important;
+  > .el-input {
+    float: left;
+    width: 300px !important;
     height: 36px !important;
     padding: 0;
-    font-family: 'Arial Normal', 'Arial';
-    font-weight: 400;
-    font-style: normal;
+    margin-left: 10px;
     font-size: 14px;
-    text-decoration: none;
-    letter-spacing: normal;
-    vertical-align: none;
-    text-align: left;
-    text-transform: none;
   }
   .btnStyle {
-    margin-left: 10px;
+    float: left;
+    height: 36px;
+    margin: 0 10px;
     background-color: #5466e0;
     border-radius: 5px;
     opacity: 0.79;
@@ -150,7 +150,10 @@ export default {
     color: #fff;
   }
   .el-select {
+    float: left;
     height: 36px;
+    width: 176px;
+    margin-left: 10px;
     >>> .el-input {
       height: 36px;
       .el-input__inner {

@@ -7,19 +7,12 @@
       </el-tab-pane>
       <el-tab-pane label="交换机" name="second">交换机</el-tab-pane>
       <el-tab-pane label="防火墙" name="third">防火墙</el-tab-pane>
-      <el-tab-pane label="存储" name="fourth">存储</el-tab-pane>
+      <el-tab-pane label="存储" name="four">存储</el-tab-pane>
     </el-tabs>
   </div>
 </template>
 <script>
-import HeadMenu from '@/components/HeadMenu';
-import DynamicTable from '@/components/DynamicTable/index'
 export default {
-  components: {
-    HeadMenu,
-    DynamicTable
-  },
-
   data () {
     return {
       getters: 'monitor/soft/list',

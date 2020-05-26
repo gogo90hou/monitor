@@ -1,26 +1,318 @@
-<!--
- * @Author: your name
- * @Date: 2020-04-27 17:00:58
- * @LastEditTime: 2020-05-20 14:26:29
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \monitor\src\views\warn\index.vue
--->
 <template>
-  <div>123</div>
+  <div class="content">
+    <div class="headMenu">
+      <el-row>
+        <el-col :span="2"><HeadMenu title="今日新增" class="headMenuLeft" /></el-col>
+        <el-col :span="22">
+          <el-row class="headMenuRight">
+            <el-col :span="4">
+              <div class="alarm-event">
+                <span class="alarm-event-text">告警</span>
+                <span class="alarm-event-num">23</span>
+                <i class="iconfont iconicon_alarm" />
+              </div>
+            </el-col>
+            <el-col :span="4">
+              <div class="alarm-event">
+                <span class="alarm-event-text">事件</span>
+                <span class="alarm-event-num">24</span>
+                <i class="iconfont iconicon_calendar" />
+              </div>
+            </el-col>
+            <el-col :span="16">
+              <div class="alarm-level">
+                <span class="untreated">
+                  <span>未处理告警:</span>
+                  <span>147</span>
+                </span>
+                <span class="iconBox deadly">
+                  <i class="iconfont iconicon_close_alt" />
+                  <span>致命</span>
+                  <span>23</span>
+                </span>
+                <span class="iconBox serious">
+                  <i class="iconfont iconicon_Critical_warning" />
+                  <span>严重</span>
+                  <span>24</span>
+                </span>
+                <span class="iconBox general">
+                  <i class="iconfont iconicon_minus_alt" />
+                  <span>一般</span>
+                  <span>25</span>
+                </span>
+                <span class="iconBox prompt">
+                  <i class="iconfont iconicon_info" />
+                  <span>提示</span>
+                  <span>26</span>
+                </span>
+              </div>
+            </el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+    </div>
+    <div class="tabs-body">
+      <HeadMenu class="tabs-right-head" :search="true" :options="options" @getValue="searchKey" />
+      <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+        <el-tab-pane label="告警列表" name="first">
+          <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
+        </el-tab-pane>
+        <el-tab-pane label="事件列表" name="second">事件列表</el-tab-pane>
+        <el-tab-pane label="智能告警" name="third">智能告警</el-tab-pane>
+        <el-tab-pane label="历史告警" name="four">历史告警</el-tab-pane>
+      </el-tabs>
+    </div>
+    <pagination
+      v-show="listQuery.total>0"
+      :total="listQuery.total"
+      :page.sync="listQuery.page"
+      :limit.sync="listQuery.limit"
+      @pagination="pagination"
+    />
+  </div>
 </template>
+
 <script>
-import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      list: []
+      getters: 'warn/index/list',
+      activeName: 'first',
+      // 分页列表
+      listQuery: {
+        total: 36,
+        page: 1,
+        limit: 10
+      },
+      options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '川北监狱' }, { selectId: '3', label: '川西监狱' }],
+      fieldArr: [
+        {
+          label: '序号',
+          key: 'serialNumber',
+          formatter: ''
+        }, {
+          label: '告警源',
+          key: 'alarmSource',
+          formatter: '',
+          filters: [{ text: '甘孜监狱-大门门禁', value: '甘孜监狱-大门门禁' }, { text: '锦江监狱-二楼楼梯口报警设备', value: '锦江监狱-二楼楼梯口报警设备' }, { text: '锦江监狱-三楼服务器-192.168.1.1', value: '锦江监狱-三楼服务器-192.168.1.1' }, { text: '门禁告警一', value: '门禁告警一' }]
+        }, {
+          label: '告警类别',
+          key: 'alarmCategory',
+          formatter: '',
+          filters: [{ text: '安防设备', value: '安防设备' }, { text: '应用软件', value: '应用软件' }, { text: 'IT设备', value: 'IT设备' }, { text: '中间件', value: '中间件' }, { text: '云平台', value: '云平台' }, { text: '操作系统和数据库', value: '操作系统和数据库' }]
+        }, {
+          label: '告警级别',
+          key: 'alarmLevel',
+          formatter: '',
+          filters: [{ text: '致命', value: '致命' }, { text: '严重', value: '严重' }, { text: '一般', value: '一般' }, { text: '提示', value: '提示' }]
+        }, {
+          label: '告警描述',
+          key: 'alarmDescription',
+          formatter: ''
+        }, {
+          label: '告警时间',
+          key: 'alarmTime',
+          formatter: ''
+        }, {
+          label: '告警状态',
+          key: 'alarmState',
+          formatter: '',
+          filters: [{ text: '已确认', value: '已确认' }, { text: '未确认', value: '未确认' }, { text: '已清除', value: '已清除' }, { text: '未清除', value: '未清除' }]
+        }, {
+          label: '确认时间',
+          key: 'setTime',
+          formatter: ''
+        }, {
+          label: '处理状态',
+          key: 'dealState',
+          formatter: '',
+          filters: [{ text: '待处理', value: '待处理' }, { text: '已派单', value: '已派单' }, { text: '已处理', value: '已处理' }]
+        }, {
+          label: '操作',
+          key: 'operation',
+          needTemp: true,
+          width: '200px',
+          buttons: [{
+            label: '转工单',
+            query: ['id', 'name'],
+            colorType: 'edit'
+          }, {
+            label: '清除',
+            type: 'button',
+            method: 'delete',
+            colorType: 'delete'
+          }]
+        }
+      ]
     }
   },
-  computed: {
-    ...mapGetters([
-      'warnList'
-    ])
+  created () {
+    this.$store.dispatch('warn/index/getList')
+  },
+  methods: {
+    edit (data) {
+      console.log(data);
+    },
+    handleClick () { },
+    pagination (val) {
+      this.listQuery.page = val.page;
+      this.listQuery.limit = val.limit;
+    },
+    searchKey () {
+
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.content {
+  font-size: 14px;
+  padding: 28px 10px;
+  box-sizing: border-box;
+  background-color: #eeeff4;
+  .headMenu {
+    height: 60px;
+    overflow: hidden;
+    margin-bottom: 23px;
+    .headMenuLeft {
+      font-size: 18px;
+      color: #0d0d0d;
+      height: 60px;
+      line-height: 60px;
+      padding: 0;
+    }
+    .headMenuRight {
+      vertical-align: top;
+      .alarm-event,
+      .alarm-level {
+        height: 60px;
+        line-height: 60px;
+        background-color: #fff;
+        box-sizing: border-box;
+        color: #0d0d0d;
+        margin-right: 15px;
+        .alarm-event-text {
+          font-size: 14px;
+          vertical-align: middle;
+          padding-left: 15%;
+        }
+        .alarm-event-num {
+          font-size: 26px;
+          color: #5466e0;
+          padding-left: 15%;
+          vertical-align: middle;
+        }
+        i {
+          padding-left: 26%;
+          color: #d9d9d9;
+          font-size: 35px;
+          vertical-align: middle;
+          opacity: 85%;
+        }
+        // 防止盒子内元素下掉
+        @media screen and (max-width: 1650px) {
+          .alarm-event-text,
+          .alarm-event-num {
+            padding-left: 5%;
+          }
+          i {
+            padding-left: 8%;
+          }
+        }
+      }
+      .alarm-level {
+        margin-right: 0;
+        width: 100%;
+        .untreated {
+          width: 24%;
+          float: left;
+          span:nth-child(1) {
+            font-size: 16px;
+            color: #0d0d0d;
+            vertical-align: middle;
+          }
+          span:nth-child(2) {
+            font-size: 26px;
+            color: #5466e0;
+            padding-left: 1%;
+            vertical-align: middle;
+          }
+        }
+        .untreated:before {
+          content: '';
+          width: 4px;
+          height: 10px;
+          display: inline-block;
+          background-color: #5466e0;
+          margin-left: 15%;
+          margin-right: 4px;
+          vertical-align: middle;
+        }
+        .deadly {
+          color: red;
+          i {
+            color: red;
+          }
+        }
+        .serious {
+          color: #fa7c00;
+          i {
+            color: #fa7c00;
+          }
+        }
+        .general {
+          color: #ffc600;
+          i {
+            color: #ffc600;
+          }
+        }
+        .prompt {
+          color: #a09116;
+          i {
+            color: #a09116;
+          }
+        }
+        .iconBox {
+          width: 19%;
+          float: left;
+          i {
+            font-size: 14px;
+            margin-right: 4px;
+            vertical-align: middle;
+          }
+          span:nth-of-type(1) {
+            font-size: 14px;
+            padding-right: 8%;
+            vertical-align: middle;
+            color: #b2b2b2;
+          }
+          span:nth-of-type(2) {
+            font-size: 24px;
+            vertical-align: middle;
+          }
+        }
+        .iconBox:before {
+          content: '';
+          float: left;
+          width: 1px;
+          height: 36px;
+          margin-top: 12px;
+          background-color: #eeeeee;
+        }
+      }
+    }
+  }
+  .tabs-body {
+    position: relative;
+    padding: 21px 10px;
+    background-color: #fff;
+    .tabs-right-head {
+      position: absolute;
+      top: 0;
+      right: 10px;
+      z-index: 99;
+    }
+  }
+}
+</style>
