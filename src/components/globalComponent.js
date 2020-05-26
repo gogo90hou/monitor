@@ -10,8 +10,11 @@ function changeStr (str) {
         arg2 - 是否遍历文件的子目录
         arg3 - 匹配文件的正则
 */
-const requireComponent = require.context('.', true, /^(?!.*topo).*$index.vue/)
+const requireComponent = require.context('.', true, /index.vue/)
 requireComponent.keys().forEach(fileName => {
+  if (fileName.indexOf('topo') !== -1) {
+    return;
+  }
   const config = requireComponent(fileName)
   const componentName = changeStr(
     fileName.replace(/^\.\//, '').replace(/\.\w+$/, '').replace('/index', '')
