@@ -57,7 +57,7 @@
 import { mapGetters } from 'vuex'
 import defaultHeadPic from '@/assets/police.png';
 function addClass (el, list, currentRouter) {
-  console.log(list)
+  // console.log(list)
   let isChild = false;
   if (currentRouter === list.path || (list.redirect && currentRouter === list.redirect)) {
     isChild = true;
@@ -182,7 +182,7 @@ export default {
       line-height: 64px;
       font-size: 16px;
       @include themeify {
-        color: themed("light");
+        color: themed('light');
       }
       vertical-align: middle;
 

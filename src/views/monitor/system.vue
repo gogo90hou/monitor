@@ -57,34 +57,43 @@ export default {
       btnarr: [{ id: '1', value: ' 管理系统和数据库', eventName: 'manageHandle', type: 'info' }],
       fieldArr: [
         {
+          label: '序号',
+          key: 'sysNum',
+          formatter: ''
+        }, {
           label: '操作系统名称',
-          key: 'osName',
+          key: 'sysName',
           formatter: ''
         }, {
           label: '系统类别',
-          key: 'osTypeName',
+          key: 'sysCategory',
           formatter: '',
           filters: [{ text: 'windows操作系统', value: 'windows操作系统' }, { text: 'liunx操作系统', value: 'liunx操作系统' }]
         }, {
           label: '运行状态',
-          key: 'runStateName',
-          formatter: ''
+          key: 'runState',
+          formatter: '',
+          filters: [{ text: '正常', value: '正常' }, { text: '异常', value: '异常' }, { text: '断连', value: '断连' }]
         }, {
           label: '硬盘状态',
-          key: 'diskStateName',
-          formatter: ''
+          key: 'disk',
+          formatter: '',
+          filters: [{ text: '正常', value: '正常' }, { text: '异常', value: '异常' }]
         }, {
           label: '内存状态',
-          key: 'memoryStateName',
-          formatter: ''
+          key: 'memory',
+          formatter: '',
+          filters: [{ text: '正常', value: '正常' }, { text: '异常', value: '异常' }]
         }, {
           label: 'cpu负载',
-          key: 'cpuStateName',
-          formatter: ''
+          key: 'cpu',
+          formatter: '',
+          filters: [{ text: '正常', value: '正常' }, { text: '异常', value: '异常' }]
         }, {
           label: '所在服务器',
-          key: 'areaName',
-          formatter: ''
+          key: 'hostServer',
+          formatter: '',
+          filters: [{ text: '服务器1', value: '服务器1' }]
         }, {
           label: '操作',
           key: 'operation',
@@ -209,7 +218,7 @@ export default {
     color: #38ace1;
   }
   span:after {
-    content: "";
+    content: '';
     width: 1px;
     height: 17px;
     display: block;
@@ -218,7 +227,7 @@ export default {
     background-color: #dddee0;
   }
   span:nth-last-child(1):after {
-    content: "";
+    content: '';
     width: 0;
     height: 0;
   }

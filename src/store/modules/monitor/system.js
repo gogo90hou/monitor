@@ -5,16 +5,13 @@
 * @typedef {(Object)} getlist
 
 * @property {string} id - 系统id.
-* @property {string} sysNum- 系统标识.
+* @property {string} sysNum- 序号.
+* @property {string} sysName- 操作系统名称.
 * @property {string} sysCategory- 系统类别.
-* @property {string} disk- 磁盘.
-* @property {string} diskUtilization- 磁盘利用率.
+* @property {string} runState- 运行状态.
 * @property {string} memory- 内存.
-* @property {string} memoryUtilization- 内存利用率.
-* @property {string} cpuUtilization- CPU利用率.
-* @property {string} processNum - 进程数.
-* @property {string} fileState - 文件状态.
-* @property {string} loginUser - 登录用户.
+* @property {string} cpu- cpu.
+* @property {string} hostServer- 所在服务器.
 
 * @typedef {(Object)} getdatbaseList
 
@@ -303,16 +300,14 @@ const detail = {
 const data = [
   {
     id: '1',
-    sysNum: 'k3-3353',
+    sysNum: '363',
+    sysName: '操作系统名称1',
     sysCategory: 'windows操作系统',
-    disk: '32G / 1TB',
-    diskUtilization: '34%',
-    memory: '32G / 1TB',
-    memoryUtilization: '34%',
-    cpuUtilization: '40%',
-    processNum: '32',
-    fileState: '只读',
-    loginUser: '3'
+    runState: '正常',
+    disk: '正常',
+    memory: '异常',
+    cpu: '正常',
+    hostServer: '省局服务器1'
   }
 ]
 const databaseData = [
@@ -336,7 +331,6 @@ const state = {
 }
 // 同步提交更新数据的方法
 const mutations = {
-
   getList: (state, list) => {
     // Chanage state
     state.list = list
