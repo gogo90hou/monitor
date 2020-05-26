@@ -81,7 +81,7 @@
           ref="ruleForm"
           :model="ruleForm"
           :rules="rules"
-          label-width="100px"
+          label-width="120px"
           class="demo-ruleForm"
         >
           <span style="display : inline-block;">
@@ -107,7 +107,7 @@
               </el-col>
               <el-col>
                 <el-form-item label="计划解决时间：">
-                  <el-date-picker type="date" placeholder="请选择" v-model="ruleForm.solveTime" style="width: 50%;"></el-date-picker>
+                  <el-date-picker v-model="ruleForm.solveTime" type="date" placeholder="请选择" style="width: 50%;"></el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col>
@@ -124,6 +124,30 @@
         <el-button type="warning" class="closeBtn" @click="dialogVisible = false">关闭</el-button>
       </span>
     </el-dialog>
+    <el-dialog
+      title="新增一条致命告警"
+      class="alarmDialag"
+      :visible.sync="alarmDialogVisible"
+      width="25%"
+      :before-close="alarmHandleClose"
+      style="height:100%;"
+    >
+      <el-row>
+        <el-col :span="11" style="float:left;">
+          <span>告警源：<span style="color : red;">甘孜监狱-大门门禁</span></span>
+        </el-col>
+        <el-col :span="8" style="float:right;">
+          <span>告警级别：<span style="color : red;">致命</span></span>
+        </el-col>
+        <el-col :span="12">
+          <span>告警描述：大门长时间未关闭</span>
+        </el-col>
+      </el-row>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" class="confirmBtn" @click="dealAlarm">立即处理</el-button>
+        <el-button type="warning" class="closeBtn" @click="alarmDialogVisible = false">暂不处理</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -133,7 +157,8 @@ export default {
     return {
       getters: 'warn/index/list',
       activeName: 'first',
-      dialogVisible: true,
+      dialogVisible: false,
+      alarmDialogVisible: true,
       // 分页列表
       listQuery: {
         total: 36,
@@ -274,9 +299,15 @@ export default {
       //   })
       //   .catch(_ => { });
     },
+    alarmHandleClose (done) {
+      this.alarmDialogVisible = false;
+    },
     // 提交表单
     onSubmit () {
       this.dialogVisible = false;
+    },
+    dealAlarm () {
+      this.alarmDialogVisible = false;
     }
   }
 }
@@ -446,8 +477,59 @@ export default {
   .dialog-footer {
     .confirmBtn,
     .closeBtn {
-      width: 82px;
       height: 34px;
+      padding: 0 26px;
+      border-radius: 4px;
+      font-size: 14px;
+      background-color: #5466e0;
+    }
+    .closeBtn {
+      background-color: #f89744;
+    }
+  }
+}
+// 记得把当前致命告警抽离出去
+.alarmDialag >>> .el-dialog {
+  .el-dialog__header {
+    height: 110px;
+    line-height: 110px;
+    text-align: center;
+    background-image: linear-gradient(to right, #f74545, #f74545);
+    padding: 0;
+    .el-dialog__title {
+      color: #fff;
+      font-size: 20px;
+      vertical-align: middle;
+    }
+    .el-dialog__title:before {
+      content: '\e781';
+      font-size: 64px;
+      font-family: 'iconfont';
+      margin-right: 6px;
+    }
+    .el-dialog__headerbtn {
+      top: 0;
+      right: 0;
+      .el-dialog__close {
+        color: #fff;
+        font-size: 16px;
+        opacity: 67%;
+      }
+    }
+  }
+  .el-dialog__body {
+    color: #999999;
+    font-size: 16px;
+    line-height: 40px;
+    .el-col {
+      margin-bottom: 20px;
+    }
+  }
+  .dialog-footer {
+    .confirmBtn,
+    .closeBtn {
+      height: 34px;
+      padding: 0 26px;
       border-radius: 4px;
       font-size: 14px;
       background-color: #5466e0;
