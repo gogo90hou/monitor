@@ -77,7 +77,7 @@ export default {
         }
       }]);
     } else {
-      this.defaultBehavors.push('hover-edge');
+      this.defaultBehavors.push('hover-node');
     }
     initBehavors();
   },

@@ -1,5 +1,5 @@
 <template>
-  <G6Editor :mode="'view'" :height="pageHeight" :data="topo" />
+  <G6Editor :mode="'edit'" :height="pageHeight" :data="topo" />
 </template>
 <script>
 import G6Editor from '@/components/topo';
