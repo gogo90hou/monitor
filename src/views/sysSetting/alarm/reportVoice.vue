@@ -5,14 +5,33 @@
       <el-col :span="12">
         <div class="grid-content bg-purple-left">
           <el-row>
-            <el-col :span="6"><div class="level levelDeadly"><span class="col-title">级别</span><div><i class="iconfont iconicon_Fatal_warning" /><span>致命</span></div></div></el-col>
-            <el-col :span="12"><div class="changeVoice"><span class="col-title">选择声音</span><div>报警声音1.mp3</div></div></el-col>
+            <el-col :span="6">
+              <div class="level levelDeadly">
+                <span class="col-title">级别</span>
+                <div>
+                  <i class="iconfont iconicon_Fatal_warning"></i>
+                  <span>致命</span>
+                </div>
+              </div>
+            </el-col>
+            <el-col :span="12">
+              <div class="changeVoice">
+                <span class="col-title">选择声音</span>
+                <div>报警声音1.mp3</div>
+              </div>
+            </el-col>
             <el-col :span="6">
               <div class="switchVoice">
                 <span class="col-title">开启/关闭声音</span>
                 <div class="switch-body">
-                  <div :class="{'switch-open': switchIsOpen,'isSwitchLeft': true}" @click="switchOpen">已开启</div>
-                  <div :class="{'switch-close': !switchIsOpen,'isSwitchRight': true}" @click="switchClose">已关闭</div>
+                  <div
+                    :class="{'switch-open': switchIsOpen,'isSwitchLeft': true}"
+                    @click="switchOpen"
+                  >已开启</div>
+                  <div
+                    :class="{'switch-close': !switchIsOpen,'isSwitchRight': true}"
+                    @click="switchClose"
+                  >已关闭</div>
                 </div>
               </div>
             </el-col>
@@ -22,14 +41,33 @@
       <el-col :span="12">
         <div class="grid-content bg-purple-left">
           <el-row>
-            <el-col :span="6"><div class="level levelSerious"><span class="col-title">级别</span><div><i class="iconfont iconicon_Critical_warning" /><span>严重</span></div></div></el-col>
-            <el-col :span="12"><div class="changeVoice"><span class="col-title">选择声音</span><div>报警声音1.mp3</div></div></el-col>
+            <el-col :span="6">
+              <div class="level levelSerious">
+                <span class="col-title">级别</span>
+                <div>
+                  <i class="iconfont iconicon_Critical_warning"></i>
+                  <span>严重</span>
+                </div>
+              </div>
+            </el-col>
+            <el-col :span="12">
+              <div class="changeVoice">
+                <span class="col-title">选择声音</span>
+                <div>报警声音1.mp3</div>
+              </div>
+            </el-col>
             <el-col :span="6">
               <div class="switchVoice">
                 <span class="col-title">开启/关闭声音</span>
                 <div class="switch-body">
-                  <div :class="{'switch-open': switchIsOpen,'isSwitchLeft': true}" @click="switchOpen">已开启</div>
-                  <div :class="{'switch-close': !switchIsOpen,'isSwitchRight': true}" @click="switchClose">已关闭</div>
+                  <div
+                    :class="{'switch-open': switchIsOpen,'isSwitchLeft': true}"
+                    @click="switchOpen"
+                  >已开启</div>
+                  <div
+                    :class="{'switch-close': !switchIsOpen,'isSwitchRight': true}"
+                    @click="switchClose"
+                  >已关闭</div>
                 </div>
               </div>
             </el-col>
@@ -41,14 +79,33 @@
       <el-col :span="12">
         <div class="grid-content bg-purple-left">
           <el-row>
-            <el-col :span="6"><div class="level levelGeneral"><span class="col-title">级别</span><div><i class="iconfont iconicon_General_warning" /><span>一般</span></div></div></el-col>
-            <el-col :span="12"><div class="changeVoice"><span class="col-title">选择声音</span><div>报警声音1.mp3</div></div></el-col>
+            <el-col :span="6">
+              <div class="level levelGeneral">
+                <span class="col-title">级别</span>
+                <div>
+                  <i class="iconfont iconicon_General_warning"></i>
+                  <span>一般</span>
+                </div>
+              </div>
+            </el-col>
+            <el-col :span="12">
+              <div class="changeVoice">
+                <span class="col-title">选择声音</span>
+                <div>报警声音1.mp3</div>
+              </div>
+            </el-col>
             <el-col :span="6">
               <div class="switchVoice">
                 <span class="col-title">开启/关闭声音</span>
                 <div class="switch-body">
-                  <div :class="{'switch-open': switchIsOpen,'isSwitchLeft': true}" @click="switchOpen">已开启</div>
-                  <div :class="{'switch-close': !switchIsOpen,'isSwitchRight': true}" @click="switchClose">已关闭</div>
+                  <div
+                    :class="{'switch-open': switchIsOpen,'isSwitchLeft': true}"
+                    @click="switchOpen"
+                  >已开启</div>
+                  <div
+                    :class="{'switch-close': !switchIsOpen,'isSwitchRight': true}"
+                    @click="switchClose"
+                  >已关闭</div>
                 </div>
               </div>
             </el-col>
@@ -58,14 +115,33 @@
       <el-col :span="12">
         <div class="grid-content bg-purple-left">
           <el-row>
-            <el-col :span="6"><div class="level levelPrompt"><span class="col-title">级别</span><div><i class="iconfont iconicon_Friendship_tips" /><span>提示</span></div></div></el-col>
-            <el-col :span="12"><div class="changeVoice"><span class="col-title">选择声音</span><div>报警声音1.mp3</div></div></el-col>
+            <el-col :span="6">
+              <div class="level levelPrompt">
+                <span class="col-title">级别</span>
+                <div>
+                  <i class="iconfont iconicon_Friendship_tips"></i>
+                  <span>提示</span>
+                </div>
+              </div>
+            </el-col>
+            <el-col :span="12">
+              <div class="changeVoice">
+                <span class="col-title">选择声音</span>
+                <div>报警声音1.mp3</div>
+              </div>
+            </el-col>
             <el-col :span="6">
               <div class="switchVoice">
                 <span class="col-title">开启/关闭声音</span>
                 <div class="switch-body">
-                  <div :class="{'switch-open': switchIsOpen,'isSwitchLeft': true}" @click="switchOpen">已开启</div>
-                  <div :class="{'switch-close': !switchIsOpen,'isSwitchRight': true}" @click="switchClose">已关闭</div>
+                  <div
+                    :class="{'switch-open': switchIsOpen,'isSwitchLeft': true}"
+                    @click="switchOpen"
+                  >已开启</div>
+                  <div
+                    :class="{'switch-close': !switchIsOpen,'isSwitchRight': true}"
+                    @click="switchClose"
+                  >已关闭</div>
                 </div>
               </div>
             </el-col>

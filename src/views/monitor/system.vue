@@ -13,9 +13,18 @@
       </el-tab-pane>
       <el-tab-pane label="数据库" name="second">
         <div class="database-filter">
-          <span :class="{'filter-active':filterName==='Oracle'}" @click="filterTab('Oracle')">Oracle (43)</span>
-          <span :class="{'filter-active':filterName==='sqlserver'}" @click="filterTab('sqlserver')">sqlserver (21)</span>
-          <span :class="{'filter-active':filterName==='Mysql'}" @click="filterTab('Mysql')">Mysql (32)</span>
+          <span
+            :class="{'filter-active':filterName==='Oracle'}"
+            @click="filterTab('Oracle')"
+          >Oracle (43)</span>
+          <span
+            :class="{'filter-active':filterName==='sqlserver'}"
+            @click="filterTab('sqlserver')"
+          >sqlserver (21)</span>
+          <span
+            :class="{'filter-active':filterName==='Mysql'}"
+            @click="filterTab('Mysql')"
+          >Mysql (32)</span>
         </div>
         <dynamic-table :field-arr="databaseFieldArr" :getters="databaseGetters" @edit="edit" />
       </el-tab-pane>
@@ -48,46 +57,33 @@ export default {
       btnarr: [{ id: '1', value: ' 管理系统和数据库', eventName: 'manageHandle', type: 'info' }],
       fieldArr: [
         {
-          label: '系统标识',
-          key: 'sysNum',
+          label: '操作系统名称',
+          key: 'osName',
           formatter: ''
         }, {
           label: '系统类别',
-          key: 'sysCategory',
+          key: 'osTypeName',
           formatter: '',
           filters: [{ text: 'windows操作系统', value: 'windows操作系统' }, { text: 'liunx操作系统', value: 'liunx操作系统' }]
         }, {
-          label: '磁盘',
-          key: 'disk',
+          label: '运行状态',
+          key: 'runStateName',
           formatter: ''
         }, {
-          label: '磁盘利用率',
-          key: 'diskUtilization',
+          label: '硬盘状态',
+          key: 'diskStateName',
           formatter: ''
         }, {
-          label: '内存',
-          key: 'memory',
+          label: '内存状态',
+          key: 'memoryStateName',
           formatter: ''
         }, {
-          label: '内存使用率',
-          key: 'memoryUtilization',
+          label: 'cpu负载',
+          key: 'cpuStateName',
           formatter: ''
         }, {
-          label: 'CPU使用率',
-          key: 'cpuUtilization',
-          formatter: ''
-        }, {
-          label: '进程数量',
-          key: 'processNum',
-          formatter: ''
-        }, {
-          label: '文件读写状态',
-          key: 'fileState',
-          formatter: '',
-          filters: [{ text: '只读', value: '只读' }, { text: '只写', value: '只写' }, { text: '可读可写', value: '可读可写' }]
-        }, {
-          label: '登录用户',
-          key: 'loginUser',
+          label: '所在服务器',
+          key: 'areaName',
           formatter: ''
         }, {
           label: '操作',
@@ -96,8 +92,8 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/detail',
-            query: ['id', 'name'],
+            path: '/system_detail',
+            query: ['id'],
             colorType: 'tableBlue'
           }]
         }
@@ -168,7 +164,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('monitor/system/getList');
+    this.$store.dispatch('monitor/system/getList', { currentPage: 1, queryParam: {}, rowsPerPage: 10 });
     this.$store.dispatch('monitor/system/getDatabaseList');
   },
   methods: {
@@ -213,7 +209,7 @@ export default {
     color: #38ace1;
   }
   span:after {
-    content: '';
+    content: "";
     width: 1px;
     height: 17px;
     display: block;
@@ -222,7 +218,7 @@ export default {
     background-color: #dddee0;
   }
   span:nth-last-child(1):after {
-    content: '';
+    content: "";
     width: 0;
     height: 0;
   }

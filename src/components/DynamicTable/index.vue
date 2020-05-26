@@ -24,7 +24,7 @@
             >{{ i.label }}</el-button>
           </div>
           <div v-else-if="item.formatter">
-            <div v-format="[scope.row[item.key],item.formatter,scope.row,themeGroup]" />
+            <div v-format="[scope.row[item.key],item.formatter,scope.row,themeGroup]"></div>
           </div>
           <div v-else>{{ scope.row[item.key] }}</div>
         </template>

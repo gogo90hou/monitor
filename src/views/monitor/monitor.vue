@@ -179,6 +179,26 @@ export default {
         }
       ]
     }
+  },
+
+  methods: {
+    pagination (val) {
+      this.listQuery.page = val.page;
+      this.listQuery.limit = val.limit;
+    },
+    handleClick () { },
+    searchKey (val) {
+      console.log(val);
+    },
+    judgeEvent (val) {
+      console.log(val);
+    },
+    edit (data) {
+      console.log(data)
+    },
+    filterTab (val) {
+      this.filterName = val;
+    }
   }
 }
 </script>
