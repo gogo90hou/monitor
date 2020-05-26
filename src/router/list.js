@@ -5,7 +5,7 @@ const routers = [
   },
   {
     'path': '/topo',
-    'component': '/warn/index.vue'
+    'component': '/topological/index.vue'
   },
   {
     'path': '/device',

@@ -1,6 +1,19 @@
 <template>
   <div class="monitor">
-    <HeadMenu title="所有设备" />
+    <div class="header-title">
+      <HeadMenu title="所有设备" />
+      <ul class="colorList">
+        <li>
+          <span class="red"></span>异常
+        </li>
+        <li>
+          <span class="gray"></span>维护中
+        </li>
+        <li>
+          <span class="blue"></span>总数
+        </li>
+      </ul>
+    </div>
     <el-row class="list" :gutter="30">
       <el-col :span="4">
         <div class="content">
@@ -13,7 +26,7 @@
             </p>
           </div>
           <div class="right">
-            <span class="icon iconfont iconicon_Access_control" />
+            <span class="icon iconfont iconicon_Access_control"></span>
           </div>
         </div>
       </el-col>
@@ -28,7 +41,7 @@
             </p>
           </div>
           <div class="right">
-            <span class="icon iconfont iconicon_alarm" />
+            <span class="icon iconfont iconicon_alarm"></span>
           </div>
         </div>
       </el-col>
@@ -43,7 +56,7 @@
             </p>
           </div>
           <div class="right">
-            <span class="icon iconfont iconicon_power_grid" />
+            <span class="icon iconfont iconicon_power_grid"></span>
           </div>
         </div>
       </el-col>
@@ -58,7 +71,7 @@
             </p>
           </div>
           <div class="right">
-            <span class="icon iconfont iconicon_radio_broadcast" />
+            <span class="icon iconfont iconicon_radio_broadcast"></span>
           </div>
         </div>
       </el-col>
@@ -73,7 +86,7 @@
             </p>
           </div>
           <div class="right">
-            <span class="icon iconfont iconicon_Monitor_intercom" />
+            <span class="icon iconfont iconicon_Monitor_intercom"></span>
           </div>
         </div>
       </el-col>
@@ -88,7 +101,7 @@
             </p>
           </div>
           <div class="right">
-            <span class="icon iconfont iconicon_Webcam" />
+            <span class="icon iconfont iconicon_Webcam"></span>
           </div>
         </div>
       </el-col>
@@ -171,6 +184,34 @@ export default {
 </script>
 <style lang="scss">
 .monitor {
+  .header-title {
+    overflow: hidden;
+    .head-menu {
+      display: inline-block;
+    }
+  }
+  .colorList {
+    float: right;
+    font-size: 14px;
+    li {
+      display: inline-block;
+      margin-right: 20px;
+      span {
+        display: inline-block;
+        width: 16px;
+        height: 8px;
+        vertical-align: middle;
+        background-color: #ff0000;
+        margin-right: 6px;
+        &.gray {
+          background-color: #999999;
+        }
+        &.blue {
+          background-color: #afa9dc;
+        }
+      }
+    }
+  }
   .list {
     padding-bottom: 50px;
     .content {
@@ -178,7 +219,7 @@ export default {
       width: 100%;
       color: #545454;
       font-size: 0;
-      background-color: rgba(135, 116, 255, 0.07);
+      background-color: #fff;
       .left {
         display: inline-block;
         width: 70%;
@@ -192,7 +233,7 @@ export default {
       }
       .icon {
         font-size: 38px;
-        color: #999;
+        color: #5466e0;
       }
       .name {
         margin-bottom: 20px;
@@ -202,12 +243,13 @@ export default {
         font-size: 20px;
         .red {
           color: #ff0000;
+          font-size: 24px;
         }
         .gray {
           color: #999999;
         }
         .blue {
-          color: #9083ec;
+          color: #afa9dc;
         }
       }
     }

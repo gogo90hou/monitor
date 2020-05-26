@@ -1,3 +1,4 @@
+
 <template>
   <div class="monitorbar">
     <ul>
@@ -7,7 +8,7 @@
         :class="[currentPath.indexOf(item.path) !== -1?'active':'']"
         @click="jump(item)"
       >
-        <div class="icon iconfont" :class="setClass(item.data.icon)" />
+        <div class="icon iconfont" :class="setClass(item.data.icon)"></div>
         <span>{{ item.name }}</span>
       </li>
     </ul>
@@ -67,18 +68,18 @@ export default {
   //   border-color: themed("navColor");
   // }
   li {
-    padding: 20px 0;
-    background-color: rgba(128, 107, 253, 0.2);
-    margin-bottom: 1px;
-    color: #fff;
+    padding: 20px;
+    background-color: #2c2b40;
+    border-bottom: 1px solid #181d2b;
+    color: #8d8f98;
     cursor: pointer;
     &:hover,
     &.active {
-      background: -webkit-linear-gradient(
-        left,
-        rgba(128, 107, 253, 0.7) 0%,
-        rgba(128, 107, 253, 0.2) 100%
-      );
+      background: -webkit-linear-gradient(left, #3f478b 0%, #2c2b40 100%);
+      color: #d1d2d3;
+      .icon {
+        color: #5466e0;
+      }
     }
     .icon {
       font-size: 30px;

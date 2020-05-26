@@ -1,10 +1,10 @@
 <template>
   <div :class="classObj" class="app-wrapper">
-    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
+    <!-- <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"></div> -->
     <!-- <sidebar class="sidebar-container" /> -->
     <CommonHeader />
     <div class="main-container">
-      <div :class="{'fixed-header':fixedHeader}" />
+      <!-- <div :class="{'fixed-header':fixedHeader}" /> -->
       <app-main />
       <right-panel>
         <settings />
@@ -59,6 +59,7 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
+  font-size: 0;
   &.mobile.openSidebar {
     position: fixed;
     top: 0;
