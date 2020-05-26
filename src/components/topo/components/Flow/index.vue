@@ -8,17 +8,25 @@ import customEdge from './customEdge';
 import teamNode from './teamNode'
 export default {
   name: 'Flow',
-  data() {
+  props: {
+    mode: {
+      type: String,
+      default: () => {
+        return 'view'
+      }
+    }
+  },
+  data () {
     return {
       page: null
     };
   },
-  created() {
+  created () {
     this.init();
   },
   methods: {
-    init() {
-      customNode.init();
+    init () {
+      customNode.init(this.mode);
       customEdge.init();
       teamNode.init();
     }
