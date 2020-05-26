@@ -159,11 +159,35 @@ export default {
         }, {
           label: '告警级别',
           key: 'alarmLevel',
-          formatter: '',
+          formatter: [{
+            key: '1',
+            label: '致命',
+            color: '',
+            className: 'iconicon_close_alt',
+            iconColor: 'red'
+          }, {
+            key: '2',
+            label: '严重',
+            color: '',
+            className: 'iconicon_Critical_warning',
+            iconColor: 'levelSerious'
+          }, {
+            key: '3',
+            label: '一般',
+            color: '',
+            className: 'iconicon_minus_alt',
+            iconColor: 'levelGeneral'
+          }, {
+            key: '4',
+            label: '提示',
+            color: '',
+            className: 'iconicon_info',
+            iconColor: 'levelprompt'
+          }],
           filters: [{ text: '致命', value: '致命' }, { text: '严重', value: '严重' }, { text: '一般', value: '一般' }, { text: '提示', value: '提示' }]
         }, {
           label: '告警描述',
-          key: 'alarmnoteription',
+          key: 'alarmDescription',
           formatter: ''
         }, {
           label: '告警时间',

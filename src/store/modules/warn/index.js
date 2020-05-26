@@ -22,7 +22,7 @@ const data = [
     serialNumber: '231',
     alarmSource: '甘孜监狱-大门门禁',
     alarmCategory: '安防设备',
-    alarmLevel: '致命',
+    alarmLevel: '1',
     alarmDescription: '大门长时间未关闭',
     alarmTime: '2020/04/15  09:01:23',
     alarmState: '未确认',
