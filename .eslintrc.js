@@ -30,6 +30,7 @@ module.exports = {
       "svg": "always",
       "math": "always"
     }],
+    'vue/html-self-closing': 'off',
     "vue/singleline-html-element-content-newline": "off",
     "vue/multiline-html-element-content-newline": "off",
     "vue/name-property-casing": ["error", "PascalCase"],

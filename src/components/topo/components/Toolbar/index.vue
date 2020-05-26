@@ -90,7 +90,7 @@ import Util from '@antv/g6/src/util';
 import { uniqueId, getBox } from '&/utils';
 export default {
   name: 'Toolbar',
-  data() {
+  data () {
     return {
       page: {},
       graph: {},
@@ -104,7 +104,7 @@ export default {
     };
   },
   watch: {
-    selectedItem(val) {
+    selectedItem (val) {
       if (val && val.length > 1) {
         this.addGroup = true;
       } else {
@@ -112,17 +112,17 @@ export default {
       }
     }
   },
-  created() {
+  created () {
     this.init();
     this.bindEvent();
   },
   methods: {
-    init() {
+    init () {
       const { editor, command } = this.$parent;
       this.editor = editor;
       this.command = command;
     },
-    bindEvent() {
+    bindEvent () {
       const self = this;
       eventBus.$on('afterAddPage', page => {
         self.page = page;
@@ -160,22 +160,22 @@ export default {
         this.selectedItem = this.graph.findAllByState('node', 'selected');
       });
     },
-    handleUndo() {
+    handleUndo () {
       if (this.undoList.length > 0) this.command.undo();
     },
-    handleRedo() {
+    handleRedo () {
       if (this.redoList.length > 0) this.command.redo();
     },
-    handleDelete() {
+    handleDelete () {
       if (this.selectedItem && this.selectedItem.length > 0) {
         this.command.executeCommand('delete', this.selectedItem);
         this.selectedItem = null;
       }
     },
-    getFormatPadding() {
+    getFormatPadding () {
       return Util.formatPadding(this.graph.get('fitViewPadding'));
     },
-    getViewCenter() {
+    getViewCenter () {
       const padding = this.getFormatPadding();
       const graph = this.graph;
       const width = this.graph.get('width');
@@ -185,15 +185,15 @@ export default {
         y: (height - padding[0] - padding[2]) / 2 + padding[0]
       };
     },
-    handleZoomIn() {
+    handleZoomIn () {
       const currentZoom = this.graph.getZoom();
       this.graph.zoomTo(currentZoom + 0.5, this.getViewCenter());
     },
-    handleZoomOut() {
+    handleZoomOut () {
       const currentZoom = this.graph.getZoom();
       this.graph.zoomTo(currentZoom - 0.5, this.getViewCenter());
     },
-    handleToBack() {
+    handleToBack () {
       if (this.selectedItem && this.selectedItem.length > 0) {
         this.selectedItem.forEach(item => {
           item.toBack();
@@ -201,7 +201,7 @@ export default {
         });
       }
     },
-    handleToFront() {
+    handleToFront () {
       if (this.selectedItem && this.selectedItem.length > 0) {
         this.selectedItem.forEach(item => {
           if (item.getType() === 'edge') {
@@ -217,17 +217,17 @@ export default {
         });
       }
     },
-    handleAutoZoom() {
+    handleAutoZoom () {
       this.graph.fitView(20);
     },
-    handleResetZoom() {
+    handleResetZoom () {
       this.graph.zoomTo(1, this.getViewCenter());
     },
-    handleMuiltSelect() {
+    handleMuiltSelect () {
       this.multiSelect = true;
       this.graph.setMode('mulitSelect');
     },
-    handleAddGroup() {
+    handleAddGroup () {
       // TODO 这部分等阿里更新Group之后添加
       // const model = {
       //   id: 'group' + uniqueId(),
@@ -239,7 +239,7 @@ export default {
       // });
       // this.getPosition(this.selectedItem);
     },
-    getPosition(items) {
+    getPosition (items) {
       const boxList = [];
       items.forEach(item => {
         const box = item.getBBox();
@@ -293,7 +293,7 @@ export default {
       // this.graph.paint();
     },
 
-    consoleData() {
+    consoleData () {
       console.log(this.graph.save());
     }
   }

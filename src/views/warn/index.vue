@@ -55,7 +55,7 @@
       <HeadMenu class="tabs-right-head" :search="true" :options="options" @getValue="searchKey" />
       <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
         <el-tab-pane label="告警列表" name="first">
-          <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
+          <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" @turnOrder="turnOrder" />
         </el-tab-pane>
         <el-tab-pane label="事件列表" name="second">事件列表</el-tab-pane>
         <el-tab-pane label="智能告警" name="third">智能告警</el-tab-pane>
@@ -69,6 +69,61 @@
       :limit.sync="listQuery.limit"
       @pagination="pagination"
     />
+    <el-dialog
+      title="填写工单信息"
+      :visible.sync="dialogVisible"
+      width="37.5%"
+      :before-close="handleClose"
+      style="height:100%;"
+    >
+      <div class="dialog-from" style="height: 100%;">
+        <el-form
+          ref="ruleForm"
+          :model="ruleForm"
+          :rules="rules"
+          label-width="100px"
+          class="demo-ruleForm"
+        >
+          <span style="display : inline-block;">
+            <div>
+              <el-col>
+                <el-form-item label="告警源：" prop="alarmSource">
+                  <el-input
+                    v-model="ruleForm.alarmSource"
+                  />
+                </el-form-item>
+              </el-col>
+              <el-col>
+                <el-form-item label="处理人：">
+                  <el-select
+                    v-model="ruleForm.dealingPeople"
+                    placeholder="请选择"
+                    style="width: 50%;"
+                  >
+                    <el-option label="张飞" value="zhangfei" />
+                    <el-option label="李四" value="lisi" />
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col>
+                <el-form-item label="计划解决时间：">
+                  <el-date-picker type="date" placeholder="请选择" v-model="ruleForm.solveTime" style="width: 50%;"></el-date-picker>
+                </el-form-item>
+              </el-col>
+              <el-col>
+                <el-form-item label="备注信息：">
+                  <el-input v-model="ruleForm.note" type="textarea" placeholder="请输入备注信息" />
+                </el-form-item>
+              </el-col>
+            </div>
+          </span>
+        </el-form>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" class="confirmBtn" @click="onSubmit">确认</el-button>
+        <el-button type="warning" class="closeBtn" @click="dialogVisible = false">关闭</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -78,6 +133,7 @@ export default {
     return {
       getters: 'warn/index/list',
       activeName: 'first',
+      dialogVisible: true,
       // 分页列表
       listQuery: {
         total: 36,
@@ -107,7 +163,7 @@ export default {
           filters: [{ text: '致命', value: '致命' }, { text: '严重', value: '严重' }, { text: '一般', value: '一般' }, { text: '提示', value: '提示' }]
         }, {
           label: '告警描述',
-          key: 'alarmDescription',
+          key: 'alarmnoteription',
           formatter: ''
         }, {
           label: '告警时间',
@@ -134,6 +190,8 @@ export default {
           width: '200px',
           buttons: [{
             label: '转工单',
+            type: 'button',
+            method: 'turnOrder',
             query: ['id', 'name'],
             colorType: 'edit'
           }, {
@@ -143,7 +201,24 @@ export default {
             colorType: 'delete'
           }]
         }
-      ]
+      ],
+      ruleForm: {
+        alarmSource: '',
+        dealingPeople: '',
+        solveTime: '',
+        note: ''
+      },
+      rules: {
+        alarmSource: [
+          { required: true, message: '请输入告警源', trigger: 'blur' }
+        ],
+        dealingPeople: [
+          { required: true, message: '请选择处理人', trigger: 'blur' }
+        ],
+        note: [
+          { message: '请输入备注信息', trigger: 'blur' }
+        ]
+      }
     }
   },
   created () {
@@ -160,6 +235,24 @@ export default {
     },
     searchKey () {
 
+    },
+    turnOrder (data) {
+      this.ruleForm.alarmSource = data.alarmSource;
+      this.dialogVisible = true;
+      console.log(data);
+    },
+    // 触发关闭弹窗事件
+    handleClose (done) {
+      this.dialogVisible = false;
+      // this.$confirm('确认关闭？')
+      //   .then(_ => {
+      //     done();
+      //   })
+      //   .catch(_ => { });
+    },
+    // 提交表单
+    onSubmit () {
+      this.dialogVisible = false;
     }
   }
 }
@@ -312,6 +405,31 @@ export default {
       top: 0;
       right: 10px;
       z-index: 99;
+    }
+  }
+  .dialog-from >>> .el-input__prefix,
+  .dialog-from >>> .el-input--prefix {
+    right: 0;
+    font-size: 16px;
+    color: #9599eb;
+    .el-input__inner {
+      padding-left: 5px;
+    }
+    .el-icon-date {
+      float: right;
+    }
+  }
+  .dialog-footer {
+    .confirmBtn,
+    .closeBtn {
+      width: 82px;
+      height: 34px;
+      border-radius: 4px;
+      font-size: 14px;
+      background-color: #5466e0;
+    }
+    .closeBtn {
+      background-color: #f89744;
     }
   }
 }
