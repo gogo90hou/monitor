@@ -162,18 +162,74 @@
     </el-row>
     <el-row :gutter="gutter" class="three">
       <el-col :span="8">
-        <div class="boxs">
-          <h3>设备告警排名</h3>
+        <div class="boxs warnRank">
+          <h3>
+            设备告警排名
+            <span class="right">起止目前排名</span>
+          </h3>
+          <ul ref="warnRanklist">
+            <li
+              v-for="(item,index) in warnList"
+              :key="index"
+              :style="{height:liHeight + 'px',lineHeight:liHeight+'px'}"
+            >
+              <span class="sort">{{ index+1 }}</span>
+              <span class="name">{{ item.name }}</span>
+              <span class="right">{{ item.num }}个</span>
+            </li>
+          </ul>
         </div>
       </el-col>
       <el-col :span="8">
         <div class="boxs">
           <h3>设备完好率</h3>
+          <el-row class="chooseGroup">
+            <el-col :span="8">
+              <div>
+                <span class="icon iconfont"></span>
+                <span>周</span>
+              </div>
+            </el-col>
+            <el-col :span="8">
+              <div>
+                <span class="icon iconfont"></span>
+                <span>月</span>
+              </div>
+            </el-col>
+            <el-col :span="8">
+              <div>
+                <span class="icon iconfont"></span>
+                <span>年</span>
+              </div>
+            </el-col>
+          </el-row>
+          <echartBar></echartBar>
         </div>
       </el-col>
       <el-col :span="8">
         <div class="boxs">
           <h3>监控设备告警趋势</h3>
+          <el-row class="chooseGroup">
+            <el-col :span="8">
+              <div>
+                <span class="icon iconfont"></span>
+                <span>周</span>
+              </div>
+            </el-col>
+            <el-col :span="8">
+              <div>
+                <span class="icon iconfont"></span>
+                <span>月</span>
+              </div>
+            </el-col>
+            <el-col :span="8">
+              <div>
+                <span class="icon iconfont"></span>
+                <span>年</span>
+              </div>
+            </el-col>
+          </el-row>
+          <echartLine></echartLine>
         </div>
       </el-col>
     </el-row>
@@ -182,11 +238,63 @@
 <script>
 import bar from './ui/bar.vue'
 import pie from './ui/pie.vue'
+import echartBar from './ui/echartBar.vue'
+import echartLine from './ui/echartLine.vue'
 export default {
-  components: { bar, pie },
+  components: { bar, pie, echartBar, echartLine },
   data () {
     return {
-      gutter: document.body.clientHeight / 100 * 3
+      gutter: document.body.clientHeight / 100 * 3,
+      liHeight: 40,
+      showNum: 5,
+      warnList: [{
+        name: '省局服务器省局服务器省局服务器1',
+        num: 620
+      }, {
+        name: '省局服务器省局服务器省局服务器1',
+        num: 550
+      }, {
+        name: '省局服务器省局服务器1',
+        num: 620
+      }, {
+        name: '省局服务器省局服务器省局服务器1',
+        num: 620
+      }, {
+        name: '省局服务器1',
+        num: 620
+      }, {
+        name: '省局服务器省局服务器省局服务器1',
+        num: 620
+      }, {
+        name: '省局服务器省局服务器省局服务器1',
+        num: 620
+      }, {
+        name: '省局服务器省局服务器省局服务器1',
+        num: 620
+      }, {
+        name: '省局服务器省局服务器省局服务器1',
+        num: 620
+      }, {
+        name: '省局服务器省局服务器省局服务器1',
+        num: 620
+      }, {
+        name: '省局服务器省局服务器省局服务器1',
+        num: 620
+      }]
+    }
+  },
+  mounted () {
+    this.changeLayout();
+  },
+  methods: {
+    changeLayout () {
+      const ulHeight = this.$refs.warnRanklist.clientHeight;
+      let i = 1;
+      while (ulHeight / i < 35 || ulHeight / i > 45) {
+        i++;
+      }
+      this.liHeight = ulHeight / i;
+      this.showNum = i;
     }
   }
 }
@@ -200,6 +308,7 @@ export default {
     height: 100%;
   }
   .boxs {
+    padding: 2vh 15px;
     background-color: #fff;
     height: 100%;
     h3 {
@@ -256,6 +365,13 @@ export default {
     .el-row {
       height: 100%;
     }
+    .chooseGroup {
+      height: auto;
+      width: 30%;
+      font-size: 12px;
+      margin-left: 70%;
+      margin-bottom: 10px;
+    }
   }
   .healthy {
     padding: 2vh 15px;
@@ -280,6 +396,30 @@ export default {
         color: #000000;
         display: inline-block;
         margin-top: 20px;
+      }
+    }
+  }
+  .warnRank {
+    overflow: hidden;
+    h3 {
+      overflow: hidden;
+      margin-bottom: 1vh;
+      .right {
+        float: right;
+        font-size: 14px;
+        color: #c5c5c5;
+      }
+    }
+    ul {
+      height: calc(33vh - 32px - 18px);
+      overflow: hidden;
+    }
+    li {
+      color: #000000;
+      font-size: 14px;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+      .right {
+        float: right;
       }
     }
   }
