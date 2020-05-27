@@ -39,7 +39,8 @@ function getRouter (json, parentId) {
         children: [{
           path: item.menuValue,
           name: item.menuName,
-          component: getComponent(item.menuValue)
+          component: getComponent(item.menuValue),
+          children: getRouter(json, item.id)
         }]
       })
     } else {

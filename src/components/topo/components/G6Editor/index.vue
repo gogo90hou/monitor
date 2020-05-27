@@ -1,7 +1,7 @@
 <template>
   <div class="topo-container">
     <context-menu />
-    <toolbar v-if="mode === 'edit'" />
+    <toolbar v-if="mode === 'edit'" @save="save" />
     <div class="bottom-container" :class="mode === 'edit' ? 'edit-statu' : 'view-statu'">
       <div ref="sidebar" class="topo-sidebar">
         <item-panel v-if="mode === 'edit'" @toggle="toggleItempanel" />
@@ -89,6 +89,9 @@ export default {
     toggleItempanel (data) {
       this.sideBarWidth = data || 0;
       this.viewportWidth = this.$refs['viewContainer'].offsetWidth - this.sideBarWidth;
+    },
+    save (data) {
+      this.$emit('save', data);
     }
   }
 };

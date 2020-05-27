@@ -229,12 +229,52 @@ const data = [{
 }, {
   'id': 'b43928f434c9474a8c0c9c3620f41500',
   'menuName': '拓扑图',
-  'menuType': 'url',
-  'menuValue': '/topo',
+  'menuType': 'directory',
+  'menuValue': '',
   'pxNum': 1,
   'icon': null,
   'memo': null,
   'parent': null,
+  'appClientId': '2493ebd832074abbbeffbb06da88245c'
+}, {
+  'id': 'b43928f434c9474a8c0c9c3620f411111',
+  'menuName': '编辑拓扑图',
+  'menuType': 'url',
+  'menuValue': '/edit_topo',
+  'pxNum': 2,
+  'icon': null,
+  'memo': null,
+  'parent': {
+    'id': 'b43928f434c9474a8c0c9c3620f41500',
+    'menuName': '拓扑图',
+    'menuType': 'directory',
+    'menuValue': '',
+    'pxNum': 1,
+    'icon': null,
+    'memo': null,
+    'parent': null,
+    'appClientId': '2493ebd832074abbbeffbb06da88245c'
+  },
+  'appClientId': '2493ebd832074abbbeffbb06da88245c'
+}, {
+  'id': 'b43928f434c9474a8c0c9c3620f4111112',
+  'menuName': '预览拓扑图',
+  'menuType': 'url',
+  'menuValue': '/preview_topo',
+  'pxNum': 1,
+  'icon': null,
+  'memo': null,
+  'parent': {
+    'id': 'b43928f434c9474a8c0c9c3620f41500',
+    'menuName': '拓扑图',
+    'menuType': 'directory',
+    'menuValue': '',
+    'pxNum': 1,
+    'icon': null,
+    'memo': null,
+    'parent': null,
+    'appClientId': '2493ebd832074abbbeffbb06da88245c'
+  },
   'appClientId': '2493ebd832074abbbeffbb06da88245c'
 }, {
   'id': '722a1f99664e4ed88b272dcab8d2e537',

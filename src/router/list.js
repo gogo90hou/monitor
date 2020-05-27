@@ -4,8 +4,12 @@ const routers = [
     'component': '/warn/index.vue'
   },
   {
-    'path': '/topo',
+    'path': '/preview_topo',
     'component': '/topological/index.vue'
+  },
+  {
+    'path': '/edit_topo',
+    'component': '/topological/editTopo.vue'
   },
   {
     'path': '/device',
