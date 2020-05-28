@@ -133,13 +133,13 @@
       style="height:100%;"
     >
       <el-row>
-        <el-col :span="11" style="float:left;">
+        <el-col :span="16" style="float:left;">
           <span>告警源：<span style="color : red;">甘孜监狱-大门门禁</span></span>
         </el-col>
         <el-col :span="8" style="float:right;">
           <span>告警级别：<span style="color : red;">致命</span></span>
         </el-col>
-        <el-col :span="12">
+        <el-col :span="24">
           <span>告警描述：大门长时间未关闭</span>
         </el-col>
       </el-row>

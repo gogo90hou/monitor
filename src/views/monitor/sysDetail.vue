@@ -40,7 +40,7 @@
                     <div class="figure">
                       <div class="figure_small"></div>
                     </div>
-                    <!-- <div class="text">已使用45G&nbsp;&nbsp;&nbsp;共100G&nbsp;&nbsp;&nbsp;</div> -->
+                    <div class="text">已使用45G&nbsp;&nbsp;共100G</div>
                   </div>
                   <span class="percentage">45%</span>
                 </div>
@@ -50,12 +50,33 @@
                     <div class="figure">
                       <div class="figure_small"></div>
                     </div>
-                    <!-- <div class="text">已使用45G&nbsp;&nbsp;&nbsp;共100G&nbsp;&nbsp;&nbsp;</div> -->
+                    <div class="text">已使用45G&nbsp;&nbsp;共100G</div>
                   </div>
                   <span class="percentage">45%</span>
                 </div>
               </el-col>
-              <el-col :span="7" class="histogram_box_two"></el-col>
+              <el-col :span="7" class="histogram_box_one">
+                <div class="histogram_cdef">
+                  <span class="disk">C盘 ：</span>
+                  <div class="histogram_middle_box">
+                    <div class="figure">
+                      <div class="figure_small"></div>
+                    </div>
+                    <div class="text">已使用45G&nbsp;&nbsp;共100G</div>
+                  </div>
+                  <span class="percentage">45%</span>
+                </div>
+                <div class="histogram_cdef">
+                  <span class="disk">E盘 ：</span>
+                  <div class="histogram_middle_box">
+                    <div class="figure">
+                      <div class="figure_small"></div>
+                    </div>
+                    <div class="text">已使用45G&nbsp;&nbsp;共100G</div>
+                  </div>
+                  <span class="percentage">45%</span>
+                </div>
+              </el-col>
             </el-row>
           </div>
         </el-col>
@@ -217,7 +238,7 @@ export default {
         }
         .histogram_middle_box {
           display: inline-block;
-          width: 50%;
+          width: calc(100% - 100px);
           .figure {
             display: inline-block;
             width: 100%;
@@ -235,6 +256,10 @@ export default {
             }
           }
           .text {
+            position: absolute;
+            width: 130px;
+            top: 16px;
+            left: calc(50% - 65px);
             color: #606060;
             font-size: 14px;
           }
