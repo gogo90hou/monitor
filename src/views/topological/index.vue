@@ -1,6 +1,21 @@
 <template>
   <div class="topological-container">
     <div class="topo-menu">
+      <div class="search-container">
+        <el-input
+          v-model="serachinputName"
+          class="filter-item"
+          placeholder="请输入关键字"
+          @keyup.enter.native="handleSerchKey"
+        >
+          <i
+            slot="suffix"
+            class="el-input__icon el-icon-search"
+            style="cursor : pointer;"
+            @click="handleSerchKey"
+          />
+        </el-input>
+      </div>
       <tree-menu :menu="menu" @click="handleNodeClick" />
     </div>
     <div class="right-panel">
@@ -24,7 +39,8 @@ export default {
     return {
       selectTopo: {},
       menu: null,
-      topo: null
+      topo: null,
+      serachinputName: ''
     };
   },
   computed: {
@@ -37,6 +53,9 @@ export default {
     this.topo = this.getTopoData();
   },
   methods: {
+    handleSerchKey (val) {
+
+    },
     handleNodeClick (data) {
       this.selectTopo = data;
       this.getTopoData(data);
@@ -453,7 +472,15 @@ export default {
     left: 0;
     top: 0;
     bottom: 0;
-    background: rgba(44, 43, 64, 1);
+    background: #2c2b40;
+    .search-container {
+      padding: 22px 10px;
+      .filter-item {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(65, 64, 97, 1);
+        border-radius: 3px;
+      }
+    }
   }
   .right-panel {
     position: absolute;
