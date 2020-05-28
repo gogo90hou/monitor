@@ -30,10 +30,10 @@
                   <span class="box_title">硬盘</span>
                 </div>
               </el-col>
-              <el-col :span="3" class="partition">
+              <el-col :span="2" class="partition">
                 <div class="histogram_title">分区4个</div>
               </el-col>
-              <el-col :span="7" class="histogram_box_one">
+              <el-col :span="7" class="histogram_box">
                 <div class="histogram_cdef">
                   <span class="disk">C盘 ：</span>
                   <div class="histogram_middle_box">
@@ -55,9 +55,9 @@
                   <span class="percentage">45%</span>
                 </div>
               </el-col>
-              <el-col :span="7" class="histogram_box_one">
+              <el-col :span="7" class="histogram_box haha">
                 <div class="histogram_cdef">
-                  <span class="disk">C盘 ：</span>
+                  <span class="disk">D盘 ：</span>
                   <div class="histogram_middle_box">
                     <div class="figure">
                       <div class="figure_small"></div>
@@ -67,14 +67,14 @@
                   <span class="percentage">45%</span>
                 </div>
                 <div class="histogram_cdef">
-                  <span class="disk">E盘 ：</span>
+                  <span class="disk">F盘 ：</span>
                   <div class="histogram_middle_box">
                     <div class="figure">
-                      <div class="figure_small"></div>
+                      <div class="figure_small" style="width : 90%;background-color: #F13E3E;"></div>
                     </div>
-                    <div class="text">已使用45G&nbsp;&nbsp;共100G</div>
+                    <div class="text">已使用90G&nbsp;&nbsp;共100G</div>
                   </div>
-                  <span class="percentage">45%</span>
+                  <span class="percentage">90%</span>
                 </div>
               </el-col>
             </el-row>
@@ -138,6 +138,7 @@ export default {
   }
 }
 .detail_body {
+  // 运行和硬盘大盒子
   .run_hardDisk_box {
     .run_detail,
     .hardDisk_detail {
@@ -167,6 +168,7 @@ export default {
         }
       }
     }
+    // 运行情况
     .run_detail {
       margin-right: 22px;
       .run_detail_body {
@@ -206,22 +208,27 @@ export default {
         opacity: 4%;
       }
     }
+    // 硬盘
     .hardDisk_detail {
       .hardDisk_detail_round {
         height: 100%;
         border-right: 1px solid #ececec;
       }
     }
+    // 分区
     .partition {
       .histogram_title {
-        margin-left: 47px;
+        margin-left: 20px;
         margin-top: 16px;
         color: #606060;
         font-size: 14px;
+        text-align: right;
       }
     }
-    .histogram_box_one {
+    // 柱形图盒子
+    .histogram_box {
       position: relative;
+      height: 100%;
       .histogram_cdef {
         position: absolute;
         height: 64px;
@@ -229,8 +236,7 @@ export default {
         padding: 0 32px;
         width: 100%;
         border-radius: 32px;
-        // background-color: #f8f7fb;
-        background-color: pink;
+        background-color: #f8f7fb;
         opacity: 50%;
         .disk {
           font-weight: bold;
@@ -258,7 +264,9 @@ export default {
           .text {
             position: absolute;
             width: 130px;
-            top: 16px;
+            height: 20px;
+            line-height: 20px;
+            top: 38px;
             left: calc(50% - 65px);
             color: #606060;
             font-size: 14px;
@@ -276,6 +284,15 @@ export default {
       }
       .histogram_cdef:nth-child(2) {
         top: 134px;
+      }
+    }
+    .haha {
+      position: relative;
+      margin-left: 15px;
+      .histogram_cdef {
+        position: absolute;
+        top: 50px;
+        right: 0;
       }
     }
   }
