@@ -1,19 +1,23 @@
 <template>
   <div class="toolbar">
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_598462_3xve1872wizzolxr.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//at.alicdn.com/t/font_598462_3xve1872wizzolxr.css"
+    />
     <i
       class="command iconfont icon-undo"
       title="撤销"
       :class="undoList.length>0?'':'disable'"
       @click="handleUndo"
-    />
+    ></i>
     <i
       class="command iconfont icon-redo"
       title="重做"
       :class="redoList.length>0?'':'disable'"
       @click="handleRedo"
-    />
-    <span class="separator" />
+    ></i>
+    <span class="separator"></span>
     <!-- <i data-command="copy" class="command iconfont icon-copy-o disable" title="复制"></i>
     <i data-command="paste" class="command iconfont icon-paster-o disable" title="粘贴"></i>-->
     <i
@@ -22,65 +26,65 @@
       title="删除"
       :class="selectedItem?'':'disable'"
       @click="handleDelete"
-    />
-    <span class="separator" />
+    ></i>
+    <span class="separator"></span>
     <i
       data-command="zoomIn"
       class="command iconfont icon-zoom-in-o"
       title="放大"
       @click="handleZoomIn"
-    />
+    ></i>
     <i
       data-command="zoomOut"
       class="command iconfont icon-zoom-out-o"
       title="缩小"
       @click="handleZoomOut"
-    />
+    ></i>
     <i
       data-command="autoZoom"
       class="command iconfont icon-fit"
       title="适应画布"
       @click="handleAutoZoom"
-    />
+    ></i>
     <i
       data-command="resetZoom"
       class="command iconfont icon-actual-size-o"
       title="实际尺寸"
       @click="handleResetZoom"
-    />
-    <span class="separator" />
+    ></i>
+    <span class="separator"></span>
     <i
       data-command="toBack"
       class="command iconfont icon-to-back"
       :class="selectedItem?'':'disable'"
       title="层级后置"
       @click="handleToBack"
-    />
+    ></i>
     <i
       data-command="toFront"
       class="command iconfont icon-to-front"
       :class="selectedItem?'':'disable'"
       title="层级前置"
       @click="handleToFront"
-    />
-    <span class="separator" />
-    <span class="separator" />
+    ></i>
+    <span class="separator"></span>
+    <span class="separator"></span>
     <i
       data-command="multiSelect"
       class="command iconfont icon-select"
       :class="multiSelect?'disable':''"
       title="多选"
       @click="handleMuiltSelect"
-    />
+    ></i>
     <i
       data-command="addGroup"
       class="command iconfont icon-group"
       title="成组"
       :class="addGroup?'':'disable'"
       @click="handleAddGroup"
-    />
-    <i data-command="unGroup" class="command iconfont icon-ungroup disable" title="解组" />
-    <el-button type="primary" @click="consoleData">控制台输出数据</el-button>
+    ></i>
+    <i data-command="unGroup" class="command iconfont icon-ungroup disable" title="解组"></i>
+    <el-button type="primary" @click="consoleData">保存</el-button>
   </div>
 </template>
 
@@ -188,10 +192,12 @@ export default {
     handleZoomIn () {
       const currentZoom = this.graph.getZoom();
       this.graph.zoomTo(currentZoom + 0.5, this.getViewCenter());
+      eventBus.$emit('redrawCanvas');
     },
     handleZoomOut () {
       const currentZoom = this.graph.getZoom();
       this.graph.zoomTo(currentZoom - 0.5, this.getViewCenter());
+      eventBus.$emit('redrawCanvas');
     },
     handleToBack () {
       if (this.selectedItem && this.selectedItem.length > 0) {
@@ -219,9 +225,11 @@ export default {
     },
     handleAutoZoom () {
       this.graph.fitView(20);
+      eventBus.$emit('redrawCanvas');
     },
     handleResetZoom () {
       this.graph.zoomTo(1, this.getViewCenter());
+      eventBus.$emit('redrawCanvas');
     },
     handleMuiltSelect () {
       this.multiSelect = true;
@@ -294,7 +302,7 @@ export default {
     },
 
     consoleData () {
-      console.log(this.graph.save());
+      this.$emit('save', this.graph.save());
     }
   }
 };
@@ -303,13 +311,14 @@ export default {
 <style scoped>
 .toolbar {
   box-sizing: border-box;
-  padding: 8px 0px;
+  padding: 8px 20px;
   width: 100%;
   border: 1px solid #e9e9e9;
   height: 72px;
   z-index: 3;
-  box-shadow: 0px 8px 12px 0px rgba(0, 52, 107, 0.04);
+  box-shadow: 0px -1px 4px #909090;
   position: absolute;
+  text-align: right;
 }
 .toolbar .command:nth-of-type(1) {
   margin-left: 24px;
@@ -323,6 +332,7 @@ export default {
   padding-left: 4px;
   display: inline-block;
   border: 1px solid rgba(2, 2, 2, 0);
+  color: #333333;
 }
 .toolbar .command:hover {
   cursor: pointer;

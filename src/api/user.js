@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-04-27 15:25:44
- * @LastEditTime: 2020-05-21 16:44:00
- * @LastEditors: your name
+ * @LastEditTime: 2020-05-28 15:38:01
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \monitor\src\api\user.js
  */
@@ -39,13 +39,14 @@ function getRouter (json, parentId) {
         children: [{
           path: item.menuValue,
           name: item.menuName,
-          component: getComponent(item.menuValue)
+          component: getComponent(item.menuValue) || '/monitor/index.vue',
+          children: getRouter(json, item.id)
         }]
       })
     } else {
       menus.push({
         path: item.menuType === 'directory' ? '/Layout' + index : item.menuValue,
-        component: item.menuType === 'directory' ? 'Layout' : getComponent(item.menuValue),
+        component: item.menuType === 'directory' ? 'Layout' : getComponent(item.menuValue) || '/monitor/index.vue',
         redirect: item.menuType === 'directory' ? 'noRedirect' : '',
         name: item.menuName,
         data: item,

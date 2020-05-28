@@ -1,7 +1,7 @@
 <template>
   <div class="page">
-    <div :id="pageId" class="graph-container" style="position: relative;" />
-    <slot />
+    <div :id="pageId" class="graph-container" style="position: relative;"></div>
+    <slot></slot>
   </div>
 </template>
 
@@ -9,6 +9,7 @@
 import G6 from '@antv/g6/build/g6';
 import Grid from '@antv/g6/build/grid';
 import { initBehavors } from '&/behavior';
+import eventBus from '&/utils/eventBus'
 
 export default {
   name: 'Page',
@@ -77,7 +78,7 @@ export default {
         }
       }]);
     } else {
-      this.defaultBehavors.push('hover-edge');
+      this.defaultBehavors.push('hover-node');
     }
     initBehavors();
   },
@@ -86,6 +87,13 @@ export default {
       this.init();
       this.bindEvent();
     });
+  },
+  beforeUpdate () {
+    if (!this.graph) {
+      return;
+    }
+    this.graph.destroy();
+    this.init();
   },
   methods: {
     init () {
@@ -128,6 +136,9 @@ export default {
         this.updateGrid();
       });
       this.graph.on('canvas:dragend', (e) => {
+        this.updateGrid();
+      });
+      eventBus.$on('redrawCanvas', () => {
         this.updateGrid();
       });
     },

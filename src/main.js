@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-05-18 13:53:01
+ * @LastEditTime: 2020-05-28 14:23:21
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \monitor\src\main.js
+ */
 import Vue from 'vue'
 import Cookies from 'js-cookie'
 
@@ -16,7 +24,6 @@ import router from './router'
 import i18n from './lang' // 国际化
 import '@/icons' // icon
 import '@/permission' // permission control
-import '@/socket'
 import './utils/error-log'; // error log
 import './components/globalComponent'
 
