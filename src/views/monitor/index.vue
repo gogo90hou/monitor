@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-28 15:57:00
- * @LastEditTime: 2020-05-28 16:32:47
- * @LastEditors: your name
+ * @LastEditTime: 2020-05-28 17:08:11
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \monitor\src\views\monitor\index.vue
 -->
@@ -18,6 +18,7 @@
 </template>
 <script>
 import MonitorBar from '@/components/MonitorBar';
+import './detail/style.scss';
 function changeStr (str) {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
