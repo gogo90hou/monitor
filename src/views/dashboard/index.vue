@@ -186,19 +186,19 @@
           <el-row class="chooseGroup">
             <el-col :span="8">
               <div>
-                <span class="icon iconfont"></span>
+                <span class="checkboxs active"></span>
                 <span>周</span>
               </div>
             </el-col>
             <el-col :span="8">
               <div>
-                <span class="icon iconfont"></span>
+                <span class="checkboxs"></span>
                 <span>月</span>
               </div>
             </el-col>
             <el-col :span="8">
               <div>
-                <span class="icon iconfont"></span>
+                <span class="checkboxs"></span>
                 <span>年</span>
               </div>
             </el-col>
@@ -212,19 +212,19 @@
           <el-row class="chooseGroup">
             <el-col :span="8">
               <div>
-                <span class="icon iconfont"></span>
+                <span class="checkboxs active"></span>
                 <span>周</span>
               </div>
             </el-col>
             <el-col :span="8">
               <div>
-                <span class="icon iconfont"></span>
+                <span class="checkboxs"></span>
                 <span>月</span>
               </div>
             </el-col>
             <el-col :span="8">
               <div>
-                <span class="icon iconfont"></span>
+                <span class="checkboxs"></span>
                 <span>年</span>
               </div>
             </el-col>
@@ -371,6 +371,31 @@ export default {
       font-size: 12px;
       margin-left: 70%;
       margin-bottom: 10px;
+      .checkboxs {
+        display: inline-block;
+        vertical-align: middle;
+        width: 13px;
+        height: 13px;
+        border: 1px solid #acb3c6;
+        border-radius: 100%;
+        position: relative;
+        &::after {
+          content: "";
+          display: inline-block;
+          width: 11px;
+          height: 11px;
+          position: absolute;
+          border: 2px solid #fff;
+          background-color: #acb3c6;
+          border-radius: 100%;
+        }
+        &.active {
+          border: 1px solid #5466e0;
+          &::after {
+            background-color: #5466e0;
+          }
+        }
+      }
     }
   }
   .healthy {
