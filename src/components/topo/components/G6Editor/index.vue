@@ -1,6 +1,5 @@
 <template>
   <div class="topo-container">
-    <context-menu />
     <toolbar v-if="mode === 'edit'" @save="save" />
     <div class="bottom-container" :class="mode === 'edit' ? 'edit-statu' : 'view-statu'">
       <div ref="sidebar" class="topo-sidebar">
@@ -15,6 +14,7 @@
           :data="data"
           :mode="mode"
         >
+          <context-menu />
           <div class="mini-viewport">
             <minimap />
           </div>

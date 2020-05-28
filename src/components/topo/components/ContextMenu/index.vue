@@ -15,21 +15,21 @@
 import eventBus from '&/utils/eventBus';
 export default {
   name: 'ContextMenu',
-  data() {
+  data () {
     return {
       menus: [{ key: 1, name: '菜单1' }, { key: 2, name: '菜单2' }]
     };
   },
-  created() {
+  created () {
     this.bindEvent();
   },
   methods: {
-    init() {},
-    bindEvent() {
+    init () { },
+    bindEvent () {
       eventBus.$on('contextmenuClick', e => {
         const menu = this.$refs.contextMenu;
-        menu.style.left = e.clientX + 'px';
-        menu.style.top = e.clientY + 'px';
+        menu.style.left = e.canvasX + 'px';
+        menu.style.top = e.canvasY + 'px';
         menu.style.display = 'block';
       });
       eventBus.$on('mousedown', () => {
@@ -37,7 +37,7 @@ export default {
         menu.style.display = 'none';
       });
     },
-    handleClick(item) {
+    handleClick (item) {
       alert(item.name);
       const menu = this.$refs.contextMenu;
       menu.style.display = 'none';
