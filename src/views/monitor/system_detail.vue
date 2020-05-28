@@ -237,10 +237,12 @@ export default {
         width: 100%;
         border-radius: 32px;
         background-color: #f8f7fb;
-        opacity: 50%;
+        background: rgba(248, 247, 251, 0.5);
+        box-shadow: 0px 0px 3px 0px rgba(156, 158, 172, 0.25);
         .disk {
           font-weight: bold;
           color: #606060;
+          opacity: 100%;
         }
         .histogram_middle_box {
           display: inline-block;
