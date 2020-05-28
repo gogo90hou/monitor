@@ -1,5 +1,5 @@
 <template>
-  <div class="monitor">
+  <div class="monitorlist">
     <div class="header-title">
       <HeadMenu title="所有设备" />
       <ul class="colorList">
@@ -203,7 +203,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.monitor {
+.monitorlist {
   .header-title {
     overflow: hidden;
     .head-menu {

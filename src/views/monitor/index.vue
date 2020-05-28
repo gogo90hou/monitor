@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-12 09:27:09
- * @LastEditTime: 2020-05-26 11:20:05
+ * @LastEditTime: 2020-05-28 16:03:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \monitor\src\views\monitor\index.vue
@@ -12,7 +12,7 @@
     <div class="bar">
       <monitor-bar />
     </div>
-    <div class="content">
+    <div class="main-content">
       <it v-if="currentRoute == '/it'" />
       <middlePage v-if="currentRoute == '/middle'" />
       <cloud v-if="currentRoute == '/cloud'" />
@@ -63,7 +63,7 @@ export default {
     vertical-align: top;
     font-size: 14px;
   }
-  .content {
+  .main-content {
     display: inline-block;
     width: calc(100% - 120px);
     height: calc(100vh - 64px);
