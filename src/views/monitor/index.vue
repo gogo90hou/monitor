@@ -1,51 +1,44 @@
 <!--
  * @Author: your name
- * @Date: 2020-05-12 09:27:09
- * @LastEditTime: 2020-05-28 16:03:50
- * @LastEditors: Please set LastEditors
+ * @Date: 2020-05-28 15:57:00
+ * @LastEditTime: 2020-05-28 16:32:47
+ * @LastEditors: your name
  * @Description: In User Settings Edit
  * @FilePath: \monitor\src\views\monitor\index.vue
 -->
-
 <template>
   <div class="monitor">
     <div class="bar">
       <monitor-bar />
     </div>
     <div class="main-content">
-      <it v-if="currentRoute == '/it'" />
-      <middlePage v-if="currentRoute == '/middle'" />
-      <cloud v-if="currentRoute == '/cloud'" />
-      <monitor v-if="currentRoute == '/monitor'" />
-      <soft v-if="currentRoute == '/soft'" />
-      <system v-if="currentRoute == '/system'" />
-      <systemDetail v-if="currentRoute == '/system_detail'" />
+      <div :is="componentName" />
     </div>
   </div>
 </template>
 <script>
 import MonitorBar from '@/components/MonitorBar';
-import it from './it';
-import middlePage from './middlePage';
-import cloud from './cloud';
-import monitor from './monitor';
-import soft from './soft';
-import system from './system';
-import systemDetail from './sysDetail';
+function changeStr (str) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+const requireComponent = require.context('./', true, /\.vue$/)
+const obj = { 'MonitorBar': MonitorBar }
+requireComponent.keys().forEach(fileName => {
+  if (fileName.indexOf('topo') !== -1) {
+    return;
+  }
+  const config = requireComponent(fileName)
+  const componentName = changeStr(
+    fileName.replace(/^\.\//, '').replace(/\.\w+$/, '').replace('/index', '')
+  )
+  obj[componentName] = config.default || config
+})
 export default {
-  components: {
-    MonitorBar,
-    it,
-    middlePage,
-    cloud,
-    monitor,
-    soft,
-    system,
-    systemDetail
-  },
+  components: obj,
   data () {
     return {
-      currentRoute: this.$route.path
+      currentRoute: this.$route.path,
+      componentName: this.$route.path.replace('/', '').firstUpperCase()
     }
   }
 }
