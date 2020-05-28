@@ -44,14 +44,6 @@ export default {
     Flow
   },
   props: {
-    height: {
-      type: Number,
-      default: document.documentElement.clientHeight
-    },
-    width: {
-      type: Number,
-      default: document.documentElement.clientWidth
-    },
     data: {
       type: Object,
       default: () => {

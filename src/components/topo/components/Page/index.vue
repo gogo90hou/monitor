@@ -88,6 +88,13 @@ export default {
       this.bindEvent();
     });
   },
+  beforeUpdate () {
+    if (!this.graph) {
+      return;
+    }
+    this.graph.destroy();
+    this.init();
+  },
   methods: {
     init () {
       const height = this.height;

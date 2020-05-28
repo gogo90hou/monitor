@@ -8,7 +8,7 @@
         <span class="title">{{ selectTopo.label || "查询中" }}</span>
         <el-button type="info" class="edit-top" @click="editTopo">修改配置</el-button>
       </div>
-      <G6Editor :mode="'view'" :height="pageHeight" :data="topo" />
+      <G6Editor :mode="'view'" :data="topo" />
     </div>
   </div>
 </template>

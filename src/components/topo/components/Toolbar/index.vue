@@ -316,7 +316,7 @@ export default {
   border: 1px solid #e9e9e9;
   height: 72px;
   z-index: 3;
-  box-shadow: 0px 8px 12px 0px rgba(0, 52, 107, 0.04);
+  box-shadow: 0px -1px 4px #909090;
   position: absolute;
   text-align: right;
 }
