@@ -54,18 +54,23 @@ export default {
 .monitor {
   font-size: 0;
   background-color: #eff0f5;
+  width: 100%;
+  height: 100%;
   .bar {
-    display: inline-block;
     width: 120px;
+    display: inline-block;
+    height: 100%;
     vertical-align: top;
     font-size: 14px;
   }
   .content {
-    width: calc(100% - 120px);
     display: inline-block;
+    width: calc(100% - 120px);
+    height: calc(100vh - 64px);
+    overflow: auto;
     vertical-align: top;
     font-size: 14px;
-    padding: 50px 30px;
+    padding: 20px 25px;
     box-sizing: border-box;
   }
 }

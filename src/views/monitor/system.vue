@@ -102,7 +102,7 @@ export default {
             label: '查看详情',
             type: 'url',
             path: '/system_detail',
-            query: ['id'],
+            query: ['id', 'memory'],
             colorType: 'tableBlue'
           }]
         }

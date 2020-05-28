@@ -217,6 +217,26 @@ const data = [{
   },
   'appClientId': '2493ebd832074abbbeffbb06da88245c'
 }, {
+  'id': '232323',
+  'menuName': '操作系统详情',
+  'menuType': 'url',
+  'menuValue': '/system_detail',
+  'pxNum': 6,
+  'icon': 'iconicon_operating_system',
+  'memo': null,
+  'parent': {
+    'id': '287925e40cff48a6aa476d9d39607eb4',
+    'menuName': '操作系统和数据库',
+    'menuType': 'url',
+    'menuValue': '/system',
+    'pxNum': 1,
+    'icon': null,
+    'memo': null,
+    'parent': null,
+    'appClientId': '287925e40cff48a6aa476d9d39607eb4'
+  },
+  'appClientId': '287925e40cff48a6aa476d9d39607eb4'
+}, {
   'id': '18f866725ab440579a772f180e87ef2f',
   'menuName': '系统设置',
   'menuType': 'directory',

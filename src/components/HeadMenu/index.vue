@@ -99,9 +99,9 @@ export default {
 
 <style lang="scss" scoped>
 .head-menu {
-  height: 54px;
+  height: 36px;
   line-height: 36px;
-  padding: 9px 0;
+  margin-bottom: 24px;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -142,7 +142,7 @@ export default {
   .btnStyle {
     float: left;
     height: 36px;
-    margin: 0 10px;
+    margin: 0 2px;
     background-color: #5466e0;
     border-radius: 5px;
     opacity: 0.79;

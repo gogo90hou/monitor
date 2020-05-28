@@ -73,8 +73,8 @@
 .el-button:not(.el-button--text) {
   height: 34px;
   padding: 0 29px;
-  border-radius: 17px;
-  font-size: 16px;
+  border-radius: 4px;
+  font-size: 14px;
   opacity: 79%;
   border: none;
   margin: 10px;
@@ -86,7 +86,7 @@
   background-color: #787ee5;
 }
 .el-button--success {
-  background-color: #14a9ec;
+  background-color: #5466E0;
 }
 .el-button--warning {
   background-color: #f67b12;
@@ -98,7 +98,7 @@
   background-color: #787ee5;
 }
 .el-button--success:focus, .el-button--success:hover {
-  background-color: #14a9ec;
+  background-color: #5466E0;
 }
 .el-button--warning:focus, .el-button--warning:hover {
   background-color: #f67b12;
@@ -227,6 +227,25 @@
 }
 .dialog__footer {
   display: block;
+}
+// Cover the .el-breadcrumb style
+.el-breadcrumb__item {
+  .el-breadcrumb__inner.is-link {
+    color: #666;
+    font-size: 16px;
+  }
+  .el-breadcrumb__inner.is-link:hover {
+    color: #666;
+  }
+  .el-breadcrumb__separator {
+    color: #666;
+  }
+  .el-breadcrumb__item:last-child .el-breadcrumb__inner {
+    color: #5466E0;
+  }
+  .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+    color: #5466E0;
+  }
 }
 
 .el-table {

@@ -56,8 +56,9 @@ export default {
 </script>
 <style lang="scss">
 .monitorbar {
+  display: flex;
   width: 100%;
-  height: auto;
+  height: 100%;
   text-align: center;
   padding: 1px;
   // border-image: -webkit-linear-gradient(#111, #1bd0db, #111) 30 30;
