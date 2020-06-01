@@ -16,13 +16,6 @@
       <el-tab-pane label="告警邮件转发" name="second">告警邮件转发</el-tab-pane>
       <el-tab-pane label="级别重定义" name="three">级别重定义</el-tab-pane>
     </el-tabs>
-    <pagination
-      v-show="listQuery.total>0"
-      :total="listQuery.total"
-      :page.sync="listQuery.page"
-      :limit.sync="listQuery.limit"
-      @pagination="pagination"
-    />
   </div>
 </template>
 
@@ -32,12 +25,6 @@ export default {
     return {
       getters: 'sysSetting/alarm/reportRule/list',
       activeName: 'first',
-      // 分页列表
-      listQuery: {
-        total: 23,
-        page: 1,
-        limit: 20
-      },
       btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }],
       fieldArr: [
         {
@@ -136,10 +123,6 @@ export default {
   methods: {
     addReportRule (val) {
       console.log(val);
-    },
-    pagination (val) {
-      this.listQuery.page = val.page;
-      this.listQuery.limit = val.limit;
     },
     handleClick () { },
     edit (data) {

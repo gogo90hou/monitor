@@ -13,13 +13,6 @@
       :getters="getters"
       @edit="edit"
     />
-    <pagination
-      v-show="listQuery.total>0"
-      :total="listQuery.total"
-      :page.sync="listQuery.page"
-      :limit.sync="listQuery.limit"
-      @pagination="pagination"
-    />
   </div>
 </template>
 
@@ -29,12 +22,6 @@ export default {
     return {
       getters: 'sysSetting/deviceLayout/cloudManage/list',
       showCheckBox: true,
-      // 列表查询
-      listQuery: {
-        total: 36,
-        page: 1,
-        limit: 10
-      },
       btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '批量导入', eventName: 'importHandle', type: 'success' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
       smalltitle: { name: '查看监控列表', path: '/cloud' },
       fieldArr: [
@@ -116,9 +103,6 @@ export default {
     },
     edit (data) {
       console.log(data)
-    },
-    pagination (val) {
-      this.listQuery.page = val.page;
     }
   }
 }

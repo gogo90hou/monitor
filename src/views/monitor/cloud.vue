@@ -8,13 +8,6 @@
       @getEvent="judgeEvent"
     />
     <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
-    <pagination
-      v-show="listQuery.total>0"
-      :total="listQuery.total"
-      :page.sync="listQuery.page"
-      :limit.sync="listQuery.limit"
-      @pagination="pagination"
-    />
   </div>
 </template>
 
@@ -98,10 +91,6 @@ export default {
     },
     edit (data) {
       console.log(data)
-    },
-    pagination (val) {
-      this.listQuery.page = val.page;
-      this.listQuery.limit = val.limit;
     }
   }
 }

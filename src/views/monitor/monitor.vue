@@ -114,13 +114,6 @@
       @getEvent="judgeEvent"
     />
     <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
-    <pagination
-      v-show="listQuery.total>0"
-      :total="listQuery.total"
-      :page.sync="listQuery.page"
-      :limit.sync="listQuery.limit"
-      @pagination="pagination"
-    />
   </div>
 </template>
 <script>
@@ -129,12 +122,6 @@ export default {
     return {
       getters: 'monitor/system/list',
       activeName: 'first',
-      // 分页列表
-      listQuery: {
-        total: 36,
-        page: 1,
-        limit: 10
-      },
       btnarr: [{ id: '1', value: ' 管理设备', eventName: 'manageHandle', type: 'info' }],
       fieldArr: [
         {
@@ -182,10 +169,6 @@ export default {
   },
 
   methods: {
-    pagination (val) {
-      this.listQuery.page = val.page;
-      this.listQuery.limit = val.limit;
-    },
     handleClick () { },
     searchKey (val) {
       console.log(val);

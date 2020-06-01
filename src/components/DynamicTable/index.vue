@@ -30,6 +30,13 @@
         </template>
       </el-table-column>
     </el-table>
+    <pagination
+      v-show="listQuery.total>0 && listQuery.total/listQuery.limit > 1"
+      :total="listQuery.total"
+      :page.sync="listQuery.page"
+      :limit.sync="listQuery.limit"
+      @pagination="pagination"
+    />
   </div>
 </template>
 <script>
@@ -100,6 +107,16 @@ export default {
       }
     }
   },
+  data () {
+    return {
+      // 分页列表
+      listQuery: {
+        total: 11,
+        page: 1,
+        limit: 10
+      }
+    }
+  },
   computed: {
     ...mapGetters({
       'themeGroup': 'themeGroup'
@@ -131,6 +148,10 @@ export default {
     },
     handleSelectionChange () {
 
+    },
+    pagination (val) {
+      this.listQuery.page = val.page;
+      this.listQuery.limit = val.limit;
     }
   }
 }

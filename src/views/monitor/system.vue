@@ -29,13 +29,6 @@
         <dynamic-table :field-arr="databaseFieldArr" :getters="databaseGetters" @edit="edit" />
       </el-tab-pane>
     </el-tabs>
-    <pagination
-      v-show="listQuery.total>0"
-      :total="listQuery.total"
-      :page.sync="listQuery.page"
-      :limit.sync="listQuery.limit"
-      @pagination="pagination"
-    />
   </div>
 </template>
 
@@ -48,12 +41,6 @@ export default {
       activeName: 'first',
       // 选中的过滤器名
       filterName: 'Oracle',
-      // 分页列表
-      listQuery: {
-        total: 36,
-        page: 1,
-        limit: 10
-      },
       btnarr: [{ id: '1', value: ' 管理系统和数据库', eventName: 'manageHandle', type: 'info' }],
       fieldArr: [
         {
@@ -187,10 +174,6 @@ export default {
     edit (data) {
       console.log(data)
     },
-    pagination (val) {
-      this.listQuery.page = val.page;
-      this.listQuery.limit = val.limit;
-    },
     filterTab (val) {
       this.filterName = val;
     }
@@ -218,7 +201,7 @@ export default {
     color: #38ace1;
   }
   span:after {
-    content: "";
+    content: '';
     width: 1px;
     height: 17px;
     display: block;
@@ -227,7 +210,7 @@ export default {
     background-color: #dddee0;
   }
   span:nth-last-child(1):after {
-    content: "";
+    content: '';
     width: 0;
     height: 0;
   }
