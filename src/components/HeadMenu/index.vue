@@ -69,7 +69,7 @@ export default {
   },
   data () {
     return {
-      props: ['title', 'smalltitle', 'search', 'btnarr', 'options'],
+      // props: ['title', 'smalltitle', 'search', 'btnarr', 'options'],
       serachinputName: '',
       selectId: ''
     }
