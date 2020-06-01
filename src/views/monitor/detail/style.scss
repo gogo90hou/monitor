@@ -1,0 +1,144 @@
+// 头部面包屑和按钮样式
+.headNav {
+  height: 34px;
+  margin-bottom: 15px;
+  .el-breadcrumb {
+    float: left;
+    height: 34px;
+    line-height: 34px;
+  }
+  .el-button {
+    float: right;
+    color: #fff;
+    background-color: #5466e0;
+    margin: 0;
+  }
+}
+// 详情标题栏和圆形滚动条样式
+.detail_body {
+  .detail_box {
+    .detail {
+      position: relative;
+      height: 240px;
+      padding: 0 12px;
+      box-sizing: border-box;
+      background-color: #fff;
+      .title {
+        height: 22px;
+        line-height: 22px;
+        padding-top: 12px;
+        box-sizing: content-box;
+        .box_title {
+          position: relative;
+          margin-left: 10px;
+          font-size: 16px;
+          color: #5466e0;
+        }
+        .box_title:before {
+          content: '';
+          position: absolute;
+          width: 3px;
+          height: 16px;
+          top: 3px;
+          left: -10px;
+          background-color: #5466e0;
+        }
+      }
+      .round-box {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        top: -34px;
+        left: -6px;
+        .usage {
+          position: absolute;
+          width: 100%;
+          top: calc(50% + 80px);
+          text-align: center;
+          color: #606060;
+        }
+      }
+    }
+  }
+  // 柱形图盒子
+  .histogram_box {
+    position: relative;
+    height: 100%;
+    .histogram_cdef {
+      position: absolute;
+      height: 64px;
+      line-height: 64px;
+      padding: 0 32px;
+      width: 100%;
+      border-radius: 32px;
+      background-color: #f8f7fb;
+      background: rgba(248, 247, 251, 0.5);
+      box-shadow: 0px 0px 3px 0px rgba(156, 158, 172, 0.25);
+      .disk {
+        font-weight: bold;
+        color: #606060;
+        opacity: 100%;
+      }
+      .histogram_middle_box {
+        display: inline-block;
+        width: calc(100% - 100px);
+        .figure {
+          display: inline-block;
+          width: 100%;
+          height: 8px;
+          border-radius: 4px;
+          border: 1px solid #eeefff;
+          background-color: #e8e8e8;
+          .figure_small {
+            width: calc(100% * 0.55);
+            height: 8px;
+            border-radius: 4px;
+            background-color: #27b102;
+            margin-top: -1px;
+            margin-left: -1px;
+          }
+        }
+        .text {
+          position: absolute;
+          width: 130px;
+          height: 20px;
+          line-height: 20px;
+          top: 38px;
+          left: calc(50% - 65px);
+          color: #606060;
+          font-size: 14px;
+        }
+      }
+      .percentage {
+        font-size: 16px;
+        color: #27b102;
+        margin-left: 13px;
+        vertical-align: middle;
+      }
+    }
+    .histogram_cdef:nth-child(1) {
+      top: 55px;
+    }
+    .histogram_cdef:nth-child(2) {
+      top: 134px;
+    }
+  }
+  // 描述信息
+  .describe_box {
+    margin-top: 20px;
+    .describe_detail {
+      background-color: #fff;
+      height: 180px;
+      .information {
+        margin-left: 10px;
+        .el-col {
+          margin-top: 20px;
+          color: #6d727a;
+          span {
+            color: #000000;
+          }
+        }
+      }
+    }
+  }
+}

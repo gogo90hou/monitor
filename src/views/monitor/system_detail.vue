@@ -5,29 +5,33 @@
         <el-breadcrumb-item :to="{ path: '/system' }">操作系统和数据库</el-breadcrumb-item>
         <el-breadcrumb-item>windows</el-breadcrumb-item>
       </el-breadcrumb>
-      <el-button>返回</el-button>
+      <el-button @click="$router.back(-1)">返回</el-button>
     </div>
     <div class="detail_body">
-      <el-row class="run_hardDisk_box">
+      <el-row class="detail_box run_hardDisk_box">
         <el-col :span="7">
-          <div class="run_detail">
+          <div class="detail run_detail">
             <div class="title">
               <span class="box_title">运行情况</span>
             </div>
             <div class="run_detail_body">
-              <div><span>运行时长 ： 3h</span><span>运行状态 ： <i :style="{backgroundColor: runStateColor}"></i> 正常</span></div>
-              <div><span>进程数量 ： 43</span><span>线程数量 ：32</span></div>
-              <div><span>最大句柄数 ： 1254</span><span>当前句柄数 ： 871</span></div>
+              <div class="row row_one"><span class="col_one">运行时长 ： 3h</span><span class="col_two">运行状态 ： <i :style="{backgroundColor: runStateColor}"></i> 正常</span></div>
+              <div class="row row_two"><span class="col_one">进程数量 ： 43</span><span class="col_two">线程数量 ：32</span></div>
+              <div class="row row_three"><span class="col_one">最大句柄数 ： 1254</span><span class="col_two">当前句柄数 ： 871</span></div>
             </div>
             <div class="iconfont iconicon_cog"></div>
           </div>
         </el-col>
         <el-col :span="17">
-          <div class="hardDisk_detail">
+          <div class="detail hardDisk_detail">
             <el-row style="height: 100%;">
               <el-col :span="7" class="hardDisk_detail_round">
                 <div class="title">
                   <span class="box_title">硬盘</span>
+                </div>
+                <div class="round-box">
+                  <RoundBar :percent-num="91" :speed="3" />
+                  <div class="usage">使用率:91%(64G/128G)</div>
                 </div>
               </el-col>
               <el-col :span="2" class="partition">
@@ -55,7 +59,7 @@
                   <span class="percentage">45%</span>
                 </div>
               </el-col>
-              <el-col :span="7" class="histogram_box haha">
+              <el-col :span="7" class="histogram_box" style="margin-left:20px;">
                 <div class="histogram_cdef">
                   <span class="disk">D盘 ：</span>
                   <div class="histogram_middle_box">
@@ -81,25 +85,65 @@
           </div>
         </el-col>
       </el-row>
-      <el-row class="memory_box">
+      <el-row class="detail_box memory_box">
         <el-col :span="7">
-          <div class="memory_box_round">123</div>
+          <div class="memory_box_round">
+            <div class="detail" style="height: 100%;">
+              <div class="title">
+                <span class="box_title">内存</span>
+              </div>
+              <div class="round-box">
+                <RoundBar :percent-num="72" :speed="3" />
+                <div class="usage">使用率:72%(6G/8G)</div>
+              </div>
+            </div>
+          </div>
         </el-col>
         <el-col :span="17">
           <div class="memory_box_lineChart">456</div>
         </el-col>
       </el-row>
-      <el-row class="cpu_disk_box">
+      <el-row class="detail_box cpu_disk_box">
         <el-col :span="12">
-          <div class="cpu_detail">123</div>
+          <div class="cpu_detail">
+            <div class="detail">
+              <div class="title">
+                <span class="box_title">CPU</span>
+                <span class="box_title_two">当前cpu负载：<span class="value">60%</span></span>
+              </div>
+            </div>
+          </div>
         </el-col>
         <el-col :span="12">
-          <div class="disk_detail">456</div>
+          <div class="disk_detail">
+            <div class="detail">
+              <div class="title">
+                <span class="box_title">磁盘IO</span>
+                <span class="box_title_two">入方向字节数：<span class="value">43kb/s</span></span>
+                <span class="box_title_three">出方向字节数：<span class="value">45kb/s</span></span>
+              </div>
+            </div>
+          </div>
         </el-col>
       </el-row>
-      <el-row class="describe_box">
+      <el-row class="detail_box describe_box">
         <el-col :span="24">
-          <div class="describe_detail">123</div>
+          <div class="describe_detail">
+            <div class="detail">
+              <div class="title">
+                <span class="box_title">描述信息</span>
+              </div>
+              <div class="information">
+                <el-row :gutter="20">
+                  <el-col :span="5">操作系统：<span>windows操作系统</span></el-col>
+                  <el-col :span="4">操作系统版本：<span>v1.2</span></el-col>
+                  <el-col :span="5">操作系统类型：<span>64位操作系统</span></el-col>
+                  <el-col :span="10">所在服务器：<span>省局服务器1</span></el-col>
+                  <el-col :span="24">描述信息：<span>服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span></el-col>
+                </el-row>
+              </div>
+            </div>
+          </div>
         </el-col>
       </el-row>
     </div>
@@ -122,74 +166,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.headNav {
-  height: 34px;
-  margin-bottom: 15px;
-  .el-breadcrumb {
-    float: left;
-    height: 34px;
-    line-height: 34px;
-  }
-  .el-button {
-    float: right;
-    color: #fff;
-    background-color: #5466e0;
-    margin: 0;
-  }
-}
 .detail_body {
-  // 运行和硬盘大盒子
   .run_hardDisk_box {
-    .run_detail,
-    .hardDisk_detail {
-      position: relative;
-      height: 240px;
-      padding: 0 12px;
-      background-color: #fff;
-      .title {
-        height: 22px;
-        line-height: 22px;
-        padding-top: 12px;
-        box-sizing: content-box;
-        .box_title {
-          position: relative;
-          margin-left: 10px;
-          font-size: 16px;
-          color: #5466e0;
-        }
-        .box_title:before {
-          content: '';
-          position: absolute;
-          width: 3px;
-          height: 16px;
-          top: 3px;
-          left: -10px;
-          background-color: #5466e0;
-        }
-      }
-    }
     // 运行情况
     .run_detail {
       margin-right: 22px;
       .run_detail_body {
         font-size: 14px;
         color: #606060;
-        div {
+        .row {
           height: 35px;
           line-height: 35px;
-          span:nth-of-type(1) {
+          .col_one {
             float: left;
             width: 50%;
           }
-          span:nth-of-type(2) {
+          .col_two {
             float: right;
             width: 50%;
             text-align: left;
           }
         }
-        div:nth-of-type(1) {
+        .row_one {
           margin-top: 15px;
-          span:nth-of-type(2) i {
+          .col_two i {
             display: inline-block;
             width: 8px;
             height: 8px;
@@ -214,87 +214,15 @@ export default {
         height: 100%;
         border-right: 1px solid #ececec;
       }
-    }
-    // 分区
-    .partition {
-      .histogram_title {
-        margin-left: 20px;
-        margin-top: 16px;
-        color: #606060;
-        font-size: 14px;
-        text-align: right;
-      }
-    }
-    // 柱形图盒子
-    .histogram_box {
-      position: relative;
-      height: 100%;
-      .histogram_cdef {
-        position: absolute;
-        height: 64px;
-        line-height: 64px;
-        padding: 0 32px;
-        width: 100%;
-        border-radius: 32px;
-        background-color: #f8f7fb;
-        background: rgba(248, 247, 251, 0.5);
-        box-shadow: 0px 0px 3px 0px rgba(156, 158, 172, 0.25);
-        .disk {
-          font-weight: bold;
+      // 分区
+      .partition {
+        .histogram_title {
+          margin-left: 20px;
+          margin-top: 16px;
           color: #606060;
-          opacity: 100%;
+          font-size: 14px;
+          text-align: right;
         }
-        .histogram_middle_box {
-          display: inline-block;
-          width: calc(100% - 100px);
-          .figure {
-            display: inline-block;
-            width: 100%;
-            height: 8px;
-            border-radius: 4px;
-            border: 1px solid #eeefff;
-            background-color: #e8e8e8;
-            .figure_small {
-              width: calc(100% * 0.55);
-              height: 8px;
-              border-radius: 4px;
-              background-color: #27b102;
-              margin-top: -1px;
-              margin-left: -1px;
-            }
-          }
-          .text {
-            position: absolute;
-            width: 130px;
-            height: 20px;
-            line-height: 20px;
-            top: 38px;
-            left: calc(50% - 65px);
-            color: #606060;
-            font-size: 14px;
-          }
-        }
-        .percentage {
-          font-size: 16px;
-          color: #27b102;
-          margin-left: 13px;
-          vertical-align: middle;
-        }
-      }
-      .histogram_cdef:nth-child(1) {
-        top: 55px;
-      }
-      .histogram_cdef:nth-child(2) {
-        top: 134px;
-      }
-    }
-    .haha {
-      position: relative;
-      margin-left: 15px;
-      .histogram_cdef {
-        position: absolute;
-        top: 50px;
-        right: 0;
       }
     }
   }
@@ -318,16 +246,40 @@ export default {
     }
     .cpu_detail {
       margin-right: 11px;
+      .box_title_two {
+        position: absolute;
+        color: #6d727a;
+        left: 50%;
+        transform: translateX(-50%);
+        .value {
+          color: #27b102;
+        }
+      }
     }
     .disk_detail {
       margin-left: 11px;
-    }
-  }
-  .describe_box {
-    margin-top: 20px;
-    .describe_detail {
-      background-color: #fff;
-      height: 180px;
+      .box_title_two {
+        margin-left: 166px;
+        color: #6d727a;
+        .value {
+          color: #6d7ee1;
+        }
+      }
+      .box_title_three {
+        margin-left: 80px;
+        color: #6d727a;
+        .value {
+          color: #ffd04e;
+        }
+      }
+      @media screen and (max-width: 1500px) {
+        .box_title_two {
+          margin-left: 30px;
+        }
+        .box_title_three {
+          margin-left: 20px;
+        }
+      }
     }
   }
 }
