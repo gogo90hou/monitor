@@ -117,6 +117,7 @@ export default {
         markLine: { yAxis: 2000, name: 'test' },
         style: 'purple'
       },
+      runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
       fieldArr: [
         {

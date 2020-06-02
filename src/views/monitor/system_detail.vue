@@ -3,7 +3,8 @@
     <div class="headNav">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/system' }">操作系统和数据库</el-breadcrumb-item>
-        <el-breadcrumb-item>windows</el-breadcrumb-item>
+        <el-breadcrumb-item>oracle</el-breadcrumb-item>
+        <el-breadcrumb-item>oracle名称</el-breadcrumb-item>
       </el-breadcrumb>
       <el-button @click="$router.back(-1)">返回</el-button>
     </div>
@@ -15,7 +16,7 @@
               <span class="box_title">运行情况</span>
             </div>
             <div class="run_detail_body">
-              <div class="row row_one"><span class="col_one">运行时长 ： 3h</span><span class="col_two">运行状态 ： <i :style="{backgroundColor: runStateColor}"></i> 正常</span></div>
+              <div class="row row_one"><span class="col_one">运行时长 ： 3h</span><span class="col_two">运行状态 ： <i class="small_round" :style="{backgroundColor: runStateColor}"></i> 正常</span></div>
               <div class="row row_two"><span class="col_one">进程数量 ： 43</span><span class="col_two">线程数量 ：32</span></div>
               <div class="row row_three"><span class="col_one">最大句柄数 ： 1254</span><span class="col_two">当前句柄数 ： 871</span></div>
             </div>
@@ -172,11 +173,7 @@ export default {
     .run_detail {
       margin-right: 22px;
       .run_detail_body {
-        font-size: 14px;
-        color: #606060;
         .row {
-          height: 35px;
-          line-height: 35px;
           .col_one {
             float: left;
             width: 50%;
@@ -187,25 +184,6 @@ export default {
             text-align: left;
           }
         }
-        .row_one {
-          margin-top: 15px;
-          .col_two i {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 4px;
-            margin-top: -2px;
-            vertical-align: middle;
-          }
-        }
-      }
-      .iconicon_cog {
-        position: absolute;
-        bottom: 12px;
-        right: 15px;
-        font-size: 81px;
-        color: #190e74;
-        opacity: 4%;
       }
     }
     // 硬盘
@@ -284,4 +262,3 @@ export default {
   }
 }
 </style>
-
