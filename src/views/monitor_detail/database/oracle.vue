@@ -116,6 +116,50 @@
         </div>
       </el-col>
     </el-row>
+    <el-row class="detail_box key_box">
+      <el-col :span="24">
+        <div class="detail">
+          <div class="title">
+            <span class="box_title">锁</span>
+          </div>
+          <div class="table">
+            <div class="table_title">锁等待列表</div>
+            <div class="table_body">123</div>
+          </div>
+          <div class="table">
+            <div class="table_title">死锁会话信息</div>
+            <div class="table_body">456</div>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+    <el-row class="detail_box table_logic_box" :gutter="20">
+      <el-col :span="12">
+        <div class="detail">
+          <div class="title">
+            <span class="box_title">表空间</span>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="detail">
+          <div class="title">
+            <span class="box_title">逻辑 I/O</span>
+            <span class="box_title_center">当前I/O次数：<span class="valueNum">32次/秒</span>
+            </span>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+    <el-row class="detail_box fragmentation_box">
+      <el-col :span="24">
+        <div class="detail">
+          <div class="title">
+            <span class="box_title">碎片化程度</span>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
     <el-row class="detail_box describe_box">
       <el-col :span="24">
         <div class="describe_detail">
@@ -193,6 +237,30 @@ export default {
   .audit_user_box {
     .detail {
       height: 300px;
+    }
+  }
+  .key_box {
+    .detail {
+      height: 643px;
+      .table {
+        .table_title {
+          color: #606060;
+          font-size: 16px;
+        }
+        .table_body {
+          height: 276px;
+        }
+      }
+    }
+  }
+  .table_logic_box {
+    .detail {
+      height: 300px;
+    }
+  }
+  .fragmentation_box {
+    .detail {
+      height: 233px;
     }
   }
 }

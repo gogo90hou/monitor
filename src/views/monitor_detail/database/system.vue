@@ -208,6 +208,9 @@ export default {
 <style lang="scss" scoped>
 .detail_body {
   .run_hardDisk_box {
+    .detail {
+      height: 240px;
+    }
     // 运行情况
     .run_detail {
       margin-right: 20px;
@@ -229,6 +232,7 @@ export default {
     // 硬盘
     .hardDisk_detail {
       .hardDisk_detail_round {
+        position: relative;
         height: 100%;
         border-right: 1px solid #ececec;
       }

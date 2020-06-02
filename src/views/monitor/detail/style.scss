@@ -25,7 +25,6 @@
     margin-bottom: 20px;
     .detail {
       position: relative;
-      height: 240px;
       padding: 12px;
       box-sizing: border-box;
       background-color: #fff;
@@ -56,6 +55,9 @@
           transform: translateX(-50%);
           .value {
             color: #27b102;
+          }
+          .valueNum {
+            color: #5466E0;
           }
         }
         .box_title_right {
@@ -95,11 +97,11 @@
         opacity: 4%;
       }
       .round-box {
-        position: relative;
+        position: absolute;
         height: 100%;
         width: 100%;
-        top: -34px;
-        left: -6px;
+        top: 0;
+        left: 0;
         .usage {
           position: absolute;
           width: 100%;
@@ -123,7 +125,6 @@
       border-radius: 32px;
       background-color: #f8f7fb;
       background: rgba(248, 247, 251, 0.5);
-      box-shadow: 0px 0px 3px 0px rgba(156, 158, 172, 0.25);
       .disk {
         font-weight: bold;
         color: #606060;
@@ -178,7 +179,6 @@
     margin-top: 20px;
     .describe_detail {
       background-color: #fff;
-      height: 180px;
       .information {
         margin-left: 10px;
         .el-col {
