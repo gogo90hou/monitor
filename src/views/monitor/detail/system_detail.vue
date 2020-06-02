@@ -13,7 +13,7 @@
       <el-button @click="$router.back(-1)">返回</el-button>
     </div>
     <system v-if="queryData.type == 1"></system>
-    <oracle v-if="queryData.type == 2 && queryData.state == 1"></oracle>
+    <oracle v-if="queryData.type == 2 && queryData.filterName==='Oracle'"></oracle>
   </div>
 </template>
 <script>

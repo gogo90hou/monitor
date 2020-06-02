@@ -206,7 +206,7 @@ export default {
     color: #38ace1;
   }
   span:after {
-    content: "";
+    content: '';
     width: 1px;
     height: 17px;
     display: block;
@@ -215,7 +215,7 @@ export default {
     background-color: #dddee0;
   }
   span:nth-last-child(1):after {
-    content: "";
+    content: '';
     width: 0;
     height: 0;
   }
