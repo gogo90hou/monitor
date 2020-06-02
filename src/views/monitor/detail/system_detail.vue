@@ -12,8 +12,8 @@
       </el-breadcrumb>
       <el-button @click="$router.back(-1)">返回</el-button>
     </div>
-    <system v-if="routeValue.type == 1"></system>
-    <oracle v-if="routeValue.type == 2 && routeValue.state == 1"></oracle>
+    <system v-if="queryData.type == 1"></system>
+    <oracle v-if="queryData.type == 2 && queryData.state == 1"></oracle>
   </div>
 </template>
 <script>
@@ -26,12 +26,12 @@ export default {
   },
   data () {
     return {
-      routeValue: ''
+      queryData: ''
     }
   },
   created () {
-    this.routeValue = this.$route.query;
-    console.log(this.routeValue);
+    this.queryData = this.$route.query;
+    console.log(this.queryData);
     this.$store.dispatch('monitor/system/getSysDetail', { actualId: this.$route.query.id });
   }
 }
