@@ -90,7 +90,7 @@
             </div>
             <el-row>
               <el-col :span="12">
-                <echartsLine style="height:400px" :charts-data="chartsData"></echartsLine>
+                <echarts-line style="height:400px" :charts-data="chartsData"></echarts-line>
               </el-col>
             </el-row>
             <!-- <div class="title">
@@ -114,7 +114,8 @@ export default {
       chartsData: {
         x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
         y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
-        style: 'green'
+        markLine: { yAxis: 2000, name: 'test' },
+        style: 'purple'
       },
       getters: 'monitor/soft/flowList',
       fieldArr: [

@@ -27,9 +27,6 @@ export default {
     return {
       style: {
         green: {
-          backgroundStyle: {
-            color: '#111'
-          },
           areaStyle: {
             color: new echarts.graphic.LinearGradient(
               0, 1, 0, 0,
@@ -41,6 +38,20 @@ export default {
           },
           itemStyle: {
             color: '#2ED6C6'
+          }
+        },
+        purple: {
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(
+              0, 1, 0, 0,
+              [
+                { offset: 0, color: 'rgba(101, 119, 224, 0)' },
+                { offset: 1, color: 'rgba(101, 119, 224, 0.4)' }
+              ]
+            )
+          },
+          itemStyle: {
+            color: '#6577E0'
           }
         }
       },
@@ -106,17 +117,25 @@ export default {
         },
         series: [{
           data: [90, 80, 60, 80, 70, 5, 80],
+          markLine: {
+            data: [],
+            silent: true,
+            label: {
+              show: true,
+              formatter: '{b}: {c}'
+            },
+            lineStyle: {
+              color: '#F13E3E',
+              type: 'dashed'
+            },
+            symbol: 'none'
+          },
           itemStyle: {
             color: '#5466E0'
           },
           showBackground: true,
           backgroundStyle: {
             color: '#EDF6FD'
-          },
-          markLine: {
-            data: [
-              { type: 'average', name: '平均值' }
-            ]
           },
           symbolSize: 5,
           symbol: 'circle',
@@ -143,8 +162,9 @@ export default {
     this.option.xAxis.data = this.chartsData.x;
     this.option.series[0].data = this.chartsData.y;
     this.option.series[0].areaStyle = this.style[this.chartsData.style].areaStyle;
-    this.option.series[0].backgroundStyle = this.style[this.chartsData.style].backgroundStyle;
+    // this.option.series[0].backgroundStyle = this.style[this.chartsData.style].backgroundStyle;
     this.option.series[0].itemStyle = this.style[this.chartsData.style].itemStyle;
+    if (this.chartsData.markLine) this.option.series[0].markLine.data[0] = this.chartsData.markLine;
   },
   mounted () {
     this.echartLine = echarts.init(this.$refs.echartLine, 'light');
