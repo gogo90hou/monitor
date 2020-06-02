@@ -313,7 +313,33 @@ const data = [
 const databaseData = [
   {
     id: '1',
-    databaseName: '省局数据库1',
+    databaseName: 'oracle',
+    runState: '3',
+    databaseFileSize: '21G',
+    processNum: '52',
+    activitySession: '13',
+    audit: '开启',
+    databaseConnectionNum: '41',
+    area: '省局服务器1'
+  }
+]
+const databaseData1 = [
+  {
+    id: '1',
+    databaseName: 'sqlserve',
+    runState: '3',
+    databaseFileSize: '21G',
+    processNum: '52',
+    activitySession: '13',
+    audit: '开启',
+    databaseConnectionNum: '41',
+    area: '省局服务器1'
+  }
+]
+const databaseData2 = [
+  {
+    id: '1',
+    databaseName: 'mysql',
     runState: '3',
     databaseFileSize: '21G',
     processNum: '52',
@@ -326,8 +352,11 @@ const databaseData = [
 // vuex的基本数据，用来存储变量
 const state = {
   list: data,
-  databaseList: databaseData,
-  sysDetail: ''
+  databaseList: [],
+  sysDetail: '',
+  oracleNum: 43,
+  sqlserveNum: 50,
+  msqlNum: 66
 }
 // 同步提交更新数据的方法
 const mutations = {
@@ -341,7 +370,7 @@ const mutations = {
   },
   getDatabaseList: (state, databaseList) => {
     // Chanage state
-    state.list = databaseList
+    state.databaseList = databaseList
   }
 }
 // 异步提交更新数据的方法
@@ -358,9 +387,18 @@ const actions = {
       commit('getSysDetail', data)
     })
   },
-  getDatabaseList ({ commit }) {
+  getDatabaseList ({ commit }, info) {
     // get api data
-    commit('getDatabaseList', data)
+    console.log(info.type)
+    if (info.type === 'Oracle') {
+      commit('getDatabaseList', databaseData)
+    }
+    if (info.type === 'sqlserver') {
+      commit('getDatabaseList', databaseData1)
+    }
+    if (info.type === 'Mysql') {
+      commit('getDatabaseList', databaseData2)
+    }
   }
 }
 // 相当于state的计算属性

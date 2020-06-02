@@ -161,7 +161,7 @@ export default {
   },
   created () {
     this.$store.dispatch('monitor/system/getList', { currentPage: 1, queryParam: {}, rowsPerPage: 10 });
-    this.$store.dispatch('monitor/system/getDatabaseList');
+    this.$store.dispatch('monitor/system/getDatabaseList', { type: 'Oracle' });
   },
   methods: {
     handleClick () { },
