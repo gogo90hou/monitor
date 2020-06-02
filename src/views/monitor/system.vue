@@ -88,7 +88,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/system_detail',
+            path: '/system_detail?type=1',
             query: ['id', 'memory'],
             colorType: 'tableBlue'
           }]
@@ -151,7 +151,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/oracle_detail',
+            path: '/system_detail?type=2&state=1',
             query: ['id', 'memory'],
             colorType: 'tableBlue'
           }]
@@ -201,7 +201,7 @@ export default {
     color: #38ace1;
   }
   span:after {
-    content: '';
+    content: "";
     width: 1px;
     height: 17px;
     display: block;
@@ -210,7 +210,7 @@ export default {
     background-color: #dddee0;
   }
   span:nth-last-child(1):after {
-    content: '';
+    content: "";
     width: 0;
     height: 0;
   }
