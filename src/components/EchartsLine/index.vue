@@ -85,6 +85,15 @@ export default {
             }
           }
         },
+        grid: {
+          top: '5%',
+          left: '50px',
+          right: '50px',
+          bottom: '2%',
+          backgroundColor: '#fff',
+          width: 'auto',
+          height: '75%'
+        },
         yAxis: {
           type: 'value',
           axisLabel: {

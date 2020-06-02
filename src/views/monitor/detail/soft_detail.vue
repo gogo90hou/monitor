@@ -88,9 +88,20 @@
                 :limit.sync="listQuery.limit"
               />
             </div>
-            <el-row>
+            <el-row :gutter="20">
               <el-col :span="12">
-                <echarts-line style="height:400px" :charts-data="chartsData"></echarts-line>
+                <div class="nums">
+                  每分钟请求个数:
+                  <strong>344</strong>
+                </div>
+                <echarts-line style="height:240px" :charts-data="chartsData"></echarts-line>
+              </el-col>
+              <el-col :span="12">
+                <div class="nums">
+                  今日异常:
+                  <strong>344</strong>
+                </div>
+                <dynamic-table :field-arr="abnormalArr" :getters="getters" class="tables" />
               </el-col>
             </el-row>
             <!-- <div class="title">
@@ -114,8 +125,8 @@ export default {
       chartsData: {
         x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
         y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
-        markLine: { yAxis: 2000, name: 'test' },
-        style: 'purple'
+        // markLine: { yAxis: 2000, name: 'test' },
+        style: 'green'
       },
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
@@ -137,6 +148,17 @@ export default {
           label: '耗时',
           key: 'payTime'
         }
+      ],
+      abnormalArr: [
+        {
+          label: '异常类型',
+          key: 'name',
+          formatter: ''
+        }, {
+          label: '异常发生时间',
+          key: 'time',
+          formatter: ''
+        }
       ]
     }
   }
@@ -151,6 +173,31 @@ export default {
     .el-table__body-wrapper {
       height: 189px;
       overflow-y: scroll;
+    }
+  }
+  .tips {
+    font-size: 14px;
+    color: #000;
+    overflow: hidden;
+    p {
+      display: inline-block;
+    }
+    .buttons {
+      float: right;
+      span {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.14);
+      }
+    }
+  }
+  .nums {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 10px;
+    strong {
+      font-weight: bold;
     }
   }
   .sysTable {

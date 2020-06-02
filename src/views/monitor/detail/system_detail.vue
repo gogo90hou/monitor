@@ -31,7 +31,6 @@ export default {
   },
   created () {
     this.queryData = this.$route.query;
-    console.log(this.queryData);
     this.$store.dispatch('monitor/system/getSysDetail', { actualId: this.$route.query.id });
   }
 }

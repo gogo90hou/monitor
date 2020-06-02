@@ -38,9 +38,9 @@ export default {
     return {
       getters: 'monitor/system/list',
       databaseGetters: 'monitor/system/databaseList',
-      activeName: 'first',
+      activeName: this.$route.query.type === '1' ? 'first' : 'second',
       // 选中的过滤器名
-      filterName: 'Oracle',
+      filterName: this.$route.query.filterName || 'Oracle',
       btnarr: [{ id: '1', value: ' 管理系统和数据库', eventName: 'manageHandle', type: 'info' }],
       fieldArr: [
         {
@@ -89,12 +89,16 @@ export default {
             label: '查看详情',
             type: 'url',
             path: '/system_detail?type=1',
-            query: ['id', 'memory'],
+            query: ['id', 'sysName'],
             colorType: 'tableBlue'
           }]
         }
-      ],
-      databaseFieldArr: [
+      ]
+    }
+  },
+  computed: {
+    databaseFieldArr: function () {
+      return [
         {
           label: '数据库名称',
           key: 'databaseName',
@@ -151,8 +155,8 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/system_detail?type=2&state=1',
-            query: ['id'],
+            path: '/system_detail?type=2&filterName=' + this.filterName,
+            query: ['id', 'databaseName'],
             colorType: 'tableBlue'
           }]
         }
@@ -161,7 +165,7 @@ export default {
   },
   created () {
     this.$store.dispatch('monitor/system/getList', { currentPage: 1, queryParam: {}, rowsPerPage: 10 });
-    this.$store.dispatch('monitor/system/getDatabaseList', { type: 'Oracle' });
+    this.$store.dispatch('monitor/system/getDatabaseList', { param: {}, type: this.filterName });
   },
   methods: {
     handleClick () { },
@@ -176,6 +180,7 @@ export default {
     },
     filterTab (val) {
       this.filterName = val;
+      this.$store.dispatch('monitor/system/getDatabaseList', { param: {}, type: val });
     }
   }
 }
@@ -185,7 +190,7 @@ export default {
 .database-filter {
   width: 100%;
   height: 56px;
-  background-color: #c9cbf5;
+  background-color: rgba(201, 203, 245, 0.2);
   font-size: 14px;
   opacity: 80%;
   span {
@@ -201,7 +206,7 @@ export default {
     color: #38ace1;
   }
   span:after {
-    content: '';
+    content: "";
     width: 1px;
     height: 17px;
     display: block;
@@ -210,7 +215,7 @@ export default {
     background-color: #dddee0;
   }
   span:nth-last-child(1):after {
-    content: '';
+    content: "";
     width: 0;
     height: 0;
   }
