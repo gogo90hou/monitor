@@ -151,8 +151,8 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/detail',
-            query: ['id'],
+            path: '/oracle_detail',
+            query: ['id', 'memory'],
             colorType: 'tableBlue'
           }]
         }

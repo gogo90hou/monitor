@@ -40,6 +40,10 @@ const routers = [
     'component': '/monitor/index.vue'
   },
   {
+    'path': '/oracle_detail',
+    'component': '/monitor/index.vue'
+  },
+  {
     'path': '/it',
     'component': '/monitor/index.vue'
   },
