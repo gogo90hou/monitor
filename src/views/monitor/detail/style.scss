@@ -14,21 +14,25 @@
     margin: 0;
   }
 }
+// 黑色
+.black {
+  color: #000000;
+}
 // 详情大盒子
 .detail_body {
   // 详情文字介绍
   .detail_box {
+    margin-bottom: 20px;
     .detail {
       position: relative;
       height: 240px;
-      padding: 0 12px;
+      padding: 12px;
       box-sizing: border-box;
       background-color: #fff;
       .title {
         height: 22px;
         line-height: 22px;
-        padding-top: 12px;
-        margin-bottom: 15px;
+        margin-bottom: 30px;
         box-sizing: content-box;
         .box_title {
           position: relative;
@@ -45,13 +49,33 @@
           left: -10px;
           background-color: #5466e0;
         }
+        .box_title_center {
+          position: absolute;
+          color: #6d727a;
+          left: 50%;
+          transform: translateX(-50%);
+          .value {
+            color: #27b102;
+          }
+        }
+        .box_title_right {
+          position: absolute;
+          right: 16px;
+          color: #6d727a;
+          .value {
+            color: #27b102;
+          }
+          .valueNum {
+            color: #5466E0;
+          }
+        }
       }
       .run_detail_body {
         font-size: 14px;
         color: #606060;
         .row {
-          height: 35px;
-          line-height: 35px;
+          height: 22px;
+          line-height: 22px;
         }
         .small_round {
           display: inline-block;
@@ -160,9 +184,6 @@
         .el-col {
           margin-top: 20px;
           color: #6d727a;
-          span {
-            color: #000000;
-          }
         }
       }
     }

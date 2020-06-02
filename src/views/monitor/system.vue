@@ -88,7 +88,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/system_detail',
+            path: '/system_detail?type=1',
             query: ['id', 'memory'],
             colorType: 'tableBlue'
           }]
@@ -151,8 +151,8 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/oracle_detail',
-            query: ['id', 'memory'],
+            path: '/system_detail?type=2&state=1',
+            query: ['id'],
             colorType: 'tableBlue'
           }]
         }

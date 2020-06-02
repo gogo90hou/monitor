@@ -1,14 +1,5 @@
 <template>
-  <div>
-    <div class="headNav">
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/system' }">操作系统和数据库</el-breadcrumb-item>
-        <el-breadcrumb-item>oracle</el-breadcrumb-item>
-        <el-breadcrumb-item>oracle名称</el-breadcrumb-item>
-      </el-breadcrumb>
-      <el-button @click="$router.back(-1)">返回</el-button>
-    </div>
-    <div class="detail_body">
+  <div class="detail_body">
       <el-row class="detail_box run_hardDisk_box">
         <el-col :span="7">
           <div class="detail run_detail">
@@ -16,9 +7,9 @@
               <span class="box_title">运行情况</span>
             </div>
             <div class="run_detail_body">
-              <div class="row row_one"><span class="col_one">运行时长 ： 3h</span><span class="col_two">运行状态 ： <i class="small_round" :style="{backgroundColor: runStateColor}"></i> 正常</span></div>
-              <div class="row row_two"><span class="col_one">进程数量 ： 43</span><span class="col_two">线程数量 ：32</span></div>
-              <div class="row row_three"><span class="col_one">最大句柄数 ： 1254</span><span class="col_two">当前句柄数 ： 871</span></div>
+              <div class="row row_one"><span class="col_one">运行时长 ： <span class="black">3h</span></span><span class="col_two">运行状态 ： <i class="small_round" :style="{backgroundColor: runStateColor}"></i> <span class="black">正常</span></span></div>
+              <div class="row row_two"><span class="col_one">进程数量 ： <span class="black">43</span></span><span class="col_two">线程数量 ：<span class="black">32</span></span></div>
+              <div class="row row_three"><span class="col_one">最大句柄数 ： <span class="black">1254</span></span><span class="col_two">当前句柄数 ： <span class="black">871</span></span></div>
             </div>
             <div class="iconfont iconicon_cog"></div>
           </div>
@@ -136,11 +127,11 @@
               </div>
               <div class="information">
                 <el-row :gutter="20">
-                  <el-col :span="5">操作系统：<span>windows操作系统</span></el-col>
-                  <el-col :span="4">操作系统版本：<span>v1.2</span></el-col>
-                  <el-col :span="5">操作系统类型：<span>64位操作系统</span></el-col>
-                  <el-col :span="10">所在服务器：<span>省局服务器1</span></el-col>
-                  <el-col :span="24">描述信息：<span>服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span></el-col>
+                  <el-col :span="5">操作系统：<span class="black">windows操作系统</span></el-col>
+                  <el-col :span="4">操作系统版本：<span class="black">v1.2</span></el-col>
+                  <el-col :span="5">操作系统类型：<span class="black">64位操作系统</span></el-col>
+                  <el-col :span="10">所在服务器：<span class="black">省局服务器1</span></el-col>
+                  <el-col :span="24">描述信息：<span class="black">服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span></el-col>
                 </el-row>
               </div>
             </div>
@@ -148,32 +139,28 @@
         </el-col>
       </el-row>
     </div>
-  </div>
 </template>
+
 <script>
 export default {
   data () {
     return {
-      breadcrumbValue: '',
       runStateColor: '#27B102'
     }
-  },
-  created () {
-    this.breadcrumbValue = this.$route.query;
-    console.log(this.breadcrumbValue);
-    this.$store.dispatch('monitor/system/getSysDetail', { actualId: this.$route.query.id });
   }
 }
 </script>
+
 
 <style lang="scss" scoped>
 .detail_body {
   .run_hardDisk_box {
     // 运行情况
     .run_detail {
-      margin-right: 22px;
+      margin-right: 20px;
       .run_detail_body {
         .row {
+          margin-bottom: 20px;
           .col_one {
             float: left;
             width: 50%;
@@ -205,7 +192,6 @@ export default {
     }
   }
   .memory_box {
-    margin-top: 20px;
     .memory_box_round,
     .memory_box_lineChart {
       height: 287px;
@@ -216,7 +202,6 @@ export default {
     }
   }
   .cpu_disk_box {
-    margin-top: 20px;
     .cpu_detail,
     .disk_detail {
       background-color: #fff;
@@ -262,3 +247,4 @@ export default {
   }
 }
 </style>
+
