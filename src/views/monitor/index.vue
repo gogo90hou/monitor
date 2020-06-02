@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-28 15:57:00
- * @LastEditTime: 2020-05-28 17:08:11
+ * @LastEditTime: 2020-05-28 19:32:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \monitor\src\views\monitor\index.vue
@@ -30,10 +30,11 @@ requireComponent.keys().forEach(fileName => {
   }
   const config = requireComponent(fileName)
   const componentName = changeStr(
-    fileName.replace(/^\.\//, '').replace(/\.\w+$/, '').replace('/index', '')
+    fileName.replace(/^\.\//, '').replace(/\.\w+$/, '').replace('detail/', '')
   )
   obj[componentName] = config.default || config
 })
+console.log(obj)
 export default {
   components: obj,
   data () {

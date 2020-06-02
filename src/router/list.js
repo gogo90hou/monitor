@@ -42,6 +42,9 @@ const routers = [
   {
     'path': '/oracle_detail',
     'component': '/monitor/index.vue'
+  }, {
+    'path': '/monitor_detail',
+    'component': '/monitor/detail/monitor_detail.vue'
   },
   {
     'path': '/it',

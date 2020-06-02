@@ -27,6 +27,7 @@
         height: 22px;
         line-height: 22px;
         padding-top: 12px;
+        margin-bottom: 15px;
         box-sizing: content-box;
         .box_title {
           position: relative;
@@ -43,6 +44,30 @@
           left: -10px;
           background-color: #5466e0;
         }
+      }
+      .run_detail_body {
+        font-size: 14px;
+        color: #606060;
+        .row {
+          height: 35px;
+          line-height: 35px;
+        }
+        .small_round {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          border-radius: 4px;
+          margin-top: -2px;
+          vertical-align: middle;
+        }
+      }
+      .iconicon_cog {
+        position: absolute;
+        bottom: 12px;
+        right: 15px;
+        font-size: 81px;
+        color: #190e74;
+        opacity: 4%;
       }
       .round-box {
         position: relative;

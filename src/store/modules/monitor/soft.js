@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-05-11 14:50:43
+ * @LastEditTime: 2020-05-29 10:36:55
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \monitor\src\store\modules\monitor\soft.js
+ */
 /**
 
 * 应用软件api接口字段，表示返回api的数据结构.
@@ -25,8 +33,45 @@ const data = [
     err: '2'
   }
 ]
+const flowList = [
+  {
+    name: '流程1',
+    state: '进行中',
+    time: '2020 03-12  12:33:22',
+    payTime: '2min'
+  },
+  {
+    name: '流程1',
+    state: '进行中',
+    time: '2020 03-12  12:33:22',
+    payTime: '2min'
+  }, {
+    name: '流程1',
+    state: '进行中',
+    time: '2020 03-12  12:33:22',
+    payTime: '2min'
+  },
+  {
+    name: '流程1',
+    state: '进行中',
+    time: '2020 03-12  12:33:22',
+    payTime: '2min'
+  }, {
+    name: '流程1',
+    state: '进行中',
+    time: '2020 03-12  12:33:22',
+    payTime: '2min'
+  },
+  {
+    name: '流程1',
+    state: '进行中',
+    time: '2020 03-12  12:33:22',
+    payTime: '2min'
+  }
+]
 const state = {
-  list: []
+  list: [],
+  flowList: flowList
 }
 
 const mutations = {
@@ -45,7 +90,8 @@ const actions = {
   }
 }
 const getters = {
-  list: state => state.list
+  list: state => state.list,
+  flowList: state => state.flowList
 }
 
 export default {

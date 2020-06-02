@@ -111,7 +111,7 @@ export default {
     return {
       // 分页列表
       listQuery: {
-        total: 11,
+        total: 9,
         page: 1,
         limit: 10
       }

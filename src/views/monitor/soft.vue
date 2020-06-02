@@ -71,7 +71,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/monitor_detail',
+            path: '/soft_detail',
             query: ['id', 'name']
           }]
         }
@@ -89,7 +89,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '~@/styles/element-ui.scss';
+@import "~@/styles/element-ui.scss";
 .publicheader {
   overflow: hidden;
   padding: 10px 0;

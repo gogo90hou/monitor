@@ -13,9 +13,37 @@
 var echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/line');
 require('echarts/lib/component/tooltip');
+require('echarts/lib/component/markLine');
 export default {
+  props: {
+    chartsData: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
   data () {
     return {
+      style: {
+        green: {
+          backgroundStyle: {
+            color: '#111'
+          },
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(
+              0, 1, 0, 0,
+              [
+                { offset: 0, color: 'rgba(46, 214, 198, 0)' },
+                { offset: 1, color: 'rgba(46, 214, 198, 0.5)' }
+              ]
+            )
+          },
+          itemStyle: {
+            color: '#2ED6C6'
+          }
+        }
+      },
       option: {
         xAxis: {
           type: 'category',
@@ -49,7 +77,7 @@ export default {
         yAxis: {
           type: 'value',
           axisLabel: {
-            formatter: '{value}%'
+            formatter: '{value}'
           },
           axisTick: {
             alignWithLabel: true
@@ -76,30 +104,14 @@ export default {
           trigger: 'axis',
           show: true
         },
-
-        grid: {
-          top: '5%',
-          left: '50px',
-          right: '50px',
-          bottom: '2%',
-          backgroundColor: '#fff',
-          width: 'auto',
-          height: '75%'
-        },
         series: [{
           data: [90, 80, 60, 80, 70, 5, 80],
           itemStyle: {
-            color: '#5466E0',
-            barBorderRadius: [0, 10, 10, 0]
+            color: '#5466E0'
           },
           showBackground: true,
           backgroundStyle: {
             color: '#EDF6FD'
-          },
-          markPoint: {
-            data: [
-              { name: '周最低', value: 5, xAxis: 1, yAxis: -1.5 }
-            ]
           },
           markLine: {
             data: [
@@ -108,7 +120,7 @@ export default {
           },
           symbolSize: 5,
           symbol: 'circle',
-          smooth: true,
+          smooth: false,
           areaStyle: {
             color: new echarts.graphic.LinearGradient(
               0, 1, 0, 0,
@@ -126,6 +138,13 @@ export default {
         }]
       }
     }
+  },
+  created () {
+    this.option.xAxis.data = this.chartsData.x;
+    this.option.series[0].data = this.chartsData.y;
+    this.option.series[0].areaStyle = this.style[this.chartsData.style].areaStyle;
+    this.option.series[0].backgroundStyle = this.style[this.chartsData.style].backgroundStyle;
+    this.option.series[0].itemStyle = this.style[this.chartsData.style].itemStyle;
   },
   mounted () {
     this.echartLine = echarts.init(this.$refs.echartLine, 'light');
