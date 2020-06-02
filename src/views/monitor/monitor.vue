@@ -126,7 +126,7 @@ export default {
       fieldArr: [
         {
           label: '设备名称',
-          key: 'sysNum',
+          key: 'sysName',
           formatter: ''
         }, {
           label: '设备类型',
@@ -156,8 +156,8 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/detail',
-            query: ['id', 'name']
+            path: '/monitor_detail',
+            query: ['id', 'sysName']
           }, {
             label: '查看详情',
             type: 'button',
