@@ -189,10 +189,9 @@ export default {
 <style lang="scss" scoped>
 .database-filter {
   width: 100%;
-  height: 56px;
-  background-color: rgba(201, 203, 245, 0.2);
+  height: 56px !important;
+  background: rgba(201, 203, 245, 0.2);
   font-size: 14px;
-  opacity: 80%;
   span {
     display: block;
     width: 205px;

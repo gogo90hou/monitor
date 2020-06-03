@@ -111,12 +111,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// .round {
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-// }
 .percentloop {
   position: absolute;
   top: 50%;

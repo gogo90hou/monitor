@@ -129,9 +129,9 @@
           <div class="detail">
             <div class="title">
               <span class="box_title">CPU</span>
-              <span class="box_title_two">
+              <span class="box_title_center">
                 当前cpu负载：
-                <span class="value">60%</span>
+                <span class="title_green">60%</span>
               </span>
             </div>
           </div>
@@ -144,11 +144,11 @@
               <span class="box_title">磁盘IO</span>
               <span class="box_title_two">
                 入方向字节数：
-                <span class="value">43kb/s</span>
+                <span class="title_blue">43kb/s</span>
               </span>
               <span class="box_title_three">
                 出方向字节数：
-                <span class="value">45kb/s</span>
+                <span class="title_yellow">45kb/s</span>
               </span>
             </div>
           </div>
@@ -259,47 +259,15 @@ export default {
     }
   }
   .cpu_disk_box {
-    .cpu_detail,
-    .disk_detail {
+    .detail {
       background-color: #fff;
       height: 331px;
     }
     .cpu_detail {
       margin-right: 11px;
-      .box_title_two {
-        position: absolute;
-        color: #6d727a;
-        left: 50%;
-        transform: translateX(-50%);
-        .value {
-          color: #27b102;
-        }
-      }
     }
     .disk_detail {
       margin-left: 11px;
-      .box_title_two {
-        margin-left: 166px;
-        color: #6d727a;
-        .value {
-          color: #6d7ee1;
-        }
-      }
-      .box_title_three {
-        margin-left: 80px;
-        color: #6d727a;
-        .value {
-          color: #ffd04e;
-        }
-      }
-      @media screen and (max-width: 1500px) {
-        .box_title_two {
-          margin-left: 30px;
-        }
-        .box_title_three {
-          margin-left: 20px;
-        }
-      }
     }
   }
 }

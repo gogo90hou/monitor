@@ -16,20 +16,20 @@
       <el-button>返回</el-button>
     </div>
     <div class="detail_body">
-      <el-row class="detail_box run_hardDisk_box">
+      <el-row class="detail_box run_process_box">
         <el-col :span="5">
           <div class="detail run_detail" style="margin-right: 22px;">
             <div class="title">
               <span class="box_title">运行情况</span>
             </div>
             <div class="run_detail_body">
-              <div class="row">
-                <span>运行时长 ： 3h</span>
+              <div class="row row_one">
+                <span>运行时长 : <span class="black">3h</span> </span>
               </div>
-              <div class="row">
+              <div class="row row_two">
                 <span>
                   运行状态 ：
-                  <i class="small_round" :style="{backgroundColor: runStateColor}"></i> 正常
+                  <i class="small_round" :style="{backgroundColor: runStateColor}"></i><span class="black">正常</span>
                 </span>
               </div>
             </div>
@@ -37,22 +37,22 @@
           </div>
         </el-col>
         <el-col :span="5">
-          <div class="detail run_detail noMargin">
+          <div class="detail process_detail noMargin">
             <div class="title">
               <span class="box_title">流程</span>
             </div>
             <div class="run_detail_body">
               <div class="row">
-                <span>流程总数 ： 3h</span>
+                <span>流程总数 : <span class="black">3h</span> </span>
               </div>
               <div class="row">
-                <span>当前审批流程 ： 正常</span>
+                <span>当前审批流程 : <span class="black">正常</span> </span>
               </div>
               <div class="row">
-                <span>已完成流程 ： 正常</span>
+                <span>已完成流程 : <span class="black">正常</span> </span>
               </div>
               <div class="row">
-                <span>已拒绝流程 ： 正常</span>
+                <span>已拒绝流程 : <span class="black">正常</span> </span>
               </div>
             </div>
           </div>
@@ -203,15 +203,20 @@ export default {
   .sysTable {
     margin-top: 40px;
   }
-  .detail_body .run_hardDisk_box .run_detail {
+  .detail_body .run_process_box {
     &.noMargin {
       margin: 0;
     }
-    .run_detail_body {
-      div {
-        span {
-          width: 100%;
-        }
+    .run_detail {
+      height: 240px;
+      .row {
+        margin-bottom: 20px;
+      }
+    }
+    .process_detail {
+      height: 240px;
+      .row {
+        margin-bottom: 20px;
       }
     }
   }

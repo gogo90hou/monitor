@@ -18,8 +18,12 @@
 .black {
   color: #000000;
 }
+.blue {
+  color: #5466E0;
+}
 // 详情大盒子
 .detail_body {
+  color: #606060;
   // 详情文字介绍
   .detail_box {
     margin-bottom: 20px;
@@ -50,27 +54,71 @@
         }
         .box_title_center {
           position: absolute;
-          color: #6d727a;
           left: 50%;
           transform: translateX(-50%);
-          .value {
+          .title_green {
             color: #27b102;
           }
-          .valueNum {
+          .title_blue {
             color: #5466E0;
+          }
+          .title_yellow {
+            color: #FFD04E;
           }
         }
         .box_title_right {
           position: absolute;
           right: 16px;
           color: #6d727a;
-          .value {
+          .title_green{
             color: #27b102;
           }
-          .valueNum {
+          .title_blue {
             color: #5466E0;
           }
+          .title_yellow {
+            color: #FFD04E;
+          }
         }
+        .box_title_two {
+          position: absolute;
+          left: 200px;
+          color: #6d727a;
+          .title_green{
+            color: #27b102;
+          }
+          .title_blue {
+            color: #5466E0;
+          }
+          .title_yellow {
+            color: #FFD04E;
+          }
+        }
+        .box_title_three {
+          position: absolute;
+          left: 460px;
+          color: #6d727a;
+          .title_green{
+            color: #27b102;
+          }
+          .title_blue {
+            color: #5466E0;
+          }
+          .title_yellow {
+            color: #FFD04E;
+          }
+        }
+        @media screen and (max-width: 1500px) {
+          .box_title_two {
+            left: 100px;
+          }
+          .box_title_three {
+            left: 300px;
+          }
+        }
+      }
+      .main {
+        padding-left: 16px;
       }
       .run_detail_body {
         font-size: 14px;
@@ -177,6 +225,9 @@
   // 描述信息
   .describe_box {
     margin-top: 20px;
+    .detail {
+      height: 180px;
+    }
     .describe_detail {
       background-color: #fff;
       .information {
