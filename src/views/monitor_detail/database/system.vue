@@ -120,7 +120,11 @@
         </div>
       </el-col>
       <el-col :span="17">
-        <div class="memory_box_lineChart">456</div>
+        <div class="memory_box_lineChart">
+          <span>使用率</span>
+          <echarts-line style="height:220px" :charts-data="chartsData"></echarts-line>
+        </div>
+        <div></div>
       </el-col>
     </el-row>
     <el-row class="detail_box cpu_disk_box">
@@ -134,6 +138,7 @@
                 <span class="title_green">60%</span>
               </span>
             </div>
+            <echarts-line style="height:220px" :charts-data="chartsData"></echarts-line>
           </div>
         </div>
       </el-col>
@@ -151,6 +156,7 @@
                 <span class="title_yellow">45kb/s</span>
               </span>
             </div>
+            <echarts-line style="height:220px" :charts-data="chartsData"></echarts-line>
           </div>
         </div>
       </el-col>
@@ -199,7 +205,13 @@
 export default {
   data () {
     return {
-      runStateColor: '#27B102'
+      runStateColor: '#27B102',
+      chartsData: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      }
     }
   }
 }

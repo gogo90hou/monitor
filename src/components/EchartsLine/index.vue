@@ -88,7 +88,7 @@ export default {
         grid: {
           top: '5%',
           left: '50px',
-          right: '50px',
+          right: '80px',
           bottom: '2%',
           backgroundColor: '#fff',
           width: 'auto',

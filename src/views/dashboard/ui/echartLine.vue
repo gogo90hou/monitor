@@ -101,11 +101,11 @@ export default {
               { name: '周最低', value: 5, xAxis: 1, yAxis: -1.5 }
             ]
           },
-          markLine: {
-            data: [
-              { type: 'average', name: '平均值' }
-            ]
-          },
+          // markLine: {
+          //   data: [
+          //     { type: 'average', name: '平均值' }
+          //   ]
+          // },
           symbolSize: 5,
           symbol: 'circle',
           smooth: true,

@@ -45,6 +45,7 @@
               <span class="title_blue">60</span>
             </span>
           </div>
+          <echarts-line style="height:240px" :charts-data="chartsData"></echarts-line>
         </div>
       </el-col>
     </el-row>
@@ -56,13 +57,22 @@
           </div>
           <el-row style="padding-left:16px;">
             <el-col :span="8">
-              <span>非活动会话: <span class="blue">324</span></span>
+              <span>
+                非活动会话:
+                <span class="blue">324</span>
+              </span>
             </el-col>
             <el-col :span="8">
-              <span>活动会话: <span class="blue">125</span></span>
+              <span>
+                活动会话:
+                <span class="blue">125</span>
+              </span>
             </el-col>
             <el-col :span="8">
-              <span>系统会话: <span class="blue">24</span></span>
+              <span>
+                系统会话:
+                <span class="blue">24</span>
+              </span>
             </el-col>
           </el-row>
         </div>
@@ -74,16 +84,28 @@
           </div>
           <el-row style="padding-left:16px;">
             <el-col :span="6">
-              <span>高速缓存命中率：<span class="blue">45%</span></span>
+              <span>
+                高速缓存命中率：
+                <span class="blue">45%</span>
+              </span>
             </el-col>
             <el-col :span="6">
-              <span>空间利用率：<span class="blue">86%</span></span>
+              <span>
+                空间利用率：
+                <span class="blue">86%</span>
+              </span>
             </el-col>
             <el-col :span="6">
-              <span>库缓存命中率：<span class="blue">19%</span></span>
+              <span>
+                库缓存命中率：
+                <span class="blue">19%</span>
+              </span>
             </el-col>
             <el-col :span="6">
-              <span>字典缓存命中率：<span class="blue">23%</span></span>
+              <span>
+                字典缓存命中率：
+                <span class="blue">23%</span>
+              </span>
             </el-col>
           </el-row>
         </div>
@@ -132,7 +154,9 @@
             <div class="lineChart_title">
               <span>每秒事务数（tps）：32次</span>
             </div>
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body">
+              <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+            </div>
           </div>
         </div>
       </el-col>
@@ -204,9 +228,12 @@
         <div class="detail">
           <div class="title">
             <span class="box_title">逻辑 I/O</span>
-            <span class="box_title_center">当前I/O次数：<span class="title_green">32次/秒</span>
+            <span class="box_title_center">
+              当前I/O次数：
+              <span class="title_green">32次/秒</span>
             </span>
           </div>
+          <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
         </div>
       </el-col>
     </el-row>
@@ -216,6 +243,23 @@
           <div class="title">
             <span class="box_title">碎片化程度</span>
           </div>
+          <ul class="dash">
+            <li>
+              <dashProgress name="表空间1" :num="15"></dashProgress>
+            </li>
+            <li>
+              <dashProgress name="表空间2" :num="80"></dashProgress>
+            </li>
+            <li>
+              <dashProgress name="表空间3" :num="25"></dashProgress>
+            </li>
+            <li>
+              <dashProgress name="表空间4" :num="40"></dashProgress>
+            </li>
+            <li>
+              <dashProgress name="表空间5" :num="61"></dashProgress>
+            </li>
+          </ul>
         </div>
       </el-col>
     </el-row>
@@ -232,7 +276,9 @@
                   oracle版本：
                   <span class="black">企业版</span>
                 </el-col>
-                <el-col :span="4">版本号: <span class="black">v1.2</span>
+                <el-col :span="4">
+                  版本号:
+                  <span class="black">v1.2</span>
                 </el-col>
                 <el-col :span="5">
                   所在操作系统：
@@ -263,6 +309,12 @@ export default {
     return {
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
+      chartsData: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
       fieldArr: [
         {
           label: '流程名称',
@@ -308,6 +360,16 @@ export default {
       .row {
         margin-bottom: 20px;
       }
+    }
+  }
+  .dash {
+    font-size: 0;
+    width: 80%;
+    margin: auto;
+    li {
+      display: inline-block;
+      width: 20%;
+      font-size: 14px;
     }
   }
   .session_hit_box {
