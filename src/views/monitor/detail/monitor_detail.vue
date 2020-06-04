@@ -22,7 +22,7 @@
             <div class="title">
               <span class="box_title">基本信息</span>
             </div>
-            <div class="run_detail_body">
+            <div>
               <div class="row row_one">
                 <span class="col_one">设备名称： <span class="black">大门门禁</span></span>
               </div>
@@ -39,7 +39,7 @@
             <div class="title">
               <span class="box_title">描述信息</span>
             </div>
-            <div class="run_detail_body">
+            <div>
               <div class="row row_one">
                 <span class="col_one">所在区域 :<span class="black">锦江监狱</span></span>
               </div>

@@ -22,7 +22,7 @@
             <div class="title">
               <span class="box_title">运行情况</span>
             </div>
-            <div class="run_detail_body">
+            <div>
               <div class="row row_one">
                 <span>运行时长 : <span class="black">3h</span> </span>
               </div>
@@ -41,7 +41,7 @@
             <div class="title">
               <span class="box_title">流程</span>
             </div>
-            <div class="run_detail_body">
+            <div>
               <div class="row">
                 <span>流程总数 : <span class="black">3h</span> </span>
               </div>

@@ -6,7 +6,7 @@
           <div class="title">
             <span class="box_title">运行情况</span>
           </div>
-          <div class="run_detail_body">
+          <div class="detail_info">
             <div class="row row_one">
               <span class="col_one">
                 运行时长 ：
@@ -54,15 +54,24 @@
           <div class="title">
             <span class="box_title">会话</span>
           </div>
-          <el-row style="padding-left:16px;">
+          <el-row class="main">
             <el-col :span="8">
-              <span>非活动会话: <span class="blue">324</span></span>
+              <span>
+                非活动会话:
+                <span class="blue">324</span>
+              </span>
             </el-col>
             <el-col :span="8">
-              <span>活动会话: <span class="blue">125</span></span>
+              <span>
+                活动会话:
+                <span class="blue">125</span>
+              </span>
             </el-col>
             <el-col :span="8">
-              <span>系统会话: <span class="blue">24</span></span>
+              <span>
+                系统会话:
+                <span class="blue">24</span>
+              </span>
             </el-col>
           </el-row>
         </div>
@@ -72,18 +81,30 @@
           <div class="title">
             <span class="box_title">命中率</span>
           </div>
-          <el-row style="padding-left:16px;">
+          <el-row class="main">
             <el-col :span="6">
-              <span>高速缓存命中率：<span class="blue">45%</span></span>
+              <span>
+                高速缓存命中率：
+                <span class="blue">45%</span>
+              </span>
             </el-col>
             <el-col :span="6">
-              <span>空间利用率：<span class="blue">86%</span></span>
+              <span>
+                空间利用率：
+                <span class="blue">86%</span>
+              </span>
             </el-col>
             <el-col :span="6">
-              <span>库缓存命中率：<span class="blue">19%</span></span>
+              <span>
+                库缓存命中率：
+                <span class="blue">19%</span>
+              </span>
             </el-col>
             <el-col :span="6">
-              <span>字典缓存命中率：<span class="blue">23%</span></span>
+              <span>
+                字典缓存命中率：
+                <span class="blue">23%</span>
+              </span>
             </el-col>
           </el-row>
         </div>
@@ -96,7 +117,7 @@
             <span class="box_title">SGA</span>
           </div>
           <div class="round-box">
-            <RoundBar :percent-num="46" :speed="3" class="roundBar" />
+            <RoundBar :percent-num="46" :speed="3" class="roundBar"/>
             <div class="usage">空间利用率：47%(5G/23G)</div>
             <div class="grayBox">
               <span class="one">目标容量：30G</span>
@@ -111,7 +132,7 @@
             <span class="box_title">PGA</span>
           </div>
           <div class="round-box">
-            <RoundBar :percent-num="72" :speed="3" class="roundBar" />
+            <RoundBar :percent-num="72" :speed="3" class="roundBar"/>
             <div class="usage">空间利用率：72%(6G/8G)</div>
             <div class="grayBox pga">
               <span class="one">缓存命中率：68%</span>
@@ -148,7 +169,7 @@
             </span>
           </div>
           <div class="tables">
-            <dynamic-table :field-arr="fieldArr" :getters="getters" />
+            <dynamic-table :field-arr="fieldArr" :getters="getters"/>
           </div>
         </div>
       </el-col>
@@ -163,7 +184,7 @@
             </span>
           </div>
           <div class="tables">
-            <dynamic-table :field-arr="fieldArr" :getters="getters" />
+            <dynamic-table :field-arr="fieldArr" :getters="getters"/>
           </div>
         </div>
       </el-col>
@@ -177,13 +198,13 @@
           <div class="tableBox">
             <div class="table_title">锁等待列表</div>
             <div class="tables table_body">
-              <dynamic-table :field-arr="fieldArr" :getters="getters" />
+              <dynamic-table :field-arr="fieldArr" :getters="getters"/>
             </div>
           </div>
           <div class="tableBox">
             <div class="table_title">死锁会话信息</div>
             <div class="tables table_body">
-              <dynamic-table :field-arr="fieldArr" :getters="getters" />
+              <dynamic-table :field-arr="fieldArr" :getters="getters"/>
             </div>
           </div>
         </div>
@@ -196,7 +217,7 @@
             <span class="box_title">表空间</span>
           </div>
           <div class="tables table_body">
-            <dynamic-table :field-arr="fieldArr" :getters="getters" />
+            <dynamic-table :field-arr="fieldArr" :getters="getters"/>
           </div>
         </div>
       </el-col>
@@ -204,7 +225,9 @@
         <div class="detail">
           <div class="title">
             <span class="box_title">逻辑 I/O</span>
-            <span class="box_title_center">当前I/O次数：<span class="title_green">32次/秒</span>
+            <span class="box_title_center">
+              当前I/O次数：
+              <span class="title_green">32次/秒</span>
             </span>
           </div>
         </div>
@@ -232,7 +255,9 @@
                   oracle版本：
                   <span class="black">企业版</span>
                 </el-col>
-                <el-col :span="4">版本号: <span class="black">v1.2</span>
+                <el-col :span="4">
+                  版本号:
+                  <span class="black">v1.2</span>
                 </el-col>
                 <el-col :span="5">
                   所在操作系统：
@@ -303,7 +328,7 @@ export default {
     .detail {
       height: 332px;
     }
-    .run_detail_body {
+    .detail_info {
       // 加高行间距
       .row {
         margin-bottom: 20px;

@@ -6,7 +6,7 @@
           <div class="title">
             <span class="box_title">运行情况</span>
           </div>
-          <div class="main run_detail_body">
+          <div class="main detail_info">
             <div class="row row_one">
               <span class="col_one">
                 运行时长 ：
@@ -31,19 +31,46 @@
           </div>
           <div class="main statistical_detail_body">
             <el-row class="row">
-              <el-col :span="6"><span>查询操作数量：</span><span class="black">98</span></el-col>
-              <el-col :span="6"><span>删除操作数量：</span><span class="black">23</span></el-col>
-              <el-col :span="6"><span>更新操作数量：</span><span class="black"></span></el-col>
-              <el-col :span="6"><span>慢查询：</span><span class="black">124</span></el-col>
+              <el-col :span="6">
+                <span>查询操作数量：</span>
+                <span class="black">98</span>
+              </el-col>
+              <el-col :span="6">
+                <span>删除操作数量：</span>
+                <span class="black">23</span>
+              </el-col>
+              <el-col :span="6">
+                <span>更新操作数量：</span>
+                <span class="black"></span>
+              </el-col>
+              <el-col :span="6">
+                <span>慢查询：</span>
+                <span class="black">124</span>
+              </el-col>
             </el-row>
             <el-row class="row">
-              <el-col :span="6"><span>每秒接收字节数： </span><span class="black">589</span></el-col>
-              <el-col :span="6"><span>每秒发送字节数： </span><span class="black">589</span></el-col>
-              <el-col :span="6"><span>当前连接数： </span><span class="black">589</span></el-col>
-              <el-col :span="6"><span>最大连接数： </span><span class="black">589</span></el-col>
+              <el-col :span="6">
+                <span>每秒接收字节数：</span>
+                <span class="black">589</span>
+              </el-col>
+              <el-col :span="6">
+                <span>每秒发送字节数：</span>
+                <span class="black">589</span>
+              </el-col>
+              <el-col :span="6">
+                <span>当前连接数：</span>
+                <span class="black">589</span>
+              </el-col>
+              <el-col :span="6">
+                <span>最大连接数：</span>
+                <span class="black">589</span>
+              </el-col>
             </el-row>
             <el-row class="row">
-              <el-col :span="6"><span>当前线程活跃数： </span><span class="black">41</span></el-col>
+              <el-col :span="6">
+                <span>当前线程活跃数：</span>
+                <span class="black">41</span>
+              </el-col>
             </el-row>
           </div>
         </div>
@@ -92,7 +119,7 @@
             </span>
           </div>
           <div class="main line_title">近段时间线程缓存命中率: ( % )</div>
-          <div>放置折线图</div>
+          <div class="main">放置折线图</div>
         </div>
       </el-col>
       <el-col :span="12">
@@ -107,6 +134,8 @@
               <span class="title_yellow">43%</span>
             </span>
           </div>
+          <div class="main line_title">近段时间查询缓存命中个数: ( % )</div>
+          <div class="main">放置折线图</div>
         </div>
       </el-col>
     </el-row>
@@ -120,10 +149,12 @@
             <div class="information">
               <el-row :gutter="20">
                 <el-col :span="5">
-                  oracle版本：
+                  mysql版本：
                   <span class="black">企业版</span>
                 </el-col>
-                <el-col :span="4">版本号: <span class="black">v1.2</span>
+                <el-col :span="4">
+                  版本号:
+                  <span class="black">v1.2</span>
                 </el-col>
                 <el-col :span="5">
                   所在操作系统：
@@ -194,7 +225,7 @@ export default {
     .detail {
       height: 240px;
     }
-    .run_detail_body,
+    .detail_info,
     .statistical_detail_body {
       // 加高行间距
       .row {
@@ -210,6 +241,10 @@ export default {
   .cache_box {
     .detail {
       height: 330px;
+      .line_title {
+        color: #6d727a;
+        margin-bottom: 40px;
+      }
     }
   }
 }

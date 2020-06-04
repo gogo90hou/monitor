@@ -15,17 +15,20 @@
     <system v-if="queryData.type == 1"></system>
     <oracle v-if="queryData.type == 2 && queryData.filterName == 'Oracle'"></oracle>
     <mysql v-if="queryData.type == 2 && queryData.filterName == 'Mysql'"></mysql>
+    <sqlserver v-if="queryData.type == 2 && queryData.filterName == 'Sqlserver'"></sqlserver>
   </div>
 </template>
 <script>
 import system from '../../monitor_detail/database/system';
 import oracle from '../../monitor_detail/database/oracle';
 import mysql from '../../monitor_detail/database/mysql';
+import sqlserver from '../../monitor_detail/database/sqlserver';
 export default {
   components: {
     system,
     oracle,
-    mysql
+    mysql,
+    sqlserver
   },
   data () {
     return {

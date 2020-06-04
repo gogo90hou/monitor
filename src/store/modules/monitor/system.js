@@ -393,7 +393,7 @@ const actions = {
     if (info.type === 'Oracle') {
       commit('getDatabaseList', databaseData)
     }
-    if (info.type === 'sqlserver') {
+    if (info.type === 'Sqlserver') {
       commit('getDatabaseList', databaseData1)
     }
     if (info.type === 'Mysql') {

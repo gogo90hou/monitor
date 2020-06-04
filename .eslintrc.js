@@ -31,6 +31,7 @@ module.exports = {
       "math": "always"
     }],
     'vue/html-self-closing': 'off',
+    'vue/html-closing-bracket-spacing': 'off',
     "vue/singleline-html-element-content-newline": "off",
     "vue/multiline-html-element-content-newline": "off",
     "vue/name-property-casing": ["error", "PascalCase"],

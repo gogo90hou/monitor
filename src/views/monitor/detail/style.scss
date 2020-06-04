@@ -21,6 +21,12 @@
 .blue {
   color: #5466E0;
 }
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
 // 详情大盒子
 .detail_body {
   color: #606060;
@@ -32,6 +38,9 @@
       padding: 12px;
       box-sizing: border-box;
       background-color: #fff;
+      border: 1px solid #EEEFFF;
+      font-size: 14px;
+      color: #606060;
       .title {
         height: 22px;
         line-height: 22px;
@@ -120,21 +129,18 @@
       .main {
         padding-left: 16px;
       }
-      .run_detail_body {
-        font-size: 14px;
-        color: #606060;
-        .row {
-          height: 22px;
-          line-height: 22px;
-        }
-        .small_round {
-          display: inline-block;
-          width: 8px;
-          height: 8px;
-          border-radius: 4px;
-          margin-top: -2px;
-          vertical-align: middle;
-        }
+      .row {
+        height: 22px;
+        line-height: 22px;
+      }
+      .small_round {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        margin-top: -2px;
+        margin-right: 4px;
+        vertical-align: middle;
       }
       .iconicon_cog {
         position: absolute;
@@ -156,6 +162,39 @@
           top: calc(50% + 80px);
           text-align: center;
           color: #606060;
+        }
+      }
+    }
+    .lineChart {
+      .lineChart_title {
+        margin-bottom: 14px;
+        .rightBox {
+          float: right;
+          .square {
+            float: left;
+            display: flex;
+            width: 80px;
+            font-size: 12px;
+            text-align: center;
+          }
+          .square:before {
+            content: '';
+            width: 16px;
+            height: 6px;
+            display: inline-block;
+            align-self: center;
+            background-color: #5cabfb;
+            margin-right: 8px;
+          }
+          .two:before {
+            background-color: #2ed6c6;
+          }
+          .three:before {
+            background-color: #ffd04e;
+          }
+          .four:before {
+            background-color: #6d7ee1;
+          }
         }
       }
     }

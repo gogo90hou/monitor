@@ -6,7 +6,7 @@
           <div class="title">
             <span class="box_title">运行情况</span>
           </div>
-          <div class="run_detail_body">
+          <div class="detail_info">
             <div class="row row_one">
               <span class="col_one">
                 运行时长 ：
@@ -214,7 +214,7 @@ export default {
     // 运行情况
     .run_detail {
       margin-right: 20px;
-      .run_detail_body {
+      .detail_info {
         .row {
           margin-bottom: 20px;
           .col_one {

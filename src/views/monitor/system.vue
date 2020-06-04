@@ -9,7 +9,7 @@
     />
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
       <el-tab-pane label="操作系统" name="first">
-        <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
+        <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit"/>
       </el-tab-pane>
       <el-tab-pane label="数据库" name="second">
         <div class="database-filter">
@@ -18,15 +18,15 @@
             @click="filterTab('Oracle')"
           >Oracle (43)</span>
           <span
-            :class="{'filter-active':filterName==='sqlserver'}"
-            @click="filterTab('sqlserver')"
+            :class="{'filter-active':filterName==='Sqlserver'}"
+            @click="filterTab('Sqlserver')"
           >sqlserver (21)</span>
           <span
             :class="{'filter-active':filterName==='Mysql'}"
             @click="filterTab('Mysql')"
           >Mysql (32)</span>
         </div>
-        <dynamic-table :field-arr="databaseFieldArr" :getters="databaseGetters" @edit="edit" />
+        <dynamic-table :field-arr="databaseFieldArr" :getters="databaseGetters" @edit="edit"/>
       </el-tab-pane>
     </el-tabs>
   </div>
