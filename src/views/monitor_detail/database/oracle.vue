@@ -45,6 +45,7 @@
               <span class="title_blue">60</span>
             </span>
           </div>
+          <echarts-line style="height:240px" :charts-data="chartsData"></echarts-line>
         </div>
       </el-col>
     </el-row>
@@ -153,7 +154,9 @@
             <div class="lineChart_title">
               <span>每秒事务数（tps）：32次</span>
             </div>
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body">
+              <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+            </div>
           </div>
         </div>
       </el-col>
@@ -230,6 +233,7 @@
               <span class="title_green">32次/秒</span>
             </span>
           </div>
+          <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
         </div>
       </el-col>
     </el-row>
@@ -239,6 +243,23 @@
           <div class="title">
             <span class="box_title">碎片化程度</span>
           </div>
+          <ul class="dash">
+            <li>
+              <dashProgress name="表空间1" :num="15"></dashProgress>
+            </li>
+            <li>
+              <dashProgress name="表空间2" :num="80"></dashProgress>
+            </li>
+            <li>
+              <dashProgress name="表空间3" :num="25"></dashProgress>
+            </li>
+            <li>
+              <dashProgress name="表空间4" :num="40"></dashProgress>
+            </li>
+            <li>
+              <dashProgress name="表空间5" :num="61"></dashProgress>
+            </li>
+          </ul>
         </div>
       </el-col>
     </el-row>
@@ -288,6 +309,12 @@ export default {
     return {
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
+      chartsData: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
       fieldArr: [
         {
           label: '流程名称',
@@ -333,6 +360,16 @@ export default {
       .row {
         margin-bottom: 20px;
       }
+    }
+  }
+  .dash {
+    font-size: 0;
+    width: 80%;
+    margin: auto;
+    li {
+      display: inline-block;
+      width: 20%;
+      font-size: 14px;
     }
   }
   .session_hit_box {

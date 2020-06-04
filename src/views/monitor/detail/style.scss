@@ -30,6 +30,19 @@
 // 详情大盒子
 .detail_body {
   color: #606060;
+  ::-webkit-scrollbar{
+    width:5px;
+  }
+  ::-webkit-scrollbar-track{
+    background:rgba(217,218,220,1);
+    border-radius:2px;
+  }
+  ::-webkit-scrollbar-thumb{
+    background: #bfbfbf;
+    border-radius:10px;
+  }
+  
+  
   // 详情文字介绍
   .detail_box {
     margin-bottom: 20px;
