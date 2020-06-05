@@ -149,48 +149,112 @@
         </div>
       </el-col>
     </el-row>
-    <el-row class="detail_box fan_box">
+    <el-row class="detail_box memory_box">
       <el-col :span="7">
         <div class="detail">
           <div class="title">
             <span class="box_title">内存</span>
-            <span class="prompt_box">
-              <span class="one"></span>
-              <span class="two">异常</span>
-            </span>
           </div>
-          <div class="box">
-            <div class="small_box one">
-              <div class="small_one"><span class="num">2000</span> 转/分</div>
-              <div class="small_two">风扇一</div>
-            </div>
-            <div class="small_box two">
-              <div class="small_one"><span class="num">2000</span> 转/分</div>
-              <div class="small_two">风扇二</div>
-            </div>
-            <div class="small_box three">
-              <div class="small_one"><span class="num" style="color: #FE0000;">2300</span> 转/分</div>
-              <div class="small_two">风扇三</div>
-            </div>
-            <div class="small_box four">
-              <div class="small_one"><span class="num">2000</span> 转/分</div>
-              <div class="small_two">风扇四</div>
-            </div>
+          <div class="round-box">
+            <RoundBar :percent-num="72" :speed="3" />
+            <div class="usage">使用率:72%(6G/8G)</div>
           </div>
         </div>
       </el-col>
       <el-col :span="17">
         <div class="detail lineChart">
           <div class="lineChart_title">
-            <span>转数（转）</span>
-            <span class="rightBox">
-              <span class="square one">风扇一</span>
-              <span class="square two">风扇二</span>
-              <span class="square three">风扇三</span>
-              <span class="square four">风扇四</span>
-            </span>
+            <span>使用率</span>
           </div>
           <div class="lineChart_body">放置折线图</div>
+        </div>
+      </el-col>
+    </el-row>
+    <el-row class="detail_box cpu_box">
+      <el-col :span="12">
+        <div class="detail">
+          <div class="title">
+            <span class="box_title">CPU</span>
+          </div>
+          <div class="lineChart">
+            <div class="lineChart_title">
+              <span class="black small_title_one">cpu温度:</span>
+              <span class="small_title_two">
+                <span class="info">CPU1: 34&#8451;</span>
+                <span class="info">CPU2: 34&#8451;</span>
+                <span class="info" style="color: #F02323;">CPU3: 38&#8451;</span>
+                <span class="info">CPU4: 34&#8451;</span>
+              </span>
+            </div>
+            <div class="lineChart_body">
+              <div class="lineChart_title_two">
+                <span>&#8451;</span>
+                <span class="rightBox">
+                  <span class="square one">CPU1</span>
+                  <span class="square two">CPU2</span>
+                  <span class="square three">CPU3</span>
+                  <span class="square four">CPU4</span>
+                </span>
+              </div>
+              <div>放置折线图</div>
+            </div>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="detail">
+          <div class="lineChart" style="margin-top: 52px;">
+            <div class="lineChart_title">
+              <span class="black small_title_one">cpu负载：</span>
+              <span class="small_title_two">
+                <span class="info">CPU1: 34%</span>
+                <span class="info">CPU2: 34%</span>
+                <span class="info" style="color: #F02323;">CPU3: 98%</span>
+                <span class="info">CPU4: 34%</span>
+              </span>
+            </div>
+            <div class="lineChart_body">
+              <div class="lineChart_title_two">
+                <span>负载（%）</span>
+                <span class="rightBox">
+                  <span class="square one">CPU1</span>
+                  <span class="square two">CPU2</span>
+                  <span class="square three">CPU3</span>
+                  <span class="square four">CPU4</span>
+                </span>
+              </div>
+              <div>放置折线图</div>
+            </div>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+    <el-row class="detail_box describe_box">
+      <el-col :span="24">
+        <div class="describe_detail">
+          <div class="detail">
+            <div class="title">
+              <span class="box_title">服务器描述</span>
+            </div>
+            <div class="information">
+              <el-row>
+                <el-col :span="5">
+                  所在区域：
+                  <span class="black">企业版</span>
+                </el-col>
+                <el-col :span="19">
+                  所在位置：
+                  <span class="black">省局机房1</span>
+                </el-col>
+                <el-col :span="24">
+                  描述信息：
+                  <span
+                    class="black"
+                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
+                </el-col>
+              </el-row>
+            </div>
+          </div>
         </div>
       </el-col>
     </el-row>
@@ -309,11 +373,14 @@ export default {
             background-color: #ff1515;
           }
           .one {
-            top: 3.5px;
-            left: 7.7px;
-            width: 15.7px;
-            height: 15.7px;
-            transform: rotate(45deg);
+            background: none;
+            top: 0;
+            left: 5px;
+            width: 0;
+            height: 0;
+            border-top: 11px solid transparent;
+            border-bottom: 11px solid transparent;
+            border-right: 11px solid #ff1515;
           }
           .two {
             left: 16px;
@@ -358,6 +425,40 @@ export default {
         }
         .four {
           border-left: 3px solid #6d7ee1;
+        }
+      }
+    }
+  }
+  .memory_box {
+    .detail {
+      height: 287px;
+    }
+  }
+  .cpu_box {
+    .detail {
+      height: 391px;
+      .lineChart {
+        .lineChart_title {
+          font-size: 14px;
+          padding-bottom: 66px;
+          .small_title_one {
+            float: left;
+            width: 20%;
+          }
+          .small_title_two {
+            float: right;
+            width: 80%;
+            .info {
+              float: left;
+              width: 25%;
+              text-align: center;
+            }
+          }
+        }
+        .lineChart_body {
+          .lineChart_title_two {
+            margin-bottom: 14px;
+          }
         }
       }
     }

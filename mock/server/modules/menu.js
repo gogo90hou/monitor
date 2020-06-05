@@ -642,7 +642,7 @@ const data = [{
   'id': 'de2c479390b64d63998bf04d853fea3e',
   'menuName': '中间件Apache详情',
   'menuType': 'url',
-  'menuValue': '/middle_apache_detail',
+  'menuValue': '/middle_detail',
   'pxNum': 1,
   'icon': null,
   'memo': null,
