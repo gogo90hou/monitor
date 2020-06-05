@@ -31,7 +31,7 @@
           </div>
           <div class="one">
             <div class="histogram_cdef">
-              <span class="disk">C盘 ：</span>
+              <span class="disk">eden:</span>
               <div class="histogram_middle_box">
                 <div class="figure">
                   <div class="figure_small"></div>
@@ -41,7 +41,7 @@
               <span class="percentage">45%</span>
             </div>
             <div class="histogram_cdef">
-              <span class="disk">E盘 ：</span>
+              <span class="disk">oldGen:</span>
               <div class="histogram_middle_box">
                 <div class="figure">
                   <div class="figure_small"></div>
@@ -51,9 +51,9 @@
               <span class="percentage">45%</span>
             </div>
           </div>
-          <div class="two" style="margin-left:20px;">
+          <div class="two">
             <div class="histogram_cdef">
-              <span class="disk">D盘 ：</span>
+              <span class="disk">survivor:</span>
               <div class="histogram_middle_box">
                 <div class="figure">
                   <div class="figure_small"></div>
@@ -63,7 +63,7 @@
               <span class="percentage">45%</span>
             </div>
             <div class="histogram_cdef">
-              <span class="disk">F盘 ：</span>
+              <span class="disk">PermGen:</span>
               <div class="histogram_middle_box">
                 <div class="figure">
                   <div class="figure_small" style="width : 90%;background-color: #F13E3E;"></div>
@@ -105,6 +105,31 @@
             <span class="box_title">使用率</span>
           </div>
           <div class="lineChart">
+            <div class="lineChart_body">放置折线图</div>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+    <el-row class="detail_box gc_box">
+      <el-col :span="12">
+        <div class="detail GC_detail">
+          <div class="title">
+            <span class="box_title">GC</span>
+            <div class="box_title_bottom">当前老年代GC执行次数：<span class="title_blue">34 次/秒</span></div>
+          </div>
+          <div class="lineChart">
+            <div class="lineChart_title">近期老年代GC执行次数(次)</div>
+            <div class="lineChart_body">放置折线图</div>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="detail GC_detail">
+          <div class="title">
+            <div class="box_title_bottom two">当前年轻代GC执行次数：<span class="title_blue">34 次/秒</span></div>
+          </div>
+          <div class="lineChart">
+            <div class="lineChart_title">近期年轻代GC执行次数(次)</div>
             <div class="lineChart_body">放置折线图</div>
           </div>
         </div>
@@ -210,10 +235,14 @@ export default {
     }
     .histogram_box {
       .histogram_cdef {
-        width: 50%;
+        margin-left: 38px;
+        width: 40%;
+        .figure {
+          width: 100%;
+        }
       }
       .two {
-        left: 50%;
+        margin-left: calc(40% + 20px);
       }
     }
   }
@@ -242,6 +271,28 @@ export default {
     }
     .lineChart_detail {
       border-left: 1px solid rgba(219, 219, 219, 0.52);
+    }
+  }
+  .gc_box {
+    .detail {
+      height: 370px;
+      .box_title_bottom {
+        width: 100%;
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid rgba(219, 219, 219, 0.52);
+      }
+      .box_title_bottom.two {
+        margin-top: 22px;
+      }
+      .lineChart {
+        position: absolute;
+        top: 114px;
+      }
+    }
+    .lineChart_detail {
+      border: 1px solid rgba(219, 219, 219, 0.52);
     }
   }
   .describe_box {
