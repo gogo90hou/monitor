@@ -9,26 +9,26 @@
           <div class="detail_info">
             <div class="row row_one">
               <span class="col_one">
-                运行时长 ：
+                运行时长 :
                 <span class="black">3h</span>
               </span>
             </div>
             <div class="row row_two">
               <span class="col_one">
-                运行状态 ：
+                运行状态 :
                 <i class="small_round" :style="{backgroundColor: runStateColor}"></i>
                 <span class="black">正常</span>
               </span>
             </div>
             <div class="row row_three">
               <span class="col_one">
-                数据库文件大小 ：
+                数据库文件大小 :
                 <span class="black">8G</span>
               </span>
             </div>
             <div class="row row_four">
               <span class="col_one">
-                每秒事务数 ：
+                每秒事务数 :
                 <span class="black">32</span>
               </span>
             </div>
@@ -41,7 +41,7 @@
           <div class="title">
             <span class="box_title">进程</span>
             <span class="box_title_center">
-              当前进程数：
+              当前进程数:
               <span class="title_blue">60</span>
             </span>
           </div>
@@ -83,27 +83,27 @@
             <span class="box_title">命中率</span>
           </div>
           <el-row class="main">
-            <el-col :span="6">
+            <el-col :xs="12" :sm="12" :lg="12" :xl="6">
               <span>
-                高速缓存命中率：
+                高速缓存命中率:
                 <span class="blue">45%</span>
               </span>
             </el-col>
-            <el-col :span="6">
+            <el-col :xs="12" :sm="12" :lg="12" :xl="6">
               <span>
-                空间利用率：
+                空间利用率:
                 <span class="blue">86%</span>
               </span>
             </el-col>
-            <el-col :span="6">
+            <el-col :xs="12" :sm="12" :lg="12" :xl="6">
               <span>
-                库缓存命中率：
+                库缓存命中率:
                 <span class="blue">19%</span>
               </span>
             </el-col>
-            <el-col :span="6">
+            <el-col :xs="12" :sm="12" :lg="12" :xl="6">
               <span>
-                字典缓存命中率：
+                字典缓存命中率:
                 <span class="blue">23%</span>
               </span>
             </el-col>
@@ -119,10 +119,10 @@
           </div>
           <div class="round-box">
             <RoundBar :percent-num="46" :speed="3" class="roundBar"/>
-            <div class="usage">空间利用率：47%(5G/23G)</div>
+            <div class="usage">空间利用率:47%(5G/23G)</div>
             <div class="grayBox">
-              <span class="one">目标容量：30G</span>
-              <span class="two">最大容量：30G</span>
+              <span class="one">目标容量:30G</span>
+              <span class="two">最大容量:30G</span>
             </div>
           </div>
         </div>
@@ -134,9 +134,9 @@
           </div>
           <div class="round-box">
             <RoundBar :percent-num="72" :speed="3" class="roundBar"/>
-            <div class="usage">空间利用率：72%(6G/8G)</div>
+            <div class="usage">空间利用率:72%(6G/8G)</div>
             <div class="grayBox pga">
-              <span class="one">缓存命中率：68%</span>
+              <span class="one">缓存命中率:68%</span>
             </div>
           </div>
         </div>
@@ -146,13 +146,13 @@
           <div class="title">
             <span class="box_title">TPS</span>
             <span class="box_title_center">
-              当前事务数（tps）：
+              当前事务数（tps）:
               <span class="title_blue">32次/秒</span>
             </span>
           </div>
           <div class="lineChart">
             <div class="lineChart_title">
-              <span>每秒事务数（tps）：32次</span>
+              <span>每秒事务数（tps）:32次</span>
             </div>
             <div class="lineChart_body">
               <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
@@ -167,7 +167,7 @@
           <div class="title">
             <span class="box_title">审计</span>
             <span class="box_title_right">
-              审计功能状态：
+              审计功能状态:
               <span class="tltle_blue">开启</span>
             </span>
           </div>
@@ -229,7 +229,7 @@
           <div class="title">
             <span class="box_title">逻辑 I/O</span>
             <span class="box_title_center">
-              当前I/O次数：
+              当前I/O次数:
               <span class="title_green">32次/秒</span>
             </span>
           </div>
@@ -273,7 +273,7 @@
             <div class="information">
               <el-row :gutter="20">
                 <el-col :span="5">
-                  oracle版本：
+                  oracle版本:
                   <span class="black">企业版</span>
                 </el-col>
                 <el-col :span="4">
@@ -281,15 +281,15 @@
                   <span class="black">v1.2</span>
                 </el-col>
                 <el-col :span="5">
-                  所在操作系统：
+                  所在操作系统:
                   <span class="black">linux操作系统</span>
                 </el-col>
                 <el-col :span="10">
-                  所在服务器：
+                  所在服务器:
                   <span class="black">省局服务器1</span>
                 </el-col>
                 <el-col :span="24">
-                  描述信息：
+                  描述信息:
                   <span
                     class="black"
                   >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
@@ -374,7 +374,7 @@ export default {
   }
   .session_hit_box {
     .detail {
-      height: 94px;
+      height: 100px;
     }
   }
   .s_p_t_box {
