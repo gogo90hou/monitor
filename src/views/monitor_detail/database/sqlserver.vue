@@ -146,7 +146,7 @@
           </div>
           <div class="tableBox">
             <div class="tables table_body">
-              <dynamic-table :field-arr="fieldArr" :getters="getters"/>
+              <dynamic-table :field-arr="fieldArr" :getters="getters" />
             </div>
           </div>
           <div class="tableBox two">
@@ -209,7 +209,9 @@
               <div class="lineChart_title">
                 <span>%</span>
               </div>
-              <div class="lineChart_body">放置折线图</div>
+              <div class="lineChart_body">
+                <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+              </div>
             </div>
           </div>
         </div>
@@ -283,7 +285,9 @@
           <div class="lineChart_title">
             <span>个</span>
           </div>
-          <div class="lineChart_body">放置折线图</div>
+          <div class="lineChart_body">
+            <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+          </div>
         </div>
       </el-col>
     </el-row>
@@ -292,13 +296,18 @@
         <div class="detail">
           <div class="title">
             <span class="box_title">批处理请求</span>
-            <span class="box_title_center">当前每秒批处理请求数：<span class="title_blue">41次</span></span>
+            <span class="box_title_center">
+              当前每秒批处理请求数：
+              <span class="title_blue">41次</span>
+            </span>
           </div>
           <div class="lineChart">
             <div class="lineChart_title">
               <span>次</span>
             </div>
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body">
+              <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+            </div>
           </div>
         </div>
       </el-col>
@@ -306,13 +315,18 @@
         <div class="detail">
           <div class="title">
             <span class="box_title">全表扫描数量</span>
-            <span class="box_title_center">全表扫描数量: <span class="title_blue">41次</span></span>
+            <span class="box_title_center">
+              全表扫描数量:
+              <span class="title_blue">41次</span>
+            </span>
           </div>
           <div class="lineChart">
             <div class="lineChart_title">
               <span>次</span>
             </div>
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body">
+              <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+            </div>
           </div>
         </div>
       </el-col>
@@ -363,6 +377,12 @@ export default {
     return {
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
+      chartsData: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
       fieldArr: [
         {
           label: '流程名称',

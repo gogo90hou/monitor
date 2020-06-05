@@ -27,16 +27,20 @@
       <el-col :span="4">
         <div class="detail power_detail">
           <div class="title">
-            <span class="box_title">电源 </span>
+            <span class="box_title">电源</span>
           </div>
           <div>
             <div class="row row_one">
               <span class="col_one fl">电源1</span>
-              <span class="col_two fr"><i class="small_round" :style="{backgroundColor: runStateColor}"></i>正常</span>
+              <span class="col_two fr">
+                <i class="small_round" :style="{backgroundColor: runStateColor}"></i>正常
+              </span>
             </div>
             <div class="row row_two">
               <span class="col_one fl">电源2</span>
-              <span class="col_two fr"><i class="small_round" style="background-color: #FF0000;"></i>异常</span>
+              <span class="col_two fr">
+                <i class="small_round" style="background-color: #FF0000;"></i>异常
+              </span>
             </div>
           </div>
         </div>
@@ -116,19 +120,27 @@
           </div>
           <div class="box">
             <div class="small_box one">
-              <div class="small_one"><span class="num">2000</span> 转/分</div>
+              <div class="small_one">
+                <span class="num">2000</span> 转/分
+              </div>
               <div class="small_two">风扇一</div>
             </div>
             <div class="small_box two">
-              <div class="small_one"><span class="num">2000</span> 转/分</div>
+              <div class="small_one">
+                <span class="num">2000</span> 转/分
+              </div>
               <div class="small_two">风扇二</div>
             </div>
             <div class="small_box three">
-              <div class="small_one"><span class="num" style="color: #FE0000;">2300</span> 转/分</div>
+              <div class="small_one">
+                <span class="num" style="color: #FE0000;">2300</span> 转/分
+              </div>
               <div class="small_two">风扇三</div>
             </div>
             <div class="small_box four">
-              <div class="small_one"><span class="num">2000</span> 转/分</div>
+              <div class="small_one">
+                <span class="num">2000</span> 转/分
+              </div>
               <div class="small_two">风扇四</div>
             </div>
           </div>
@@ -145,7 +157,9 @@
               <span class="square four">风扇四</span>
             </span>
           </div>
-          <div class="lineChart_body">放置折线图</div>
+          <div class="lineChart_body">
+            <echarts-line style="height:200px" :charts-data="chartsData1"></echarts-line>
+          </div>
         </div>
       </el-col>
     </el-row>
@@ -166,94 +180,8 @@
           <div class="lineChart_title">
             <span>使用率</span>
           </div>
-          <div class="lineChart_body">放置折线图</div>
-        </div>
-      </el-col>
-    </el-row>
-    <el-row class="detail_box cpu_box">
-      <el-col :span="12">
-        <div class="detail">
-          <div class="title">
-            <span class="box_title">CPU</span>
-          </div>
-          <div class="lineChart">
-            <div class="lineChart_title">
-              <span class="black small_title_one">cpu温度:</span>
-              <span class="small_title_two">
-                <span class="info">CPU1: 34&#8451;</span>
-                <span class="info">CPU2: 34&#8451;</span>
-                <span class="info" style="color: #F02323;">CPU3: 38&#8451;</span>
-                <span class="info">CPU4: 34&#8451;</span>
-              </span>
-            </div>
-            <div class="lineChart_body">
-              <div class="lineChart_title_two">
-                <span>&#8451;</span>
-                <span class="rightBox">
-                  <span class="square one">CPU1</span>
-                  <span class="square two">CPU2</span>
-                  <span class="square three">CPU3</span>
-                  <span class="square four">CPU4</span>
-                </span>
-              </div>
-              <div>放置折线图</div>
-            </div>
-          </div>
-        </div>
-      </el-col>
-      <el-col :span="12">
-        <div class="detail">
-          <div class="lineChart" style="margin-top: 52px;">
-            <div class="lineChart_title">
-              <span class="black small_title_one">cpu负载：</span>
-              <span class="small_title_two">
-                <span class="info">CPU1: 34%</span>
-                <span class="info">CPU2: 34%</span>
-                <span class="info" style="color: #F02323;">CPU3: 98%</span>
-                <span class="info">CPU4: 34%</span>
-              </span>
-            </div>
-            <div class="lineChart_body">
-              <div class="lineChart_title_two">
-                <span>负载（%）</span>
-                <span class="rightBox">
-                  <span class="square one">CPU1</span>
-                  <span class="square two">CPU2</span>
-                  <span class="square three">CPU3</span>
-                  <span class="square four">CPU4</span>
-                </span>
-              </div>
-              <div>放置折线图</div>
-            </div>
-          </div>
-        </div>
-      </el-col>
-    </el-row>
-    <el-row class="detail_box describe_box">
-      <el-col :span="24">
-        <div class="describe_detail">
-          <div class="detail">
-            <div class="title">
-              <span class="box_title">服务器描述</span>
-            </div>
-            <div class="information">
-              <el-row>
-                <el-col :span="5">
-                  所在区域：
-                  <span class="black">企业版</span>
-                </el-col>
-                <el-col :span="19">
-                  所在位置：
-                  <span class="black">省局机房1</span>
-                </el-col>
-                <el-col :span="24">
-                  描述信息：
-                  <span
-                    class="black"
-                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
-                </el-col>
-              </el-row>
-            </div>
+          <div class="lineChart_body">
+            <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
           </div>
         </div>
       </el-col>
@@ -267,6 +195,24 @@ export default {
     return {
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
+      chartsData: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
+      chartsData1: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [
+          [1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100, 1200, 1300, 1100, 1800, 1500],
+          [1100, 1800, 1500, 1200, 1300, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+          [1200, 1500, 1400, 1200, 1500, 2000, 2300, 1000, 1130, 1080, 2100, 1060, 1870],
+          [1300, 1600, 1300, 1200, 1600, 1260, 1770, 2500, 2100, 1600, 1130, 1080, 2100]
+        ],
+        multiple: true,
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'multipleStyle'
+      },
       fieldArr: [
         {
           label: '流程名称',

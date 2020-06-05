@@ -44,7 +44,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .dashProgress {
   text-align: center;
   min-width: 50px;

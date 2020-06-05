@@ -26,7 +26,6 @@ import '@/icons' // icon
 import '@/permission' // permission control
 import './utils/error-log'; // error log
 import './components/globalComponent'
-
 // set ElementUI lang to EN
 Vue.use(ElementUI, {
   size: Cookies.get('size') || 'medium', // set element-ui default size
@@ -34,7 +33,7 @@ Vue.use(ElementUI, {
 })
 // 如果想要中文版 element-ui，按如下方式声明
 // Vue.use(ElementUI)
-
+console.log(store)
 Vue.config.productionTip = false
 
 new Vue({
