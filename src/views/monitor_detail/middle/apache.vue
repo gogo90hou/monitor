@@ -27,28 +27,48 @@
       <el-col :span="20">
         <div class="detail_box hardDisk_box">
           <el-row style="height: 100%;">
-            <el-col :span="7" class="detail disk_box">
+            <el-col :span="8" class="detail disk_box">
               <div class="title">
                 <span class="box_title">硬盘</span>
               </div>
               <div class="round_box">
-                <div class="circle"></div>
+                <pie></pie>
                 <div class="info_box">
-                  <div class="prompt one">当前每秒请求数：<span class="size">62个</span></div>
-                  <div class="prompt two">运行线程数：<span class="size">58个</span></div>
-                  <div class="prompt three">空闲线程数：<span class="size">35个</span></div>
-                  <div class="prompt four">空闲线程数：<span class="size">75个</span></div>
-                  <div class="prompt five">数据发送速率：<span class="size">54kb/s</span></div>
-                  <div class="prompt six">数据接收速率：<span class="size">68kb/s</span></div>
+                  <div class="prompt one">
+                    当前每秒请求数:
+                    <span class="size">62个</span>
+                  </div>
+                  <div class="prompt two">
+                    运行线程数:
+                    <span class="size">58个</span>
+                  </div>
+                  <div class="prompt three">
+                    空闲线程数:
+                    <span class="size">35个</span>
+                  </div>
+                  <div class="prompt four">
+                    空闲线程数:
+                    <span class="size">75个</span>
+                  </div>
+                  <div class="prompt five">
+                    数据发送速率:
+                    <span class="size">54kb/s</span>
+                  </div>
+                  <div class="prompt six">
+                    数据接收速率:
+                    <span class="size">68kb/s</span>
+                  </div>
                 </div>
               </div>
             </el-col>
-            <el-col :span="17" class="lineChart_box">
+            <el-col :span="16" class="lineChart_box">
               <div class="detail lineChart">
                 <div class="lineChart_title">
                   <span class="one">每秒请求数(个)</span>
                 </div>
-                <div class="lineChart_body">放置折线图</div>
+                <div class="lineChart_body">
+                  <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+                </div>
               </div>
             </el-col>
           </el-row>
@@ -100,11 +120,21 @@
 </template>
 
 <script>
+import pie from './pie'
 export default {
+  components: {
+    pie
+  },
   data () {
     return {
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
+      chartsData: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
       fieldArr: [
         {
           label: '流程名称',
@@ -145,23 +175,22 @@ export default {
     .detail {
       position: relative;
       height: 240px;
+      .title {
+        margin-bottom: 20px;
+      }
       .round_box {
         .circle {
-          position: absolute;
-          top: 50%;
-          left: 12%;
-          transform: translateY(-50%);
-          width: 36%;
-          padding-top: 18%;
-          padding-bottom: 18%;
-          border-radius: 50%;
-          border: 1px solid red;
+          display: inline-block;
+          width: 8vw;
+          height: 8vw;
+          vertical-align: middle;
         }
         .info_box {
-          position: absolute;
-          top: 40px;
-          width: 45%;
-          left: 55%;
+          display: inline-block;
+          vertical-align: middle;
+          width: calc(100% - 8vw - 24px);
+          box-sizing: border-box;
+          padding-left: 10px;
           .prompt {
             font-size: 14px;
             height: 30px;
@@ -171,7 +200,7 @@ export default {
             }
           }
           .prompt:before {
-            content: '';
+            content: "";
             display: inline-block;
             width: 8px;
             height: 8px;
