@@ -57,7 +57,7 @@
             <span class="box_title">内存</span>
           </div>
           <div class="round-box">
-            <RoundBar :percent-num="75" :speed="3" class="roundBar" />
+            <CircleBar style="width : 5.2vw;" :circle-data="circleData" class="roundBar" />
             <div class="usage">内存使用率：75%&emsp;&emsp;内存共(8G)：已使用(6G)</div>
           </div>
         </div>
@@ -102,10 +102,10 @@
                   所在服务器：
                   <span class="black">省局服务器1</span>
                 </el-col>
-                <el-col :span="24">
-                  中间件描述：
+                <el-col :span="24" class="last_info">
+                  <span class="title">中间件描述：</span>
                   <span
-                    class="black"
+                    class="black content"
                   >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS,服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
                 </el-col>
               </el-row>
@@ -123,6 +123,12 @@ export default {
     return {
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
+      circleData: {
+        precent: 75,
+        fontSize: 30,
+        width: 100,
+        borderWidth: 8
+      },
       fieldArr: [
         {
           label: '流程名称',

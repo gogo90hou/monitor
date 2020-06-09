@@ -82,19 +82,19 @@
           </div>
           <div class="main">
             <el-row>
-              <el-col :span="8">
+              <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="8">
                 <span>
                   线程获取闩的平均等待时间：
                   <span class="blue">325</span>
                 </span>
               </el-col>
-              <el-col :span="8">
+              <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="8">
                 <span>
                   未能立即授予的闩锁请求数：
                   <span class="blue">125</span>
                 </span>
               </el-col>
-              <el-col :span="8">
+              <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="8">
                 <span>
                   闩锁请求的总等待时间：
                   <span class="blue">24</span>
@@ -111,19 +111,19 @@
           </div>
           <div class="main">
             <el-row>
-              <el-col :span="8">
+              <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="8">
                 <span>
                   锁平均等待时间：
                   <span class="blue">325</span>
                 </span>
               </el-col>
-              <el-col :span="8">
+              <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="8">
                 <span>
                   每秒超时的锁请求数：
                   <span class="blue">125</span>
                 </span>
               </el-col>
-              <el-col :span="8">
+              <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="8">
                 <span>
                   每秒导致死锁的请求数：
                   <span class="blue">24</span>
@@ -434,6 +434,14 @@ export default {
   .save_lock_box {
     .detail {
       height: 94px;
+    }
+    @media screen and (max-width: 1919px) {
+      .detail {
+        height: 114px;
+        .el-col {
+          line-height: 22px;
+        }
+      }
     }
   }
   .plan_box {

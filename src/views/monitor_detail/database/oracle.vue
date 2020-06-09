@@ -118,7 +118,7 @@
             <span class="box_title">SGA</span>
           </div>
           <div class="round-box">
-            <RoundBar :percent-num="46" :speed="3" class="roundBar"/>
+            <CircleBar style="width : 6.51vw;height: 6.51vw;" :circle-data="circleData" class="roundBar" />
             <div class="usage">空间利用率:47%(5G/23G)</div>
             <div class="grayBox">
               <span class="one">目标容量:30G</span>
@@ -133,7 +133,7 @@
             <span class="box_title">PGA</span>
           </div>
           <div class="round-box">
-            <RoundBar :percent-num="72" :speed="3" class="roundBar"/>
+            <CircleBar style="width : 6.51vw;height : 6.51vw;" :circle-data="circleData2" class="roundBar" />
             <div class="usage">空间利用率:72%(6G/8G)</div>
             <div class="grayBox pga">
               <span class="one">缓存命中率:68%</span>
@@ -288,11 +288,11 @@
                   所在服务器:
                   <span class="black">省局服务器1</span>
                 </el-col>
-                <el-col :span="24">
-                  描述信息:
+                <el-col :span="24" class="last_info">
+                  <span class="title">描述信息:</span>
                   <span
-                    class="black"
-                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
+                    class="black content"
+                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
                 </el-col>
               </el-row>
             </div>
@@ -314,6 +314,12 @@ export default {
         y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
         markLine: { yAxis: 2000, name: '门限' },
         style: 'purple'
+      },
+      circleData: {
+        precent: 47
+      },
+      circleData2: {
+        precent: 72
       },
       fieldArr: [
         {
@@ -382,9 +388,7 @@ export default {
       height: 300px;
       .round-box {
         .roundBar {
-          position: absolute;
-          top: 60px;
-          transform: translate(-50%, 0);
+          top: 40%;
         }
         .usage {
           position: absolute;
@@ -460,6 +464,15 @@ export default {
   .fragmentation_box {
     .detail {
       height: 233px;
+    }
+  }
+  .describe_box {
+    .detail {
+      .last_info {
+        .content {
+          width: calc(100% - 76px);
+        }
+      }
     }
   }
 }

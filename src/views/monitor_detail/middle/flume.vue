@@ -27,24 +27,24 @@
       <el-col :span="20">
         <div class="detail_box">
           <el-row style="height: 100%;">
-            <el-col :span="3" class="detail request_box">
+            <el-col :xs="3" :sm="3" :md="3" :lg="3" :xl="3" class="detail request_box">
               <div class="title">
                 <span class="box_title">请求</span>
               </div>
               <div class="round-box">
-                <RoundBar :percent-num="50" :speed="3" class="roundBar" />
+                <CircleBar :circle-data="circleData" class="roundBar" style="width: 5.20vw;" />
                 <div class="usage">通道使用百分比</div>
               </div>
             </el-col>
-            <el-col :span="4" class="detail info_box">
+            <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="4" class="detail borderLeftNone borderRightNone info_box">
               <div class="box">
                 <div class="info">通道容量：<span class="black">3000</span></div>
                 <div class="info">通道事件数量：<span class="black">3500</span></div>
                 <div class="info">成功发送的事件数量：<span class="black">3600</span></div>
               </div>
             </el-col>
-            <el-col :span="17" class="lineChart_box">
-              <div class="detail lineChart">
+            <el-col :xs="15" :sm="15" :md="15" :lg="15" :xl="17" class="lineChart_box">
+              <div class="detail borderLeft lineChart">
                 <div class="lineChart_title">
                   <span class="one">近段时间通道使用百分比</span>
                 </div>
@@ -63,9 +63,9 @@
           </div>
           <div class="main">
             <el-row>
-              <el-col :span="8">数据源连接数量：<span class="blue">3442</span></el-col>
+              <el-col :span="7">数据源连接数量：<span class="blue">3442</span></el-col>
               <el-col :span="8">写入通道事件数量：<span class="blue">3442</span></el-col>
-              <el-col :span="8">接收到的事件总数量：<span class="blue">3442</span></el-col>
+              <el-col :span="9">接收到的事件总数量：<span class="blue">3442</span></el-col>
             </el-row>
           </div>
         </div>
@@ -77,9 +77,9 @@
           </div>
           <div class="main">
             <el-row>
-              <el-col :span="8">发送连接数量：<span class="blue">3442</span></el-col>
-              <el-col :span="8">由于错误关闭的连接数量：<span class="blue">3442</span></el-col>
-              <el-col :span="8">成功发送数量：<span class="blue">3442</span></el-col>
+              <el-col :span="7">发送连接数量：<span class="blue">3442</span></el-col>
+              <el-col :span="10">由于错误关闭的连接数量：<span class="blue">3442</span></el-col>
+              <el-col :span="7">成功发送数量：<span class="blue">3442</span></el-col>
             </el-row>
           </div>
         </div>
@@ -114,10 +114,10 @@
                   所在服务器：
                   <span class="black">省局服务器1</span>
                 </el-col>
-                <el-col :span="24">
-                  中间件描述：
+                <el-col :span="24" class="last_info">
+                  <span class="title">中间件描述：</span>
                   <span
-                    class="black"
+                    class="black content"
                   >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS,服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
                 </el-col>
               </el-row>
@@ -135,6 +135,13 @@ export default {
     return {
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
+      circleData: {
+        precent: 60,
+        fontSize: 30,
+        color: '#5466E0',
+        width: 100,
+        borderWidth: 8
+      },
       fieldArr: [
         {
           label: '流程名称',
@@ -185,26 +192,8 @@ export default {
     }
     .request_box {
       border: none;
-      .round-box {
-        >>> .roundBar {
-          width: 100px;
-          height: 100px;
-          .circle-left,
-          .circle-right {
-            background-color: #5466e0;
-          }
-          .number {
-            top: 8%;
-            right: 8%;
-            bottom: 8%;
-            left: 8%;
-            font-size: 30px;
-          }
-        }
-      }
     }
     .info_box {
-      border: none;
       .box {
         height: 144px;
         margin-top: 35px;
@@ -212,6 +201,11 @@ export default {
         border-left: 1px solid rgba(219, 219, 219, 0.52);
         .info {
           padding-top: 24px;
+        }
+      }
+      @media screen and (max-width: 1550px) {
+        .box {
+          padding-left: 16px;
         }
       }
     }

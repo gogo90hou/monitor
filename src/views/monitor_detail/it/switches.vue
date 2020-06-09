@@ -13,37 +13,37 @@
               <el-row class="medium_box" :gutter="20">
                 <el-col :span="4">
                   <div class="small_box active">
-                    <span class="fl"><i class="small_round" :style="{backgroundColor: runStateColor}"></i>端口3(带宽 10M)</span>
-                    <span class="fr">流速 329B/s</span>
+                    <span class="fl"><i class="small_round" :style="{backgroundColor: runStateColor}"></i>端口3(<span class="size12">带宽</span> 10M)</span>
+                    <span class="fr"><span class="size12">流速</span> 329B/s</span>
                   </div>
                 </el-col>
                 <el-col :span="4">
                   <div class="small_box no">
-                    <span class="fl"><i class="small_round" :style="{backgroundColor: noStateColor}"></i>端口3(带宽 10M)</span>
+                    <span class="fl"><i class="small_round" :style="{backgroundColor: noStateColor}"></i>端口3(<span class="size12">带宽</span> 10M)</span>
                     <span class="fr">未启用</span>
                   </div>
                 </el-col>
                 <el-col :span="4">
                   <div class="small_box">
-                    <span class="fl"><i class="small_round" :style="{backgroundColor: runStateColor}"></i>端口3(带宽 10M)</span>
-                    <span class="fr">流速 329B/s</span>
+                    <span class="fl"><i class="small_round" :style="{backgroundColor: runStateColor}"></i>端口3(<span class="size12">带宽</span> 10M)</span>
+                    <span class="fr"><span class="size12">流速</span> 329B/s</span>
                   </div>
                 </el-col>
                 <el-col :span="4">
                   <div class="small_box no">
-                    <span class="fl"><i class="small_round" :style="{backgroundColor: noStateColor}"></i>端口3(带宽 10M)</span>
+                    <span class="fl"><i class="small_round" :style="{backgroundColor: noStateColor}"></i>端口3(<span class="size12">带宽</span> 10M)</span>
                     <span class="fr">未启用</span>
                   </div>
                 </el-col>
                 <el-col :span="4">
                   <div class="small_box">
-                    <span class="fl"><i class="small_round" :style="{backgroundColor: runStateColor}"></i>端口3(带宽 10M)</span>
-                    <span class="fr">流速 329B/s</span>
+                    <span class="fl"><i class="small_round" :style="{backgroundColor: runStateColor}"></i>端口3(<span class="size12">带宽</span> 10M)</span>
+                    <span class="fr"><span class="size12">流速</span> 329B/s</span>
                   </div>
                 </el-col>
                 <el-col :span="4">
                   <div class="small_box no">
-                    <span class="fl"><i class="small_round" :style="{backgroundColor: noStateColor}"></i>端口3(带宽 10M)</span>
+                    <span class="fl"><i class="small_round" :style="{backgroundColor: noStateColor}"></i>端口3(<span class="size12">带宽</span> 10M)</span>
                     <span class="fr">未启用</span>
                   </div>
                 </el-col>
@@ -51,14 +51,14 @@
               <el-row class="medium_box" :gutter="20">
                 <el-col :span="4">
                   <div class="small_box">
-                    <span class="fl"><i class="small_round" :style="{backgroundColor: runStateColor}"></i>端口2(带宽 10M)</span>
-                    <span class="fr">流速 329B/s</span>
+                    <span class="fl"><i class="small_round" :style="{backgroundColor: runStateColor}"></i>端口2(<span class="size12">带宽</span> 10M)</span>
+                    <span class="fr"><span class="size12">流速</span> 329B/s</span>
                   </div>
                 </el-col>
                 <el-col :span="4">
                   <div class="small_box">
-                    <span class="fl"><i class="small_round" :style="{backgroundColor: runStateColor}"></i>端口1(带宽 10M)</span>
-                    <span class="fr">流速 329B/s</span>
+                    <span class="fl"><i class="small_round" :style="{backgroundColor: runStateColor}"></i>端口1(<span class="size12">带宽</span> 10M)</span>
+                    <span class="fr"><span class="size12">流速</span> 329B/s</span>
                   </div>
                 </el-col>
               </el-row>
@@ -67,7 +67,7 @@
           <div class="lineChart">
             <div class="lineChart_body">
               <div class="lineChart_title">
-                <span>流速  b / s</span>
+                <span class="leftBox">流速 b / s</span>
                 <span class="rightBox">
                   <span class="square one">端口一</span>
                 </span>
@@ -80,13 +80,13 @@
     </el-row>
     <el-row class="detail_box cpu_box">
       <el-col :span="12">
-        <div class="detail">
+        <div class="detail borderRightNone">
           <div class="title">
             <span class="box_title">CPU</span>
           </div>
           <div class="lineChart">
             <div class="lineChart_title">
-              <span class="black small_title_one">cpu温度:</span>
+              <span class="small_title_one">cpu温度:</span>
               <span class="small_title_two">
                 <span class="info">CPU1: 34&#8451;</span>
                 <span class="info">CPU2: 34&#8451;</span>
@@ -96,7 +96,7 @@
             </div>
             <div class="lineChart_body">
               <div class="lineChart_title_two">
-                <span>&#8451;</span>
+                <span class="leftBox">&#8451;</span>
                 <span class="rightBox">
                   <span class="square one">CPU1</span>
                   <span class="square two">CPU2</span>
@@ -110,10 +110,10 @@
         </div>
       </el-col>
       <el-col :span="12">
-        <div class="detail">
+        <div class="detail borderLeft">
           <div class="lineChart" style="margin-top: 52px;">
             <div class="lineChart_title">
-              <span class="black small_title_one">cpu负载：</span>
+              <span class="small_title_one">cpu负载：</span>
               <span class="small_title_two">
                 <span class="info">CPU1: 34%</span>
                 <span class="info">CPU2: 34%</span>
@@ -123,7 +123,7 @@
             </div>
             <div class="lineChart_body">
               <div class="lineChart_title_two">
-                <span>负载（%）</span>
+                <span class="leftBox">负载（%）</span>
                 <span class="rightBox">
                   <span class="square one">CPU1</span>
                   <span class="square two">CPU2</span>
@@ -161,7 +161,7 @@
           <div class="iconfont iconicon_cog"></div>
         </div>
       </el-col>
-      <el-col :span="20">
+      <el-col :span="20" class="describe_box">
         <div class="detail describe_detail">
           <div class="title">
             <span class="box_title">描述信息</span>
@@ -175,11 +175,11 @@
               所在位置：
               <span class="black">省局机房1</span>
             </div>
-            <div class="row">
-              描述信息：
+            <div class="row last_info">
+              <span class="title">描述信息：</span>
               <span
-                class="black"
-              >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
+                class="black content"
+              >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
             </div>
           </div>
         </div>
@@ -239,7 +239,7 @@ export default {
         }
       }
       .tableBox.two {
-        height: 120px;
+        margin-bottom: 35px;
         .cacheName {
           .medium_box {
             margin-top: 20px;
@@ -250,14 +250,21 @@ export default {
               line-height: 32px;
               color: #444444;
               font-size: 14px;
-              padding: 0 4px;
+              padding: 0 9px;
+              .size12 {
+                font-size: 12px;
+              }
             }
             @media screen and (max-width: 1600px) {
               .small_box {
                 height: 64px;
               }
+              .fl {
+                width: 100%;
+              }
               .fr {
                 float: left;
+                width: 100%;
                 margin-left: 12px;
               }
             }
@@ -272,12 +279,6 @@ export default {
             }
           }
         }
-        .lineChart {
-          .lineChart_title {
-            margin-top: 40px;
-            margin-bottom: 26px;
-          }
-        }
       }
     }
   }
@@ -287,14 +288,17 @@ export default {
       .lineChart {
         .lineChart_title {
           font-size: 14px;
-          padding-bottom: 66px;
+          padding-bottom: 56px;
           .small_title_one {
             float: left;
+            font-size: 16px;
             width: 20%;
+            color: #6d727a;
           }
           .small_title_two {
             float: right;
             width: 80%;
+            color: #6d727a;
             .info {
               float: left;
               width: 25%;
@@ -311,6 +315,14 @@ export default {
     }
   }
   .run_describe_box {
+    .describe_box {
+      margin-top: 0;
+      .last_info {
+        .content {
+          width: calc(100% - 76px);
+        }
+      }
+    }
     .detail {
       height: 240px;
       .row {

@@ -65,12 +65,8 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/detail',
+            path: '/cloud_detail',
             query: ['id', 'name']
-          }, {
-            label: '查看详情',
-            type: 'button',
-            method: 'edit'
           }]
         }
       ]

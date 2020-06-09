@@ -1,7 +1,7 @@
 <template>
   <div class="percentloop">
     <div class="circle-left" :class="{'red': percentNum > 90}">
-      <div ref="leftcontent"></div>
+      <div ref="leftcontent" class="two"></div>
     </div>
     <div class="circle-right" :class="{'red': percentNum > 90}">
       <div ref="rightcontent"></div>
@@ -10,7 +10,6 @@
       {{ percent }}%
     </div>
   </div>
-  <!-- <div class="usage">使用率:48%(64G/128G)</div> -->
 </template>
 
 <script>
@@ -27,6 +26,7 @@ export default {
   },
   data () {
     return {
+      // 百分数
       percent: 0,
       initDeg: 0,
       timeId: null,
@@ -43,6 +43,7 @@ export default {
     this.goRotate(this.transformToDeg(this.percentNum))
   },
   methods: {
+    // 求旋转角度
     transformToDeg (percent) {
       let deg = 0
       if (percent >= 100) {
@@ -134,7 +135,6 @@ export default {
       height: 100%;
       background-color: #f1f1f1;
       transform-origin: right center;
-      /*transition: all .5s linear;*/
     }
   }
   .red {
@@ -148,10 +148,10 @@ export default {
   }
   .number {
     position: absolute;
-    top: 4%;
-    bottom: 4%;
-    left: 4%;
-    right: 4%;
+    top: 8px;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
     font-size: 32px;
     background-color: #fff;
     border-radius: 50%;
@@ -160,13 +160,6 @@ export default {
     align-items: center;
     justify-content: center;
     color: #2f394e;
-  }
-  .usage {
-    position: relative;
-    // bottom: -40px;
-    // left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
   }
 }
 </style>

@@ -9,15 +9,21 @@
     </div>
     <server v-if="queryData.type == 1"></server>
     <switches v-if="queryData.type == 2"></switches>
+    <firewall v-if="queryData.type == 3"></firewall>
+    <storage v-if="queryData.type == 4"></storage>
   </div>
 </template>
 <script>
 import server from '../../monitor_detail/it/server';
 import switches from '../../monitor_detail/it/switches';
+import firewall from '../../monitor_detail/it/firewall';
+import storage from '../../monitor_detail/it/storage';
 export default {
   components: {
     server,
-    switches
+    switches,
+    firewall,
+    storage
   },
   data () {
     return {

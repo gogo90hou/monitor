@@ -52,8 +52,8 @@
               <div class="title">
                 <span class="box_title">硬盘</span>
               </div>
-              <div class="round-box">
-                <RoundBar :percent-num="64" :speed="3" />
+              <div class="round-box borderRight">
+                <CircleBar style="width : 6.51vw" :circle-data="circleData" class="roundBar" />
                 <div class="usage">使用率:64%(64G/128G)</div>
               </div>
             </el-col>
@@ -110,7 +110,7 @@
     </el-row>
     <el-row class="detail_box fan_box">
       <el-col :span="7">
-        <div class="detail">
+        <div class="detail borderRightNone">
           <div class="title">
             <span class="box_title">风扇状态</span>
             <span class="prompt_box">
@@ -147,9 +147,9 @@
         </div>
       </el-col>
       <el-col :span="17">
-        <div class="detail lineChart">
+        <div class="detail borderLeft lineChart">
           <div class="lineChart_title">
-            <span>转数（转）</span>
+            <span class="leftBox">转数（转）</span>
             <span class="rightBox">
               <span class="square one">风扇一</span>
               <span class="square two">风扇二</span>
@@ -165,23 +165,52 @@
     </el-row>
     <el-row class="detail_box memory_box">
       <el-col :span="7">
-        <div class="detail">
+        <div class="detail borderRightNone">
           <div class="title">
             <span class="box_title">内存</span>
           </div>
           <div class="round-box">
-            <RoundBar :percent-num="72" :speed="3" />
+            <CircleBar style="width : 6.51vw" :circle-data="circleData2" class="roundBar" />
             <div class="usage">使用率:72%(6G/8G)</div>
           </div>
         </div>
       </el-col>
       <el-col :span="17">
-        <div class="detail lineChart">
+        <div class="detail borderLeft lineChart">
           <div class="lineChart_title">
             <span>使用率</span>
           </div>
           <div class="lineChart_body">
             <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+    <el-row class="detail_box describe_box">
+      <el-col :span="24">
+        <div class="describe_detail">
+          <div class="detail">
+            <div class="title">
+              <span class="box_title">服务器描述</span>
+            </div>
+            <div class="information">
+              <el-row>
+                <el-col :span="6">
+                  所在区域：
+                  <span class="black">锦江监狱</span>
+                </el-col>
+                <el-col :span="18">
+                  所在服务器：
+                  <span class="black">省局服务器1</span>
+                </el-col>
+                <el-col :span="24" class="last_info">
+                  <span class="title">其他信息：</span>
+                  <span
+                    class="black content"
+                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS,服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
+                </el-col>
+              </el-row>
+            </div>
           </div>
         </div>
       </el-col>
@@ -212,6 +241,12 @@ export default {
         multiple: true,
         markLine: { yAxis: 2000, name: '门限' },
         style: 'multipleStyle'
+      },
+      circleData: {
+        precent: 64
+      },
+      circleData2: {
+        precent: 72
       },
       fieldArr: [
         {
@@ -282,7 +317,6 @@ export default {
       .hardDisk_detail_round {
         position: relative;
         height: 100%;
-        border-right: 1px solid #ececec;
         .title {
           padding: 12px 0 0 12px;
         }
@@ -405,6 +439,15 @@ export default {
           .lineChart_title_two {
             margin-bottom: 14px;
           }
+        }
+      }
+    }
+  }
+  .describe_box {
+    .detail {
+      .last_info {
+        .content {
+          width: calc(100% - 76px);
         }
       }
     }

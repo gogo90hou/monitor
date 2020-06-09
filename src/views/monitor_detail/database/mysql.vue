@@ -108,7 +108,7 @@
     </el-row>
     <el-row class="detail_box cache_box">
       <el-col :span="12">
-        <div class="detail" style="border-right: 1px solid rgba(219,219,219,.52);">
+        <div class="detail borderRightNone">
           <div class="title">
             <span class="box_title">缓存管理</span>
             <span class="box_title_two">
@@ -127,7 +127,7 @@
         </div>
       </el-col>
       <el-col :span="12">
-        <div class="detail">
+        <div class="detail borderLeft">
           <div class="title">
             <span class="box_title_two">
               当前查询缓存命中个数：
@@ -170,11 +170,11 @@
                   所在服务器：
                   <span class="black">省局服务器1</span>
                 </el-col>
-                <el-col :span="24">
-                  描述信息：
+                <el-col :span="24" class="last_info">
+                  <span class="title">描述信息：</span>
                   <span
-                    class="black"
-                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
+                    class="black content"
+                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS,服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
                 </el-col>
               </el-row>
             </div>
@@ -256,6 +256,15 @@ export default {
       .line_title {
         color: #6d727a;
         margin-bottom: 40px;
+      }
+    }
+  }
+  .describe_box {
+    .detail {
+      .last_info {
+        .content {
+          width: calc(100% - 76px);
+        }
       }
     }
   }

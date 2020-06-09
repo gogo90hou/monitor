@@ -50,14 +50,14 @@
                 <span class="box_title">硬盘</span>
               </div>
               <div class="round-box">
-                <RoundBar :percent-num="91" :speed="3" />
-                <div class="usage">使用率:91%(64G/128G)</div>
+                <CircleBar style="width : 6.51vw" :circle-data="circleData" class="roundBar" />
+                <div class="usage">使用率:92%(64G/128G)</div>
               </div>
             </el-col>
-            <el-col :span="2" class="partition">
+            <el-col :span="3" class="partition">
               <div class="histogram_title">分区4个</div>
             </el-col>
-            <el-col :span="7" class="histogram_box">
+            <el-col :span="6" class="histogram_box" style="padding-right:10px;">
               <div class="histogram_cdef">
                 <span class="disk">C盘 ：</span>
                 <div class="histogram_middle_box">
@@ -79,7 +79,7 @@
                 <span class="percentage">45%</span>
               </div>
             </el-col>
-            <el-col :span="7" class="histogram_box" style="margin-left:20px;">
+            <el-col :span="6" class="histogram_box" style="padding-left:10px;">
               <div class="histogram_cdef">
                 <span class="disk">D盘 ：</span>
                 <div class="histogram_middle_box">
@@ -98,7 +98,7 @@
                   </div>
                   <div class="text">已使用90G&nbsp;&nbsp;共100G</div>
                 </div>
-                <span class="percentage">90%</span>
+                <span class="percentage">100%</span>
               </div>
             </el-col>
           </el-row>
@@ -107,24 +107,23 @@
     </el-row>
     <el-row class="detail_box memory_box">
       <el-col :span="7">
-        <div class="memory_box_round">
-          <div class="detail" style="height: 100%;">
-            <div class="title">
-              <span class="box_title">内存</span>
-            </div>
-            <div class="round-box">
-              <RoundBar :percent-num="72" :speed="3" />
-              <div class="usage">使用率:72%(6G/8G)</div>
-            </div>
+        <div class="detail borderRightNone memory_box_round">
+          <div class="title">
+            <span class="box_title">内存</span>
+          </div>
+          <div class="round-box">
+            <CircleBar style="width : 6.51vw" :circle-data="circleData2" class="roundBar" />
+            <div class="usage">使用率:72%(6G/8G)</div>
           </div>
         </div>
       </el-col>
       <el-col :span="17">
-        <div class="memory_box_lineChart">
-          <span>使用率</span>
-          <echarts-line style="height:220px" :charts-data="chartsData"></echarts-line>
+        <div class="detail lineChart_detail">
+          <div class="lineChart">
+            <span class="lineChart_title">使用率</span>
+            <echarts-line style="height:220px" :charts-data="chartsData" class="echarts"></echarts-line>
+          </div>
         </div>
-        <div></div>
       </el-col>
     </el-row>
     <el-row class="detail_box cpu_disk_box">
@@ -186,11 +185,11 @@
                   所在服务器：
                   <span class="black">省局服务器1</span>
                 </el-col>
-                <el-col :span="24">
-                  描述信息：
+                <el-col :span="24" class="last_info">
+                  <span class="title">描述信息：</span>
                   <span
-                    class="black"
-                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
+                    class="black content"
+                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
                 </el-col>
               </el-row>
             </div>
@@ -211,6 +210,12 @@ export default {
         y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
         markLine: { yAxis: 2000, name: '门限' },
         style: 'purple'
+      },
+      circleData: {
+        precent: 92
+      },
+      circleData2: {
+        precent: 72
       }
     }
   }
@@ -251,23 +256,39 @@ export default {
       // 分区
       .partition {
         .histogram_title {
-          margin-left: 20px;
-          margin-top: 16px;
+          margin-left: 47px;
           color: #606060;
           font-size: 14px;
-          text-align: right;
+          text-align: left;
+          height: 22px;
+          line-height: 22px;
+        }
+        @media screen and (max-width: 1550px) {
+          .histogram_title {
+            margin-left: 26px;
+          }
         }
       }
     }
   }
   .memory_box {
-    .memory_box_round,
-    .memory_box_lineChart {
+    .detail {
       height: 287px;
-      background-color: #fff;
+      border-left: none;
     }
-    .memory_box_lineChart {
-      padding-left: 22px;
+    .lineChart_detail {
+      padding-left: 0;
+      .lineChart {
+        height: 100%;
+        border-left: 1px solid rgba(236, 236, 236, 0.52);
+        .lineChart_title {
+          width: 100%;
+          margin-left: 11px;
+        }
+        .echarts {
+          top: 25px;
+        }
+      }
     }
   }
   .cpu_disk_box {
@@ -280,6 +301,15 @@ export default {
     }
     .disk_detail {
       margin-left: 11px;
+    }
+  }
+  .describe_box {
+    .detail {
+      .last_info {
+        .content {
+          width: calc(100% - 76px);
+        }
+      }
     }
   }
 }

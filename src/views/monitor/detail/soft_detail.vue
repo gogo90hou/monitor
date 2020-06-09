@@ -110,6 +110,41 @@
           </div>
         </el-col>
       </el-row>
+      <el-row class="detail_box describe_box">
+        <el-col :span="24">
+          <div class="detail describe_detail">
+            <div class="title">
+              <span class="box_title">基本信息</span>
+            </div>
+            <div class="information">
+              <el-row>
+                <el-col :span="6">
+                  应用软件名称：
+                  <span class="black">省局刑罚执行</span>
+                </el-col>
+                <el-col :span="18">
+                  所在区域：
+                  <span class="black">锦江监狱</span>
+                </el-col>
+                <el-col :span="6">
+                  版本号：
+                  <span class="black">v1.1</span>
+                </el-col>
+                <el-col :span="18">
+                  所在服务器：
+                  <span class="black">省局服务器1</span>
+                </el-col>
+                <el-col :span="24" class="last_info">
+                  <span class="title">应用软件描述：</span>
+                  <span
+                    class="black content"
+                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS,阿里云提供的云服务器ECS,阿里云提供的云服务器ECS</span>
+                </el-col>
+              </el-row>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -217,6 +252,16 @@ export default {
       height: 240px;
       .row {
         margin-bottom: 20px;
+      }
+    }
+  }
+  .describe_box {
+    .detail {
+      height: 229px;
+      .last_info {
+        .content {
+          width: calc(100% - 104px);
+        }
       }
     }
   }

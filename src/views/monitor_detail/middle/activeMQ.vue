@@ -1,7 +1,7 @@
 <template>
   <div class="detail_body">
     <el-row class="detail_box run_space_box" :gutter="20">
-      <el-col :span="4">
+      <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
         <div class="detail run_detail">
           <div class="title">
             <span class="box_title">运行状态</span>
@@ -24,29 +24,29 @@
           <div class="iconfont iconicon_cog"></div>
         </div>
       </el-col>
-      <el-col :span="7" class="space_box" style="padding-right: 0;">
-        <div class="detail space_detail">
+      <el-col :xs="8" :sm="8" :md="8" :lg="8" :xl="7" class="space_box" style="padding-right: 0;">
+        <div class="detail borderRight space_detail">
           <div class="title">
             <span class="box_title">空间</span>
           </div>
           <div class="box">
             <div class="round-box one">
-              <RoundBar :percent-num="75" :speed="3" class="roundBar" />
+              <CircleBar :circle-data="circleData" class="roundBar" style="width : 5.2vw;" />
               <div class="usage">内存(6G/共8G)</div>
             </div>
             <div class="round-box two">
-              <RoundBar :percent-num="59" :speed="3" class="roundBar" />
+              <CircleBar :circle-data="circleData2" class="roundBar" style="width : 5.2vw;" />
               <div class="usage">存储(6G/共8G)</div>
             </div>
             <div class="round-box three">
-              <RoundBar :percent-num="50" :speed="3" class="roundBar" />
+              <CircleBar :circle-data="circleData3" class="roundBar" style="width : 5.2vw;" />
               <div class="usage">临时(6G/共8G)</div>
             </div>
           </div>
         </div>
       </el-col>
-      <el-col :span="13" class="lineChart_box" style="padding-left: 0;">
-        <div class="detail lineChart_detail">
+      <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="13" class="lineChart_box" style="padding-left: 0;">
+        <div class="detail borderLeftNone lineChart_detail">
           <div class="lineChart">
             <div class="lineChart_title">内存空间使用率</div>
             <div class="lineChart_body">放置折线图</div>
@@ -117,10 +117,10 @@
                   所在服务器：
                   <span class="black">省局服务器1</span>
                 </el-col>
-                <el-col :span="24">
-                  中间件描述：
+                <el-col :span="24" class="last_info">
+                  <span class="title">中间件描述：</span>
                   <span
-                    class="black"
+                    class="black content"
                   >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS,服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
                 </el-col>
               </el-row>
@@ -138,6 +138,24 @@ export default {
     return {
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
+      circleData: {
+        precent: 75,
+        fontSize: 30,
+        width: 100,
+        borderWidth: 8
+      },
+      circleData2: {
+        precent: 75,
+        fontSize: 30,
+        width: 100,
+        borderWidth: 8
+      },
+      circleData3: {
+        precent: 91,
+        fontSize: 30,
+        width: 100,
+        borderWidth: 8
+      },
       fieldArr: [
         {
           label: '流程名称',
@@ -192,30 +210,12 @@ export default {
       }
       .round-box {
         width: 33.333%;
-        >>> .roundBar {
-          width: 100px;
-          height: 100px;
+        .roundBar {
           top: 45%;
-          .number {
-            top: 8%;
-            right: 8%;
-            bottom: 8%;
-            left: 8%;
-            font-size: 30px;
-          }
         }
         .usage {
           color: #666666;
           top: calc(45% + 60px);
-        }
-        @media screen and (max-width: 1550px) {
-          >>> .roundBar {
-            width: 80px;
-            height: 80px;
-          }
-          .usage {
-            top: calc(45% + 50px);
-          }
         }
       }
       .round-box.one {
