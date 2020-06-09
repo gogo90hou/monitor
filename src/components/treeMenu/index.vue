@@ -65,7 +65,7 @@ export default {
   }
   .el-tree {
     color: rgba(234, 234, 234, 1);
-    background-color: #242938;
+    background-color: transparent;
     font-size: 18px;
     padding: 0px 10px;
     > .el-tree-node {

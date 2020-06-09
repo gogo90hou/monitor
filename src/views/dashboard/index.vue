@@ -5,7 +5,8 @@
       <el-col :span="4">
         <div class="boxs">
           <h3>
-            <span class="icon iconfont iconsafety"></span>
+            <img src="../../assets/icon/afsb_icon.svg" />
+            <span class="icon iconfont iconicon_Security_maintenance"></span>
             <span>安防设备</span>
           </h3>
           <div class="content">
@@ -23,6 +24,7 @@
       <el-col :span="4">
         <div class="boxs">
           <h3>
+            <img src="../../assets/icon/yyrj_icon.svg" />
             <span class="icon iconfont iconicon_Application_software"></span>
             <span>应用软件</span>
           </h3>
@@ -41,7 +43,8 @@
       <el-col :span="4">
         <div class="boxs">
           <h3>
-            <span class="icon iconfont iconshebeiguanli"></span>
+            <img src="../../assets/icon/itsb_icon.svg" />
+            <span class="icon iconfont iconicon_IT_equipment"></span>
             <span>IT设备</span>
           </h3>
           <div class="content">
@@ -59,7 +62,8 @@
       <el-col :span="4">
         <div class="boxs">
           <h3>
-            <span class="icon iconfont iconicon_Intermediate_key1"></span>
+            <img src="../../assets/icon/zjj_icon.svg" />
+            <span class="icon iconfont iconicon_Intermediate_key"></span>
             <span>中间件</span>
           </h3>
           <div class="content">
@@ -77,7 +81,8 @@
       <el-col :span="4">
         <div class="boxs">
           <h3>
-            <span class="icon iconfont iconicon_Cloud_platform1"></span>
+            <img src="../../assets/icon/ypt_icon.svg" />
+            <span class="icon iconfont iconicon_Cloud_platform"></span>
             <span>云平台</span>
           </h3>
           <div class="content">
@@ -95,7 +100,8 @@
       <el-col :span="4">
         <div class="boxs">
           <h3>
-            <span class="icon iconfont iconshujukulianjie"></span>
+            <img src="../../assets/icon/czxt-icon.svg" />
+            <span class="icon iconfont iconczxt-icon"></span>
             <span>操作系统和数据库</span>
           </h3>
           <div class="content">
@@ -173,7 +179,10 @@
               :key="index"
               :style="{height:liHeight + 'px',lineHeight:liHeight+'px'}"
             >
-              <span class="sort">{{ index+1 }}</span>
+              <img v-if="index==0" src="../../assets/icon/one_icon.svg" alt />
+              <img v-if="index==1" src="../../assets/icon/two_icon.svg" alt />
+              <img v-if="index==2" src="../../assets/icon/three_icon.svg" alt />
+              <span v-if="index>2" class="sort">{{ index+1 }}</span>
               <span class="name">{{ item.name }}</span>
               <span class="right">{{ item.num }}个</span>
             </li>
@@ -320,15 +329,18 @@ export default {
     font-size: 16px;
     color: #000000;
     height: 14vh;
+    position: relative;
+    overflow: hidden;
     .boxs {
       padding: 1vh 15px;
       position: relative;
+      box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1);
       .content {
         font-size: 0;
         position: absolute;
         width: 100%;
         left: 0;
-        bottom: 1vh;
+        bottom: 2vh;
         .left,
         .right {
           display: inline-block;
@@ -355,7 +367,12 @@ export default {
     }
 
     .icon {
-      color: #5690ea;
+      color: #000;
+      position: absolute;
+      top: -10px;
+      right: 5px;
+      font-size: 35px;
+      opacity: 0.03;
     }
   }
   .two,
@@ -439,10 +456,27 @@ export default {
       height: calc(33vh - 32px - 18px);
       overflow: hidden;
     }
+    .sort {
+      width: 18px;
+      height: 18px;
+      line-height: 18px;
+      text-align: center;
+      display: inline-block;
+      font-size: 12px;
+      background: #c1c7d9;
+      border-radius: 50%;
+      vertical-align: middle;
+      color: #fff;
+      margin-right: 5px;
+    }
     li {
       color: #000000;
       font-size: 14px;
       border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+      img {
+        vertical-align: middle;
+        margin-right: 5px;
+      }
       .right {
         float: right;
       }

@@ -23,7 +23,8 @@ export default {
             //  改变轴线颜色
             lineStyle: {
               // 使用深浅的间隔色
-              color: ['#E7E7E7']
+              color: ['#E7E7E7'],
+              type: 'dotted'
             }
           },
           axisTick: {
@@ -61,7 +62,7 @@ export default {
         grid: {
           top: '9%',
           left: '50px',
-          right: '50px',
+          right: '10px',
           bottom: '2%',
           backgroundColor: '#fff',
           width: 'auto',
@@ -85,7 +86,7 @@ export default {
           data: [90, 80, 60, 80, 70, 100, 80],
           itemStyle: {
             color: new echarts.graphic.LinearGradient(
-              1, 0, 0, 0,
+              0, 1, 0, 0,
               [
                 { offset: 1, color: '#5CE8FF' },
                 { offset: 0, color: '#5466E0' }
@@ -95,7 +96,7 @@ export default {
           },
           showBackground: true,
           backgroundStyle: {
-            color: '#EDF6FD'
+            color: '#fff'
           },
           barWidth: '30%',
           type: 'bar',
