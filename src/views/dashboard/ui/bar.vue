@@ -5,6 +5,7 @@
     <div class="wave" :style="{bottom:`calc(${score}% - 25px)`}">
       <div class="wave1"></div>
       <div class="wave2"></div>
+      <div class="wave3"></div>
     </div>
     <div class="bubble">
       <div
@@ -26,6 +27,7 @@
   overflow: hidden;
   box-sizing: border-box;
   margin: auto;
+  background-color: rgba(71, 200, 244, 0.1);
 }
 .bar {
   width: 50px;
@@ -65,39 +67,79 @@
   margin: 0 auto;
   font-size: 14px;
   text-align: center;
-  overflow: hidden;
-  animation: water-wave linear infinite;
+  div {
+    background: #6be9fe;
+    width: 100%;
+    height: 50%;
+    top: 39%;
+    border-radius: 100%;
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+  }
 }
 .wave1 {
   position: absolute;
-  top: 40%;
-  left: -25%;
-  background: rgba(107, 233, 254, 1);
+  left: -35%;
   opacity: 0.7;
-  width: 150%;
-  height: 150%;
-  border-radius: 60%;
-  animation: inherit;
-  animation-duration: 5s;
+  animation: water-wave1 linear infinite;
 }
 .wave2 {
   position: absolute;
-  top: 40%;
-  left: -35%;
-  background: rgba(107, 233, 254, 0.8);
+  left: 50%;
   opacity: 0.7;
-  width: 200%;
-  height: 200%;
-  border-radius: 35%;
-  animation: inherit;
-  animation-duration: 7s;
+  animation: water-wave2 linear infinite;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
 }
-@keyframes water-wave {
+.wave3 {
+  position: absolute;
+  right: -70%;
+  opacity: 0.5;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  animation: water-wave3 linear infinite;
+}
+@keyframes water-wave1 {
   0% {
-    transform: rotate(0deg);
+    left: -35%;
+    right: initial;
+  }
+  70% {
+    left: 80%;
+  }
+  71% {
+    right: 100%;
+    left: initial;
   }
   100% {
-    transform: rotate(360deg);
+    right: 40%;
+    left: initial;
+  }
+}
+@keyframes water-wave3 {
+  100% {
+    right: 100%;
+  }
+  0% {
+    right: -70%;
+  }
+}
+@keyframes water-wave2 {
+  0% {
+    left: 50%;
+    right: initial;
+  }
+  10% {
+    left: 80%;
+    right: initial;
+  }
+  11% {
+    right: 100%;
+    left: initial;
+  }
+  100% {
+    right: -50%;
+    left: initial;
   }
 }
 </style>
