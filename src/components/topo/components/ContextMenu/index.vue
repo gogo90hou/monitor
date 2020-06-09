@@ -28,12 +28,18 @@ export default {
     bindEvent () {
       eventBus.$on('contextmenuClick', e => {
         const menu = this.$refs.contextMenu;
+        if (!menu) {
+          return;
+        }
         menu.style.left = e.canvasX + 'px';
         menu.style.top = e.canvasY + 'px';
         menu.style.display = 'block';
       });
       eventBus.$on('mousedown', () => {
         const menu = this.$refs.contextMenu;
+        if (!menu) {
+          return;
+        }
         menu.style.display = 'none';
       });
     },
