@@ -113,41 +113,87 @@
       @getValue="searchKey"
       @getEvent="judgeEvent"
     />
-    <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
+    <v-table :field-arr="fieldArr" :table-setting="tableSetting" />
   </div>
 </template>
 <script>
 export default {
   data () {
     return {
-      getters: 'monitor/system/list',
       activeName: 'first',
       btnarr: [{ id: '1', value: ' 管理设备', eventName: 'manageHandle', type: 'info' }],
+      tableSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: 'monitor/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
       fieldArr: [
         {
           label: '设备名称',
-          key: 'sysName',
+          key: 'name',
           formatter: ''
         }, {
           label: '设备类型',
-          key: 'sysCategory',
+          key: 'type',
           formatter: '',
           filters: [{ text: 'windows操作系统', value: 'windows操作系统' }, { text: 'liunx操作系统', value: 'liunx操作系统' }]
         }, {
           label: '状态',
-          key: 'disk',
-          formatter: ''
+          key: 'state',
+          formatter: [{
+            key: 1,
+            label: '正常',
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
+          }, {
+            key: 2,
+            label: '正常',
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
+          }, {
+            key: 3,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
+          }, {
+            key: 4,
+            label: '维护中',
+            color: '#999999',
+            className: 'iconicon_Under_maintenance',
+            iconColor: '#999999'
+
+          }]
         }, {
           label: '所在区域',
-          key: 'diskUtilization',
+          key: 'area',
           formatter: ''
         }, {
           label: '所在位置',
-          key: 'memory',
+          key: 'position',
           formatter: ''
         }, {
           label: '设备描述',
-          key: 'memoryUtilization',
+          key: 'des',
           formatter: ''
         }, {
           label: '操作',
@@ -158,10 +204,6 @@ export default {
             type: 'url',
             path: '/monitor_detail',
             query: ['id', 'sysName']
-          }, {
-            label: '查看详情',
-            type: 'button',
-            method: 'edit'
           }]
         }
       ]
@@ -174,7 +216,9 @@ export default {
       console.log(val);
     },
     judgeEvent (val) {
-      console.log(val);
+      if (val === 'manageHandle') {
+        this.$router.push('/safety')
+      }
     },
     edit (data) {
       console.log(data)

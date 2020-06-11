@@ -47,7 +47,7 @@ export default {
     anomalyList: {
       type: Array,
       default: () => {
-        return [1588032000000]
+        return [new Date(new Date().getFullYear() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getDate()).getTime()]
       }
     }
   },
@@ -86,7 +86,6 @@ export default {
         var dayobject = {};
         dayobject.day = d;
         this.days.push(dayobject);
-        console.log(d.getTime())
       }
       for (let i = 1; i <= 41 - this.currentWeek; i++) {
         const d = new Date(str);
@@ -116,7 +115,7 @@ export default {
       if (m < 10) m = '0' + m;
       var d = day;
       if (d < 10) d = '0' + d;
-      return y + '-' + m + '-' + d
+      return y + '/' + m + '/' + d
     }
 
   }

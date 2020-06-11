@@ -12,6 +12,8 @@ import Cookies from 'js-cookie'
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
 import ElementUI from 'element-ui'
+import HyfeUi from 'hyfe-ui'
+import 'hyfe-ui/lib/hyfe-ui.css'
 import 'element-ui/lib/theme-chalk/index.css'
 // import '@/styles/index.scss' // global css
 import App from './App'
@@ -26,14 +28,17 @@ import '@/icons' // icon
 import '@/permission' // permission control
 import './utils/error-log'; // error log
 import './components/globalComponent'
+import request from './utils/request.js'
 // set ElementUI lang to EN
+Vue.use(HyfeUi)
+
 Vue.use(ElementUI, {
   size: Cookies.get('size') || 'medium', // set element-ui default size
   i18n: (key, value) => i18n.t(key, value)
 })
 // 如果想要中文版 element-ui，按如下方式声明
 // Vue.use(ElementUI)
-console.log(store)
+Object.assign(Vue.prototype, { $request: request })
 Vue.config.productionTip = false
 
 new Vue({

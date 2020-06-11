@@ -7,6 +7,7 @@
   "scripts": {
     "cas": "node mock/cas",
     "server": "node mock/server",
+    "websocket": "node mock/websocket",
     "dev": "vue-cli-service serve",
     "build:prod": "vue-cli-service build",
     "build:stage": "vue-cli-service build --mode staging",
@@ -24,7 +25,7 @@
     "g": "^2.0.1",
     "html-webpack-plugin": "^4.0.0-beta.8",
     "hy-ui": "^2.4.5",
-    "hyfe-ui": "^0.1.0",
+    "hyfe-ui": "^0.1.4",
     "js-cookie": "^2.2.0",
     "jsdoc": "^3.6.4",
     "lodash": "^4.17.15",
@@ -32,13 +33,15 @@
     "nprogress": "0.2.0",
     "path-to-regexp": "2.4.0",
     "screenfull": "^5.0.2",
+    "sockjs": "^0.3.20",
     "sockjs-client": "^1.4.0",
     "stompjs": "^2.3.3",
     "vue": "2.6.10",
     "vue-i18n": "^8.15.7",
     "vue-router": "3.0.6",
     "vue-socket.io": "^3.0.7",
-    "vuex": "3.1.0"
+    "vuex": "3.1.0",
+    "ws": "^7.3.0"
   },
   "devDependencies": {
     "@babel/core": "7.0.0",

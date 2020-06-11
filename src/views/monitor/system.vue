@@ -9,24 +9,44 @@
     />
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
       <el-tab-pane label="操作系统" name="first">
-        <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit"/>
+        <v-table :field-arr="fieldArr" :table-setting="tableSetting" />
       </el-tab-pane>
       <el-tab-pane label="数据库" name="second">
         <div class="database-filter">
           <span
             :class="{'filter-active':filterName==='Oracle'}"
             @click="filterTab('Oracle')"
-          >Oracle (43)</span>
+          >Oracle ({{ $refs.oracle && $refs.oracle.tableData ? $refs.oracle.tableData.totalRows : '0' }})</span>
           <span
             :class="{'filter-active':filterName==='Sqlserver'}"
             @click="filterTab('Sqlserver')"
-          >sqlserver (21)</span>
+          >sqlserver ({{ $refs.sqlserver && $refs.sqlserver.tableData ? $refs.sqlserver.tableData.totalRows : '0' }})</span>
           <span
             :class="{'filter-active':filterName==='Mysql'}"
             @click="filterTab('Mysql')"
-          >Mysql (32)</span>
+          >Mysql ({{ $refs.mysql && $refs.mysql.tableData ? $refs.mysql.tableData.totalRows : '0' }})</span>
         </div>
-        <dynamic-table :field-arr="databaseFieldArr" :getters="databaseGetters" @edit="edit"/>
+        <v-table
+          v-show="filterName==='Mysql'"
+          ref="mysql"
+          :field-arr="databaseFieldArr"
+          :table-setting="mysqlSetting"
+          @edit="edit"
+        />
+        <v-table
+          v-show="filterName==='Oracle'"
+          ref="oracle"
+          :field-arr="databaseFieldArr"
+          :table-setting="oracleSetting"
+          @edit="edit"
+        />
+        <v-table
+          v-show="filterName==='Sqlserver'"
+          ref="sqlserver"
+          :field-arr="databaseFieldArr"
+          :table-setting="sqlserverSetting"
+          @edit="edit"
+        />
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -38,49 +58,66 @@ export default {
     return {
       getters: 'monitor/system/list',
       databaseGetters: 'monitor/system/databaseList',
-      activeName: this.$route.query.type === '1' ? 'first' : 'second',
+      activeName: this.$route.query.type === '2' ? 'second' : 'first',
       // 选中的过滤器名
       filterName: this.$route.query.filterName || 'Oracle',
       btnarr: [{ id: '1', value: ' 管理系统和数据库', eventName: 'manageHandle', type: 'info' }],
+      tableSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: '/os/metric/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
       fieldArr: [
         {
-          label: '序号',
-          key: 'sysNum',
-          formatter: ''
-        }, {
           label: '操作系统名称',
-          key: 'sysName',
+          key: 'osName',
           formatter: ''
         }, {
           label: '系统类别',
-          key: 'sysCategory',
+          key: 'osTypeName',
           formatter: '',
           filters: [{ text: 'windows操作系统', value: 'windows操作系统' }, { text: 'liunx操作系统', value: 'liunx操作系统' }]
         }, {
           label: '运行状态',
-          key: 'runState',
-          formatter: '',
-          filters: [{ text: '正常', value: '正常' }, { text: '异常', value: '异常' }, { text: '断连', value: '断连' }]
+          key: 'runStateName',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 0 }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '0' }]
         }, {
           label: '硬盘状态',
-          key: 'disk',
-          formatter: '',
-          filters: [{ text: '正常', value: '正常' }, { text: '异常', value: '异常' }]
+          key: 'diskStateName',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 0 }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '0' }]
         }, {
           label: '内存状态',
-          key: 'memory',
-          formatter: '',
-          filters: [{ text: '正常', value: '正常' }, { text: '异常', value: '异常' }]
+          key: 'memoryStateName',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 0 }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '0' }]
         }, {
           label: 'cpu负载',
-          key: 'cpu',
-          formatter: '',
-          filters: [{ text: '正常', value: '正常' }, { text: '异常', value: '异常' }]
+          key: 'cpuStateName',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 0 }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '0' }]
         }, {
           label: '所在服务器',
-          key: 'hostServer',
-          formatter: '',
-          filters: [{ text: '服务器1', value: '服务器1' }]
+          key: 'areaName',
+          formatter: ''
         }, {
           label: '操作',
           key: 'operation',
@@ -89,11 +126,77 @@ export default {
             label: '查看详情',
             type: 'url',
             path: '/system_detail?type=1',
-            query: ['id', 'sysName'],
+            query: ['actualId', 'sysName'],
             colorType: 'tableBlue'
           }]
         }
-      ]
+      ],
+      mysqlSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: '/database/mysql/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      oracleSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: '/database/oracle/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      sqlserverSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: '/database/sqlserver/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      }
     }
   },
   computed: {
@@ -107,18 +210,21 @@ export default {
           label: '运行状态',
           key: 'runState',
           formatter: [{
-            key: '1',
+            key: 1,
             label: '正常',
+            color: 'stateNormal',
             className: 'iconicon_check_alt',
-            iconColor: 'stateNormal'
+            iconColor: '#14AD00'
           }, {
-            key: '2',
+            key: 2,
             label: '异常',
+            color: 'stateNormal',
             className: 'iconicon_error-triangle',
             iconColor: 'red'
           }, {
-            key: '3',
+            key: 3,
             label: '维护中',
+            color: 'stateNormal',
             className: 'iconicon_power_failure',
             iconColor: 'stateMaintenance'
           }],
@@ -163,9 +269,7 @@ export default {
       ]
     }
   },
-  created () {
-    this.$store.dispatch('monitor/system/getList', { currentPage: 1, queryParam: {}, rowsPerPage: 10 });
-    this.$store.dispatch('monitor/system/getDatabaseList', { param: {}, type: this.filterName });
+  mounted () {
   },
   methods: {
     handleClick () { },
@@ -180,7 +284,6 @@ export default {
     },
     filterTab (val) {
       this.filterName = val;
-      this.$store.dispatch('monitor/system/getDatabaseList', { param: {}, type: val });
     }
   }
 }
@@ -205,7 +308,7 @@ export default {
     color: #38ace1;
   }
   span:after {
-    content: '';
+    content: "";
     width: 1px;
     height: 17px;
     display: block;
@@ -214,7 +317,7 @@ export default {
     background-color: #dddee0;
   }
   span:nth-last-child(1):after {
-    content: '';
+    content: "";
     width: 0;
     height: 0;
   }
