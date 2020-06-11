@@ -491,6 +491,9 @@ export default {
     bottom: 0;
     right: 0;
     .title-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       height: $title-height;
       padding-left: 28px;
       padding-right: 28px;
@@ -502,10 +505,6 @@ export default {
         color: rgba(161, 153, 214, 1);
         line-height: 56px;
         padding-left: 5px;
-      }
-      button {
-        position: absolute;
-        right: 28px;
       }
     }
   }
