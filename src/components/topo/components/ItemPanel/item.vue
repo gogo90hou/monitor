@@ -6,7 +6,11 @@
       </div>
       <div class="line"></div>
       <div class="fold" @click="toggle = !toggle">
-        <span class="icon iconfont" :class="toggle ? 'iconarrow_carrot-down_alt2' : 'iconarrow_carrot-up_alt2'" :title="toggle ? '点击折叠' : '点击展开'"></span>
+        <span
+          class="icon iconfont"
+          :class="toggle ? 'iconarrow_carrot-down_alt2' : 'iconarrow_carrot-up_alt2'"
+          :title="toggle ? '点击折叠' : '点击展开'"
+        ></span>
       </div>
     </div>
     <ul class="items" :class="toggle ? '' : 'toggleFold'">
@@ -40,7 +44,7 @@ export default {
       }
     }
   },
-  data() {
+  data () {
     return {
       toggle: true, // 开关状态，true表示侧边栏打开，false表示侧边栏关闭
       page: null,
@@ -49,15 +53,15 @@ export default {
       offsetY: 0
     };
   },
-  created() {
+  created () {
     this.bindEvent();
   },
   methods: {
-    handleDragstart(e) {
+    handleDragstart (e) {
       this.offsetX = e.offsetX;
       this.offsetY = e.offsetY;
     },
-    handleDragEnd(e, item) {
+    handleDragEnd (e, item) {
       const data = {};
       Object.assign(data, item);
       data.offsetX = this.offsetX;
@@ -69,11 +73,13 @@ export default {
         data.x = xy.x;
         data.y = xy.y;
         data.size = item.size || [36, 36];
+        data.inPoints = [[0, 0.5]];
+        data.outPoints = [[1, 0.5]];
         data.type = 'node';
         this.command.executeCommand('add', [data]);
       }
     },
-    bindEvent() {
+    bindEvent () {
       eventBus.$on('afterAddPage', page => {
         this.page = page;
         this.command = page.command;
@@ -96,10 +102,10 @@ export default {
   .title {
     flex: 0 1 auto;
     display: inline-block;
-    font-size:14px;
-    font-weight:bold;
-    color:rgba(181,181,182,1);
-    line-height:18px;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(181, 181, 182, 1);
+    line-height: 18px;
     border-left: 3px solid;
     span {
       margin-left: 7px;
@@ -109,9 +115,9 @@ export default {
     flex: 1 1 auto;
     display: inline-block;
     height: 1px;
-    opacity:0.8;
+    opacity: 0.8;
     border-left: 9px solid transparent;
-    background:rgba(175,169,220,1);
+    background: rgba(175, 169, 220, 1);
     background-clip: content-box;
   }
   .fold {
@@ -129,32 +135,33 @@ export default {
   margin-top: 22px;
   margin-bottom: 26px;
   list-style: none;
-  font-size:16px;
-  font-weight:400;
-  color:rgba(102,102,102,1);
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
   li {
     flex: 0 0 100px;
     height: 86px;
     padding-top: 8px;
     margin-bottom: 20px;
-    background:rgba(255,255,255,0.55);
-    border-radius:3px;
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 3px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     align-content: center;
+    cursor: move;
     div {
       display: inline-block;
       width: 34px;
       height: 32px;
       font-size: 32px;
-      color: #7667DF;
+      color: #7667df;
       text-align: center;
     }
     span {
       flex: 0 0 auto;
-      line-height:18px;
+      line-height: 18px;
       text-align: center;
     }
   }
