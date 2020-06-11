@@ -302,7 +302,10 @@ export default {
     },
 
     consoleData () {
-      this.$emit('save', this.graph.save());
+      const data = this.graph.save();
+      console.log(JSON.stringify(data));
+      console.log('\ue799' + data.nodes[0].text.codePointAt(0).toString(16));
+      this.$emit('save', data);
     }
   }
 };
@@ -310,6 +313,9 @@ export default {
 
 <style scoped>
 .toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   box-sizing: border-box;
   padding: 8px 20px;
   width: 100%;
