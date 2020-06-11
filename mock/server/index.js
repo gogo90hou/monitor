@@ -22,7 +22,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const globalToken = {};
 const casServer = 'http://' + settings.cas.host + ':' + settings.cas.port;
-const frontOrigin = 'http://localhost:8080';
+const frontOrigin = 'http://' + settings.front.host + ':' + settings.front.port;;
 
 app.use(cookidParser());
 app.use(express.static('dist'));
