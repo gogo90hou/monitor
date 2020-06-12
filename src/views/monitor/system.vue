@@ -126,7 +126,7 @@ export default {
             label: '查看详情',
             type: 'url',
             path: '/system_detail?type=1',
-            query: ['actualId', 'sysName'],
+            query: ['actualId', 'osName'],
             colorType: 'tableBlue'
           }]
         }

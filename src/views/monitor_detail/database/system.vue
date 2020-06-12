@@ -216,7 +216,22 @@ export default {
       },
       circleData2: {
         precent: 72
-      }
+      },
+      info: ''
+    }
+  },
+  created () {
+    this.getDetail();
+  },
+  methods: {
+    getDetail () {
+      this.$request({
+        url: '/os/metric/detail',
+        method: 'get'
+      }).then(data => {
+        this.info = data
+        console.log(data)
+      })
     }
   }
 }

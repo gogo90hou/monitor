@@ -1,13 +1,12 @@
 <template>
   <div>
-    <div class="publicheader">
-      <h2>网关配置</h2>
-      <div class="right-wrapper">
-        <el-button type="primary" @click="dialogVisible = true">增加</el-button>
-        <el-button type="primary">批量导入</el-button>
-        <el-button type="primary">删除</el-button>
-      </div>
-    </div>
+    <HeadMenu
+      title="网关配置"
+      :search="false"
+      :btnarr="btnarr"
+      @getValue="searchKey"
+      @getEvent="judgeEvent"
+    />
     <dynamic-table
       :field-arr="fieldArr"
       :getters="getters"
@@ -49,6 +48,7 @@ export default {
   data () {
     return {
       getters: 'monitor/soft/list',
+      btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
       form: {
         name: ''
       },
