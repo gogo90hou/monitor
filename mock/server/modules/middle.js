@@ -72,6 +72,7 @@ const activemq = Mock.mock({
     'name|1': ['中间件1', '中间件2', '中间件3', '中间件4', '中间件5'],
     'runstate|1': [1, 2, 3],
     'costCount': '@integer(30, 100)',
+    'prodCount': '@integer(30, 100)',
     'uncostMsg': '@integer(30, 100)',
     'Memory': '@integer(1, 100)',
     'storageSpace': '@integer(1, 100)',
