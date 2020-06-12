@@ -7,20 +7,37 @@
       @getValue="searchKey"
       @getEvent="judgeEvent"
     />
-    <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
+    <v-table :field-arr="fieldArr" :table-setting="tableSetting" />
   </div>
 </template>
 <script>
-import DynamicTable from '@/components/DynamicTable/index'
 export default {
-  components: {
-    DynamicTable
-  },
 
   data () {
     return {
       btnarr: [{ id: '1', value: ' 管理设备', eventName: 'manageHandle', type: 'info' }],
-      getters: 'monitor/soft/list',
+      tableSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: 'soft/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
       fieldArr: [
         {
           label: '应用软件名称',
@@ -28,40 +45,42 @@ export default {
           formatter: ''
         }, {
           label: '运行状态',
-          key: 'resState',
+          key: 'runstate',
           formatter: [{
-            key: '1',
+            key: 1,
             label: '正常',
-            color: 'highLight'
+            color: 'stateNormal',
+            className: 'iconicon_check_alt',
+            iconColor: '#14AD00'
           }, {
-            key: '2',
-            label: '缓慢',
-            color: 'state3'
+            key: 2,
+            label: '异常',
+            color: 'stateNormal',
+            className: 'iconicon_error-triangle',
+            iconColor: 'red'
           }, {
-            key: '3',
-            label: '错误',
-            color: 'state2'
-          }, {
-            key: '4',
-            label: '非常慢',
-            color: 'state1'
+            key: 3,
+            label: '维护中',
+            color: 'stateNormal',
+            className: 'iconicon_power_failure',
+            iconColor: 'stateMaintenance'
           }],
           filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
 
         }, {
           label: '当前审批流程',
-          key: 'runState',
+          key: 'approvalProcess',
           formatter: ''
         }, {
           label: '今日访问量',
-          key: 'num',
-          formatter: '(num)/(area)'
+          key: 'todayPv',
+          formatter: ''
         }, {
           label: '所在区域',
-          key: 'resState'
+          key: 'area'
         }, {
           label: '所在位置',
-          key: 'time',
+          key: 'position',
           formatter: ''
         }, {
           label: '操作',

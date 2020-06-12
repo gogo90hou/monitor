@@ -1,12 +1,15 @@
 <template>
   <div>
-    <HeadMenu
-      title="中间件监控列表"
-      :search="true"
-      :btnarr="btnarr"
-      @getValue="searchKey"
-      @getEvent="judgeEvent"
-    />
+    <div class="body-content">
+      <HeadMenu
+        title="中间件监控列表"
+        :options="options"
+        :search="true"
+        :btnarr="btnarr"
+        @getValue="searchKey"
+        @getSelectId="selectIdHandle"
+      />
+    </div>
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
       <el-tab-pane label="Apache" name="first">
         <dynamic-table :field-arr="apacheArr" :getters="getters" @edit="edit" />
