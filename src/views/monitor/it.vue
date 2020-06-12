@@ -3,16 +3,16 @@
     <div class="body-content"><HeadMenu title="IT设备监控列表" :options="options" :search="true" @getValue="searchKey" @getSelectId="selectIdHandle" /></div>
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
       <el-tab-pane label="服务器" name="first">
-        <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
+        <v-table :field-arr="fieldArr" :table-setting="serverSetting" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="交换机" name="second">
-        <dynamic-table :field-arr="switchesFieldArr" :getters="switchesGetters" @edit="edit" />
+        <v-table :field-arr="switchesFieldArr" :table-setting="switchSetting" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="防火墙" name="third">
-        <dynamic-table :field-arr="firewallFieldArr" :getters="switchesGetters" @edit="edit" />
+        <v-table :field-arr="firewallFieldArr" :table-setting="firewallSetting" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="存储" name="four">
-        <dynamic-table :field-arr="storageFieldArr" :getters="switchesGetters" @edit="edit" />
+        <v-table :field-arr="storageFieldArr" :table-setting="storageSetting" @edit="edit" />
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -21,60 +21,164 @@
 export default {
   data () {
     return {
-      getters: 'monitor/it/list',
-      switchesGetters: 'monitor/it/switchesList',
+      serverSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: 'server/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      switchSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: 'interchanger/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      firewallSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: 'interchanger/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      storageSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: 'interchanger/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
       activeName: 'first',
-      options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '川北监狱' }, { selectId: '3', label: '川西监狱' }],
+      options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '邑州监狱' }, { selectId: '3', label: '川西监狱' }, { selectId: '4', label: '川北监狱' }, { selectId: '5', label: '雷马屏监狱' }],
       fieldArr: [
         {
+          label: '序号',
+          key: 'id'
+        }, {
           label: '服务器名称',
           key: 'name',
-          formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
+          formatter: ''
         }, {
           label: '运行状态',
-          key: 'area',
-          formatter: ''
+          key: 'runstate',
+          formatter: [{
+            key: 1,
+            label: '正常',
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
+          }, {
+            key: 2,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
+          }, {
+            key: 3,
+            label: '断连',
+            color: '#999999',
+            className: 'iconicon_power_failure',
+            iconColor: '#999999'
+          }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
         }, {
           label: '硬盘状态',
-          key: 'runState',
-          formatter: ''
+          key: 'diskstate',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
         }, {
           label: '风扇状态',
-          key: 'num',
-          formatter: '(num)/(area)'
+          key: 'fanstate',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
         }, {
           label: '内存状态',
-          key: 'resState',
-          formatter: [{
-            key: '1',
-            label: '正常',
-            color: 'highLight'
-          }, {
-            key: '2',
-            label: '缓慢',
-            color: 'state3'
-          }, {
-            key: '3',
-            label: '错误',
-            color: 'state2'
-          }, {
-            key: '4',
-            label: '非常慢',
-            color: 'state1'
-          }]
+          key: 'memorystate',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
         }, {
           label: '电源状态',
-          key: 'time',
-          formatter: ''
+          key: 'powerstate',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
         }, {
           label: 'cpu温度',
-          key: 'reason',
-          formatter: ''
+          key: 'cpuT',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
         }, {
           label: 'cpu负载',
-          key: 'err',
-          formatter: ''
+          key: 'cpuLoad',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+        }, {
+          label: '所在区域',
+          key: 'area',
+          filters: [{ value: '1', text: '锦江监狱' }, { value: '2', text: '邑州监狱' }, { value: '3', text: '川西监狱' }, { value: '4', text: '川北监狱' }, { value: '5', text: '雷马屏监狱' }]
+        }, {
+          label: '所在位置',
+          key: 'position'
         }, {
           label: '操作',
           key: 'operation',
@@ -94,54 +198,55 @@ export default {
     switchesFieldArr: function () {
       return [
         {
+          label: '序号',
+          key: 'id'
+        }, {
           label: '交换机名称',
           key: 'name',
-          formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
+          formatter: ''
         }, {
           label: '运行状态',
-          key: 'area',
-          formatter: ''
-        }, {
-          label: '硬盘状态',
-          key: 'runState',
-          formatter: ''
-        }, {
-          label: '风扇状态',
-          key: 'num',
-          formatter: '(num)/(area)'
-        }, {
-          label: '内存状态',
-          key: 'resState',
+          key: 'runstate',
           formatter: [{
-            key: '1',
+            key: 1,
             label: '正常',
-            color: 'highLight'
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
           }, {
-            key: '2',
-            label: '缓慢',
-            color: 'state3'
+            key: 2,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
           }, {
-            key: '3',
-            label: '错误',
-            color: 'state2'
-          }, {
-            key: '4',
-            label: '非常慢',
-            color: 'state1'
-          }]
+            key: 3,
+            label: '断连',
+            color: '#999999',
+            className: 'iconicon_power_failure',
+            iconColor: '#999999'
+          }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
         }, {
-          label: '电源状态',
-          key: 'time',
-          formatter: ''
-        }, {
-          label: 'cpu温度',
-          key: 'reason',
-          formatter: ''
+          label: '端口数量',
+          key: 'portNum'
         }, {
           label: 'cpu负载',
-          key: 'err',
-          formatter: ''
+          key: 'cpuLoad',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+        }, {
+          label: 'cpu利用率',
+          key: 'cpuMemory',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+        }, {
+          label: '所在区域',
+          key: 'area',
+          filters: [{ value: '1', text: '锦江监狱' }, { value: '2', text: '邑州监狱' }, { value: '3', text: '川西监狱' }, { value: '4', text: '川北监狱' }, { value: '5', text: '雷马屏监狱' }]
+        }, {
+          label: '所在位置',
+          key: 'position'
         }, {
           label: '操作',
           key: 'operation',
@@ -149,7 +254,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/it_detail?type=2',
+            path: '/it_detail?type=1',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -159,54 +264,71 @@ export default {
     firewallFieldArr: function () {
       return [
         {
-          label: '交换机名称',
-          key: 'name',
-          formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
+          label: '序号',
+          key: 'id'
+        },
+        {
+          label: '防火墙主机IP',
+          key: 'name'
         }, {
           label: '运行状态',
-          key: 'area',
-          formatter: ''
+          key: 'runstate',
+          formatter: [{
+            key: 1,
+            label: '正常',
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
+          }, {
+            key: 2,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
+          }, {
+            key: 3,
+            label: '断连',
+            color: '#999999',
+            className: 'iconicon_power_failure',
+            iconColor: '#999999'
+          }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
         }, {
           label: '硬盘状态',
-          key: 'runState',
-          formatter: ''
+          key: 'portNum',
+          formatter: '(portNum)TB'
         }, {
-          label: '风扇状态',
-          key: 'num',
-          formatter: '(num)/(area)'
+          label: 'ping服务器状态',
+          key: 'cpuLoad',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }]
         }, {
-          label: '内存状态',
-          key: 'resState',
-          formatter: [{
-            key: '1',
-            label: '正常',
-            color: 'highLight'
-          }, {
-            key: '2',
-            label: '缓慢',
-            color: 'state3'
-          }, {
-            key: '3',
-            label: '错误',
-            color: 'state2'
-          }, {
-            key: '4',
-            label: '非常慢',
-            color: 'state1'
-          }]
+          label: '内存使用',
+          key: 'cpuLoad',
+          formatter: '(cpuLoad)G/1TB'
         }, {
-          label: '电源状态',
-          key: 'time',
-          formatter: ''
+          label: '内存利用率',
+          key: 'cpuMemory',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }]
         }, {
-          label: 'cpu温度',
-          key: 'reason',
-          formatter: ''
+          label: 'cpu使用率',
+          key: 'cpuMemory',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }]
         }, {
-          label: 'cpu负载',
-          key: 'err',
-          formatter: ''
+          label: '会话状态',
+          key: 'cpuLoad',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }]
+        }, {
+          label: '接口状态',
+          key: 'cpuLoad',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }]
+        }, {
+          label: '流量统计',
+          key: 'portNum',
+          formatter: '(portNum)m/s'
+        }, {
+          label: '数据包状态',
+          key: 'cpuLoad',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }]
         }, {
           label: '操作',
           key: 'operation',
@@ -214,7 +336,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/it_detail?type=3',
+            path: '/it_detail?type=1',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -224,54 +346,56 @@ export default {
     storageFieldArr: function () {
       return [
         {
-          label: '交换机名称',
-          key: 'name',
-          formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
+          label: '序号',
+          key: 'id'
+        },
+        {
+          label: '存储标识',
+          key: 'name'
         }, {
           label: '运行状态',
-          key: 'area',
-          formatter: ''
-        }, {
-          label: '硬盘状态',
-          key: 'runState',
-          formatter: ''
-        }, {
-          label: '风扇状态',
-          key: 'num',
-          formatter: '(num)/(area)'
-        }, {
-          label: '内存状态',
-          key: 'resState',
+          key: 'runstate',
           formatter: [{
-            key: '1',
+            key: 1,
             label: '正常',
-            color: 'highLight'
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
           }, {
-            key: '2',
-            label: '缓慢',
-            color: 'state3'
+            key: 2,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
           }, {
-            key: '3',
-            label: '错误',
-            color: 'state2'
-          }, {
-            key: '4',
-            label: '非常慢',
-            color: 'state1'
-          }]
+            key: 3,
+            label: '断连',
+            color: '#999999',
+            className: 'iconicon_power_failure',
+            iconColor: '#999999'
+          }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
         }, {
-          label: '电源状态',
-          key: 'time',
-          formatter: ''
-        }, {
-          label: 'cpu温度',
-          key: 'reason',
-          formatter: ''
+          label: '存储大小',
+          key: 'portNum',
+          formatter: '(portNum)TB'
         }, {
           label: 'cpu负载',
-          key: 'err',
-          formatter: ''
+          key: 'cpuLoad',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+        }, {
+          label: 'cpu利用率',
+          key: 'cpuMemory',
+          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+        }, {
+          label: '所在区域',
+          key: 'area',
+          filters: [{ value: '1', text: '锦江监狱' }, { value: '2', text: '邑州监狱' }, { value: '3', text: '川西监狱' }, { value: '4', text: '川北监狱' }, { value: '5', text: '雷马屏监狱' }]
+        }, {
+          label: '所在位置',
+          key: 'position'
         }, {
           label: '操作',
           key: 'operation',
@@ -279,7 +403,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/it_detail?type=4',
+            path: '/it_detail?type=1',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -288,8 +412,6 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('monitor/it/getList');
-    this.$store.dispatch('monitor/it/getSwitchesList');
   },
   methods: {
     edit (data) {

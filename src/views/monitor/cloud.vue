@@ -7,7 +7,7 @@
       @getValue="searchKey"
       @getEvent="judgeEvent"
     />
-    <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" />
+    <v-table :field-arr="cloudArr" :table-setting="cloudSetting" @edit="edit" />
   </div>
 </template>
 
@@ -23,40 +23,83 @@ export default {
         limit: 10
       },
       btnarr: [{ id: '1', value: ' 管理云平台', eventName: 'manageHandle', type: 'info' }],
-      fieldArr: [
+      cloudSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: '/cloud/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      }
+    }
+  },
+  computed: {
+    cloudArr: function () {
+      return [
         {
           label: '序号',
-          key: 'serialNumber',
+          key: 'id',
           formatter: ''
         }, {
           label: '主机信息',
-          key: 'host',
-          formatter: '',
-          filters: [{ text: 'windows操作系统', value: 'windows操作系统' }, { text: 'liunx操作系统', value: 'liunx操作系统' }]
+          key: 'name',
+          formatter: ''
         }, {
           label: '所在区域',
           key: 'area',
-          formatter: ''
+          filters: [{ value: '1', text: '锦江监狱' }, { value: '2', text: '邑州监狱' }, { value: '3', text: '川西监狱' }, { value: '4', text: '川北监狱' }, { value: '5', text: '雷马屏监狱' }]
         }, {
           label: '运行状态',
-          key: 'runState',
-          formatter: ''
+          key: 'state',
+          formatter: [{
+            key: 1,
+            label: '正常',
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
+          }, {
+            key: 2,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
+          }, {
+            key: 3,
+            label: '断连',
+            color: '#999999',
+            className: 'iconicon_power_failure',
+            iconColor: '#999999'
+          }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
         }, {
           label: '虚拟机',
-          key: 'virtualMachine',
-          formatter: ''
+          key: 'vma'
         }, {
           label: '磁盘',
-          key: 'disk',
-          formatter: ''
+          key: 'diskUsed',
+          formatter: '(diskUsed)G/(allDisk)TB'
         }, {
           label: '内存',
-          key: 'memory',
-          formatter: ''
+          key: 'momeryUsed',
+          formatter: '(momeryUsed)G/(allMomery)TB'
         }, {
           label: '网卡流量',
-          key: 'networkTraffic',
-          formatter: ''
+          key: 'flow',
+          formatter: '(flow)kb/s'
         }, {
           label: '操作',
           key: 'operation',
@@ -65,8 +108,9 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/cloud_detail',
-            query: ['id', 'name']
+            path: '/middle_detail?type=Apache',
+            query: ['id', 'name'],
+            colorType: 'tableBlue'
           }]
         }
       ]

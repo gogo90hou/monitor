@@ -3,7 +3,6 @@
     <div class="body-content">
       <HeadMenu
         title="中间件监控列表"
-        :options="options"
         :search="true"
         :btnarr="btnarr"
         @getValue="searchKey"
@@ -12,28 +11,28 @@
     </div>
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
       <el-tab-pane label="Apache" name="first">
-        <dynamic-table :field-arr="apacheArr" :getters="getters" @edit="edit" />
+        <v-table :field-arr="apacheArr" :table-setting="apacheSetting" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="Flume" name="second">
-        <dynamic-table :field-arr="flumeArr" :getters="getters" @edit="edit" />
+        <v-table :field-arr="flumeArr" :table-setting="flumeSetting" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="Redis" name="third">
-        <dynamic-table :field-arr="redisArr" :getters="getters" @edit="edit" />
+        <v-table :field-arr="redisArr" :table-setting="redisSetting" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="JVM" name="fourth">
-        <dynamic-table :field-arr="jvmArr" :getters="getters" @edit="edit" />
+        <v-table :field-arr="jvmArr" :table-setting="jvmSetting" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="ActiveMQ" name="five">
-        <dynamic-table :field-arr="activeMQArr" :getters="getters" @edit="edit" />
+        <v-table :field-arr="activeMQArr" :table-setting="activeMQSetting" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="IIS" name="six">
-        <dynamic-table :field-arr="iisArr" :getters="getters" @edit="edit" />
+        <v-table :field-arr="iisArr" :table-setting="iisSetting" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="Flink" name="seven">
-        <dynamic-table :field-arr="flinkArr" :getters="getters" @edit="edit" />
+        <v-table :field-arr="flinkArr" :table-setting="flinkSetting" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="Kafka" name="eight">
-        <dynamic-table :field-arr="kafkaArr" :getters="getters" @edit="edit" />
+        <v-table :field-arr="kafkaArr" :table-setting="kafkaSetting" @edit="edit" />
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -45,7 +44,183 @@ export default {
     return {
       getters: 'monitor/soft/list',
       activeName: 'first',
-      btnarr: [{ id: '1', value: ' 管理中间件', eventName: 'manageHandle', type: 'info' }]
+      btnarr: [{ id: '1', value: ' 管理中间件', eventName: 'manageHandle', type: 'info' }],
+      apacheSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: '/apache/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      flumeSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: '/flume/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      redisSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: '/redis/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      jvmSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: '/jvm/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      activeMQSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: '/activemq/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      iisSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: '/iis/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      flinkSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: '/flink/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      kafkaSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: '/kafka/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      }
     }
   },
   computed: {
@@ -54,40 +229,53 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
-          formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
-        }, {
-          label: '吞吐率',
-          key: 'area',
           formatter: ''
         }, {
-          label: '并发连接数',
-          key: 'runState',
-          formatter: ''
-        }, {
-          label: '持久连接利用率',
-          key: 'num',
-          formatter: '(num)/(area)'
-        }, {
-          label: '所在区域',
-          key: 'resState',
+          label: '运行状态',
+          key: 'runstate',
           formatter: [{
-            key: '1',
+            key: 1,
             label: '正常',
-            color: 'highLight'
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
           }, {
-            key: '2',
-            label: '缓慢',
-            color: 'state3'
+            key: 2,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
           }, {
-            key: '3',
-            label: '错误',
-            color: 'state2'
-          }, {
-            key: '4',
-            label: '非常慢',
-            color: 'state1'
-          }]
+            key: 3,
+            label: '断连',
+            color: '#999999',
+            className: 'iconicon_power_failure',
+            iconColor: '#999999'
+          }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+        }, {
+          label: '总请求数',
+          key: 'totalRequest'
+        }, {
+          label: '总字节数',
+          key: 'totalSize'
+        }, {
+          label: '运行线程数',
+          key: 'threadCount'
+        }, {
+          label: '数据发送速率',
+          key: 'dataSendSpeed',
+          formatter: '(dataSendSpeed)kb/s'
+        }, {
+          label: '数据接收速率',
+          key: 'dataReceptionSpeed',
+          formatter: '(dataReceptionSpeed)kb/s'
+        },
+        {
+          label: '所在服务器',
+          key: 'serve',
+          formatter: '',
+          filters: [{ text: '服务器1', value: '1' }]
         }, {
           label: '操作',
           key: 'operation',
@@ -108,40 +296,46 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
-          formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
-        }, {
-          label: '吞吐率',
-          key: 'area',
           formatter: ''
         }, {
-          label: '并发连接数',
-          key: 'runState',
-          formatter: ''
-        }, {
-          label: '持久连接利用率',
-          key: 'num',
-          formatter: '(num)/(area)'
-        }, {
-          label: '所在区域',
-          key: 'resState',
+          label: '运行状态',
+          key: 'runstate',
           formatter: [{
-            key: '1',
+            key: 1,
             label: '正常',
-            color: 'highLight'
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
           }, {
-            key: '2',
-            label: '缓慢',
-            color: 'state3'
+            key: 2,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
           }, {
-            key: '3',
-            label: '错误',
-            color: 'state2'
-          }, {
-            key: '4',
-            label: '非常慢',
-            color: 'state1'
-          }]
+            key: 3,
+            label: '断连',
+            color: '#999999',
+            className: 'iconicon_power_failure',
+            iconColor: '#999999'
+          }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+        }, {
+          label: '读取事件总数',
+          key: 'readEvents',
+          formatter: ''
+        }, {
+          label: '发送事件总数',
+          key: 'sendEvents'
+        }, {
+          label: '通道容量',
+          key: 'channelCapacity'
+        },
+        {
+          label: '所在服务器',
+          key: 'serve',
+          formatter: '',
+          filters: [{ text: '服务器1', value: '1' }]
         }, {
           label: '操作',
           key: 'operation',
@@ -150,7 +344,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=Flume',
+            path: '/middle_detail?type=Apache',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -162,40 +356,62 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
-          formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
-        }, {
-          label: '吞吐率',
-          key: 'area',
           formatter: ''
         }, {
-          label: '并发连接数',
-          key: 'runState',
-          formatter: ''
-        }, {
-          label: '持久连接利用率',
-          key: 'num',
-          formatter: '(num)/(area)'
-        }, {
-          label: '所在区域',
-          key: 'resState',
+          label: '运行状态',
+          key: 'runstate',
           formatter: [{
-            key: '1',
+            key: 1,
             label: '正常',
-            color: 'highLight'
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
           }, {
-            key: '2',
-            label: '缓慢',
-            color: 'state3'
+            key: 2,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
           }, {
-            key: '3',
-            label: '错误',
-            color: 'state2'
-          }, {
-            key: '4',
-            label: '非常慢',
-            color: 'state1'
-          }]
+            key: 3,
+            label: '断连',
+            color: '#999999',
+            className: 'iconicon_power_failure',
+            iconColor: '#999999'
+          }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+        }, {
+          label: '连接客户数',
+          key: 'connectUser',
+          formatter: ''
+        }, {
+          label: '连接从库数',
+          key: 'connectLib'
+        }, {
+          label: '每分钟连接数',
+          key: 'minuteConnect',
+          formatter: '(minuteConnect) / min'
+        }, {
+          label: '阻塞客户数',
+          key: 'blockCus'
+        }, {
+          label: '缓存命中率',
+          key: 'cacheHit',
+          formatter: '(cacheHit)%'
+        }, {
+          label: '占用内存',
+          key: 'mem',
+          formatter: '(mem)%'
+        }, {
+          label: '每分钟执行命令数',
+          key: 'minuteExecute',
+          formatter: '(minuteExecute) / min'
+        },
+        {
+          label: '所在服务器',
+          key: 'serve',
+          formatter: '',
+          filters: [{ text: '服务器1', value: '1' }]
         }, {
           label: '操作',
           key: 'operation',
@@ -204,7 +420,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=Redis',
+            path: '/middle_detail?type=Apache',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -216,40 +432,52 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
-          formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
-        }, {
-          label: '吞吐率',
-          key: 'area',
           formatter: ''
         }, {
-          label: '并发连接数',
-          key: 'runState',
-          formatter: ''
-        }, {
-          label: '持久连接利用率',
-          key: 'num',
-          formatter: '(num)/(area)'
-        }, {
-          label: '所在区域',
-          key: 'resState',
+          label: '运行状态',
+          key: 'runstate',
           formatter: [{
-            key: '1',
+            key: 1,
             label: '正常',
-            color: 'highLight'
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
           }, {
-            key: '2',
-            label: '缓慢',
-            color: 'state3'
+            key: 2,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
           }, {
-            key: '3',
-            label: '错误',
-            color: 'state2'
-          }, {
-            key: '4',
-            label: '非常慢',
-            color: 'state1'
-          }]
+            key: 3,
+            label: '断连',
+            color: '#999999',
+            className: 'iconicon_power_failure',
+            iconColor: '#999999'
+          }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+        }, {
+          label: '堆内存使用百分比',
+          key: 'heapMemory',
+          formatter: '(heapMemory)%'
+        }, {
+          label: '线程数',
+          key: 'threadCount'
+        }, {
+          label: '老年代GC执行次数',
+          key: 'oldGc'
+        }, {
+          label: '年轻代GC执行次数',
+          key: 'youngGc'
+        }, {
+          label: '当前类加载数量',
+          key: 'loadClass'
+        },
+        {
+          label: '所在服务器',
+          key: 'serve',
+          formatter: '',
+          filters: [{ text: '服务器1', value: '1' }]
         }, {
           label: '操作',
           key: 'operation',
@@ -258,7 +486,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=JVM',
+            path: '/middle_detail?type=Apache',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -270,40 +498,58 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
-          formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
-        }, {
-          label: '吞吐率',
-          key: 'area',
           formatter: ''
         }, {
-          label: '并发连接数',
-          key: 'runState',
-          formatter: ''
-        }, {
-          label: '持久连接利用率',
-          key: 'num',
-          formatter: '(num)/(area)'
-        }, {
-          label: '所在区域',
-          key: 'resState',
+          label: '运行状态',
+          key: 'runstate',
           formatter: [{
-            key: '1',
+            key: 1,
             label: '正常',
-            color: 'highLight'
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
           }, {
-            key: '2',
-            label: '缓慢',
-            color: 'state3'
+            key: 2,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
           }, {
-            key: '3',
-            label: '错误',
-            color: 'state2'
-          }, {
-            key: '4',
-            label: '非常慢',
-            color: 'state1'
-          }]
+            key: 3,
+            label: '断连',
+            color: '#999999',
+            className: 'iconicon_power_failure',
+            iconColor: '#999999'
+          }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+        }, {
+          label: '消费者数量',
+          key: 'costCount',
+          formatter: ''
+        }, {
+          label: '生产者数量',
+          key: 'prodCount'
+        }, {
+          label: '未消费消息数量',
+          key: 'uncostMsg'
+        }, {
+          label: '内存使用量',
+          key: 'Memory',
+          formatter: '(Memory)%'
+        }, {
+          label: '存储空间使用量',
+          key: 'storageSpace',
+          formatter: '(storageSpace)%'
+        }, {
+          label: '临时空间使用量',
+          key: 'stagingSpace',
+          formatter: '(stagingSpace)%'
+        },
+        {
+          label: '所在服务器',
+          key: 'serve',
+          formatter: '',
+          filters: [{ text: '服务器1', value: '1' }]
         }, {
           label: '操作',
           key: 'operation',
@@ -312,7 +558,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=ActiveMQ',
+            path: '/middle_detail?type=Apache',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -324,40 +570,50 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
-          formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
-        }, {
-          label: '吞吐率',
-          key: 'area',
           formatter: ''
         }, {
-          label: '并发连接数',
-          key: 'runState',
-          formatter: ''
-        }, {
-          label: '持久连接利用率',
-          key: 'num',
-          formatter: '(num)/(area)'
-        }, {
-          label: '所在区域',
-          key: 'resState',
+          label: '运行状态',
+          key: 'runstate',
           formatter: [{
-            key: '1',
+            key: 1,
             label: '正常',
-            color: 'highLight'
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
           }, {
-            key: '2',
-            label: '缓慢',
-            color: 'state3'
+            key: 2,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
           }, {
-            key: '3',
-            label: '错误',
-            color: 'state2'
-          }, {
-            key: '4',
-            label: '非常慢',
-            color: 'state1'
-          }]
+            key: 3,
+            label: '断连',
+            color: '#999999',
+            className: 'iconicon_power_failure',
+            iconColor: '#999999'
+          }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+        }, {
+          label: '当前连接数',
+          key: 'connectCount',
+          formatter: ''
+        }, {
+          label: '活跃请求数',
+          key: 'activeReq'
+        }, {
+          label: '文件缓存数',
+          key: 'fileSave'
+        }, {
+          label: 'CPU使用率',
+          key: 'cpuUseage',
+          formatter: '(cpuUseage)%'
+        },
+        {
+          label: '所在服务器',
+          key: 'serve',
+          formatter: '',
+          filters: [{ text: '服务器1', value: '1' }]
         }, {
           label: '操作',
           key: 'operation',
@@ -366,7 +622,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=IIS',
+            path: '/middle_detail?type=Apache',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -378,40 +634,55 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
-          formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
-        }, {
-          label: '吞吐率',
-          key: 'area',
           formatter: ''
         }, {
-          label: '并发连接数',
-          key: 'runState',
-          formatter: ''
-        }, {
-          label: '持久连接利用率',
-          key: 'num',
-          formatter: '(num)/(area)'
-        }, {
-          label: '所在区域',
-          key: 'resState',
+          label: '运行状态',
+          key: 'runstate',
           formatter: [{
-            key: '1',
+            key: 1,
             label: '正常',
-            color: 'highLight'
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
           }, {
-            key: '2',
-            label: '缓慢',
-            color: 'state3'
+            key: 2,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
           }, {
-            key: '3',
-            label: '错误',
-            color: 'state2'
-          }, {
-            key: '4',
-            label: '非常慢',
-            color: 'state1'
-          }]
+            key: 3,
+            label: '断连',
+            color: '#999999',
+            className: 'iconicon_power_failure',
+            iconColor: '#999999'
+          }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+        }, {
+          label: '堆内存使用百分比',
+          key: 'heapMemony',
+          formatter: ''
+        }, {
+          label: '线程数',
+          key: 'threadCount'
+        }, {
+          label: '老年代GC执行次数',
+          key: 'oldGc'
+        }, {
+          label: '年轻代GC执行次数',
+          key: 'youngGc'
+        }, {
+          label: '注册任务管理器的数量',
+          key: 'registerNum'
+        }, {
+          label: '可用任务槽的数量',
+          key: 'taskNum'
+        },
+        {
+          label: '所在服务器',
+          key: 'serve',
+          formatter: '',
+          filters: [{ text: '服务器1', value: '1' }]
         }, {
           label: '操作',
           key: 'operation',
@@ -420,7 +691,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=Flink',
+            path: '/middle_detail?type=Apache',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -432,40 +703,60 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
-          formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
-        }, {
-          label: '吞吐率',
-          key: 'area',
           formatter: ''
         }, {
-          label: '并发连接数',
-          key: 'runState',
-          formatter: ''
-        }, {
-          label: '持久连接利用率',
-          key: 'num',
-          formatter: '(num)/(area)'
-        }, {
-          label: '所在区域',
-          key: 'resState',
+          label: '运行状态',
+          key: 'runstate',
           formatter: [{
-            key: '1',
+            key: 1,
             label: '正常',
-            color: 'highLight'
+            color: '#15B000',
+            className: 'iconicon_successfully',
+            iconColor: '#15B000'
           }, {
-            key: '2',
-            label: '缓慢',
-            color: 'state3'
+            key: 2,
+            label: '异常',
+            color: '#f00',
+            className: 'iconicon_error-triangle',
+            iconColor: '#f00'
           }, {
-            key: '3',
-            label: '错误',
-            color: 'state2'
-          }, {
-            key: '4',
-            label: '非常慢',
-            color: 'state1'
-          }]
+            key: 3,
+            label: '断连',
+            color: '#999999',
+            className: 'iconicon_power_failure',
+            iconColor: '#999999'
+          }],
+          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+        }, {
+          label: '平均入消息速率',
+          key: 'inMsg',
+          formatter: '(inMsg)%'
+        }, {
+          label: '平均输入字节速率',
+          key: 'inByte',
+          formatter: '(inByte)%'
+        }, {
+          label: '平均输出字节速率',
+          key: 'outByte',
+          formatter: '(outByte)%'
+        }, {
+          label: '平均扔掉字节速率',
+          key: 'discardByte',
+          formatter: '(discardByte)%'
+        }, {
+          label: '平均失败的fetch请求率',
+          key: 'errorFetch',
+          formatter: '(errorFetch)%'
+        }, {
+          label: '平均失败的producer请求率',
+          key: 'errorProducer',
+          formatter: '(errorProducer)%'
+        },
+        {
+          label: '所在服务器',
+          key: 'serve',
+          formatter: '',
+          filters: [{ text: '服务器1', value: '1' }]
         }, {
           label: '操作',
           key: 'operation',
@@ -474,7 +765,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=Kafka',
+            path: '/middle_detail?type=Apache',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
