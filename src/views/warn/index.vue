@@ -9,14 +9,14 @@
               <div class="alarm-event">
                 <span class="alarm-event-text">告警</span>
                 <span class="alarm-event-num">23</span>
-                <i class="iconfont iconicon_alarm" />
+                <i class="iconfont iconicon_call_police before" />
               </div>
             </el-col>
             <el-col :span="4">
               <div class="alarm-event">
                 <span class="alarm-event-text">事件</span>
                 <span class="alarm-event-num">24</span>
-                <i class="iconfont iconicon_calendar" />
+                <i class="iconfont iconshijian before" />
               </div>
             </el-col>
             <el-col :span="16">
@@ -86,31 +86,31 @@
         >
           <span style="display : inline-block;">
             <div>
-              <el-col>
+              <el-col :span="24">
                 <el-form-item label="告警源：" prop="alarmSource">
                   <el-input
                     v-model="ruleForm.alarmSource"
                   />
                 </el-form-item>
               </el-col>
-              <el-col>
+              <el-col :span="24">
                 <el-form-item label="处理人：">
                   <el-select
                     v-model="ruleForm.dealingPeople"
                     placeholder="请选择"
-                    style="width: 50%;"
+                    style="width : 50%;"
                   >
                     <el-option label="张飞" value="zhangfei" />
                     <el-option label="李四" value="lisi" />
                   </el-select>
                 </el-form-item>
               </el-col>
-              <el-col>
+              <el-col :span="24">
                 <el-form-item label="计划解决时间：">
-                  <el-date-picker v-model="ruleForm.solveTime" type="date" placeholder="请选择" style="width: 50%;"></el-date-picker>
+                  <el-date-picker v-model="ruleForm.solveTime" type="date" :clearable="false" placeholder="请选择" style="width : 50%;"></el-date-picker>
                 </el-form-item>
               </el-col>
-              <el-col>
+              <el-col :span="24">
                 <el-form-item label="备注信息：">
                   <el-input v-model="ruleForm.note" type="textarea" placeholder="请输入备注信息" />
                 </el-form-item>
@@ -128,7 +128,7 @@
       title="新增一条致命告警"
       class="alarmDialag"
       :visible.sync="alarmDialogVisible"
-      width="25%"
+      width="480px"
       :before-close="alarmHandleClose"
       style="height:100%;"
     >
@@ -352,11 +352,16 @@ export default {
           vertical-align: middle;
         }
         i {
-          padding-left: 26%;
+          padding-left: 26px;
           color: #d9d9d9;
           font-size: 35px;
           vertical-align: middle;
           opacity: 85%;
+        }
+        .before {
+          float: right;
+          padding-left: 0;
+          margin-right: 15px;
         }
         // 防止盒子内元素下掉
         @media screen and (max-width: 1650px) {
@@ -457,21 +462,20 @@ export default {
     background-color: #fff;
     .tabs-right-head {
       position: absolute;
-      top: 0;
+      top: 10px;
       right: 10px;
       z-index: 99;
     }
   }
-  .dialog-from >>> .el-input__prefix,
   .dialog-from >>> .el-input--prefix {
-    right: 0;
-    font-size: 16px;
-    color: #9599eb;
     .el-input__inner {
       padding-left: 5px;
     }
-    .el-icon-date {
-      float: right;
+    .el-input__prefix {
+      font-size: 16px;
+      color: #9599eb;
+      left: 100%;
+      transform: translateX(-100%);
     }
   }
   .dialog-footer {
@@ -492,20 +496,22 @@ export default {
 .alarmDialag >>> .el-dialog {
   .el-dialog__header {
     height: 110px;
-    line-height: 110px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-image: linear-gradient(to right, #f74545, #f74545);
     padding: 0;
     .el-dialog__title {
       color: #fff;
       font-size: 20px;
-      vertical-align: middle;
+      display: flex;
     }
     .el-dialog__title:before {
-      content: '\e781';
+      content: '\e7a0';
       font-size: 64px;
       font-family: 'iconfont';
-      margin-right: 6px;
+      margin-right: 10px;
+      align-items: center;
     }
     .el-dialog__headerbtn {
       top: 0;

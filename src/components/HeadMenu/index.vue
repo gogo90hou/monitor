@@ -142,7 +142,7 @@ export default {
   .btnStyle {
     float: left;
     height: 36px;
-    margin: 0 2px;
+    margin-left: 12px;
     background-color: #5466e0;
     border-radius: 5px;
     opacity: 0.79;

@@ -83,7 +83,7 @@
           </div>
           <div class="lineChart">
             <div class="lineChart_title">
-              <span class="fl">近段时间接收和发送字节的速率(kb/s)</span>
+              <span class="fl leftTitle">近段时间接收和发送字节的速率(kb/s)</span>
               <span class="rightBox">
                 <span class="square one">接收数据字节速率</span>
                 <span class="square two">发送数据字节速率</span>
@@ -222,19 +222,6 @@ export default {
       .title {
         padding-bottom: 22px;
         border-bottom: 1px solid rgba(219, 219, 219, 0.52);
-        .rightBox {
-          float: right;
-          .box_title_left {
-            float: left;
-            padding: 0 25px;
-            .title_blue {
-              color: #5466e0;
-            }
-          }
-          .box_title_left.seven {
-            padding-right: 0;
-          }
-        }
         @media screen and (max-width: 1800px) {
           .rightBox {
             width: 880px;
@@ -250,6 +237,10 @@ export default {
       .lineChart {
         margin: 0 18px;
         .lineChart_title {
+          height: 22px;
+          .leftTitle {
+            line-height: 22px;
+          }
           .rightBox {
             .square {
               width: 120px;

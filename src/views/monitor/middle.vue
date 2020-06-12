@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="publicheader">
-      <h2>中间件监控列表</h2>
-      <div class="right-wrapper head-menu-right">
-        <el-input type="text" placeholder="输入要搜索的关键字" suffix-icon="el-icon-search" />
-        <el-button class="filter-item" type="info" style="margin-left: 10px;">管理中间件</el-button>
-      </div>
-    </div>
+    <HeadMenu
+      title="中间件监控列表"
+      :search="true"
+      :btnarr="btnarr"
+      @getValue="searchKey"
+      @getEvent="judgeEvent"
+    />
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
       <el-tab-pane label="Apache" name="first">
         <dynamic-table :field-arr="apacheArr" :getters="getters" @edit="edit" />
@@ -41,7 +41,8 @@ export default {
   data () {
     return {
       getters: 'monitor/soft/list',
-      activeName: 'first'
+      activeName: 'first',
+      btnarr: [{ id: '1', value: ' 管理中间件', eventName: 'manageHandle', type: 'info' }]
     }
   },
   computed: {
@@ -485,7 +486,13 @@ export default {
     edit (data) {
       console.log(data)
     },
-    handleClick () { }
+    handleClick () { },
+    searchKey (val) {
+      console.log(val);
+    },
+    judgeEvent (event) {
+      this.managementHandle();
+    }
   }
 }
 </script>

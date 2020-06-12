@@ -14,8 +14,23 @@ const data = [
   {
     id: '1',
     level: '致命',
-    voiceFile: '警报声音.mp3',
-    runState: '运行中'
+    voiceFile: '警报声音1.mp3',
+    runState: '1'
+  }, {
+    id: '2',
+    level: '严重',
+    voiceFile: '警报声音2.mp3',
+    runState: '2'
+  }, {
+    id: '3',
+    level: '一般',
+    voiceFile: '警报声音3.mp3',
+    runState: '1'
+  }, {
+    id: '4',
+    level: '提示',
+    voiceFile: '警报声音4.mp3',
+    runState: '2'
   }
 ]
 // vuex的基本数据，用来存储变量
