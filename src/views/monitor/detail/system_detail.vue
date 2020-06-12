@@ -37,7 +37,7 @@ export default {
   },
   created () {
     this.queryData = this.$route.query;
-    this.$store.dispatch('monitor/system/getSysDetail', { actualId: this.$route.query.id });
+    // this.$store.dispatch('monitor/system/getSysDetail', { actualId: this.$route.query.id });
   }
 }
 </script>
