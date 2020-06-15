@@ -7,7 +7,14 @@
       @getValue="searchKey"
       @getEvent="judgeEvent"
     />
-    <v-table :field-arr="fieldArr" :table-setting="tableSetting" @edit="edit" />
+    <v-table
+      :field-arr="fieldArr"
+      :table-setting="tableSetting"
+      :show-check-box="true"
+      @edit="edit"
+      @delete="deletItem"
+      @selection-change="handleSelectionChange"
+    />
     <el-dialog title="网关配置" :visible.sync="dialogVisible" width="60%">
       <el-form :model="form">
         <el-form-item label="网关名称:">
@@ -58,7 +65,7 @@ export default {
             rules: []
           }
         },
-        apiUrl: 'gateway/list',
+        apiUrl: 'gateway',
         socket: {
           url: 'http://localhost:9999/echo',
           subscribe: 'data',
@@ -67,24 +74,22 @@ export default {
       },
       fieldArr: [
         {
-          label: '网关名称',
-          key: 'name',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
+          label: '采集网关名称',
+          key: 'name'
         }, {
-          label: '网关地址',
-          key: 'area',
-          formatter: ''
-        }, {
-          label: '网关ID',
-          key: 'runState',
+          label: '采集源',
+          key: 'collecting',
           formatter: ''
         }, {
           label: '所在区域',
-          key: 'num',
-          formatter: '(num)/(area)'
+          key: 'area',
+          formatter: '',
+          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
+
         }, {
           label: '网关描述',
-          key: 'resState'
+          key: 'des',
+          formatter: ''
         }, {
           label: '操作',
           key: 'operation',
@@ -92,13 +97,12 @@ export default {
           width: '200px',
           buttons: [{
             label: '编辑',
-            type: 'url',
-            path: '/detail',
-            query: ['id', 'name']
+            type: 'button',
+            method: 'edit'
           }, {
             label: '删除',
             type: 'button',
-            method: 'edit'
+            method: 'delete'
           }]
         }
       ]
@@ -109,6 +113,12 @@ export default {
   methods: {
     edit (data) {
       console.log(data)
+    },
+    deletItem (data) {
+      console.log(data)
+    },
+    handleSelectionChange () {
+
     }
   }
 }
