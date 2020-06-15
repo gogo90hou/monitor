@@ -14,7 +14,9 @@
           :data="data"
           :mode="mode"
         >
-          <context-menu />
+          <warning-dialog v-if="mode === 'view'"></warning-dialog>
+          <setting-dialog v-if="mode === 'edit'"></setting-dialog>
+          <!-- <context-menu v-if="mode === 'edit'" /> -->
           <div class="mini-viewport">
             <minimap />
           </div>
@@ -29,10 +31,13 @@ import Toolbar from '../Toolbar';
 import ItemPanel from '../ItemPanel';
 import Minimap from '../Minimap';
 import Page from '../Page';
-import Flow from '../Flow'
-import ContextMenu from '../ContextMenu';
+import Flow from '../Flow';
+import WarningDialog from '../TopoDialog/warning.vue';
+import SettingDialog from '../TopoDialog/setting.vue';
+// import ContextMenu from '../ContextMenu';
 import Editor from '&/components/Base/Editor';
 import Command from '&/command';
+
 export default {
   name: 'G6Editor',
   components: {
@@ -40,8 +45,10 @@ export default {
     ItemPanel,
     Minimap,
     Page,
-    ContextMenu,
-    Flow
+    // ContextMenu,
+    Flow,
+    WarningDialog,
+    SettingDialog
   },
   props: {
     data: {
@@ -101,6 +108,7 @@ export default {
   .bottom-container {
     position: absolute;
     width: 100%;
+    overflow: hidden;
     &.edit-statu {
       top: 72px;
       height: calc(100% - 72px);

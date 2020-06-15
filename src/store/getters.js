@@ -10,6 +10,7 @@ const getters = {
   showSettings: state => state.settings.showSettings,
   errorLogs: state => state.errorLog.logs,
   warnList: state => state.socket.warnList,
-  themeGroup: state => state.settings.themeGroup
+  themeGroup: state => state.settings.themeGroup,
+  topological: state => state.topo.topological
 }
 export default getters

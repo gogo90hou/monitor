@@ -104,6 +104,9 @@ export default {
         container: 'graph-container',
         height: height,
         width: width,
+        fitView: true, // 设置是否将图适配到画布中
+        fitViewPadding: [20, 20, 20, 20], // 画布上四周的留白宽度
+        animate: true, // 是否启用图的动画
         modes: {
           // 支持的 behavior
           default: this.defaultBehavors,
@@ -155,4 +158,7 @@ export default {
 </script>
 
 <style scoped>
+.page {
+  position: relative;
+}
 </style>

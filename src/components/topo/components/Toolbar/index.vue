@@ -310,6 +310,9 @@ export default {
 
 <style scoped>
 .toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   box-sizing: border-box;
   padding: 8px 20px;
   width: 100%;

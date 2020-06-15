@@ -17,7 +17,7 @@ export default {
   name: 'ContextMenu',
   data () {
     return {
-      menus: [{ key: 1, name: '菜单1' }, { key: 2, name: '菜单2' }]
+      menus: [{ key: 1, name: '关联设备' }]
     };
   },
   created () {
