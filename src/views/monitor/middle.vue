@@ -252,7 +252,7 @@ export default {
             className: 'iconicon_power_failure',
             iconColor: '#999999'
           }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+          filters: 'layout/runState'
         }, {
           label: '总请求数',
           key: 'totalRequest'
@@ -319,7 +319,7 @@ export default {
             className: 'iconicon_power_failure',
             iconColor: '#999999'
           }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+          filters: 'layout/runState'
         }, {
           label: '读取事件总数',
           key: 'readEvents',
@@ -379,7 +379,7 @@ export default {
             className: 'iconicon_power_failure',
             iconColor: '#999999'
           }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+          filters: 'layout/runState'
         }, {
           label: '连接客户数',
           key: 'connectUser',
@@ -455,7 +455,7 @@ export default {
             className: 'iconicon_power_failure',
             iconColor: '#999999'
           }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+          filters: 'layout/runState'
         }, {
           label: '堆内存使用百分比',
           key: 'heapMemory',
@@ -521,7 +521,7 @@ export default {
             className: 'iconicon_power_failure',
             iconColor: '#999999'
           }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+          filters: 'layout/runState'
         }, {
           label: '消费者数量',
           key: 'costCount',
@@ -593,7 +593,7 @@ export default {
             className: 'iconicon_power_failure',
             iconColor: '#999999'
           }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+          filters: 'layout/runState'
         }, {
           label: '当前连接数',
           key: 'connectCount',
@@ -657,7 +657,7 @@ export default {
             className: 'iconicon_power_failure',
             iconColor: '#999999'
           }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+          filters: 'layout/runState'
         }, {
           label: '堆内存使用百分比',
           key: 'heapMemony',
@@ -726,7 +726,7 @@ export default {
             className: 'iconicon_power_failure',
             iconColor: '#999999'
           }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+          filters: 'layout/runState'
         }, {
           label: '平均入消息速率',
           key: 'inMsg',

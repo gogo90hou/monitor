@@ -7,7 +7,7 @@
       @getValue="searchKey"
       @getEvent="judgeEvent"
     />
-    <v-table :field-arr="fieldArr" :table-setting="tableSetting" />
+    <v-table :field-arr="fieldArr" :table-setting="tableSetting" @edit="edit" />
   </div>
 </template>
 <script>
@@ -65,8 +65,7 @@ export default {
             className: 'iconicon_power_failure',
             iconColor: 'stateMaintenance'
           }],
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
-
+          filters: 'layout/runState'
         }, {
           label: '当前审批流程',
           key: 'approvalProcess',
@@ -77,7 +76,8 @@ export default {
           formatter: ''
         }, {
           label: '所在区域',
-          key: 'area'
+          key: 'area',
+          filters: 'layout/area'
         }, {
           label: '所在位置',
           key: 'position',
@@ -108,7 +108,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "~@/styles/element-ui.scss";
+@import '~@/styles/element-ui.scss';
 .publicheader {
   overflow: hidden;
   padding: 10px 0;

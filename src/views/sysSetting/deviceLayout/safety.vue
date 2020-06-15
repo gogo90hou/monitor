@@ -10,7 +10,6 @@
     <dynamic-table
       :show-check-box="showCheckBox"
       :field-arr="fieldArr"
-      :getters="getters"
       @edit="edit"
     />
   </div>
@@ -20,7 +19,7 @@
 export default {
   data () {
     return {
-      getters: 'sysSetting/deviceLayout/cloudManage/list',
+      // getters: 'sysSetting/deviceLayout/cloudManage/list',
       showCheckBox: true,
       btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '批量导入', eventName: 'importHandle', type: 'success' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
       smalltitle: { name: '查看监控列表', path: '/cloud' },
@@ -33,7 +32,7 @@ export default {
           label: '设备类型',
           key: 'access',
           formatter: '',
-          filters: 'layout/area'
+          filters: 'layout/deviceType'
         }, {
           label: '接入方式',
           key: 'gateway',
@@ -50,7 +49,7 @@ export default {
           label: '所在区域',
           key: 'describe',
           formatter: '',
-          filters: 'layout/deviceType'
+          filters: 'layout/area'
         }, {
           label: '设备描述',
           key: 'describe',
@@ -77,7 +76,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('sysSetting/deviceLayout/cloudManage/getList')
+    // this.$store.dispatch('sysSetting/deviceLayout/cloudManage/getList')
   },
   methods: {
     searchKey (val) {

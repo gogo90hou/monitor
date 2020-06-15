@@ -7,12 +7,7 @@
       @getValue="searchKey"
       @getEvent="judgeEvent"
     />
-    <dynamic-table
-      :field-arr="fieldArr"
-      :getters="getters"
-      :show-check-box="showCheckBox"
-      @edit="edit"
-    />
+    <v-table :field-arr="fieldArr" :table-setting="tableSetting" @edit="edit" />
     <el-dialog title="网关配置" :visible.sync="dialogVisible" width="60%">
       <el-form :model="form">
         <el-form-item label="网关名称:">
@@ -39,21 +34,37 @@
   </div>
 </template>
 <script>
-import DynamicTable from '@/components/DynamicTable/index'
 export default {
-  components: {
-    DynamicTable
-  },
-
   data () {
     return {
-      getters: 'monitor/soft/list',
       btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
       form: {
         name: ''
       },
       showCheckBox: true,
       dialogVisible: false,
+      tableSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: 'gateway/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
       fieldArr: [
         {
           label: '网关名称',
@@ -94,7 +105,6 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('monitor/soft/getList')
   },
   methods: {
     edit (data) {

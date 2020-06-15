@@ -153,7 +153,7 @@ export default {
           label: '设备类型',
           key: 'type',
           formatter: '',
-          filters: [{ text: 'windows操作系统', value: 'windows操作系统' }, { text: 'liunx操作系统', value: 'liunx操作系统' }]
+          filters: 'layout/deviceType'
         }, {
           label: '状态',
           key: 'state',
@@ -165,28 +165,23 @@ export default {
             iconColor: '#15B000'
           }, {
             key: 2,
-            label: '正常',
-            color: '#15B000',
-            className: 'iconicon_successfully',
-            iconColor: '#15B000'
-          }, {
-            key: 3,
             label: '异常',
             color: '#f00',
             className: 'iconicon_error-triangle',
             iconColor: '#f00'
           }, {
-            key: 4,
+            key: 3,
             label: '维护中',
             color: '#999999',
             className: 'iconicon_Under_maintenance',
             iconColor: '#999999'
-
-          }]
+          }],
+          filters: 'layout/runState'
         }, {
           label: '所在区域',
           key: 'area',
-          formatter: ''
+          formatter: '',
+          filters: 'layout/area'
         }, {
           label: '所在位置',
           key: 'position',

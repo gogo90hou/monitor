@@ -141,41 +141,41 @@ export default {
             className: 'iconicon_power_failure',
             iconColor: '#999999'
           }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+          filters: 'layout/runState'
         }, {
           label: '硬盘状态',
           key: 'diskstate',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+          filters: 'layout/state'
         }, {
           label: '风扇状态',
           key: 'fanstate',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+          filters: 'layout/state'
         }, {
           label: '内存状态',
           key: 'memorystate',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+          filters: 'layout/state'
         }, {
           label: '电源状态',
           key: 'powerstate',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+          filters: 'layout/state'
         }, {
           label: 'cpu温度',
           key: 'cpuT',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+          filters: 'layout/state'
         }, {
           label: 'cpu负载',
           key: 'cpuLoad',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+          filters: 'layout/state'
         }, {
           label: '所在区域',
           key: 'area',
-          filters: [{ value: '1', text: '锦江监狱' }, { value: '2', text: '邑州监狱' }, { value: '3', text: '川西监狱' }, { value: '4', text: '川北监狱' }, { value: '5', text: '雷马屏监狱' }]
+          filters: 'layout/area'
         }, {
           label: '所在位置',
           key: 'position'
@@ -226,7 +226,7 @@ export default {
             className: 'iconicon_power_failure',
             iconColor: '#999999'
           }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+          filters: 'layout/runState'
         }, {
           label: '端口数量',
           key: 'portNum'
@@ -234,16 +234,16 @@ export default {
           label: 'cpu负载',
           key: 'cpuLoad',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+          filters: 'layout/state'
         }, {
           label: 'cpu利用率',
           key: 'cpuMemory',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+          filters: 'layout/state'
         }, {
           label: '所在区域',
           key: 'area',
-          filters: [{ value: '1', text: '锦江监狱' }, { value: '2', text: '邑州监狱' }, { value: '3', text: '川西监狱' }, { value: '4', text: '川北监狱' }, { value: '5', text: '雷马屏监狱' }]
+          filters: 'layout/area'
         }, {
           label: '所在位置',
           key: 'position'
@@ -292,7 +292,7 @@ export default {
             className: 'iconicon_power_failure',
             iconColor: '#999999'
           }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+          filters: 'layout/runState'
         }, {
           label: '硬盘状态',
           key: 'portNum',
@@ -374,27 +374,27 @@ export default {
             className: 'iconicon_power_failure',
             iconColor: '#999999'
           }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
+          filters: 'layout/runState'
         }, {
           label: '存储大小',
           key: 'portNum',
           formatter: '(portNum)TB'
         }, {
-          label: 'cpu负载',
+          label: '配置信息',
           key: 'cpuLoad',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+          filters: 'layout/state'
         }, {
-          label: 'cpu利用率',
+          label: '控制机柜',
           key: 'cpuMemory',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }],
-          filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }]
+          filters: 'layout/state'
         }, {
-          label: '所在区域',
+          label: '矩阵机柜',
           key: 'area',
-          filters: [{ value: '1', text: '锦江监狱' }, { value: '2', text: '邑州监狱' }, { value: '3', text: '川西监狱' }, { value: '4', text: '川北监狱' }, { value: '5', text: '雷马屏监狱' }]
+          filters: 'layout/area'
         }, {
-          label: '所在位置',
+          label: 'trap事件历史',
           key: 'position'
         }, {
           label: '操作',

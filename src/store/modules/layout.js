@@ -27,11 +27,19 @@ const state = {
     },
     {
       value: '2',
-      text: '川西监狱'
+      text: '邑州监狱'
     },
     {
       value: '3',
+      text: '川西监狱'
+    },
+    {
+      value: '4',
       text: '川北监狱'
+    },
+    {
+      value: '3',
+      text: '雷马屏监狱'
     }
   ],
   deviceType: [
@@ -57,6 +65,30 @@ const state = {
       value: '6',
       text: '摄像头'
     }
+  ],
+  runState: [
+    {
+      value: '1',
+      text: '正常'
+    },
+    {
+      value: '2',
+      text: '异常'
+    },
+    {
+      value: '3',
+      text: '维护中'
+    }
+  ],
+  state: [
+    {
+      value: '1',
+      text: '正常'
+    },
+    {
+      value: '2',
+      text: '异常'
+    }
   ]
 }
 
@@ -68,6 +100,12 @@ const mutations = {
   },
   getDeviceType: (state, list) => {
     state.deviceType = list
+  },
+  getRunState: (state, list) => {
+    state.runState = list
+  },
+  getState: (state, list) => {
+    state.state = list;
   }
 
 }
@@ -80,11 +118,21 @@ const actions = {
   getDeviceType ({ commit }) {
     // get api data
     commit('getDeviceType')
+  },
+  getRunState ({ commit }) {
+    // get api data
+    commit('getRunState')
+  },
+  getState ({ commit }) {
+    // get api data
+    commit('getState')
   }
 }
 const getters = {
   area: state => state.area,
-  deviceType: state => state.deviceType
+  deviceType: state => state.deviceType,
+  runState: state => state.runState,
+  state: state => state.state
 }
 export default {
   namespaced: true,

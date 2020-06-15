@@ -6,12 +6,7 @@
       :btnarr="btnarr"
       @getEvent="judgeEvent"
     />
-    <dynamic-table
-      :show-check-box="showCheckBox"
-      :field-arr="fieldArr"
-      :getters="getters"
-      @edit="edit"
-    />
+    <v-table :field-arr="fieldArr" :table-setting="tableSetting" @edit="edit" />
     <el-dialog
       title="添加应用软件"
       :visible.sync="dialogVisible"
@@ -126,6 +121,28 @@ export default {
       dialogVisible: false,
       btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '批量导入', eventName: 'importHandle', type: 'success' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
       smalltitle: { name: '监控列表', path: '/cloud' },
+      tableSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: 'soft/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
       fieldArr: [
         {
           label: '应用软件名称',
