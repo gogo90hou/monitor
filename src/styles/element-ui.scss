@@ -329,3 +329,8 @@
   border-left: 0;
   border-top: 0;
 }
+.inlineSelect {
+  .el-select{
+    width: 100%;
+  }
+}

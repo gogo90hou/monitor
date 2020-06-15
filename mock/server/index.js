@@ -22,7 +22,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const globalToken = {};
 const casServer = 'http://' + settings.cas.host + ':' + settings.cas.port;
-const frontOrigin = 'http://' + settings.front.host + ':' + settings.front.port;;
+const frontOrigin = 'http://' + settings.front.host + ':' + settings.front.port;
 
 app.use(cookidParser());
 app.use(express.static('dist'));
@@ -30,7 +30,7 @@ app.use(jsonParser);
 app.use(urlencodedParser);
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', frontOrigin);
   res.header('Access-Control-Allow-Methods', 'HEAD, POST, GET, OPTIONS, DELETE, PUT, CONNECT, TRACE');
   res.header('Access-Control-Allow-Headers', 'X-Requested-With');
   res.header('Access-Control-Allow-Headers', 'Content-Type');

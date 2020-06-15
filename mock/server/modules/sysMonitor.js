@@ -24,14 +24,17 @@ const data = Mock.mock({
   'items|30': [{
     id: '@increment',
     'name|1': ['网关1', '网关2', '网关三'],
-    'collecting|1': ['网关采集源1', '网关采集源2', '网关采集源3'],
+    'type!1': ['门禁', '报警', '广播'],
+    'gateway|1': ['网关1', '网关2', '网关3'],
+    'device|1': ['设备1', '设备2', '设备3'],
     'area|1': ['锦江监狱', '乐山监狱', '监狱'],
-    'des': '这是一段描述'
+    'position|1': ['一楼大门左侧', '二楼大门左侧', '机房门口'],
+    'des': '新安装的设备'
   }]
 })
 module.exports = [
   {
-    url: '/gateway',
+    url: '/sysmonitor',
     type: 'get',
     response: config => {
       const page = config.query.page;
@@ -44,7 +47,7 @@ module.exports = [
     }
   },
   {
-    url: '/gateway',
+    url: '/sysmonitor',
     type: 'post',
     response: (req, res) => {
       const id = Mock.mock('@id');
@@ -58,7 +61,7 @@ module.exports = [
     }
   },
   {
-    url: '/gateway/',
+    url: '/sysmonitor',
     type: 'delete',
     response: (req, res) => {
       const ids = req.query.ids;
@@ -74,7 +77,7 @@ module.exports = [
   },
   {
     name: '',
-    url: '/gateway',
+    url: '/sysmonitor',
     type: 'put',
     response: (req, res) => {
       const item = req.body;
