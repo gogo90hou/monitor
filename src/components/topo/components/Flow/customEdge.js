@@ -3,7 +3,7 @@ import { uniqueId } from '&/utils'
 const MIN_ARROW_SIZE = 3
 
 const customEdge = {
-  init() {
+  init () {
     const dashArray = [
       [0, 1],
       [0, 2],
@@ -19,7 +19,7 @@ const customEdge = {
     const lineDash = [4, 2, 1, 2];
     const interval = 9;
     G6.registerEdge('customEdge', {
-      draw(cfg, group) {
+      draw (cfg, group) {
         let sourceNode, targetNode, start, end
         if (typeof (cfg.source) === 'string') {
           cfg.source = cfg.sourceNode
@@ -116,7 +116,7 @@ const customEdge = {
         });
         return keyShape
       },
-      afterDraw(cfg, group) {
+      afterDraw (cfg, group) {
         if (cfg.source.getModel().isDoingStart && cfg.target.getModel().isDoingEnd) {
           const shape = group.get('children')[0];
           const length = shape.getTotalLength(); // G 增加了 totalLength 的接口
@@ -126,7 +126,7 @@ const customEdge = {
           }
           let index = 0;
           shape.animate({
-            onFrame() {
+            onFrame () {
               const cfg = {
                 lineDash: dashArray[index].concat(totalArray)
               };
@@ -137,7 +137,7 @@ const customEdge = {
           }, 3000);
         }
       },
-      setState(name, value, item) {
+      setState (name, value, item) {
         const group = item.getContainer();
         const shape = group.get('children')[0];
         const selectStyles = () => {
@@ -160,7 +160,7 @@ const customEdge = {
       }
     });
     G6.registerEdge('monitorEdge', {
-      draw(cfg, group) {
+      draw (cfg, group) {
         let sourceNode, targetNode, start, end
         if (typeof (cfg.source) === 'string') {
           cfg.source = cfg.sourceNode
@@ -255,7 +255,7 @@ const customEdge = {
         }
         return keyShape
       },
-      afterDraw(cfg, group) {
+      afterDraw (cfg, group) {
         if (cfg.source.getModel().isDoingStart && cfg.target.getModel().isDoingEnd) {
           const shape = group.get('children')[0];
           const length = shape.getTotalLength(); // G 增加了 totalLength 的接口
@@ -265,7 +265,7 @@ const customEdge = {
           }
           let index = 0;
           shape.animate({
-            onFrame() {
+            onFrame () {
               const cfg = {
                 lineDash: dashArray[index].concat(totalArray)
               };
@@ -276,7 +276,7 @@ const customEdge = {
           }, 3000);
         }
       },
-      setState(name, value, item) {
+      setState (name, value, item) {
         const group = item.getContainer();
         const shape = group.get('children')[0];
         const selectStyles = () => {
@@ -301,7 +301,7 @@ const customEdge = {
       }
     });
     G6.registerEdge('link-edge', {
-      draw(cfg, group) {
+      draw (cfg, group) {
         let sourceNode, targetNode, start, end
         if (!cfg.source.x) {
           sourceNode = cfg.source.getModel()

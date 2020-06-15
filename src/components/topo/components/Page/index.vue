@@ -158,4 +158,7 @@ export default {
 </script>
 
 <style scoped>
+.page {
+  position: relative;
+}
 </style>

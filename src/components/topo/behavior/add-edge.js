@@ -7,7 +7,7 @@ let endPoint = {}
 let activeItem = null
 let curInPoint = null
 export default {
-  getEvents() {
+  getEvents () {
     return {
       mousemove: 'onMousemove',
       mouseup: 'onMouseup',
@@ -15,7 +15,7 @@ export default {
       'node:mouseleave': 'onMouseleave'
     };
   },
-  onMouseup(e) {
+  onMouseup (e) {
     const item = e.item
     if (item && item.getType() === 'node') {
       const group = item.getContainer()
@@ -93,7 +93,7 @@ export default {
     curInPoint = null
     this.graph.setMode('default')
   },
-  onMousemove(e) {
+  onMousemove (e) {
     const item = e.item
     if (!startPoint) {
       this.graph.find('node', node => {
@@ -130,7 +130,7 @@ export default {
       }
     }
   },
-  onMouseover(e) {
+  onMouseover (e) {
     const item = e.item
     if (item && item.getType() === 'node') {
       if (e.target._attrs.isInPointOut && !this.hasTran) {
@@ -143,7 +143,7 @@ export default {
       this.graph.paint()
     }
   },
-  onMouseleave() {
+  onMouseleave () {
     this.graph.find('node', node => {
       const group = node.get('group')
       const children = group._cfg.children

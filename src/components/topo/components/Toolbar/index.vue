@@ -302,10 +302,7 @@ export default {
     },
 
     consoleData () {
-      const data = this.graph.save();
-      console.log(JSON.stringify(data));
-      console.log('\ue799' + data.nodes[0].text.codePointAt(0).toString(16));
-      this.$emit('save', data);
+      this.$emit('save', this.graph.save());
     }
   }
 };
