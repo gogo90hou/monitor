@@ -74,10 +74,10 @@ app.get('/sso', function (req, res) {
     url: `${casServer}/verify?token=${token}`,
     method: 'GET'
   }, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode === 200) {
       log(`cas校验通过:${JSON.stringify(body)}`);
       globalToken[token] = body;
-      frontAddr = req.query.backurl;
+      const frontAddr = req.query.backurl;
       res.cookie('token', token, { frontOrigin });
       log(`后端注册登陆状态:${token} 重定向回前端`);
       res.redirect(frontAddr);
