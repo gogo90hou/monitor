@@ -232,7 +232,7 @@ export default {
       }
     },
     addHandle () {
-      console.log('我是添加事件');
+      // console.log('我是添加事件');
       this.dialogVisible = true;
     },
     importHandle () {

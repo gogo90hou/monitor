@@ -1,10 +1,10 @@
 module.exports = {
   cas: {
-    host: '192.168.0.48',
+    host: 'localhost',
     port: '8086'
   },
   server: {
-    host: '192.168.0.48',
+    host: 'localhost',
     port: '8324'
   },
   front: {

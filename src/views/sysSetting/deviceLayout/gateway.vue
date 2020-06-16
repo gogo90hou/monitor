@@ -4,7 +4,6 @@
       title="网关配置"
       :search="false"
       :btnarr="btnarr"
-      @getValue="searchKey"
       @getEvent="judgeEvent"
     />
     <v-table
@@ -15,27 +14,69 @@
       @delete="deletItem"
       @selection-change="handleSelectionChange"
     />
-    <el-dialog title="网关配置" :visible.sync="dialogVisible" width="60%">
-      <el-form :model="form">
-        <el-form-item label="网关名称:">
-          <el-input v-model="form.name" placeholder="网关名称" />
-        </el-form-item>
-        <el-form-item label="网关地址:">
-          <el-input v-model="form.name" placeholder="网关名称" />
-        </el-form-item>
-        <el-form-item label="所在区域:">
-          <el-input v-model="form.name" placeholder="网关名称" />
-        </el-form-item>
-        <el-form-item label="网关ID:">
-          <el-input v-model="form.name" placeholder="网关名称" />
-        </el-form-item>
-        <el-form-item label="网关描述">
-          <el-input v-model="form.name" placeholder="网关名称" />
-        </el-form-item>
-      </el-form>
+    <el-dialog
+      title="添加应用软件"
+      :visible.sync="dialogVisible"
+      width="37%"
+      :before-close="handleClose"
+    >
+      <div class="dialog-from" style="height: 100%;">
+        <el-form
+          ref="ruleForm"
+          :model="ruleForm"
+          :rules="rules"
+          label-width="120px"
+          class="demo-ruleForm"
+        >
+          <span class="smallTitle">添加网关配置</span>
+          <el-col :span="12">
+            <el-form-item label="采集网关名称 : " prop="gatewayName">
+              <el-input
+                v-model="ruleForm.gatewayName"
+                autocomplete="off"
+                placeholder="请输入采集网关名称"
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="采集源 : " prop="source">
+              <el-input
+                v-model="ruleForm.source"
+                autocomplete="off"
+                placeholder="请输入采集源"
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="所在区域 :">
+              <el-select
+                v-model="ruleForm.configuration"
+                placeholder="请选择"
+                style="width: 100%;"
+              >
+                <el-option label="配置一" value="Windows" />
+                <el-option label="配置二" value="Linux" />
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="活动区域 :">
+              <el-select v-model="ruleForm.region" placeholder="请选择活动区域" style="width: 100%;">
+                <el-option label="区域一" value="shanghai" />
+                <el-option label="区域二" value="beijing" />
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="24">
+            <el-form-item label="活动形式">
+              <el-input v-model="ruleForm.desc" type="textarea" placeholder="请输入活动形式" />
+            </el-form-item>
+          </el-col>
+        </el-form>
+      </div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        <el-button type="primary" @click="onSubmit">确 定</el-button>
+        <el-button type="warning" @click="dialogVisible = false">关 闭</el-button>
       </span>
     </el-dialog>
   </div>
@@ -44,7 +85,7 @@
 export default {
   data () {
     return {
-      btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
+      btnarr: [{ id: '1', value: '增加', eventName: 'addHandle' }, { id: '2', value: '删除', eventName: 'deleteHandle' }],
       form: {
         name: ''
       },
@@ -105,7 +146,35 @@ export default {
             method: 'delete'
           }]
         }
-      ]
+      ],
+      ruleForm: {
+        gatewayName: '',
+        source: '',
+        age: '',
+        region: '',
+        configuration: '',
+        desc: ''
+      },
+      rules: {
+        gatewayName: [
+          { required: true, message: '请输入采集网关名称', trigger: 'blur' },
+          { min: 2, max: 18, message: '长度在 2 到 18 个字符', trigger: 'blur' }
+        ],
+        source: [
+          { required: true, message: '请输入采集源', trigger: 'blur' },
+          { min: 2, max: 18, message: '长度在 2 到 18 个字符', trigger: 'blur' }
+        ],
+        age: [
+          { required: true, message: '请输入年龄', trigger: 'blur' },
+          { min: 1, max: 3, message: '长度在 1 到 3 个字符', trigger: 'blur' }
+        ],
+        region: [
+          { required: true, message: '请选择区域', trigger: 'blur' }
+        ],
+        desc: [
+          { message: '请输入活动形式', trigger: 'blur' }
+        ]
+      }
     }
   },
   created () {
@@ -117,8 +186,18 @@ export default {
     deletItem (data) {
       console.log(data)
     },
+    judgeEvent (event) {
+      if (event === 'addHandle') {
+        this.addHandle();
+      } else if (event === 'deleteHandle') {
+        this.deleteHandle();
+      }
+    },
+    addHandle () {
+      this.dialogVisible = true;
+    },
+    deleteHandle () { },
     handleSelectionChange () {
-
     }
   }
 }

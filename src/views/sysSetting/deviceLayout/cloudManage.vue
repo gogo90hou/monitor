@@ -41,16 +41,6 @@
                   />
                 </el-form-item>
               </el-col>
-              <el-col :span="11">
-                <el-form-item label="确认密码 : " prop="checkPass">
-                  <el-input
-                    v-model="ruleForm.checkPass"
-                    type="password"
-                    autocomplete="off"
-                    placeholder="请再次输入密码"
-                  />
-                </el-form-item>
-              </el-col>
               <el-col :span="11" style="float : right;">
                 <el-form-item label="年龄 : " prop="age">
                   <el-input v-model="ruleForm.age" placeholder="请输入年龄" />
@@ -82,16 +72,6 @@
                 </el-form-item>
               </el-col>
               <span class="smallTitle">接入配置</span>
-              <el-col :span="24">
-                <el-form-item label="密码 : " prop="pass">
-                  <el-input
-                    v-model="ruleForm.pass"
-                    type="password"
-                    autocomplete="off"
-                    placeholder="请输入密码"
-                  />
-                </el-form-item>
-              </el-col>
               <el-col>
                 <el-form-item label="年龄 : " prop="age">
                   <el-input v-model="ruleForm.age" placeholder="请输入年龄" />
@@ -112,15 +92,6 @@
 <script>
 export default {
   data () {
-    var validatePass2 = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请再次输入密码'));
-      } else if (value !== this.ruleForm.pass) {
-        callback(new Error('两次输入密码不一致!'));
-      } else {
-        callback();
-      }
-    };
     return {
       getters: 'sysSetting/deviceLayout/cloudManage/list',
       showCheckBox: true,
