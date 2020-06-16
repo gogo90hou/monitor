@@ -5,12 +5,16 @@
       <el-tab-pane label="服务器" name="1">
         <Server />
       </el-tab-pane>
-      <el-tab-pane label="交换机" name="2">交换机</el-tab-pane>
+      <el-tab-pane label="交换机" name="2">
+        <Interchanger />
+      </el-tab-pane>
       <el-tab-pane label="防火墙" name="3">防火墙</el-tab-pane>
       <el-tab-pane label="存储" name="4">存储</el-tab-pane>
       <el-tab-pane label="中间件" name="5">中间件</el-tab-pane>
       <el-tab-pane label="应用软件" name="6">应用软件</el-tab-pane>
-      <el-tab-pane label="数据库" name="7">数据库</el-tab-pane>
+      <el-tab-pane label="数据库" name="7">
+        <Database />
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -18,8 +22,10 @@
 <script>
 import HeadMenu from '@/components/HeadMenu';
 import Server from './tabs/server'
+import Interchanger from './tabs/interchanger'
+import Database from './tabs/database'
 export default {
-  components: { HeadMenu, Server },
+  components: { HeadMenu, Server, Interchanger, Database },
   data () {
     return {
       // 列表查询
