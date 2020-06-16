@@ -1,5 +1,11 @@
 <template>
-  <topo-dialog :title="'异常说明'" :handle-text="'立即处理'" @handle="handle">
+  <topo-dialog
+    ref="warningDialog"
+    :title="'异常说明'"
+    :handle-text="'立即处理'"
+    @handle="handle"
+    @rightClick="rightClick"
+  >
     <table class="content">
       <tr>
         <td class="label">告警源：</td>
@@ -49,8 +55,12 @@ export default {
     }
   },
   methods: {
-    handle () {
-      this.$emit('handle');
+    rightClick (item) {
+
+    },
+    handle (item) {
+      this.$emit('handle', item._cfg.model.meId);
+      this.$refs['warningDialog'].close();
     }
   }
 }

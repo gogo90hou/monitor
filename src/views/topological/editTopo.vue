@@ -18,7 +18,7 @@ export default {
   },
   created () {
     if (this.$store.getters.topological) {
-      const temp = unPack(this.$store.getters.topological);
+      const temp = unPack(this.$store.getters.topological, 'edit');
       this.topo = ((temp.nodes && temp.nodes.length > 1) || (temp.groups && temp.groups.length > 1)) ? temp : null;
     }
   },

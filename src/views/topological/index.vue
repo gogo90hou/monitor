@@ -23,7 +23,7 @@
         <span class="title">{{ selectTopo.label || "查询中" }}</span>
         <el-button type="info" class="edit-top" @click="editTopo">修改配置</el-button>
       </div>
-      <G6Editor :mode="'view'" :data="topo" />
+      <G6Editor :mode="'view'" :data="topo" @deal="deal" />
     </div>
   </div>
 </template>
@@ -58,6 +58,9 @@ export default {
     }
   },
   methods: {
+    deal (meId) {
+      this.$router.push({ path: 'warn', query: { meId } });
+    },
     handleSerchKey (val) {
 
     },

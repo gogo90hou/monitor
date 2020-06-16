@@ -14,8 +14,8 @@
           :data="data"
           :mode="mode"
         >
-          <warning-dialog v-if="mode === 'view'"></warning-dialog>
-          <setting-dialog v-if="mode === 'edit'"></setting-dialog>
+          <warning-dialog v-if="mode === 'view'" @handle="deal"></warning-dialog>
+          <setting-dialog v-if="mode === 'edit'" @handle="bindDevice"></setting-dialog>
           <!-- <context-menu v-if="mode === 'edit'" /> -->
           <div class="mini-viewport">
             <minimap />
@@ -91,6 +91,15 @@ export default {
     },
     save (data) {
       this.$emit('save', data);
+    },
+    bindDevice ({ item, device }) {
+      const model = item._cfg.model;
+      model.meId = device.key;
+      model.label = device.label;
+      this.editor.getGrpah().updateItem(item, model);
+    },
+    deal (meId) {
+      this.$emit('deal', meId);
     }
   }
 };
