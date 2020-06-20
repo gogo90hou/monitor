@@ -67,7 +67,7 @@ export default {
       this.$emit('click', data);
     },
     handleContextmenuClick (event, data) {
-      // console.log(data);
+      console.log(data);
       var result = this.menu.some(item => {
         if (item === data) {
           return true;
