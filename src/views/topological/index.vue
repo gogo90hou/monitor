@@ -161,7 +161,7 @@ export default {
               'label': '自发现拓扑图',
               'children': [
                 {
-                  'label': '自发现拓扑图2',
+                  'label': '自发现拓扑图123',
                   'children': []
                 }
               ]
@@ -175,7 +175,7 @@ export default {
               'label': '自发现拓扑图1',
               'children': [
                 {
-                  'label': '自发现拓扑图2',
+                  'label': '自发现拓扑图456',
                   'children': [
                     {
                       'label': '自发现拓扑图2',

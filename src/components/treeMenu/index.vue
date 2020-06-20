@@ -64,7 +64,6 @@ export default {
   },
   methods: {
     handleNodeClick (data) {
-      // console.log(data);
       this.$emit('click', data);
     },
     handleContextmenuClick (event, data) {
