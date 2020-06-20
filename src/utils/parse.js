@@ -1,3 +1,5 @@
+import { warningLevel } from './filters';
+
 // 组装数据，将nodes数组和edges连线打包为能描述节点间关系的一维数组
 export function pack (data) {
   const nodes = data.nodes || [];
@@ -27,26 +29,32 @@ export function pack (data) {
 }
 
 // 解析数据，将带有关系属性的nodes数组解析为vg渲染所需的nodes和edges数据
-export function unPack (data) {
+export function unPack (data, mode) {
   const packedNodes = data.nodes || [];
   const nodes = [];
   const edges = [];
 
-  function createEdge (f, target) {
+  function createEdge (f, target, color) {
     const edge = {
       id: f.id + target,
       source: f.id,
       target,
-      shape: f.shape
+      shape: f.shape,
+      color
     };
     return edge;
   }
   packedNodes.forEach((node, index, arr) => {
     const from = node.from;
+    const color = mode === 'edit' ? '#7E7C8B' : node.warning.level !== 0 ? warningLevel(node.warning.level).color : '#7E7C8B';
     if (from && from instanceof Array) {
       for (const f in from) {
-        edges.push(createEdge(from[f], node.id));
+        edges.push(createEdge(from[f], node.id, color));
       }
+    }
+    // 节点样式以level等级为标志，但在编辑模式先需要统一颜色
+    if (mode === 'edit') {
+      node.warning.level = 0;
     }
     nodes.push(node);
   });

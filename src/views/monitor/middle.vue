@@ -344,7 +344,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=Apache',
+            path: '/middle_detail?type=Flume',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -420,7 +420,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=Apache',
+            path: '/middle_detail?type=Redis',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -486,7 +486,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=Apache',
+            path: '/middle_detail?type=JVM',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -558,7 +558,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=Apache',
+            path: '/middle_detail?type=ActiveMQ',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -622,7 +622,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=Apache',
+            path: '/middle_detail?type=IIS',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -691,7 +691,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=Apache',
+            path: '/middle_detail?type=Flink',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -765,7 +765,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=Apache',
+            path: '/middle_detail?type=Kafka',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]

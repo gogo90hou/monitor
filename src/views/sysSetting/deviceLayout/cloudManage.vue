@@ -4,83 +4,62 @@
       title="云平台"
       :smalltitle="smalltitle"
       :btnarr="btnarr"
-      @getValue="searchKey"
       @getEvent="judgeEvent"
     />
-    <dynamic-table
-      :show-check-box="showCheckBox"
+    <v-table
+      ref="table"
       :field-arr="fieldArr"
-      :getters="getters"
+      :table-setting="tableSetting"
+      :show-check-box="true"
       @edit="edit"
+      @delete="deleteItem"
+      @selection-change="handleSelectionChange"
     />
-    <el-dialog
-      title="添加云平台"
-      :visible.sync="dialogVisible"
-      width="37.5%"
-      :before-close="handleClose"
-      style="height:100%;"
-    >
-      <div class="dialog-from" style="height: 100%;">
-        <el-form
-          ref="ruleForm"
-          :model="ruleForm"
-          :rules="rules"
-          label-width="100px"
-          class="demo-ruleForm"
-        >
-          <span style="display : inline-block;">
-            <div>
-              <span class="smallTitle">接入信息</span>
-              <el-col :span="24">
-                <el-form-item label="密码 : " prop="pass">
-                  <el-input
-                    v-model="ruleForm.pass"
-                    type="password"
-                    autocomplete="off"
-                    placeholder="请输入密码"
-                  />
-                </el-form-item>
-              </el-col>
-              <el-col :span="11" style="float : right;">
-                <el-form-item label="年龄 : " prop="age">
-                  <el-input v-model="ruleForm.age" placeholder="请输入年龄" />
-                </el-form-item>
-              </el-col>
-              <el-col :span="11">
-                <el-form-item label="配置信息 :">
-                  <el-select
-                    v-model="ruleForm.configuration"
-                    placeholder="请选择"
-                    style="width: 100%;"
-                  >
-                    <el-option label="配置一" value="Windows" />
-                    <el-option label="配置二" value="Linux" />
-                  </el-select>
-                </el-form-item>
-              </el-col>
-              <el-col :span="11" style="float : right;">
-                <el-form-item label="活动区域 :">
-                  <el-select v-model="ruleForm.region" placeholder="请选择活动区域" style="width: 100%;">
-                    <el-option label="区域一" value="shanghai" />
-                    <el-option label="区域二" value="beijing" />
-                  </el-select>
-                </el-form-item>
-              </el-col>
-              <el-col :span="24">
-                <el-form-item label="活动形式">
-                  <el-input v-model="ruleForm.desc" type="textarea" placeholder="请输入活动形式" />
-                </el-form-item>
-              </el-col>
-              <span class="smallTitle">接入配置</span>
-              <el-col>
-                <el-form-item label="年龄 : " prop="age">
-                  <el-input v-model="ruleForm.age" placeholder="请输入年龄" />
-                </el-form-item>
-              </el-col>
-            </div>
-          </span>
-        </el-form>
-      </div>
+    <el-dialog title="云平台" :visible.sync="dialogVisible" custom-class="addHandleWidth" :before-close="resetForm">
+      <el-form :model="ruleForm" label-position="left" label-width="100px">
+        <el-row class="inlineSelect" :gutter="50">
+          <el-col :span="12">
+            <el-form-item label="云平台名称:">
+              <el-input v-model="ruleForm.name" placeholder="云平台名称" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="采集网关:">
+              <el-select v-model="ruleForm.gateway">
+                <el-option label="网关1" value="网关1"></el-option>
+                <el-option label="网关2" value="网关2"></el-option>
+                <el-option label="网关3" value="网关3"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="接入平台:">
+              <el-input v-model="ruleForm.accessCloud" placeholder="接入平台名称" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="所在区域:">
+              <el-select v-model="ruleForm.area">
+                <el-option label="锦江监狱" value="锦江监狱"></el-option>
+                <el-option label="邑州监狱" value="邑州监狱"></el-option>
+                <el-option label="川西监狱" value="川西监狱"></el-option>
+                <el-option label="川北监狱" value="川北监狱"></el-option>
+                <el-option label="雷马屏监狱" value="雷马屏监狱"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="所在服务器:">
+              <el-input v-model="ruleForm.location" placeholder="所在服务器" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="24">
+            <el-form-item label="云平台描述:">
+              <el-input v-model="ruleForm.des" type="textarea" placeholder="云平台描述" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="onSubmit">确 定</el-button>
         <el-button type="warning" @click="dialogVisible = false">关 闭</el-button>
@@ -93,29 +72,22 @@
 export default {
   data () {
     return {
-      getters: 'sysSetting/deviceLayout/cloudManage/list',
-      showCheckBox: true,
-      dialogVisible: false,
       btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '批量导入', eventName: 'importHandle', type: 'success' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
       smalltitle: { name: '监控列表', path: '/cloud' },
       fieldArr: [
         {
           label: '云平台名称',
-          key: 'cloudName',
+          key: 'name',
           formatter: ''
-        }, {
-          label: '接入方式',
-          key: 'access',
-          formatter: '',
-          filters: [{ text: '网管接入', value: '网管接入' }]
-        }, {
-          label: '网关',
+        },
+        {
+          label: '采集网关',
           key: 'gateway',
           formatter: '',
           filters: [{ text: '网关1', value: '网关1' }, { text: '网关2', value: '网关2' }, { text: '网关3', value: '网关3' }]
         }, {
-          label: '设备ID',
-          key: 'equipmentId',
+          label: '接入平台',
+          key: 'accessCloud',
           formatter: ''
         }, {
           label: '所在区域',
@@ -123,8 +95,12 @@ export default {
           formatter: '',
           filters: [{ text: '锦江监狱', value: '锦江监狱' }, { text: '邑州监狱', value: '邑州监狱' }, { text: '川西监狱', value: '川西监狱' }, { text: '川北监狱', value: '川北监狱' }, { text: '雷马屏监狱', value: '雷马屏监狱' }]
         }, {
+          label: '所在服务器',
+          key: 'location',
+          formatter: ''
+        }, {
           label: '云平台描述',
-          key: 'describe',
+          key: 'des',
           formatter: ''
         }, {
           label: '操作',
@@ -133,9 +109,8 @@ export default {
           width: '200px',
           buttons: [{
             label: '编辑',
-            type: 'url',
-            path: '/detail',
-            query: ['id', 'name'],
+            type: 'button',
+            method: 'edit',
             colorType: 'edit'
           }, {
             label: '删除',
@@ -145,37 +120,84 @@ export default {
           }]
         }
       ],
-      ruleForm: {
-        pass: '',
-        age: '',
-        region: '',
-        configuration: '',
-        desc: ''
+      dialogVisible: false,
+      tableSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: 'cloudManage',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
       },
-      rules: {
-        pass: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 6, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur' }
-        ],
-        age: [
-          { required: true, message: '请输入年龄', trigger: 'blur' },
-          { min: 1, max: 3, message: '长度在 1 到 3 个字符', trigger: 'blur' }
-        ],
-        region: [
-          { required: true, message: '请选择区域', trigger: 'blur' }
-        ],
-        desc: [
-          { message: '请输入活动形式', trigger: 'blur' }
-        ]
-      }
+      ruleForm: {
+        name: '',
+        type: '',
+        gateway: '',
+        accessEquipment: '',
+        area: '',
+        location: ''
+      },
+      // 选中数据ID
+      ids: []
     }
   },
   created () {
-    this.$store.dispatch('sysSetting/deviceLayout/cloudManage/getList')
   },
   methods: {
-    searchKey (val) {
-      console.log(val);
+    onSubmit () {
+      if (this.ruleForm.id) {
+        this.$refs.table.update(this.ruleForm).then(() => {
+          this.resetForm();
+        })
+      } else {
+        this.$refs.table.add(this.ruleForm).then(() => {
+          this.resetForm();
+        })
+      }
+    },
+    resetForm () {
+      this.dialogVisible = false;
+      this.ruleForm = {
+        name: '',
+        collecting: '',
+        area: '',
+        des: ''
+      }
+    },
+    add () {
+      this.dialogVisible = true;
+    },
+    edit (data) {
+      this.dialogVisible = true;
+      this.ruleForm = data;
+    },
+    deleteItem (data) {
+      const deleteIds = [];
+      deleteIds.push(data.id);
+      this.$refs.table.deleteItem(deleteIds)
+    },
+    remove () {
+      this.$refs.table.deleteItem(this.ids)
+    },
+    handleSelectionChange (data) {
+      this.chooseData = data;
+      data.forEach((item) => {
+        this.ids.push(item.id)
+      })
     },
     judgeEvent (event) {
       if (event === 'addHandle') {
@@ -187,30 +209,13 @@ export default {
       }
     },
     addHandle () {
-      console.log('我是添加事件');
       this.dialogVisible = true;
     },
     importHandle () {
       console.log('我是批量导入事件');
     },
     deleteHandle () {
-      console.log('我是删除事件事件');
-    },
-    edit (data) {
-      console.log(data)
-    },
-    // 触发关闭弹窗事件
-    handleClose (done) {
-      this.dialogVisible = false;
-      // this.$confirm('确认关闭？')
-      //   .then(_ => {
-      //     done();
-      //   })
-      //   .catch(_ => { });
-    },
-    // 提交表单
-    onSubmit () {
-      this.dialogVisible = false;
+      this.remove();
     }
   }
 }

@@ -1,6 +1,7 @@
 import G6 from '@antv/g6/build/g6';
-import { uniqueId } from '&/utils'
-import Shape from '@antv/g/src/shapes'
+import { uniqueId } from '&/utils';
+import Shape from '@antv/g/src/shapes';
+import { warningLevel } from '@/utils/filters.js';
 const customNode = {
   init (mode) {
     G6.registerNode('customNode', {
@@ -218,6 +219,9 @@ const customNode = {
     G6.registerNode('monitorNode', {
       draw (cfg, group) {
         let size = cfg.size;
+        cfg['inPoints'] = [[0, 0.5]];
+        cfg['outPoints'] = [[1, 0.5]];
+
         if (!size) {
           size = [36, 36]
         }
@@ -250,7 +254,7 @@ const customNode = {
             fontSize: '24',
             text: cfg.text,
             parent: mainId,
-            fill: '#8a7fdb'
+            fill: warningLevel(cfg.warning.level).color
           },
           // must be assigned in G6 3.3 and later versions. it can be any value you want
           name: 'text-shape1'

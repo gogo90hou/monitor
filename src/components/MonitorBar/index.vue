@@ -37,7 +37,6 @@ export default {
         })
         if (list) {
           this.showList = item.children;
-          console.log(this.showList)
         }
       }
     })

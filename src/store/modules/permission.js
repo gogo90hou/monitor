@@ -5,6 +5,7 @@ import { constantRoutes } from '@/router';
  * @param menus
  */
 export function filterAsyncRoutes (menus) {
+  // console.log(menus);
   for (let i = 0; i < menus.length; i++) {
     const component = menus[i].component;
     if (!component) {

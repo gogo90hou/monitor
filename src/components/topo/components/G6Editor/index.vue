@@ -2,9 +2,11 @@
   <div class="topo-container">
     <toolbar v-if="mode === 'edit'" @save="save" />
     <div class="bottom-container" :class="mode === 'edit' ? 'edit-statu' : 'view-statu'">
+      <!-- 左侧图元选择 -->
       <div ref="sidebar" class="topo-sidebar">
         <item-panel v-if="mode === 'edit'" @toggle="toggleItempanel" />
       </div>
+      <!-- topo图 -->
       <div ref="viewContainer" class="viewContainer">
         <page
           class="viewport"
@@ -14,9 +16,10 @@
           :data="data"
           :mode="mode"
         >
-          <warning-dialog v-if="mode === 'view'"></warning-dialog>
-          <setting-dialog v-if="mode === 'edit'"></setting-dialog>
+          <warning-dialog v-if="mode === 'view'" @handle="deal"></warning-dialog>
+          <setting-dialog v-if="mode === 'edit'" @handle="bindDevice"></setting-dialog>
           <!-- <context-menu v-if="mode === 'edit'" /> -->
+          <!-- 下侧小topo图 -->
           <div class="mini-viewport">
             <minimap />
           </div>
@@ -90,7 +93,39 @@ export default {
       this.viewportWidth = this.$refs['viewContainer'].offsetWidth - this.sideBarWidth;
     },
     save (data) {
+      // console.log(data);
+      // const topo = {
+      //   areaId: '123',
+      //   areaName: '锦江监狱',
+      //   groups: [
+      //     {
+      //       groupId: '分组id',
+      //       parentId: '父分组id',
+      //       title: '分组名称'
+      //     }
+      //   ],
+      //   nodes: [],
+      //   parentAreaId: '111',
+      //   topoDesc: '拓扑图描述',
+      //   topoName: '拓扑图123',
+      //   topoTypeId: 1000
+      // }
+      // topo.nodes = data.nodes;
+      // createTopo(topo).then(res => {
+      //   console.log(res);
+      // }).catch(err => {
+      //   console.log(err);
+      // })
       this.$emit('save', data);
+    },
+    bindDevice ({ item, device }) {
+      const model = item._cfg.model;
+      model.meId = device.key;
+      model.label = device.label;
+      this.editor.getGrpah().updateItem(item, model);
+    },
+    deal (meId) {
+      this.$emit('deal', meId);
     }
   }
 };

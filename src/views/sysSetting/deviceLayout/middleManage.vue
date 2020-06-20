@@ -3,16 +3,73 @@
     <HeadMenu
       title="IT设备"
       :smalltitle="smalltitle"
-      :search="false"
       :btnarr="btnarr"
       @getEvent="judgeEvent"
     />
-    <dynamic-table
+    <v-table
+      ref="table"
       :field-arr="fieldArr"
-      :show-check-box="showCheckBox"
-      :getters="getters"
+      :table-setting="tableSetting"
+      :show-check-box="true"
       @edit="edit"
+      @delete="deleteItem"
+      @selection-change="handleSelectionChange"
     />
+    <el-dialog title="IT设备" :visible.sync="dialogVisible" custom-class="addHandleWidth" :before-close="resetForm">
+      <el-form :model="ruleForm" label-position="left" label-width="100px">
+        <el-row class="inlineSelect" :gutter="50">
+          <el-col :span="12">
+            <el-form-item label="中间件名称:">
+              <el-input v-model="ruleForm.name" placeholder="中间件名称" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="中间件类别:">
+              <el-select v-model="ruleForm.type">
+                <el-option label="Nginx" value="Nginx"></el-option>
+                <el-option label="Apache" value="Apache"></el-option>
+                <el-option label="Redis" value="Redis"></el-option>
+                <el-option label="JVM" value="JVM"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="采集网关:">
+              <el-select v-model="ruleForm.gateway">
+                <el-option label="网关1" value="网关1"></el-option>
+                <el-option label="网关2" value="网关2"></el-option>
+                <el-option label="网关3" value="网关3"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="接入设备:">
+              <el-input v-model="ruleForm.accessEquipment" placeholder="接入设备名称" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="所在区域:">
+              <el-select v-model="ruleForm.area">
+                <el-option label="锦江监狱" value="锦江监狱"></el-option>
+                <el-option label="邑州监狱" value="邑州监狱"></el-option>
+                <el-option label="川西监狱" value="川西监狱"></el-option>
+                <el-option label="川北监狱" value="川北监狱"></el-option>
+                <el-option label="雷马屏监狱" value="雷马屏监狱"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="所在服务器:">
+              <el-input v-model="ruleForm.location" placeholder="所在服务器" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="onSubmit">确 定</el-button>
+        <el-button type="warning" @click="dialogVisible = false">关 闭</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -20,19 +77,16 @@
 export default {
   data () {
     return {
-      getters: 'sysSetting/deviceLayout/middleManage/list',
-      activeName: 'first',
-      showCheckBox: true,
       btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
-      smalltitle: { name: '监控列表', path: '/it' },
+      smalltitle: { name: '监控列表', path: '/middle' },
       fieldArr: [
         {
           label: '中间件名称',
-          key: 'middleName',
+          key: 'name',
           formatter: ''
         }, {
           label: '中间件类别',
-          key: 'middleCategory',
+          key: 'type',
           formatter: '',
           filters: [{ text: 'Nginx', value: 'Nginx' }, { text: 'Apache', value: 'Apache' }, { text: 'Redis', value: 'Redis' }, { text: 'JVM', value: 'JVM' }]
         }, {
@@ -51,7 +105,7 @@ export default {
           filters: [{ text: '锦江监狱', value: '锦江监狱' }, { text: '邑州监狱', value: '邑州监狱' }, { text: '川西监狱', value: '川西监狱' }, { text: '川北监狱', value: '川北监狱' }, { text: '雷马屏监狱', value: '雷马屏监狱' }]
         }, {
           label: '所在服务器',
-          key: 'currentServer',
+          key: 'location',
           formatter: ''
         }, {
           label: '操作',
@@ -60,27 +114,95 @@ export default {
           width: '200px',
           buttons: [{
             label: '编辑',
-            type: 'url',
-            path: '/detail',
-            query: ['id', 'name'],
-            colorType: 'delete'
-          }, {
-            label: '删除',
             type: 'button',
             method: 'edit',
             colorType: 'edit'
+          }, {
+            label: '删除',
+            type: 'button',
+            method: 'delete',
+            colorType: 'delete'
           }]
         }
-      ]
+      ],
+      dialogVisible: false,
+      tableSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: 'middleManage',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      ruleForm: {
+        name: '',
+        type: '',
+        gateway: '',
+        accessEquipment: '',
+        area: '',
+        location: ''
+      },
+      // 选中数据ID
+      ids: []
     }
   },
   created () {
-    this.$store.dispatch('sysSetting/deviceLayout/middleManage/getList')
   },
   methods: {
-    handleClick () { },
-    searchKey (val) {
-      console.log(val);
+    onSubmit () {
+      if (this.ruleForm.id) {
+        this.$refs.table.update(this.ruleForm).then(() => {
+          this.resetForm();
+        })
+      } else {
+        this.$refs.table.add(this.ruleForm).then(() => {
+          this.resetForm();
+        })
+      }
+    },
+    resetForm () {
+      this.dialogVisible = false;
+      this.ruleForm = {
+        name: '',
+        collecting: '',
+        area: '',
+        des: ''
+      }
+    },
+    add () {
+      this.dialogVisible = true;
+    },
+    edit (data) {
+      this.dialogVisible = true;
+      this.ruleForm = data;
+    },
+    deleteItem (data) {
+      const deleteIds = [];
+      deleteIds.push(data.id);
+      this.$refs.table.deleteItem(deleteIds)
+    },
+    remove () {
+      this.$refs.table.deleteItem(this.ids)
+    },
+    handleSelectionChange (data) {
+      this.chooseData = data;
+      data.forEach((item) => {
+        this.ids.push(item.id)
+      })
     },
     judgeEvent (event) {
       if (event === 'addHandle') {
@@ -92,13 +214,13 @@ export default {
       }
     },
     addHandle () {
-      console.log('我是添加事件');
+      this.dialogVisible = true;
+    },
+    importHandle () {
+      console.log('我是批量导入事件');
     },
     deleteHandle () {
-      console.log('我是删除事件事件');
-    },
-    edit (data) {
-      console.log(data);
+      this.remove();
     }
   }
 }

@@ -8,13 +8,25 @@
       :default-expanded-keys="[currentPath]"
       :default-checked-keys="[currentPath]"
       @node-click="handleNodeClick"
+      @node-contextmenu="handleContextmenuClick"
     >
       <span slot-scope="{ node, data }" class="custom-tree-node">
         <span class="dashed-line"></span>
         <span class="icon iconfont iconicon_topology"></span>
-        <span>{{ data.label }}</span>
+        <span>{{ data.topoTypeName || data.topoName }}</span>
       </span>
     </el-tree>
+    <el-dialog title="新建应用拓扑图" :visible.sync="dialogFormVisible" width="37%">
+      <el-form :model="form">
+        <el-form-item label="拓扑图名称：" label-width="120px" placeholder="请输入拓扑图名称">
+          <el-input v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="submit">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -37,14 +49,47 @@ export default {
       },
       currentPath: this.$route.path,
       defaultProps: {
-        children: 'children',
-        label: 'label'
+        children: 'topoList',
+        label: 'topoTypeName'
+      },
+      dialogFormVisible: false,
+      form: {
+        name: '',
+        data: ''
       }
     }
   },
+  created () {
+    // console.log(this.menu);
+  },
   methods: {
     handleNodeClick (data) {
+      // console.log(data);
       this.$emit('click', data);
+    },
+    handleContextmenuClick (event, data) {
+      // console.log(data);
+      var result = this.menu.some(item => {
+        if (item === data) {
+          return true;
+        }
+      })
+      if (result) {
+        this.form.data = data;
+        this.dialogFormVisible = true;
+      } else {
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$emit('deleteTopo', data.id);
+        })
+      }
+    },
+    submit () {
+      this.$emit('formData', this.form);
+      this.dialogFormVisible = false;
     }
   }
 }
@@ -86,7 +131,7 @@ export default {
         margin-left: 32px;
         position: relative;
         &::before {
-          content: "";
+          content: '';
           position: absolute;
           height: 100%;
           left: 0;
@@ -113,12 +158,12 @@ export default {
           position: absolute;
           right: 0px;
           font-size: 0;
-          background-image: url("../../assets/icon/add.png");
+          background-image: url('../../assets/icon/add.png');
           width: 10px;
           height: 10px;
           padding: 0;
           &.expanded {
-            background-image: url("../../assets/icon/reduce.png");
+            background-image: url('../../assets/icon/reduce.png');
             transform: rotate(0);
           }
         }

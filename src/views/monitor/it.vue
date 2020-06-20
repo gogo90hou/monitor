@@ -254,7 +254,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/it_detail?type=1',
+            path: '/it_detail?type=2',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]

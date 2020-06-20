@@ -1,79 +1,42 @@
 <template>
   <div>
-    <HeadMenu
-      title="网关配置"
-      :search="false"
-      :btnarr="btnarr"
-      @getEvent="judgeEvent"
-    />
+    <HeadMenu title="网关配置" :btnarr="btnarr" @getEvent="judgeEvent" />
     <v-table
+      ref="table"
       :field-arr="fieldArr"
       :table-setting="tableSetting"
       :show-check-box="true"
       @edit="edit"
-      @delete="deletItem"
+      @delete="deleteItem"
       @selection-change="handleSelectionChange"
     />
-    <el-dialog
-      title="添加应用软件"
-      :visible.sync="dialogVisible"
-      width="37%"
-      :before-close="handleClose"
-    >
-      <div class="dialog-from" style="height: 100%;">
-        <el-form
-          ref="ruleForm"
-          :model="ruleForm"
-          :rules="rules"
-          label-width="120px"
-          class="demo-ruleForm"
-        >
-          <span class="smallTitle">添加网关配置</span>
+    <el-dialog title="网关配置" :visible.sync="dialogVisible" custom-class="addHandleWidth" :before-close="resetForm">
+      <el-form :model="ruleForm" label-position="left" label-width="100px">
+        <el-form-item label="采集网关名称:">
+          <el-input v-model="ruleForm.name" placeholder="网关名称" />
+        </el-form-item>
+        <el-row class="inlineSelect" :gutter="50">
           <el-col :span="12">
-            <el-form-item label="采集网关名称 : " prop="gatewayName">
-              <el-input
-                v-model="ruleForm.gatewayName"
-                autocomplete="off"
-                placeholder="请输入采集网关名称"
-              />
+            <el-form-item label="采集源:">
+              <el-input v-model="ruleForm.collecting" placeholder="采集源名称" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="采集源 : " prop="source">
-              <el-input
-                v-model="ruleForm.source"
-                autocomplete="off"
-                placeholder="请输入采集源"
-              />
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="所在区域 :">
-              <el-select
-                v-model="ruleForm.configuration"
-                placeholder="请选择"
-                style="width: 100%;"
-              >
-                <el-option label="配置一" value="Windows" />
-                <el-option label="配置二" value="Linux" />
+            <el-form-item label="所在区域:">
+              <el-select v-model="ruleForm.area">
+                <el-option label="锦江监狱" value="锦江监狱"></el-option>
+                <el-option label="邑州监狱" value="邑州监狱"></el-option>
+                <el-option label="川西监狱" value="川西监狱"></el-option>
+                <el-option label="川北监狱" value="川北监狱"></el-option>
+                <el-option label="雷马屏监狱" value="雷马屏监狱"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
-          <el-col :span="12">
-            <el-form-item label="活动区域 :">
-              <el-select v-model="ruleForm.region" placeholder="请选择活动区域" style="width: 100%;">
-                <el-option label="区域一" value="shanghai" />
-                <el-option label="区域二" value="beijing" />
-              </el-select>
-            </el-form-item>
-          </el-col>
-          <el-col :span="24">
-            <el-form-item label="活动形式">
-              <el-input v-model="ruleForm.desc" type="textarea" placeholder="请输入活动形式" />
-            </el-form-item>
-          </el-col>
-        </el-form>
-      </div>
+        </el-row>
+        <el-form-item label="网关描述:">
+          <el-input v-model="ruleForm.des" type="textarea" placeholder="网关名称" />
+        </el-form-item>
+      </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="onSubmit">确 定</el-button>
         <el-button type="warning" @click="dialogVisible = false">关 闭</el-button>
@@ -86,9 +49,6 @@ export default {
   data () {
     return {
       btnarr: [{ id: '1', value: '增加', eventName: 'addHandle' }, { id: '2', value: '删除', eventName: 'deleteHandle' }],
-      form: {
-        name: ''
-      },
       showCheckBox: true,
       dialogVisible: false,
       tableSetting: {
@@ -125,8 +85,7 @@ export default {
           label: '所在区域',
           key: 'area',
           formatter: '',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
-
+          filters: 'layout/area'
         }, {
           label: '网关描述',
           key: 'des',
@@ -148,74 +107,85 @@ export default {
         }
       ],
       ruleForm: {
-        gatewayName: '',
-        source: '',
-        age: '',
-        region: '',
-        configuration: '',
-        desc: ''
+        name: '',
+        collecting: '',
+        area: '',
+        des: ''
       },
       rules: {
-        gatewayName: [
+        name: [
           { required: true, message: '请输入采集网关名称', trigger: 'blur' },
           { min: 2, max: 18, message: '长度在 2 到 18 个字符', trigger: 'blur' }
         ],
-        source: [
+        collecting: [
           { required: true, message: '请输入采集源', trigger: 'blur' },
           { min: 2, max: 18, message: '长度在 2 到 18 个字符', trigger: 'blur' }
         ],
-        age: [
-          { required: true, message: '请输入年龄', trigger: 'blur' },
-          { min: 1, max: 3, message: '长度在 1 到 3 个字符', trigger: 'blur' }
-        ],
-        region: [
-          { required: true, message: '请选择区域', trigger: 'blur' }
+        area: [
+          { required: true, message: '请选择所在区域', trigger: 'blur' }
         ],
         desc: [
-          { message: '请输入活动形式', trigger: 'blur' }
+          { message: '请输入网关描述', trigger: 'blur' }
         ]
-      }
+      },
+      // 选中数据ID
+      ids: []
     }
   },
   created () {
   },
   methods: {
-    edit (data) {
-      console.log(data)
-    },
-    deletItem (data) {
-      console.log(data)
-    },
-    judgeEvent (event) {
-      if (event === 'addHandle') {
-        this.addHandle();
-      } else if (event === 'deleteHandle') {
-        this.deleteHandle();
+    onSubmit () {
+      if (this.ruleForm.id) {
+        this.$refs.table.update(this.ruleForm).then(() => {
+          this.resetForm();
+        })
+      } else {
+        this.$refs.table.add(this.ruleForm).then(() => {
+          this.resetForm();
+        })
       }
     },
-    addHandle () {
+    resetForm () {
+      this.dialogVisible = false;
+      this.ruleForm = {
+        name: '',
+        collecting: '',
+        area: '',
+        des: ''
+      }
+    },
+    add () {
       this.dialogVisible = true;
     },
-    deleteHandle () { },
-    handleSelectionChange () {
+    edit (data) {
+      this.dialogVisible = true;
+      this.ruleForm = data;
+    },
+    deleteItem (data) {
+      const deleteIds = [];
+      deleteIds.push(data.id);
+      this.$refs.table.deleteItem(deleteIds)
+    },
+    remove () {
+      this.$refs.table.deleteItem(this.ids)
+    },
+    handleSelectionChange (data) {
+      this.chooseData = data;
+      data.forEach((item) => {
+        this.ids.push(item.id)
+      })
+    },
+    judgeEvent (val) {
+      if (val === 'addHandle') {
+        this.dialogVisible = true;
+      }
+      if (val === 'deleteHandle') {
+        this.remove();
+      }
     }
   }
 }
 </script>
-<style lang="scss">
-.publicheader {
-  overflow: hidden;
-  padding: 10px 0;
-  h2 {
-    float: left;
-  }
-  .right-wrapper {
-    float: right;
-    width: 50%;
-    text-align: right;
-    .el-input {
-      width: 200px;
-    }
-  }
-}
+<style lang="scss" scoped>
 </style>

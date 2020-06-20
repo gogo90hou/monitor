@@ -4,14 +4,80 @@
       title="安防设备"
       :smalltitle="smalltitle"
       :btnarr="btnarr"
-      @getValue="searchKey"
       @getEvent="judgeEvent"
     />
-    <dynamic-table
-      :show-check-box="showCheckBox"
+    <v-table
+      ref="table"
       :field-arr="fieldArr"
+      :table-setting="tableSetting"
+      :show-check-box="true"
       @edit="edit"
+      @delete="deleteItem"
+      @selection-change="handleSelectionChange"
     />
+    <el-dialog title="安防设备" :visible.sync="dialogVisible" custom-class="addHandleWidth" :before-close="resetForm">
+      <el-form :model="ruleForm" label-position="left" label-width="100px">
+        <el-row class="inlineSelect" :gutter="50">
+          <el-col :span="12">
+            <el-form-item label="设备名称:">
+              <el-input v-model="ruleForm.name" placeholder="设备名称" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="设备类型:">
+              <el-select v-model="ruleForm.type">
+                <el-option label="门禁" value="门禁"></el-option>
+                <el-option label="报警" value="报警"></el-option>
+                <el-option label="广播" value="广播"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="接入方式:">
+              <el-select v-model="ruleForm.access">
+                <el-option label="网关接入1" value="网关接入1"></el-option>
+                <el-option label="网关接入2" value="网关接入2"></el-option>
+                <el-option label="网关接入3" value="网关接入3"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="网关:">
+              <el-select v-model="ruleForm.gateway">
+                <el-option label="网关1" value="网关1"></el-option>
+                <el-option label="网关2" value="网关2"></el-option>
+                <el-option label="网关3" value="网关3"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="设备ID:">
+              <el-input v-model="ruleForm.equipmentID" placeholder="设备ID" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="所在区域:">
+              <el-select v-model="ruleForm.area">
+                <el-option label="锦江监狱" value="锦江监狱"></el-option>
+                <el-option label="邑州监狱" value="邑州监狱"></el-option>
+                <el-option label="川西监狱" value="川西监狱"></el-option>
+                <el-option label="川北监狱" value="川北监狱"></el-option>
+                <el-option label="雷马屏监狱" value="雷马屏监狱"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="24">
+            <el-form-item label="设备描述:">
+              <el-input v-model="ruleForm.des" type="textarea" placeholder="设备名称" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="onSubmit">确 定</el-button>
+        <el-button type="warning" @click="dialogVisible = false">关 闭</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -19,40 +85,39 @@
 export default {
   data () {
     return {
-      // getters: 'sysSetting/deviceLayout/cloudManage/list',
-      showCheckBox: true,
+      dialogVisible: false,
       btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '批量导入', eventName: 'importHandle', type: 'success' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
-      smalltitle: { name: '查看监控列表', path: '/cloud' },
+      smalltitle: { name: '查看监控列表', path: '/monitor' },
       fieldArr: [
         {
           label: '设备名称',
-          key: 'cloudName',
+          key: 'name',
           formatter: ''
         }, {
           label: '设备类型',
-          key: 'access',
+          key: 'type',
           formatter: '',
           filters: 'layout/deviceType'
         }, {
           label: '接入方式',
-          key: 'gateway',
-          filters: [{ text: '网管接入', value: '网管接入' }]
+          key: 'access',
+          filters: [{ text: '网关接入1', value: '网关接入1' }, { text: '网关接入2', value: '网关接入2' }, { text: '网关接入3', value: '网关接入3' }]
         }, {
           label: '网关',
-          key: 'equipmentId',
-          formatter: ''
+          key: 'gateway',
+          filters: [{ text: '网关1', value: '网关1' }, { text: '网关2', value: '网关2' }, { text: '网关3', value: '网关3' }]
         }, {
           label: '设备ID',
-          key: 'area',
+          key: 'equipmentID',
           formatter: ''
         }, {
           label: '所在区域',
-          key: 'describe',
+          key: 'area',
           formatter: '',
           filters: 'layout/area'
         }, {
           label: '设备描述',
-          key: 'describe',
+          key: 'des',
           formatter: ''
         }, {
           label: '操作',
@@ -61,26 +126,95 @@ export default {
           width: '200px',
           buttons: [{
             label: '编辑',
-            type: 'url',
-            path: '/detail',
-            colorType: 'edit',
-            query: ['id', 'name']
+            type: 'button',
+            method: 'edit',
+            colorType: 'edit'
           }, {
             label: '删除',
             type: 'button',
-            colorType: 'delete',
-            method: 'edit'
+            method: 'delete',
+            colorType: 'delete'
           }]
         }
-      ]
+      ],
+      tableSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: 'safety',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
+      },
+      ruleForm: {
+        name: '',
+        type: '',
+        access: '',
+        gateway: '',
+        equipmentID: '',
+        area: '',
+        des: ''
+      },
+      // 选中数据ID
+      ids: []
     }
   },
   created () {
-    // this.$store.dispatch('sysSetting/deviceLayout/cloudManage/getList')
   },
   methods: {
-    searchKey (val) {
-      console.log(val);
+    onSubmit () {
+      if (this.ruleForm.id) {
+        this.$refs.table.update(this.ruleForm).then(() => {
+          this.resetForm();
+        })
+      } else {
+        this.$refs.table.add(this.ruleForm).then(() => {
+          this.resetForm();
+        })
+      }
+    },
+    resetForm () {
+      this.dialogVisible = false;
+      this.ruleForm = {
+        name: '',
+        collecting: '',
+        area: '',
+        des: ''
+      }
+    },
+    add () {
+      this.dialogVisible = true;
+    },
+    edit (data) {
+      this.dialogVisible = true;
+      this.ruleForm = data;
+    },
+    deleteItem (data) {
+      const deleteIds = [];
+      deleteIds.push(data.id);
+      this.$refs.table.deleteItem(deleteIds)
+    },
+    remove () {
+      this.$refs.table.deleteItem(this.ids)
+    },
+    handleSelectionChange (data) {
+      this.chooseData = data;
+      data.forEach((item) => {
+        this.ids.push(item.id)
+      })
     },
     judgeEvent (event) {
       if (event === 'addHandle') {
@@ -92,16 +226,13 @@ export default {
       }
     },
     addHandle () {
-      console.log('我是添加事件');
+      this.dialogVisible = true;
     },
     importHandle () {
       console.log('我是批量导入事件');
     },
     deleteHandle () {
-      console.log('我是删除事件事件');
-    },
-    edit (data) {
-      console.log(data)
+      this.remove();
     }
   }
 }

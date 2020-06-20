@@ -22,7 +22,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const globalToken = {};
 const casServer = 'http://' + settings.cas.host + ':' + settings.cas.port;
-const frontOrigin = 'http://' + settings.front.host + ':' + settings.front.port;;
+const frontOrigin = 'http://' + settings.front.host + ':' + settings.front.port;
 
 app.use(cookidParser());
 app.use(express.static('dist'));
@@ -30,7 +30,7 @@ app.use(jsonParser);
 app.use(urlencodedParser);
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', frontOrigin);
   res.header('Access-Control-Allow-Methods', 'HEAD, POST, GET, OPTIONS, DELETE, PUT, CONNECT, TRACE');
   res.header('Access-Control-Allow-Headers', 'X-Requested-With');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -74,10 +74,10 @@ app.get('/sso', function (req, res) {
     url: `${casServer}/verify?token=${token}`,
     method: 'GET'
   }, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode === 200) {
       log(`cas校验通过:${JSON.stringify(body)}`);
       globalToken[token] = body;
-      frontAddr = req.query.backurl;
+      const frontAddr = req.query.backurl;
       res.cookie('token', token, { frontOrigin });
       log(`后端注册登陆状态:${token} 重定向回前端`);
       res.redirect(frontAddr);

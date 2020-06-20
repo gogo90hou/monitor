@@ -10,7 +10,12 @@
           <span class="icon iconfont iconicon_close" @click="toggle = !toggle" />
         </div>
       </div>
-      <item v-for="(item, index) in deviceList" :key="index" :name="item.label" :item-list="item.items" />
+      <item
+        v-for="(item, index) in deviceList"
+        :key="index"
+        :name="item.label"
+        :item-list="item.items"
+      />
     </div>
     <div class="toggle" @click="toggleFold()">
       <div :class="toggle ? 'pack-up': 'un-fold'" />
@@ -24,7 +29,7 @@ import eventBus from '&/utils/eventBus';
 export default {
   name: 'ItemPanel',
   components: { Item },
-  data() {
+  data () {
     return {
       toggle: true, // 开关状态，true表示侧边栏打开，false表示侧边栏关闭
       page: null,
@@ -57,7 +62,8 @@ export default {
               shape: 'monitorNode',
               size: [36, 36],
               inPoints: [[0, 0.5]],
-              outPoints: [[1, 0.5]]
+              outPoints: [[1, 0.5]],
+              warning: { source: '省局服务器', level: 0, description: '提示(告警描述)' }
             },
             {
               value: 'service',
@@ -67,7 +73,8 @@ export default {
               shape: 'monitorNode',
               size: [36, 36],
               inPoints: [[0, 0.5]],
-              outPoints: [[1, 0.5]]
+              outPoints: [[1, 0.5]],
+              warning: { source: '省局服务器', level: 0, description: '提示(告警描述)' }
             },
             {
               value: 'service',
@@ -77,7 +84,8 @@ export default {
               shape: 'monitorNode',
               size: [36, 36],
               inPoints: [[0, 0.5]],
-              outPoints: [[1, 0.5]]
+              outPoints: [[1, 0.5]],
+              warning: { source: '省局服务器', level: 0, description: '提示(告警描述)' }
             },
             {
               value: 'service',
@@ -87,7 +95,8 @@ export default {
               shape: 'monitorNode',
               size: [36, 36],
               inPoints: [[0, 0.5]],
-              outPoints: [[1, 0.5]]
+              outPoints: [[1, 0.5]],
+              warning: { source: '省局服务器', level: 0, description: '提示(告警描述)' }
             }
           ]
         },
@@ -103,7 +112,8 @@ export default {
               shape: 'monitorNode',
               size: [36, 36],
               inPoints: [[0, 0.5]],
-              outPoints: [[1, 0.5]]
+              outPoints: [[1, 0.5]],
+              warning: { source: '省局服务器', level: 0, description: '提示(告警描述)' }
             },
             {
               value: 'app',
@@ -113,7 +123,8 @@ export default {
               shape: 'monitorNode',
               size: [36, 36],
               inPoints: [[0, 0.5]],
-              outPoints: [[1, 0.5]]
+              outPoints: [[1, 0.5]],
+              warning: { source: '省局服务器', level: 0, description: '提示(告警描述)' }
             },
             {
               value: 'app',
@@ -123,7 +134,8 @@ export default {
               shape: 'monitorNode',
               size: [36, 36],
               inPoints: [[0, 0.5]],
-              outPoints: [[1, 0.5]]
+              outPoints: [[1, 0.5]],
+              warning: { source: '省局服务器', level: 0, description: '提示(告警描述)' }
             },
             {
               value: 'app',
@@ -133,27 +145,28 @@ export default {
               shape: 'monitorNode',
               size: [36, 36],
               inPoints: [[0, 0.5]],
-              outPoints: [[1, 0.5]]
+              outPoints: [[1, 0.5]],
+              warning: { source: '省局服务器', level: 0, description: '提示(告警描述)' }
             }
           ]
         }
       ]
     };
   },
-  created() {
+  created () {
     this.bindEvent();
   },
-  mounted() {
+  mounted () {
     this.$emit('toggle', this.$refs['itempannel'].offsetWidth);
   },
   methods: {
-    toggleFold() {
+    toggleFold () {
       this.toggle = !this.toggle;
       this.$nextTick(() => {
         this.$emit('toggle', this.$refs['itempannel'].offsetWidth);
       });
     },
-    bindEvent() {
+    bindEvent () {
       eventBus.$on('afterAddPage', page => {
         this.page = page;
       });
@@ -175,8 +188,8 @@ export default {
   position: absolute;
   z-index: 2;
   height: 100%;
-  background:rgba(246,245,254,1);
-  border-right: 12px solid rgba(237,236,245,1);
+  background: rgba(246, 245, 254, 1);
+  border-right: 12px solid rgba(237, 236, 245, 1);
   box-sizing: border-box;
   .content {
     width: 385px;
@@ -194,13 +207,13 @@ export default {
           display: inline-block;
           width: 18px;
           height: 18px;
-          color: #7667DF;
+          color: #7667df;
         }
         span:nth-child(2) {
-          font-size:16px;
-          font-weight:bold;
-          color:rgba(48,47,71,1);
-          line-height:18px;
+          font-size: 16px;
+          font-weight: bold;
+          color: rgba(48, 47, 71, 1);
+          line-height: 18px;
           margin-left: 12px;
         }
       }
@@ -209,8 +222,8 @@ export default {
         text-align: right;
         span {
           color: black;
-          font-size:20px;
-          font-weight:bold;
+          font-size: 20px;
+          font-weight: bold;
           opacity: 0.6;
         }
       }

@@ -283,8 +283,9 @@ const data = [{
   'menuName': '操作系统和数据库',
   'menuType': 'url',
   'menuValue': '/system',
-  'pxNum': 1,
-  'icon': 'iconicon_operating_system',
+  'pxNum': 6,
+  // 'icon': 'iconicon_operating_system',
+  'icon': 'iconsocial_twitter_square',
   'memo': null,
   'parent': {
     'id': 'd17f488a0b184193bfd4a1c3477faf41',
@@ -398,27 +399,29 @@ const data = [{
     'appClientId': '2493ebd832074abbbeffbb06da88245c'
   },
   'appClientId': '2493ebd832074abbbeffbb06da88245c'
-}, {
-  'id': '904ffc3dbad04e4aa0c80151d30f4062',
-  'menuName': '系统管理',
-  'menuType': 'directory',
-  'menuValue': null,
-  'pxNum': 1,
-  'icon': null,
-  'memo': null,
-  'parent': {
-    'id': '18f866725ab440579a772f180e87ef2f',
-    'menuName': '系统设置',
-    'menuType': 'directory',
-    'menuValue': null,
-    'pxNum': 1,
-    'icon': null,
-    'memo': null,
-    'parent': null,
-    'appClientId': '2493ebd832074abbbeffbb06da88245c'
-  },
-  'appClientId': '2493ebd832074abbbeffbb06da88245c'
-}, {
+},
+// {
+//   'id': '904ffc3dbad04e4aa0c80151d30f4062',
+//   'menuName': '系统管理',
+//   'menuType': 'directory',
+//   'menuValue': null,
+//   'pxNum': 1,
+//   'icon': null,
+//   'memo': null,
+//   'parent': {
+//     'id': '18f866725ab440579a772f180e87ef2f',
+//     'menuName': '系统设置',
+//     'menuType': 'directory',
+//     'menuValue': null,
+//     'pxNum': 1,
+//     'icon': null,
+//     'memo': null,
+//     'parent': null,
+//     'appClientId': '2493ebd832074abbbeffbb06da88245c'
+//   },
+//   'appClientId': '2493ebd832074abbbeffbb06da88245c'
+// }, 
+{
   'id': '242d69516b70487680d4d9abbea92e16',
   'menuName': '设备配置',
   'menuType': 'directory',
@@ -478,47 +481,50 @@ const data = [{
     'appClientId': '2493ebd832074abbbeffbb06da88245c'
   },
   'appClientId': '2493ebd832074abbbeffbb06da88245c'
-}, {
-  'id': '4dc8e8ae46c945f6b88a1cd30353eb12',
-  'menuName': 'liscense管理',
-  'menuType': 'url',
-  'menuValue': '/license',
-  'pxNum': 1,
-  'icon': null,
-  'memo': null,
-  'parent': {
-    'id': '18f866725ab440579a772f180e87ef2f',
-    'menuName': '系统设置',
-    'menuType': 'directory',
-    'menuValue': null,
-    'pxNum': 1,
-    'icon': null,
-    'memo': null,
-    'parent': null,
-    'appClientId': '2493ebd832074abbbeffbb06da88245c'
-  },
-  'appClientId': '2493ebd832074abbbeffbb06da88245c'
-}, {
-  'id': '3c5e3b08679047ff8e4d18199402238b',
-  'menuName': '数据备份',
-  'menuType': 'url',
-  'menuValue': '/dataBackup',
-  'pxNum': 1,
-  'icon': null,
-  'memo': null,
-  'parent': {
-    'id': '18f866725ab440579a772f180e87ef2f',
-    'menuName': '系统设置',
-    'menuType': 'directory',
-    'menuValue': null,
-    'pxNum': 1,
-    'icon': null,
-    'memo': null,
-    'parent': null,
-    'appClientId': '2493ebd832074abbbeffbb06da88245c'
-  },
-  'appClientId': '2493ebd832074abbbeffbb06da88245c'
-}, {
+},
+// {
+//   'id': '4dc8e8ae46c945f6b88a1cd30353eb12',
+//   'menuName': 'liscense管理',
+//   'menuType': 'url',
+//   'menuValue': '/license',
+//   'pxNum': 1,
+//   'icon': null,
+//   'memo': null,
+//   'parent': {
+//     'id': '18f866725ab440579a772f180e87ef2f',
+//     'menuName': '系统设置',
+//     'menuType': 'directory',
+//     'menuValue': null,
+//     'pxNum': 1,
+//     'icon': null,
+//     'memo': null,
+//     'parent': null,
+//     'appClientId': '2493ebd832074abbbeffbb06da88245c'
+//   },
+//   'appClientId': '2493ebd832074abbbeffbb06da88245c'
+// }, 
+// {
+//   'id': '3c5e3b08679047ff8e4d18199402238b',
+//   'menuName': '数据备份',
+//   'menuType': 'url',
+//   'menuValue': '/dataBackup',
+//   'pxNum': 1,
+//   'icon': null,
+//   'memo': null,
+//   'parent': {
+//     'id': '18f866725ab440579a772f180e87ef2f',
+//     'menuName': '系统设置',
+//     'menuType': 'directory',
+//     'menuValue': null,
+//     'pxNum': 1,
+//     'icon': null,
+//     'memo': null,
+//     'parent': null,
+//     'appClientId': '2493ebd832074abbbeffbb06da88245c'
+//   },
+//   'appClientId': '2493ebd832074abbbeffbb06da88245c'
+// }, 
+{
   'id': '353bb0b22b0b4418b11638819a1fe7fd',
   'menuName': '编辑拓扑图',
   'menuType': 'url',
@@ -723,7 +729,7 @@ const data = [{
   'menuName': '应用软件',
   'menuType': 'url',
   'menuValue': '/soft',
-  'pxNum': 2,
+  'pxNum': 3,
   'icon': 'iconicon_Application_software',
   'memo': null,
   'parent': {
@@ -783,7 +789,7 @@ const data = [{
   'menuName': 'IT设备',
   'menuType': 'url',
   'menuValue': '/it',
-  'pxNum': 3,
+  'pxNum': 4,
   'icon': 'iconicon_IT_equipment',
   'memo': null,
   'parent': {
@@ -843,7 +849,7 @@ const data = [{
   'menuName': '中间件',
   'menuType': 'url',
   'menuValue': '/middle',
-  'pxNum': 4,
+  'pxNum': 5,
   'icon': 'iconicon_Intermediate_key',
   'memo': null,
   'parent': {

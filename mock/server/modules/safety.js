@@ -23,15 +23,18 @@ function removeData (id) {
 const data = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': ['网关1', '网关2', '网关三'],
-    'collecting|1': ['网关采集源1', '网关采集源2', '网关采集源3'],
-    'area|1': ['锦江监狱', '乐山监狱', '监狱'],
-    'des': '这是一段描述'
+    'name|1': ['大门门禁', '二楼门禁', '三楼门禁', '摩天大楼', '保密室'],
+    'type|1': ['门禁', '报警', '广播'],
+    'access|1': ['网关接入1', '网关接入2', '网关接入3'],
+    'gateway|1': ['网关1', '网关2', '网关3'],
+    'equipmentID|10000-99999': 10000,
+    'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '雷马屏监狱'],
+    'des': '设备描述'
   }]
 })
 module.exports = [
   {
-    url: '/gateway',
+    url: '/safety',
     type: 'get',
     response: config => {
       const page = config.query.page;
@@ -44,7 +47,7 @@ module.exports = [
     }
   },
   {
-    url: '/gateway',
+    url: '/safety',
     type: 'post',
     response: (req, res) => {
       const id = Mock.mock('@id');
@@ -58,7 +61,7 @@ module.exports = [
     }
   },
   {
-    url: '/gateway/',
+    url: '/safety/',
     type: 'delete',
     response: (req, res) => {
       const ids = req.query.ids;
@@ -74,7 +77,7 @@ module.exports = [
   },
   {
     name: '',
-    url: '/gateway',
+    url: '/safety',
     type: 'put',
     response: (req, res) => {
       const item = req.body;

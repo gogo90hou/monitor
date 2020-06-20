@@ -3,7 +3,10 @@
     <el-row class="header">
       <el-col :span="5" :offset="5">上限值</el-col>
       <el-col :span="4">下限值</el-col>
-      <el-col :span="5">设置越限时长</el-col>
+      <el-col :span="5">
+        设置越限时长
+        <span style="color:#f00;font-size:14px;display:inline-block">(越限时长必须是采集数值周期的倍数)</span>
+      </el-col>
       <el-col :span="5">越限时长</el-col>
     </el-row>
     <el-row class="line" type="flex" justify="center" align="middle">
@@ -78,17 +81,19 @@
     </el-row>
   </div>
 </template>
-<style lang="scss" scope>
+<style lang="scss" scoped>
 .server {
   text-align: center;
   color: #595959;
   font-size: 14px;
   .header {
     height: 63px;
-    line-height: 63px;
     background: #e8ebf3;
     color: #25243e;
     font-size: 15px;
+    line-height: initial;
+    display: flex;
+    align-items: center;
   }
   .line {
     border-bottom: 1px solid #e8ebf3;

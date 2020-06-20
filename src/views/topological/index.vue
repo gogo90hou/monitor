@@ -16,14 +16,14 @@
           />
         </el-input>
       </div>
-      <tree-menu :menu="menu" @click="handleNodeClick" />
+      <tree-menu :menu="menu" @click="handleNodeClick" @formData="formDataHandle" @deleteTopo="deleteTopoHandle" />
     </div>
     <div class="right-panel">
       <div class="title-container">
         <span class="title">{{ selectTopo.label || "查询中" }}</span>
         <el-button type="info" class="edit-top" @click="editTopo">修改配置</el-button>
       </div>
-      <G6Editor :mode="'view'" :data="topo" />
+      <G6Editor :mode="'view'" :data="topo" @deal="deal" />
     </div>
   </div>
 </template>
@@ -31,6 +31,7 @@
 import G6Editor from '@/components/topo';
 import TreeMenu from '@/components/treeMenu';
 import { unPack } from '@/utils/parse';
+import { getTopoList, getImageTypeList, getTopoDetail, createTopo, deleteTopo } from '@/api/topo';
 
 export default {
   components: {
@@ -40,7 +41,7 @@ export default {
   data () {
     return {
       selectTopo: {},
-      menu: null,
+      menu: [],
       serachinputName: '',
       topo: null
     };
@@ -51,18 +52,93 @@ export default {
     }
   },
   created () {
-    this.menu = this.getTopoOrg();
+    this.getList();
+    // getImageTypeList().then(res => {
+    //   console.log(res);
+    // }).catch(err => {
+    //   console.log(err);
+    // })
+    // getTypeList().then(res => {
+    //   console.log(res);
+    // }).catch(err => {
+    //   console.log(err);
+    // })
+    // getTopoDetail().then(res => {
+    //   console.log(res);
+    // }).catch(err => {
+    //   console.log(err);
+    // })
+    // this.menu = this.getTopoOrg();
+    // console.log(this.$store.getters.topological);
     if (this.$store.getters.topological) {
       const temp = unPack(this.$store.getters.topological);
+      // console.log(temp);
       this.topo = ((temp.nodes && temp.nodes.length > 1) || (temp.groups && temp.groups.length > 1)) ? temp : null;
     }
   },
   methods: {
+    deal (meId) {
+      this.$router.push({ path: 'warn', query: { meId } });
+    },
+    getList () {
+      getTopoList().then(res => {
+        console.log(res);
+        this.menu = res;
+      }).catch(err => {
+        console.log(err);
+      })
+    },
     handleSerchKey (val) {
 
     },
     handleNodeClick (data) {
       this.selectTopo = data;
+    },
+    formDataHandle (val) {
+      const data = {
+        areaId: '123',
+        areaName: '锦江监狱',
+        groups: [
+          {
+            groupId: '分组id',
+            parentId: '父分组id',
+            title: '分组名称'
+          }
+        ],
+        nodes: [],
+        parentAreaId: '111',
+        topoDesc: '拓扑图描述',
+        topoName: '拓扑图123',
+        topoTypeId: 1000
+      }
+      data.nodes = this.topo.nodes;
+      data.topoName = val.name;
+      console.log(data);
+      createTopo(data).then(res => {
+        this.$message({
+          message: '添加成功',
+          type: 'success'
+        });
+        this.getList();
+      }).catch(err => {
+        console.log(err);
+      });
+    },
+    deleteTopoHandle (id) {
+      console.log(id);
+      deleteTopo(id).then(res => {
+        console.log(res);
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        });
+        this.getList();
+      }).catch(() => {
+        this.$message({
+          type: 'error',
+          message: '删除失败!'
+        });
+      })
     },
     editTopo () {
       this.$router.push({ path: 'edit_topo', params: this.selectTopo });

@@ -29,11 +29,17 @@ export default {
       }
     }
   },
+  data () {
+    return {
+      selectNode: null
+    };
+  },
   created () {
     this.bindEvent();
   },
   methods: {
     bindEvent () {
+      const self = this;
       eventBus.$on('contextmenuClick', e => {
         const topoDialog = this.$refs['topoDialog'];
         if (!topoDialog) {
@@ -42,6 +48,8 @@ export default {
         topoDialog.style.left = e.canvasX + 20 + 'px';
         topoDialog.style.top = e.canvasY - 120 + 'px';
         topoDialog.style.display = 'block';
+        self.selectNode = e.item;
+        this.$emit('rightClick', e.item);
       });
       eventBus.$on('mousedown', () => {
         if (!this.$refs['topoDialog']) {
@@ -51,7 +59,8 @@ export default {
       });
     },
     handle () {
-      this.$emit('handle');
+      this.$emit('handle', this.selectNode);
+      this.selectNode = null;
     },
     open () {
       this.$refs['topoDialog'].style.display = 'block';
