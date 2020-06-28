@@ -5,12 +5,13 @@
       :field-arr="fieldArr"
       :table-setting="tableSetting"
       :show-check-box="true"
+      class="pdNone"
       @edit="edit"
       @delete="deleteItem"
       @selection-change="handleSelectionChange"
     />
     <el-dialog title="告警过滤" :visible.sync="dialogVisible" custom-class="addHandleWidth" :before-close="resetForm">
-      <el-form :model="ruleForm" label-position="left" label-width="100px">
+      <el-form :model="ruleForm" label-position="right" label-width="100px">
         <el-row class="inlineSelect" :gutter="50">
           <el-col :span="12">
             <el-form-item label="序号:">
@@ -70,8 +71,8 @@
         </el-row>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="onSubmit">确 定</el-button>
         <el-button type="warning" @click="dialogVisible = false">关 闭</el-button>
+        <el-button type="primary" @click="onSubmit">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -93,6 +94,7 @@ export default {
         }, {
           label: '告警源',
           key: 'source',
+          width: '200',
           filters: [{ text: '门禁告警一', value: '门禁告警一' }, { text: '服务器告警2', value: '服务器告警2' }, { text: '应用软件告警三', value: '应用软件告警三' }, { text: '广播告警', value: '广播告警' }]
         }, {
           label: '告警类别',
@@ -245,4 +247,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.pdNone {
+  padding: 0 !important;
+}
+</style>
 

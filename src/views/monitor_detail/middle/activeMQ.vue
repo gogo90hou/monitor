@@ -49,7 +49,9 @@
         <div class="detail borderLeftNone lineChart_detail">
           <div class="lineChart">
             <div class="lineChart_title">内存空间使用率</div>
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body">
+              <echarts-line style="height:200px" :charts-data="chartsData" class="echarts"></echarts-line>
+            </div>
           </div>
         </div>
       </el-col>
@@ -66,7 +68,9 @@
               <span class="fl">平均每分钟生产的消息数</span>
               <span class="fr">数量(个)</span>
             </div>
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body">
+              <echarts-line style="height:240px" :charts-data="chartsData2" class="echarts"></echarts-line>
+            </div>
           </div>
         </div>
       </el-col>
@@ -83,7 +87,9 @@
               <span class="fl">平均每分钟消费的消息数</span>
               <span class="fr">数量(个)</span>
             </div>
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body">
+              <echarts-line style="height:240px" :charts-data="chartsData3" class="echarts"></echarts-line>
+            </div>
           </div>
         </div>
       </el-col>
@@ -138,6 +144,24 @@ export default {
     return {
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
+      chartsData: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [60, 77, 91, 90, 65, 73, 78, 20, 88, 66, 71, 54],
+        markLine: { yAxis: 80, name: '门限' },
+        style: 'purple'
+      },
+      chartsData2: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [70, 77, 61, 90, 88, 73, 58, 60, 88, 90, 71, 54],
+        markLine: { yAxis: 80, name: '门限' },
+        style: 'green'
+      },
+      chartsData3: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [60, 77, 81, 90, 65, 73, 58, 70, 48, 66, 71, 84],
+        markLine: { yAxis: 80, name: '门限' },
+        style: 'purple'
+      },
       circleData: {
         precent: 75,
         fontSize: 30,
@@ -254,7 +278,7 @@ export default {
         }
         .lineChart_body {
           height: 200px;
-          padding: 0 60px 0 30px;
+          padding-left: 30px;
           width: 100%;
           border-right: 1px solid rgba(219, 219, 219, 0.52);
         }

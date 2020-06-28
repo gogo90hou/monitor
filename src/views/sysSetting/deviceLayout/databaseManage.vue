@@ -6,13 +6,14 @@
       :btnarr="btnarr"
       @getEvent="judgeEvent"
     />
-    <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+    <el-tabs v-model="activeName" type="card" class="tab_body" @tab-click="handleClick">
       <el-tab-pane label="操作系统" name="first">
         <v-table
           ref="table"
           :field-arr="fieldArr"
           :table-setting="tableSetting"
           :show-check-box="true"
+          class="pdNone"
           @edit="edit"
           @delete="deleteItem"
           @selection-change="handleSelectionChange"
@@ -24,6 +25,7 @@
           :field-arr="databaseArr"
           :table-setting="tableSetting2"
           :show-check-box="true"
+          class="pdNone"
           @edit="edit2"
           @delete="deleteItem2"
           @selection-change="handleSelectionChange2"
@@ -31,7 +33,7 @@
       </el-tab-pane>
     </el-tabs>
     <el-dialog title="操作系统" :visible.sync="dialogVisible" custom-class="addHandleWidth" :before-close="resetForm">
-      <el-form :model="ruleForm" label-position="left" label-width="100px">
+      <el-form :model="ruleForm" label-position="right" label-width="100px">
         <el-row class="inlineSelect" :gutter="50">
           <el-col :span="12">
             <el-form-item label="操作系统名称:">
@@ -79,12 +81,12 @@
         </el-row>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="onSubmit">确 定</el-button>
         <el-button type="warning" @click="dialogVisible = false">关 闭</el-button>
+        <el-button type="primary" @click="onSubmit">确 定</el-button>
       </span>
     </el-dialog>
     <el-dialog title="数据库" :visible.sync="dialogVisible2" custom-class="addHandleWidth" :before-close="resetForm2">
-      <el-form :model="ruleForm2" label-position="left" label-width="100px">
+      <el-form :model="ruleForm2" label-position="right" label-width="100px">
         <el-row class="inlineSelect" :gutter="50">
           <el-col :span="12">
             <el-form-item label="数据库名称:">
@@ -428,5 +430,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.tab_body {
+  padding: 17px 12px;
+  background-color: #fff;
+  .pdNone {
+    padding: 0 !important;
+  }
+}
 </style>

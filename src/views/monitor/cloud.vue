@@ -108,7 +108,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/middle_detail?type=Apache',
+            path: '/cloud_detail',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]

@@ -9,8 +9,8 @@ import i18n from '@/lang'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 60000, // request timeout
-  withCredentials: true
+  timeout: 60000 // request timeout
+  // withCredentials: true
 });
 
 // request interceptor

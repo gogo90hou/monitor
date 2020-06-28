@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div class="body-content"><HeadMenu title="IT设备监控列表" :options="options" :search="true" @getValue="searchKey" @getSelectId="selectIdHandle" /></div>
-    <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+    <div class="body-content"><HeadMenu title="IT设备监控列表" :options="options" :search="true" :btnarr="btnarr" @getValue="searchKey" @getSelectId="selectIdHandle" /></div>
+    <el-tabs v-model="activeName" type="card" class="tab_body" @tab-click="handleClick">
       <el-tab-pane label="服务器" name="first">
-        <v-table :field-arr="fieldArr" :table-setting="serverSetting" @edit="edit" />
+        <v-table :field-arr="fieldArr" :table-setting="serverSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="交换机" name="second">
-        <v-table :field-arr="switchesFieldArr" :table-setting="switchSetting" @edit="edit" />
+        <v-table :field-arr="switchesFieldArr" :table-setting="switchSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="防火墙" name="third">
-        <v-table :field-arr="firewallFieldArr" :table-setting="firewallSetting" @edit="edit" />
+        <v-table :field-arr="firewallFieldArr" :table-setting="firewallSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="存储" name="four">
-        <v-table :field-arr="storageFieldArr" :table-setting="storageSetting" @edit="edit" />
+        <v-table :field-arr="storageFieldArr" :table-setting="storageSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -110,6 +110,7 @@ export default {
         }
       },
       activeName: 'first',
+      btnarr: [{ id: '1', value: ' 管理设备', eventName: 'manageHandle', type: 'info' }],
       options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '邑州监狱' }, { selectId: '3', label: '川西监狱' }, { selectId: '4', label: '川北监狱' }, { selectId: '5', label: '雷马屏监狱' }],
       fieldArr: [
         {
@@ -429,20 +430,12 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.publicheader {
-  overflow: hidden;
-  padding: 10px 0;
-  h2 {
-    float: left;
-  }
-  .right-wrapper {
-    float: right;
-    width: 50%;
-    text-align: right;
-    .el-input {
-      width: 200px;
-    }
+<style lang="scss" scoped>
+.tab_body {
+  padding: 17px 12px;
+  background-color: #fff;
+  .pdNone {
+    padding: 0 !important;
   }
 }
 </style>

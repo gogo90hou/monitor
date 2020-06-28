@@ -102,7 +102,7 @@
               <span class="title_blue">32次</span>
             </span>
           </div>
-          <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+          <echarts-line style="height:200px" :charts-data="chartsData2"></echarts-line>
         </div>
       </el-col>
     </el-row>
@@ -122,7 +122,7 @@
           </div>
           <div class="main line_title">近段时间线程缓存命中率: ( % )</div>
           <div class="main">
-            <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+            <echarts-line style="height:200px" :charts-data="chartsData3"></echarts-line>
           </div>
         </div>
       </el-col>
@@ -140,7 +140,7 @@
           </div>
           <div class="main line_title">近段时间查询缓存命中个数: ( % )</div>
           <div class="main">
-            <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+            <echarts-line style="height:200px" :charts-data="chartsData4"></echarts-line>
           </div>
         </div>
       </el-col>
@@ -194,6 +194,24 @@ export default {
       chartsData: {
         x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
         y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
+      chartsData2: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [2200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
+      chartsData3: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1200, 2300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
+      chartsData4: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1200, 1300, 2100, 1800, 1500, 2060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
         markLine: { yAxis: 2000, name: '门限' },
         style: 'purple'
       },

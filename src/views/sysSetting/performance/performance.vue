@@ -1,17 +1,17 @@
 <template>
   <div class="body-content">
     <HeadMenu title="性能门限设置" />
-    <el-tabs v-model="activeName" type="card">
+    <el-tabs v-model="activeName" type="card" class="tab_body">
       <el-tab-pane label="服务器" name="1">
         <Server />
       </el-tab-pane>
       <el-tab-pane label="交换机" name="2">
         <Interchanger />
       </el-tab-pane>
-      <el-tab-pane label="防火墙" name="3">防火墙</el-tab-pane>
+      <!-- <el-tab-pane label="防火墙" name="3">防火墙</el-tab-pane>
       <el-tab-pane label="存储" name="4">存储</el-tab-pane>
       <el-tab-pane label="中间件" name="5">中间件</el-tab-pane>
-      <el-tab-pane label="应用软件" name="6">应用软件</el-tab-pane>
+      <el-tab-pane label="应用软件" name="6">应用软件</el-tab-pane> -->
       <el-tab-pane label="数据库" name="7">
         <Database />
       </el-tab-pane>
@@ -69,6 +69,9 @@ export default {
 }
 </script>
 
-<style scoped>
-@import "~@/styles/element-ui.scss";
+<style lang="scss" scoped>
+.tab_body {
+  padding: 17px 12px;
+  background-color: #fff;
+}
 </style>

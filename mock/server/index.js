@@ -29,8 +29,8 @@ app.use(express.static('dist'));
 app.use(jsonParser);
 app.use(urlencodedParser);
 app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Origin', frontOrigin);
+  // res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'HEAD, POST, GET, OPTIONS, DELETE, PUT, CONNECT, TRACE');
   res.header('Access-Control-Allow-Headers', 'X-Requested-With');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -58,13 +58,13 @@ app.get('/permitThrough', function (req, res) {
 app.get('/checkFrontSso', function (req, res) {
   const token = req.cookies.token;
   log('globalToken:' + JSON.stringify(globalToken) + '\n');
-  if (globalToken[token]) {
-    log(`token检测通过 token:${globalToken[token]}`);
-    res.send({ 'statusCode': 0, 'statusText': '检测成功', 'data': true });
-  } else {
-    log(`token检测不通过,请跳转到cas登陆 token:${token}`);
-    res.send({ 'httpCode': 302, 'statusText': '重定向到CAS服务器进行验证', 'data': { 'sso_redirect_url': 'http://' + settings.cas.host + ':' + settings.cas.port + '/cas/retrieveToken?appId=back-server-sso' } });
-  }
+  // if (globalToken[token]) {
+  log(`token检测通过 token:${globalToken[token]}`);
+  res.send({ 'statusCode': 0, 'statusText': '检测成功', 'data': true });
+  // } else {
+  //   log(`token检测不通过,请跳转到cas登陆 token:${token}`);
+  //   res.send({ 'httpCode': 302, 'statusText': '重定向到CAS服务器进行验证', 'data': { 'sso_redirect_url': 'http://' + settings.cas.host + ':' + settings.cas.port + '/cas/retrieveToken?appId=back-server-sso' } });
+  // }
 });
 
 app.get('/sso', function (req, res) {

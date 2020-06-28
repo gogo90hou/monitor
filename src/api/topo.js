@@ -46,3 +46,28 @@ export function createTopo (data) {
     data: data
   });
 }
+
+// 以下为mock假数据的调用
+export function getTopo (id) {
+  return request({
+    url: '/topo',
+    method: 'get',
+    areaId: id
+  });
+}
+
+export function deleteTopoMock (id) {
+  return request({
+    url: '/topo',
+    method: 'delete',
+    data: { id: id }
+  });
+}
+
+export function createTopoMock (data) {
+  return request({
+    url: '/topo',
+    method: 'post',
+    data: data
+  });
+}

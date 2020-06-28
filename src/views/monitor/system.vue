@@ -7,9 +7,9 @@
       @getValue="searchKey"
       @getEvent="managementHandle"
     />
-    <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+    <el-tabs v-model="activeName" type="card" class="tab_body" @tab-click="handleClick">
       <el-tab-pane label="操作系统" name="first">
-        <v-table :field-arr="fieldArr" :table-setting="tableSetting" />
+        <v-table :field-arr="fieldArr" :table-setting="tableSetting" class="pdNone" />
       </el-tab-pane>
       <el-tab-pane label="数据库" name="second">
         <div class="database-filter">
@@ -31,6 +31,7 @@
           ref="mysql"
           :field-arr="databaseFieldArr"
           :table-setting="mysqlSetting"
+          class="pdNone"
           @edit="edit"
         />
         <v-table
@@ -38,6 +39,7 @@
           ref="oracle"
           :field-arr="databaseFieldArr"
           :table-setting="oracleSetting"
+          class="pdNone"
           @edit="edit"
         />
         <v-table
@@ -45,6 +47,7 @@
           ref="sqlserver"
           :field-arr="databaseFieldArr"
           :table-setting="sqlserverSetting"
+          class="pdNone"
           @edit="edit"
         />
       </el-tab-pane>
@@ -290,25 +293,49 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.tab_body {
+  padding: 17px 12px;
+  background-color: #fff;
+  .pdNone {
+    padding: 0 !important;
+  }
+}
 .database-filter {
   width: 100%;
   height: 56px !important;
-  background: rgba(201, 203, 245, 0.2);
+  background-color: rgba(201, 203, 245, 0.2);
   font-size: 14px;
+  border-bottom: 3px solid #c1c5ff;
   span {
     display: block;
+    float: left;
     width: 205px;
+    height: 56px;
     line-height: 56px;
     text-align: center;
-    float: left;
+    box-sizing: border-box;
     color: #888888;
     cursor: pointer;
   }
   .filter-active {
+    position: relative;
     color: #38ace1;
+    border-bottom: 3px solid #5466e0;
+  }
+  .filter-active:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    background-color: transparent;
+    border: 6px solid;
+    border-color: transparent transparent #5466e0;
   }
   span:after {
-    content: "";
+    content: '';
     width: 1px;
     height: 17px;
     display: block;
@@ -317,7 +344,7 @@ export default {
     background-color: #dddee0;
   }
   span:nth-last-child(1):after {
-    content: "";
+    content: '';
     width: 0;
     height: 0;
   }

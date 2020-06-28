@@ -68,7 +68,7 @@ export default {
             {
               value: 'service',
               label: '交换机',
-              fontIcon: 'iconicon_IT_equipment',
+              fontIcon: 'iconicon_switch',
               text: '\ue78c',
               shape: 'monitorNode',
               size: [36, 36],
@@ -79,7 +79,7 @@ export default {
             {
               value: 'service',
               label: '防火墙',
-              fontIcon: 'iconicon_firewall',
+              fontIcon: 'iconicon_storage',
               text: '\ue798',
               shape: 'monitorNode',
               size: [36, 36],
@@ -90,7 +90,7 @@ export default {
             {
               value: 'service',
               label: '存储',
-              fontIcon: 'iconicon_data_base',
+              fontIcon: 'iconicon_Software',
               text: '\ue797',
               shape: 'monitorNode',
               size: [36, 36],
@@ -189,11 +189,11 @@ export default {
   z-index: 2;
   height: 100%;
   background: rgba(246, 245, 254, 1);
-  border-right: 12px solid rgba(237, 236, 245, 1);
+  border-right: 8px solid rgba(237, 236, 245, 1);
   box-sizing: border-box;
   .content {
-    width: 385px;
-    padding: 10px 10px;
+    width: 280px;
+    padding: 10px;
     .pannel-top {
       display: flex;
       justify-content: space-between;
@@ -231,13 +231,13 @@ export default {
   }
   .toggle {
     position: absolute;
-    width: 12px;
+    width: 8px;
     height: 105px;
     margin-top: auto;
     margin-bottom: auto;
     top: 0;
     bottom: 0;
-    right: -12px;
+    right: -8px;
     background-color: #c7c2ec;
     div {
       position: absolute;
@@ -245,12 +245,12 @@ export default {
       bottom: 0;
       margin: auto;
       border-style: solid;
-      border-width: 7px 7px 7px 7px;
+      border-width: 5px 5px 5px 5px;
       width: 0px;
       height: 0px;
     }
     .pack-up {
-      left: -5px;
+      left: -4px;
       border-color: transparent #fff transparent transparent;
     }
     .un-fold {

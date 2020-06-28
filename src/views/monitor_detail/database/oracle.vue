@@ -155,7 +155,7 @@
               <span>每秒事务数（tps）:32次</span>
             </div>
             <div class="lineChart_body">
-              <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+              <echarts-line style="height:200px" :charts-data="chartsData2"></echarts-line>
             </div>
           </div>
         </div>
@@ -233,7 +233,7 @@
               <span class="title_green">32次/秒</span>
             </span>
           </div>
-          <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+          <echarts-line style="height:200px" :charts-data="chartsData3"></echarts-line>
         </div>
       </el-col>
     </el-row>
@@ -311,7 +311,19 @@ export default {
       getters: 'monitor/soft/flowList',
       chartsData: {
         x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
-        y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        y: [1800, 1700, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
+      chartsData2: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1200, 2300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
+      chartsData3: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [2200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
         markLine: { yAxis: 2000, name: '门限' },
         style: 'purple'
       },

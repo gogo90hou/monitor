@@ -226,7 +226,7 @@ export default {
       getters: 'monitor/soft/flowList',
       chartsData: {
         x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
-        y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080],
         markLine: { yAxis: 2000, name: '门限' },
         style: 'purple'
       },
@@ -268,6 +268,27 @@ export default {
         }
       ]
     }
+  },
+  mounted () {
+    // const timer = setInterval(() => {
+    //   this.getCharData()
+    // }, 2000);
+    // this.$once('hook:beforeDestroy', () => { clearInterval(timer); })
+  },
+  methods: {
+    // getCharData () {
+    //   this.chartsData.y = this.generateRandomArr(12, 1000, 3000);
+    //   this.chartsData1.y = [this.generateRandomArr(12, 1000, 3000), this.generateRandomArr(12, 1000, 3000)];
+    //   // console.log(this.chartsData.y);
+    // },
+    // generateRandomArr (n, min, max) {
+    //   var arr = [];
+    //   for (var i = 0; i < n; i++) {
+    //     var random = Math.floor(Math.random() * (max - min + 1) + min);
+    //     arr.push(random);
+    //   }
+    //   return arr;
+    // }
   }
 }
 </script>

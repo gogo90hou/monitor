@@ -114,7 +114,7 @@ export default {
   .el-tree-node:focus > .el-tree-node__content {
     background-color: #242938;
     @include themeify {
-      color: themed("highLight");
+      color: themed('highLight');
     }
   }
   .el-tree-node__content {
@@ -133,13 +133,13 @@ export default {
     position: absolute;
     right: 10px;
     font-size: 0;
-    background-image: url("../../assets/icon/add.png");
+    background-image: url('../../assets/icon/add.png');
     width: 10px;
     height: 10px;
     padding: 0;
   }
   .el-tree-node__expand-icon.expanded {
-    background-image: url("../../assets/icon/reduce.png");
+    background-image: url('../../assets/icon/reduce.png');
     transform: rotate(0);
   }
   .el-tree-node__expand-icon.is-leaf {

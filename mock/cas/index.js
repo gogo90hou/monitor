@@ -37,13 +37,13 @@ app.get('/', function (req, res) {
 app.get('/cas/retrieveToken', function (req, res) {
   log('globalToken:' + JSON.stringify(globalToken) + '\n');
   const token = req.cookies.token;
-  if (globalToken[token]) {
-    log(`cas检测已登录，token:${token} 重定向到后端`);
-    res.redirect(backServerCheckLogin + '&token=' + token + '&backurl=http%3A%2F%2F' + settings.front.host + '%3A' + settings.front.port + '%2F%23%2F%3Fsso_type%3Dfront');
-  } else {
-    log(`cas检测未登录，token:${token} 跳转到cas登陆页面`);
-    res.redirect('/login.html')
-  }
+  // if (globalToken[token]) {
+  log(`cas检测已登录，token:${token} 重定向到后端`);
+  res.redirect(backServerCheckLogin + '&token=' + token + '&backurl=http%3A%2F%2F' + settings.front.host + '%3A' + settings.front.port + '%2F%23%2F%3Fsso_type%3Dfront');
+  // } else {
+  //   log(`cas检测未登录，token:${token} 跳转到cas登陆页面`);
+  //   res.redirect('/login.html')
+  // }
 });
 
 app.get('/verify', function (req, res) {

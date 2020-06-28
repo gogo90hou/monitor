@@ -48,7 +48,9 @@
                 <div class="lineChart_title">
                   <span class="one">近段时间通道使用百分比</span>
                 </div>
-                <div class="lineChart_body">放置折线图</div>
+                <div class="lineChart_body">
+                  <echarts-line style="height:200px" :charts-data="chartsData" class="echarts"></echarts-line>
+                </div>
               </div>
             </el-col>
           </el-row>
@@ -135,6 +137,12 @@ export default {
     return {
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
+      chartsData: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1000, 1300, 1100, 2000, 1500, 2660, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
       circleData: {
         precent: 60,
         fontSize: 30,

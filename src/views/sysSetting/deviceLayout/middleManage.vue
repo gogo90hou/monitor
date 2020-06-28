@@ -16,7 +16,7 @@
       @selection-change="handleSelectionChange"
     />
     <el-dialog title="IT设备" :visible.sync="dialogVisible" custom-class="addHandleWidth" :before-close="resetForm">
-      <el-form :model="ruleForm" label-position="left" label-width="100px">
+      <el-form :model="ruleForm" label-position="right" label-width="100px">
         <el-row class="inlineSelect" :gutter="50">
           <el-col :span="12">
             <el-form-item label="中间件名称:">
@@ -66,8 +66,8 @@
         </el-row>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="onSubmit">确 定</el-button>
         <el-button type="warning" @click="dialogVisible = false">关 闭</el-button>
+        <el-button type="primary" @click="onSubmit">确 定</el-button>
       </span>
     </el-dialog>
   </div>

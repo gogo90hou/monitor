@@ -72,7 +72,9 @@
                   <span class="square one">端口一</span>
                 </span>
               </div>
-              <div>放置折线图</div>
+              <div>
+                <echarts-line style="height:220px" :charts-data="chartsData" class="echarts"></echarts-line>
+              </div>
             </div>
           </div>
         </div>
@@ -104,7 +106,9 @@
                   <span class="square four">CPU4</span>
                 </span>
               </div>
-              <div>放置折线图</div>
+              <div>
+                <echarts-line style="height:220px" :charts-data="chartsData2" class="echarts"></echarts-line>
+              </div>
             </div>
           </div>
         </div>
@@ -131,7 +135,9 @@
                   <span class="square four">CPU4</span>
                 </span>
               </div>
-              <div>放置折线图</div>
+              <div>
+                <echarts-line style="height:220px" :charts-data="chartsData3" class="echarts"></echarts-line>
+              </div>
             </div>
           </div>
         </div>
@@ -195,6 +201,24 @@ export default {
       runStateColor: '#2FD902',
       noStateColor: '#A0A0A0',
       getters: 'monitor/soft/flowList',
+      chartsData: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1000, 1300, 1100, 2800, 1500, 2660, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
+      chartsData2: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1800, 1300, 1100, 2800, 1500, 2660, 1870, 2000, 1200, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
+      chartsData3: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [2600, 1300, 1100, 2800, 2500, 2660, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
       fieldArr: [
         {
           label: '流程名称',
@@ -279,6 +303,11 @@ export default {
             }
           }
         }
+      }
+    }
+    @media screen and (max-width: 1600px) {
+      .detail {
+        height: 520px;
       }
     }
   }

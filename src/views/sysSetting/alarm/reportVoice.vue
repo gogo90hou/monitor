@@ -5,7 +5,7 @@
       <el-col :span="12">
         <div class="grid-content bg-purple-left">
           <el-row>
-            <el-col :span="6">
+            <el-col :span="7">
               <div class="level levelDeadly">
                 <span class="col-title">级别</span>
                 <div>
@@ -14,13 +14,13 @@
                 </div>
               </div>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="10">
               <div class="changeVoice">
                 <span class="col-title">选择声音</span>
                 <div>报警声音1.mp3</div>
               </div>
             </el-col>
-            <el-col :span="6">
+            <el-col :span="7">
               <div class="switchVoice">
                 <span class="col-title">开启/关闭声音</span>
                 <div class="switch-body">
@@ -41,7 +41,7 @@
       <el-col :span="12">
         <div class="grid-content bg-purple-left">
           <el-row>
-            <el-col :span="6">
+            <el-col :span="7">
               <div class="level levelSerious">
                 <span class="col-title">级别</span>
                 <div>
@@ -50,23 +50,23 @@
                 </div>
               </div>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="10">
               <div class="changeVoice">
                 <span class="col-title">选择声音</span>
                 <div>报警声音1.mp3</div>
               </div>
             </el-col>
-            <el-col :span="6">
+            <el-col :span="7">
               <div class="switchVoice">
                 <span class="col-title">开启/关闭声音</span>
                 <div class="switch-body">
                   <div
-                    :class="{'switch-open': switchIsOpen,'isSwitchLeft': true}"
-                    @click="switchOpen"
+                    :class="{'switch-open': switchIsOpen2,'isSwitchLeft': true}"
+                    @click="switchOpen2"
                   >已开启</div>
                   <div
-                    :class="{'switch-close': !switchIsOpen,'isSwitchRight': true}"
-                    @click="switchClose"
+                    :class="{'switch-close': !switchIsOpen2,'isSwitchRight': true}"
+                    @click="switchClose2"
                   >已关闭</div>
                 </div>
               </div>
@@ -79,7 +79,7 @@
       <el-col :span="12">
         <div class="grid-content bg-purple-left">
           <el-row>
-            <el-col :span="6">
+            <el-col :span="7">
               <div class="level levelGeneral">
                 <span class="col-title">级别</span>
                 <div>
@@ -88,23 +88,23 @@
                 </div>
               </div>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="10">
               <div class="changeVoice">
                 <span class="col-title">选择声音</span>
                 <div>报警声音1.mp3</div>
               </div>
             </el-col>
-            <el-col :span="6">
+            <el-col :span="7">
               <div class="switchVoice">
                 <span class="col-title">开启/关闭声音</span>
                 <div class="switch-body">
                   <div
-                    :class="{'switch-open': switchIsOpen,'isSwitchLeft': true}"
-                    @click="switchOpen"
+                    :class="{'switch-open': switchIsOpen3,'isSwitchLeft': true}"
+                    @click="switchOpen3"
                   >已开启</div>
                   <div
-                    :class="{'switch-close': !switchIsOpen,'isSwitchRight': true}"
-                    @click="switchClose"
+                    :class="{'switch-close': !switchIsOpen3,'isSwitchRight': true}"
+                    @click="switchClose3"
                   >已关闭</div>
                 </div>
               </div>
@@ -115,7 +115,7 @@
       <el-col :span="12">
         <div class="grid-content bg-purple-left">
           <el-row>
-            <el-col :span="6">
+            <el-col :span="7">
               <div class="level levelPrompt">
                 <span class="col-title">级别</span>
                 <div>
@@ -124,23 +124,23 @@
                 </div>
               </div>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="10">
               <div class="changeVoice">
                 <span class="col-title">选择声音</span>
                 <div>报警声音1.mp3</div>
               </div>
             </el-col>
-            <el-col :span="6">
+            <el-col :span="7">
               <div class="switchVoice">
                 <span class="col-title">开启/关闭声音</span>
                 <div class="switch-body">
                   <div
-                    :class="{'switch-open': switchIsOpen,'isSwitchLeft': true}"
-                    @click="switchOpen"
+                    :class="{'switch-open': switchIsOpen4,'isSwitchLeft': true}"
+                    @click="switchOpen4"
                   >已开启</div>
                   <div
-                    :class="{'switch-close': !switchIsOpen,'isSwitchRight': true}"
-                    @click="switchClose"
+                    :class="{'switch-close': !switchIsOpen4,'isSwitchRight': true}"
+                    @click="switchClose4"
                   >已关闭</div>
                 </div>
               </div>
@@ -157,7 +157,10 @@
 export default {
   data () {
     return {
-      switchIsOpen: true
+      switchIsOpen: true,
+      switchIsOpen2: false,
+      switchIsOpen3: false,
+      switchIsOpen4: true
     }
   },
   computed: {
@@ -173,6 +176,24 @@ export default {
     },
     switchClose () {
       this.switchIsOpen = false;
+    },
+    switchOpen2 () {
+      this.switchIsOpen2 = true;
+    },
+    switchClose2 () {
+      this.switchIsOpen2 = false;
+    },
+    switchOpen3 () {
+      this.switchIsOpen3 = true;
+    },
+    switchClose3 () {
+      this.switchIsOpen3 = false;
+    },
+    switchOpen4 () {
+      this.switchIsOpen4 = true;
+    },
+    switchClose4 () {
+      this.switchIsOpen4 = false;
     }
   }
 }
@@ -248,7 +269,7 @@ export default {
   .changeVoice div {
     height: 56px;
     line-height: 56px;
-    color: #7f83d8;
+    color: #5466e0;
     font-size: 14px;
     text-decoration: underline;
     cursor: pointer;
@@ -288,7 +309,7 @@ export default {
     }
     .switch-open {
       padding: 0;
-      background-color: #9599e9;
+      background-color: #5466e0;
       z-index: 2;
     }
     .switch-close {

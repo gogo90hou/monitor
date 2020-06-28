@@ -1,4 +1,3 @@
-
 <template>
   <div class="dashboard">
     <el-row class="list" :gutter="gutter">
@@ -253,7 +252,8 @@ export default {
   components: { bar, pie, echartBar, echartLine },
   data () {
     return {
-      gutter: document.body.clientHeight / 100 * 3,
+      // gutter: window.innerHeight / 100 * 2,
+      gutter: 20,
       liHeight: 40,
       showNum: 5,
       warnList: [{
@@ -350,7 +350,7 @@ export default {
           text-align: center;
           strong {
             font-size: 24px;
-            font-family: "Arial-BoldMT", Arial;
+            font-family: 'Arial-BoldMT', Arial;
             font-weight: bold;
           }
         }
@@ -377,7 +377,8 @@ export default {
   }
   .two,
   .three {
-    margin-top: 3vh;
+    // margin-top: 2vh;
+    margin-top: 20px;
     height: calc((100vh - 26vh - 64px) / 2);
     .el-row {
       height: 100%;
@@ -397,7 +398,7 @@ export default {
         border-radius: 100%;
         position: relative;
         &::after {
-          content: "";
+          content: '';
           display: inline-block;
           width: 11px;
           height: 11px;

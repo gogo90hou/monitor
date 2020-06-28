@@ -145,8 +145,8 @@ export default {
     width: 100%;
     overflow: hidden;
     &.edit-statu {
-      top: 72px;
-      height: calc(100% - 72px);
+      top: 42px;
+      height: calc(100% - 42px);
     }
     &.view-statu {
       top: 0px;

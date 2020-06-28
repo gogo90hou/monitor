@@ -9,30 +9,30 @@
         @getSelectId="selectIdHandle"
       />
     </div>
-    <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+    <el-tabs v-model="activeName" type="card" class="tab_body" @tab-click="handleClick">
       <el-tab-pane label="Apache" name="first">
-        <v-table :field-arr="apacheArr" :table-setting="apacheSetting" @edit="edit" />
+        <v-table :field-arr="apacheArr" :table-setting="apacheSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="Flume" name="second">
-        <v-table :field-arr="flumeArr" :table-setting="flumeSetting" @edit="edit" />
+        <v-table :field-arr="flumeArr" :table-setting="flumeSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="Redis" name="third">
-        <v-table :field-arr="redisArr" :table-setting="redisSetting" @edit="edit" />
+        <v-table :field-arr="redisArr" :table-setting="redisSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="JVM" name="fourth">
-        <v-table :field-arr="jvmArr" :table-setting="jvmSetting" @edit="edit" />
+        <v-table :field-arr="jvmArr" :table-setting="jvmSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="ActiveMQ" name="five">
-        <v-table :field-arr="activeMQArr" :table-setting="activeMQSetting" @edit="edit" />
+        <v-table :field-arr="activeMQArr" :table-setting="activeMQSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="IIS" name="six">
-        <v-table :field-arr="iisArr" :table-setting="iisSetting" @edit="edit" />
+        <v-table :field-arr="iisArr" :table-setting="iisSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="Flink" name="seven">
-        <v-table :field-arr="flinkArr" :table-setting="flinkSetting" @edit="edit" />
+        <v-table :field-arr="flinkArr" :table-setting="flinkSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
       <el-tab-pane label="Kafka" name="eight">
-        <v-table :field-arr="kafkaArr" :table-setting="kafkaSetting" @edit="edit" />
+        <v-table :field-arr="kafkaArr" :table-setting="kafkaSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -790,20 +790,12 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.publicheader {
-  overflow: hidden;
-  padding: 10px 0;
-  h2 {
-    float: left;
-  }
-  .right-wrapper {
-    float: right;
-    width: 50%;
-    text-align: right;
-    .el-input {
-      width: 200px;
-    }
+<style lang="scss" scoped>
+.tab_body {
+  padding: 17px 12px;
+  background-color: #fff;
+  .pdNone {
+    padding: 0 !important;
   }
 }
 </style>

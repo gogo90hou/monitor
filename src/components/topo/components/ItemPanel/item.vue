@@ -139,8 +139,8 @@ export default {
   font-weight: 400;
   color: rgba(102, 102, 102, 1);
   li {
-    flex: 0 0 100px;
-    height: 86px;
+    flex: 0 0 80px;
+    height: 78px;
     padding-top: 8px;
     margin-bottom: 20px;
     background: rgba(255, 255, 255, 0.55);

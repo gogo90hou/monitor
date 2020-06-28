@@ -58,14 +58,16 @@ export default {
     vertical-align: top;
   }
   .content {
-    width: calc(100% - 200px);
     display: inline-block;
-    background-color: #fff;
-    min-height: calc(100vh - 64px);
+    width: calc(100% - 200px);
+    height: calc(100vh - 64px);
+    overflow: auto;
+    // background-color: #fff;
+    // min-height: calc(100vh - 64px);
     vertical-align: top;
     font-size: 20px;
-    padding: 50px 30px;
-    background-color: #f3f3f9;
+    padding: 10px;
+    background-color: #eff0f5;
   }
 }
 </style>

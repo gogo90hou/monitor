@@ -62,11 +62,12 @@ export default {
     display: inline-block;
     width: calc(100% - 120px);
     height: calc(100vh - 64px);
-    overflow: auto;
+    // overflow: auto;
     vertical-align: top;
     font-size: 14px;
-    padding: 20px 25px;
-    box-sizing: border-box;
+    padding: 10px;
+    // box-sizing: border-box;
+    background-color: #eff0f5;
   }
 }
 </style>

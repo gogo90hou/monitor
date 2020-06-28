@@ -130,6 +130,16 @@ export default {
   mounted () {
     this.echartLine = echarts.init(this.$refs.echartLine, 'light');
     this.echartLine.setOption(this.option);
+    var that = this;
+    // 自适应布局
+    window.addEventListener('resize', function () {
+      const width = that.$refs.echartLine.clientWidth;
+      const height = that.$refs.echartLine.clientHeight;
+      that.echartLine.resize({
+        width: width,
+        height: height
+      })
+    })
   }
 }
 </script>

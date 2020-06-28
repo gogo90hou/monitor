@@ -49,30 +49,36 @@
 .el-input {
   background-color: transparent;
   border-radius: 0;
+  height: 36px;
+  line-height: 36px;
   @include themeify {
     border: 1px solid themed("inputBorderColor");
   }
-}
-.el-input__inner {
-  background-color: transparent;
-  text-transform: none;
-  border-color: transparent;
-  padding: 0 5px;
-  outline: none !important;
+  .el-input__inner {
+    height: 36px;
+    background-color: transparent;
+    text-transform: none;
+    border-color: transparent;
+    padding: 0 5px;
+    outline: none !important;
+  }
+  .el-input__inner:hover {
+    border-color: transparent;
+  }
+  .el-input__icon {
+    line-height: 36px;
+  }
 }
 .el-input.is-active .el-input__inner,
 .el-input__inner:focus {
   border-color: transparent;
   outline: 0;
 }
-.el-input__inner:hover {
-  border-color: transparent;
-}
 // Cover the .el-button style
 .el-button:not(.el-button--text) {
   height: 34px;
-  padding: 0 29px;
-  border-radius: 4px;
+  padding: 0 24px;
+  border-radius: 3px;
   font-size: 14px;
   opacity: 79%;
   border: none;
@@ -82,28 +88,31 @@
   margin-right: 0;
 }
 .el-button--primary {
-  background-color: #787ee5;
+  background-color: #5466e0;
 }
 .el-button--success {
   background-color: #5466e0;
 }
 .el-button--warning {
-  background-color: #f67b12;
+  background-color: #fff;
+  color: #333;
+  border:1px solid #D4D8E6!important;
 }
 .el-button--info {
   background-color: #46bbf0;
 }
 .el-button--primary:focus,
 .el-button--primary:hover {
-  background-color: #787ee5;
+  background-color: #3046dd;
 }
 .el-button--success:focus,
 .el-button--success:hover {
-  background-color: #5466e0;
+  background-color: #3046dd;
 }
 .el-button--warning:focus,
 .el-button--warning:hover {
-  background-color: #f67b12;
+  background-color: #fff;
+  color: #5466e0;
 }
 // Cover the .el-select style
 .pagination-total .el-select {
@@ -140,8 +149,11 @@
   .el-popper[x-placement^="bottom"] .popper__arrow::after {
     border-color: transparent;
   }
-  .el-select-dropdown {
-    border-radius: 0;
+}
+.el-select-dropdown {
+  border-radius: 0;
+  .el-select-dropdown__item {
+    padding-left: 5px;
   }
 }
 // Cover the .el-pagination style
@@ -200,6 +212,7 @@
       color: #5b5b65;
       font-family: MicrosoftYaHei;
       font-size: 14px;
+      font-weight: 400;
     }
   }
   .el-input {
@@ -232,6 +245,29 @@
   }
   .dialog__footer {
     display: block;
+  }
+}
+// 覆盖组件库中的分页样式
+.pagination-container {
+  font-size: 14px!important;
+  .pagination-btn i {
+    font-size: 12px!important;
+  }
+}
+// 覆盖环亚tab组件的样式
+.dynamicTable {
+  padding: 17px 12px;
+  background-color: #fff;
+  .el-table {
+    td {
+      padding: 16px 0;
+    }
+    .cell {
+      line-height: 18px;
+      .el-button--medium {
+        padding: 0 20px;
+      }
+    }
   }
 }
 // Cover the .el-breadcrumb style
@@ -274,15 +310,15 @@
   background-color: rgba(120, 126, 229, 0.1);
   border: none;
   border-radius: 5px 0 0px 0px;
-  height: 33px;
-  line-height: 33px;
+  height: 30px;
+  line-height: 30px;
   padding: 0;
   width: 98px;
   margin-right: 25px;
   text-align: center;
   vertical-align: bottom;
   position: relative;
-  font-size: 16px;
+  font-size: 14px;
   &::after {
     content: "";
     position: absolute;

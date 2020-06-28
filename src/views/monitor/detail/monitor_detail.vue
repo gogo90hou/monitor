@@ -13,7 +13,7 @@
         <el-breadcrumb-item :to="{ path: '/monitor' }">安防运维</el-breadcrumb-item>
         <el-breadcrumb-item>windows</el-breadcrumb-item>
       </el-breadcrumb>
-      <el-button>返回</el-button>
+      <el-button @click="$router.back(-1)">返回</el-button>
     </div>
     <div class="detail_body">
       <el-row class="detail_box basic_calendar_box">
@@ -80,19 +80,19 @@ export default {
 .detail_body {
   .basic_calendar_box {
     .run_detail {
-      height: 158px;
+      height: 170px;
       .row {
         margin-bottom: 20px;
       }
     }
     .desInfo_detail {
-      height: 262px;
+      height: 280px;
       .row {
         margin-bottom: 20px;
       }
     }
     .calendar_detail {
-      height: 440px;
+      height: 470px;
       margin-left: 20px;
     }
   }

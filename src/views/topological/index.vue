@@ -31,7 +31,8 @@
 import G6Editor from '@/components/topo';
 import TreeMenu from '@/components/treeMenu';
 import { unPack } from '@/utils/parse';
-import { getTopoList, getImageTypeList, getTopoDetail, createTopo, deleteTopo } from '@/api/topo';
+import { getTopo, deleteTopoMock, createTopoMock } from '@/api/topo';
+// import { getTopoList, getImageTypeList, getTopoDetail, createTopo, deleteTopo } from '@/api/topo';
 
 export default {
   components: {
@@ -81,9 +82,15 @@ export default {
       this.$router.push({ path: 'warn', query: { meId } });
     },
     getList () {
-      getTopoList().then(res => {
-        console.log(res);
-        this.menu = res;
+      // getTopoList().then(res => {
+      //   console.log(res);
+      //   this.menu = res;
+      // }).catch(err => {
+      //   console.log(err);
+      // })
+      getTopo().then(res => {
+        console.log(res.items);
+        this.menu = res.items;
       }).catch(err => {
         console.log(err);
       })
@@ -94,6 +101,7 @@ export default {
     handleNodeClick (data) {
       this.selectTopo = data;
     },
+    // 添加topo图
     formDataHandle (val) {
       const data = {
         areaId: '123',
@@ -111,10 +119,20 @@ export default {
         topoName: '拓扑图123',
         topoTypeId: 1000
       }
+      data.topoTypeId = val.data.topoTypeId;
       data.nodes = this.topo.nodes;
       data.topoName = val.name;
-      console.log(data);
-      createTopo(data).then(res => {
+      // createTopo(data).then(res => {
+      //   this.$message({
+      //     message: '添加成功',
+      //     type: 'success'
+      //   });
+      //   this.getList();
+      // }).catch(err => {
+      //   console.log(err);
+      // });
+      // console.log(data);
+      createTopoMock(data).then(res => {
         this.$message({
           message: '添加成功',
           type: 'success'
@@ -125,9 +143,22 @@ export default {
       });
     },
     deleteTopoHandle (id) {
-      console.log(id);
-      deleteTopo(id).then(res => {
-        console.log(res);
+      // console.log(id);
+      // deleteTopo(id).then(res => {
+      //   console.log(res);
+      //   this.$message({
+      //     type: 'success',
+      //     message: '删除成功!'
+      //   });
+      //   this.getList();
+      // }).catch(() => {
+      //   this.$message({
+      //     type: 'error',
+      //     message: '删除失败!'
+      //   });
+      // })
+      // Mock实现删除tab栏
+      deleteTopoMock(id).then(res => {
         this.$message({
           type: 'success',
           message: '删除成功!'

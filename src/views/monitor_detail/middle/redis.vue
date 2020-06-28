@@ -45,7 +45,9 @@
             <span class="box_title_right">单位(个)</span>
           </div>
           <div class="lineChart">
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body">
+              <echarts-line style="height:190px" :charts-data="chartsData" class="echarts"></echarts-line>
+            </div>
           </div>
         </div>
       </el-col>
@@ -68,7 +70,9 @@
             <span class="box_title">使用率</span>
           </div>
           <div class="lineChart">
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body">
+              <echarts-line style="height:220px" :charts-data="chartsData2" class="echarts"></echarts-line>
+            </div>
           </div>
         </div>
       </el-col>
@@ -123,6 +127,18 @@ export default {
     return {
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
+      chartsData: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1000, 1300, 1100, 2000, 1500, 2660, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
+      chartsData2: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [1000, 800, 1100, 1020, 1500, 2060, 1870, 2000, 2200, 2000, 1130, 1080, 2700],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'green'
+      },
       circleData: {
         precent: 75,
         fontSize: 30,

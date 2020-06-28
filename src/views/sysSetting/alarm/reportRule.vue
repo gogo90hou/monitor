@@ -5,7 +5,7 @@
       :btnarr="btnarr"
       @getEvent="addReportRule"
     />
-    <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+    <el-tabs v-model="activeName" type="card" class="tab_body" @tab-click="handleClick">
       <el-tab-pane label="告警过滤" name="first">
         <rule-table1 ref="ruleTable1" />
       </el-tab-pane>
@@ -52,6 +52,9 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-
+<style lang="scss" scoped>
+.tab_body {
+  padding: 17px 12px;
+  background-color: #fff;
+}
 </style>

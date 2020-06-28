@@ -255,13 +255,13 @@ export default {
     }
   }
   .list {
-    padding-bottom: 50px;
+    padding-bottom: 26px;
     .content {
       padding: 10px;
       width: 100%;
       color: #545454;
       font-size: 0;
-      background-color: #fff;
+      background: rgba(135, 116, 255, 0.07);
       .left {
         display: inline-block;
         width: 70%;

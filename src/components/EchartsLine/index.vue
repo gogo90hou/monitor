@@ -232,6 +232,7 @@ export default {
     if (this.chartsData.multiple) {
       this.chartsData.y.forEach((item, index) => {
         const seriesObj = JSON.parse(JSON.stringify(this.option.series[0]));
+        // console.log(seriesObj);
         if (index > 0) {
           this.option.series.push(seriesObj)
         }
@@ -249,6 +250,20 @@ export default {
   mounted () {
     this.echartLine = echarts.init(this.$refs.echartLine, 'light');
     this.echartLine.setOption(this.option);
+    var that = this;
+    // 自适应布局
+    window.addEventListener('resize', function () {
+      const width = that.$refs.echartLine.clientWidth;
+      const height = that.$refs.echartLine.clientHeight;
+      that.echartLine.resize({
+        width: width,
+        height: height
+      })
+    })
+    const timer = setInterval(() => {
+      this.getCharData()
+    }, 10000)
+    this.$once('hook:beforeDestroy', () => { clearInterval(timer); })
   },
   methods: {
     setSeries (index, data, style) {
@@ -257,6 +272,21 @@ export default {
       // this.option.series[0].backgroundStyle = this.style[this.chartsData.style].backgroundStyle;
       this.option.series[index].itemStyle = style.itemStyle;
       if (this.chartsData.markLine) this.option.series[index].markLine.data[0] = this.chartsData.markLine;
+    },
+    getCharData () {
+      if (this.chartsData.multiple) {
+        this.chartsData.y.forEach((item, index) => {
+          item.unshift(Math.floor(Math.random() * Math.max(...item) * 1.1));
+          item.pop();
+          this.setSeries(index, item, this.style[this.chartsData.style][index]);
+        })
+      } else {
+        this.chartsData.y.unshift(Math.floor(Math.random() * Math.max(...this.chartsData.y) * 1.1));
+        this.chartsData.y.pop();
+        this.setSeries(0, '', this.style[this.chartsData.style]);
+      }
+      this.echartLine = echarts.init(this.$refs.echartLine, 'light');
+      this.echartLine.setOption(this.option);
     }
   }
 }

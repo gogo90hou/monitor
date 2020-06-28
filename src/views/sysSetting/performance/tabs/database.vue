@@ -179,7 +179,7 @@
   }
   .line {
     border-top: 1px solid #e8ebf3;
-    padding: 20px 0;
+    padding: 10px 0;
     .el-input {
       width: 70%;
       height: 32px;

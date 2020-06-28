@@ -11,7 +11,7 @@
       @selection-change="handleSelectionChange"
     />
     <el-dialog title="网关配置" :visible.sync="dialogVisible" custom-class="addHandleWidth" :before-close="resetForm">
-      <el-form :model="ruleForm" label-position="left" label-width="100px">
+      <el-form :model="ruleForm" label-position="right" label-width="100px">
         <el-form-item label="采集网关名称:">
           <el-input v-model="ruleForm.name" placeholder="网关名称" />
         </el-form-item>
@@ -38,8 +38,8 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="onSubmit">确 定</el-button>
         <el-button type="warning" @click="dialogVisible = false">关 闭</el-button>
+        <el-button type="primary" @click="onSubmit">确 定</el-button>
       </span>
     </el-dialog>
   </div>

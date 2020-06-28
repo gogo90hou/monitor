@@ -48,7 +48,7 @@
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <span>欢迎进入系统!</span>
+        <span style="font-size: 14px;">欢迎进入系统!</span>
       </el-col>
     </el-row>
   </div>
@@ -199,7 +199,7 @@ export default {
     .avatar-container {
       margin-right: 30px;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 14px;
       .avatar-wrapper {
         position: relative;
         color: #ffffff;

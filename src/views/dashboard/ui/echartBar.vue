@@ -112,6 +112,16 @@ export default {
   mounted () {
     this.echartBar = echarts.init(this.$refs.echartBar, 'light');
     this.echartBar.setOption(this.option);
+    var that = this;
+    // 自适应布局
+    window.addEventListener('resize', function () {
+      const width = that.$refs.echartBar.clientWidth;
+      const height = that.$refs.echartBar.clientHeight;
+      that.echartBar.resize({
+        width: width,
+        height: height
+      })
+    })
   }
 }
 </script>

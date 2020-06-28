@@ -105,9 +105,11 @@ export default {
     var that = this;
     // 自适应布局
     window.addEventListener('resize', function () {
+      const width = that.$refs.echartCircle.clientWidth;
+      const height = that.$refs.echartCircle.clientHeight;
       that.echartCircle.resize({
-        width: that.$refs.echartCircle.clientWidth,
-        height: that.$refs.echartCircle.clientHeight
+        width: width,
+        height: height
       })
     })
   }

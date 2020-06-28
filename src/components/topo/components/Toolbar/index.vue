@@ -314,10 +314,10 @@ export default {
   justify-content: flex-end;
   align-items: center;
   box-sizing: border-box;
-  padding: 8px 20px;
+  padding: 0 20px;
   width: 100%;
   border: 1px solid #e9e9e9;
-  height: 72px;
+  height: 42px;
   z-index: 3;
   box-shadow: 0px -1px 4px #909090;
   position: absolute;

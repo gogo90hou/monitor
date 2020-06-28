@@ -60,8 +60,16 @@
       <el-col :span="16" class="lineChart_box" style="padding-left: 0;">
         <div class="detail lineChart_detail">
           <div class="lineChart">
-            <div class="lineChart_title">近段时间io读写速率(kb/s)</div>
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_title">
+              <span class="fl leftTitle">近段时间io读写速率(kb/s)</span>
+              <span class="rightBox">
+                <span class="square one">接收数据字节速率</span>
+                <span class="square two">发送数据字节速率</span>
+              </span>
+            </div>
+            <div class="lineChart_body">
+              <echarts-line style="height:200px" :charts-data="chartsData" class="echarts"></echarts-line>
+            </div>
           </div>
         </div>
       </el-col>
@@ -89,7 +97,9 @@
                 <span class="square two">发送数据字节速率</span>
               </span>
             </div>
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body">
+              <echarts-line style="height:200px" :charts-data="chartsData2" class="echarts"></echarts-line>
+            </div>
           </div>
         </div>
       </el-col>
@@ -160,6 +170,26 @@ export default {
     return {
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
+      chartsData: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [
+          [60, 77, 91, 90, 65, 73, 78, 20, 88, 66, 71, 54],
+          [70, 77, 61, 90, 88, 73, 58, 60, 88, 90, 51, 84]
+        ],
+        multiple: true,
+        markLine: { yAxis: 80, name: '门限' },
+        style: 'multipleStyle'
+      },
+      chartsData2: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [
+          [70, 77, 61, 90, 88, 73, 58, 60, 88, 90, 51, 84],
+          [60, 47, 61, 50, 65, 73, 78, 80, 88, 96, 71, 94]
+        ],
+        multiple: true,
+        markLine: { yAxis: 80, name: '门限' },
+        style: 'multipleStyle'
+      },
       fieldArr: [
         {
           label: '流程名称',
@@ -202,10 +232,22 @@ export default {
       height: 240px;
       font-size: 14px;
       color: #666;
-      .lineChart_title {
-        display: inline-block;
-        height: 22px;
-        line-height: 22px;
+      .lineChart {
+        margin: 0 18px;
+        .lineChart_title {
+          height: 22px;
+          .leftTitle {
+            line-height: 22px;
+          }
+          .rightBox {
+            .square {
+              width: 120px;
+            }
+            .square.two {
+              margin-left: 30px;
+            }
+          }
+        }
       }
     }
     .resource_detail {

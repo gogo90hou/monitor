@@ -284,8 +284,7 @@ const data = [{
   'menuType': 'url',
   'menuValue': '/system',
   'pxNum': 6,
-  // 'icon': 'iconicon_operating_system',
-  'icon': 'iconsocial_twitter_square',
+  'icon': 'iconicon_operating_system',
   'memo': null,
   'parent': {
     'id': 'd17f488a0b184193bfd4a1c3477faf41',

@@ -13,7 +13,7 @@
         <el-breadcrumb-item :to="{ path: '/monitor' }">应用监控软件</el-breadcrumb-item>
         <el-breadcrumb-item>刑罚执行</el-breadcrumb-item>
       </el-breadcrumb>
-      <el-button>返回</el-button>
+      <el-button @click="$router.back(-1)">返回</el-button>
     </div>
     <div class="detail_body">
       <el-row class="detail_box run_process_box">
@@ -80,13 +80,7 @@
               </div>
             </div>
             <div class="sysTable">
-              <dynamic-table :field-arr="fieldArr" :getters="getters" />
-              <pagination
-                v-show="listQuery.total>0"
-                :total="listQuery.total"
-                :page.sync="listQuery.page"
-                :limit.sync="listQuery.limit"
-              />
+              <v-table :field-arr="fieldArr2" :table-setting="tableSetting" @edit="edit" />
             </div>
             <el-row :gutter="20">
               <el-col :span="12">
@@ -152,14 +146,88 @@
 export default {
   data () {
     return {
-      listQuery: {
-        total: 36,
-        page: 1,
-        limit: 10
+      tableSetting: {
+        pagination: {
+          show: true,
+          rowsPerPage: [5, 10, 20]
+        },
+        param: {
+          page: 1,
+          rows: 5,
+          sord: 'desc',
+          _search: false,
+          filters: {
+            groupOp: 'AND',
+            rules: []
+          }
+        },
+        apiUrl: 'soft/list',
+        socket: {
+          url: 'http://localhost:9999/echo',
+          subscribe: 'data',
+          tagName: 'id'
+        }
       },
+      fieldArr2: [
+        {
+          label: '应用软件名称',
+          key: 'name',
+          formatter: ''
+        }, {
+          label: '运行状态',
+          key: 'runstate',
+          formatter: [{
+            key: 1,
+            label: '正常',
+            color: 'stateNormal',
+            className: 'iconicon_check_alt',
+            iconColor: '#14AD00'
+          }, {
+            key: 2,
+            label: '异常',
+            color: 'stateNormal',
+            className: 'iconicon_error-triangle',
+            iconColor: 'red'
+          }, {
+            key: 3,
+            label: '维护中',
+            color: 'stateNormal',
+            className: 'iconicon_power_failure',
+            iconColor: 'stateMaintenance'
+          }],
+          filters: 'layout/runState'
+        }, {
+          label: '当前审批流程',
+          key: 'approvalProcess',
+          formatter: ''
+        }, {
+          label: '今日访问量',
+          key: 'todayPv',
+          formatter: ''
+        }, {
+          label: '所在区域',
+          key: 'area',
+          filters: 'layout/area'
+        }, {
+          label: '所在位置',
+          key: 'position',
+          formatter: ''
+        }, {
+          label: '操作',
+          key: 'operation',
+          needTemp: true,
+          width: '200px',
+          buttons: [{
+            label: '查看详情',
+            type: 'url',
+            path: '/soft_detail',
+            query: ['id', 'name']
+          }]
+        }
+      ],
       chartsData: {
         x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
-        y: [1200, 1300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        y: [2200, 1300, 2600, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
         // markLine: { yAxis: 2000, name: 'test' },
         style: 'green'
       },
@@ -196,6 +264,11 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    edit (data) {
+      console.log(data)
+    }
   }
 }
 </script>
@@ -204,7 +277,7 @@ export default {
   .tables {
     background-color: #ffffff;
     height: 240px;
-    width: calc(100% - 20px);
+    width: 100%;
     .el-table__body-wrapper {
       height: 189px;
       overflow-y: scroll;

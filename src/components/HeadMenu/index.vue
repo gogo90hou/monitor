@@ -101,7 +101,7 @@ export default {
 .head-menu {
   height: 36px;
   line-height: 36px;
-  margin-bottom: 24px;
+  margin-bottom: 23px;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -116,7 +116,7 @@ export default {
     margin-right: 10px;
   }
   .head-menu-title {
-    font-size: 20px;
+    font-size: 16px;
     color: #38393a;
   }
   .head-menu-smalltitle {
@@ -134,30 +134,38 @@ export default {
   > .el-input {
     float: left;
     width: 300px !important;
-    height: 36px !important;
     padding: 0;
-    margin-left: 10px;
+    margin-left: 12px;
     font-size: 14px;
+    border-radius: 3px;
+    .el-icon-search:hover:before {
+      color: #5466e0;
+    }
   }
   .btnStyle {
     float: left;
     height: 36px;
     margin-left: 12px;
     background-color: #5466e0;
-    border-radius: 5px;
+    border-radius: 3px;
     opacity: 0.79;
     font-size: 14px;
     color: #fff;
   }
+  .btnStyle:hover {
+    background-color: #3046dd;
+  }
   .el-select {
     float: left;
-    height: 36px;
     width: 176px;
-    margin-left: 10px;
+    margin-left: 12px;
     >>> .el-input {
-      height: 36px;
+      // height: 28px;
       .el-input__inner {
         border-color: transparent !important;
+      }
+      .el-icon-arrow-up:hover:before {
+        color: #5466e0;
       }
     }
   }

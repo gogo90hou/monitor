@@ -63,7 +63,7 @@
             <div class="lineChart_title">近段时间io读写速率(kb/s)</div>
             <div class="lineChart_body">
               <div class="lineChart_title">(个)</div>
-              <div class="box">放置折线图</div>
+              <div class="box"><echarts-line style="height:200px" :charts-data="chartsData" class="echarts"></echarts-line></div>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@
             <div class="lineChart_title">
               <span>(%)</span>
             </div>
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body"><echarts-line style="height:200px" :charts-data="chartsData2" class="echarts"></echarts-line></div>
           </div>
         </div>
       </el-col>
@@ -96,7 +96,7 @@
             <div class="lineChart_title">
               <span>(个)</span>
             </div>
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body"><echarts-line style="height:200px" :charts-data="chartsData3" class="echarts"></echarts-line></div>
           </div>
         </div>
       </el-col>
@@ -112,7 +112,7 @@
             <div class="lineChart_title">
               <span>近段时间老年代GC执行次数(次)</span>
             </div>
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body"><echarts-line style="height:200px" :charts-data="chartsData4" class="echarts"></echarts-line></div>
           </div>
         </div>
       </el-col>
@@ -125,7 +125,7 @@
             <div class="lineChart_title">
               <span class="box_title">近段时间年轻代GC执行次数（次）</span>
             </div>
-            <div class="lineChart_body">放置折线图</div>
+            <div class="lineChart_body"><echarts-line style="height:200px" :charts-data="chartsData5" class="echarts"></echarts-line></div>
           </div>
         </div>
       </el-col>
@@ -180,6 +180,36 @@ export default {
     return {
       runStateColor: '#27B102',
       getters: 'monitor/soft/flowList',
+      chartsData: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [60, 77, 91, 90, 65, 73, 78, 20, 88, 66, 71, 54],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
+      chartsData2: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [60, 77, 91, 90, 65, 73, 78, 80, 88, 66, 71, 54],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'green'
+      },
+      chartsData3: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [60, 77, 61, 90, 65, 73, 78, 50, 88, 66, 71, 54],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
+      chartsData4: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [60, 77, 61, 90, 65, 73, 78, 50, 38, 66, 71, 54],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'purple'
+      },
+      chartsData5: {
+        x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+        y: [60, 47, 61, 90, 65, 73, 78, 50, 88, 86, 71, 54],
+        markLine: { yAxis: 2000, name: '门限' },
+        style: 'green'
+      },
       fieldArr: [
         {
           label: '流程名称',

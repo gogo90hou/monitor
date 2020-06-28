@@ -55,21 +55,20 @@
       <HeadMenu class="tabs-right-head" :search="true" :options="options" @getValue="searchKey" />
       <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
         <el-tab-pane label="告警列表" name="first">
-          <dynamic-table :field-arr="fieldArr" :getters="getters" @edit="edit" @turnOrder="turnOrder" />
+          <table1 />
         </el-tab-pane>
-        <el-tab-pane label="事件列表" name="second">事件列表</el-tab-pane>
-        <el-tab-pane label="智能告警" name="third">智能告警</el-tab-pane>
-        <el-tab-pane label="历史告警" name="four">历史告警</el-tab-pane>
+        <el-tab-pane label="事件列表" name="second">
+          <table2 />
+        </el-tab-pane>
+        <el-tab-pane label="智能告警" name="third">
+          <table3 />
+        </el-tab-pane>
+        <el-tab-pane label="历史告警" name="four">
+          <table4 />
+        </el-tab-pane>
       </el-tabs>
     </div>
-    <pagination
-      v-show="listQuery.total>0"
-      :total="listQuery.total"
-      :page.sync="listQuery.page"
-      :limit.sync="listQuery.limit"
-      @pagination="pagination"
-    />
-    <el-dialog
+    <!-- <el-dialog
       title="填写工单信息"
       :visible.sync="dialogVisible"
       width="37.5%"
@@ -123,7 +122,7 @@
         <el-button type="primary" class="confirmBtn" @click="onSubmit">确认</el-button>
         <el-button type="warning" class="closeBtn" @click="dialogVisible = false">关闭</el-button>
       </span>
-    </el-dialog>
+    </el-dialog> -->
     <el-dialog
       title="新增一条致命告警"
       class="alarmDialag"
@@ -152,126 +151,43 @@
 </template>
 
 <script>
+import table1 from './warnTable/table1';
+import table2 from './warnTable/table2';
+import table3 from './warnTable/table3';
+import table4 from './warnTable/table4';
 export default {
+  components: {
+    table1,
+    table2,
+    table3,
+    table4
+  },
   data () {
     return {
-      getters: 'warn/index/list',
       activeName: 'first',
-      dialogVisible: false,
-      alarmDialogVisible: true,
-      // 分页列表
-      listQuery: {
-        total: 36,
-        page: 1,
-        limit: 10
-      },
-      options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '川北监狱' }, { selectId: '3', label: '川西监狱' }],
-      fieldArr: [
-        {
-          label: '序号',
-          key: 'serialNumber',
-          formatter: ''
-        }, {
-          label: '告警源',
-          key: 'alarmSource',
-          formatter: '',
-          filters: [{ text: '甘孜监狱-大门门禁', value: '甘孜监狱-大门门禁' }, { text: '锦江监狱-二楼楼梯口报警设备', value: '锦江监狱-二楼楼梯口报警设备' }, { text: '锦江监狱-三楼服务器-192.168.1.1', value: '锦江监狱-三楼服务器-192.168.1.1' }, { text: '门禁告警一', value: '门禁告警一' }]
-        }, {
-          label: '告警类别',
-          key: 'alarmCategory',
-          formatter: '',
-          filters: [{ text: '安防设备', value: '安防设备' }, { text: '应用软件', value: '应用软件' }, { text: 'IT设备', value: 'IT设备' }, { text: '中间件', value: '中间件' }, { text: '云平台', value: '云平台' }, { text: '操作系统和数据库', value: '操作系统和数据库' }]
-        }, {
-          label: '告警级别',
-          key: 'alarmLevel',
-          formatter: [{
-            key: '1',
-            label: '致命',
-            color: '',
-            className: 'iconicon_close_alt',
-            iconColor: 'red'
-          }, {
-            key: '2',
-            label: '严重',
-            color: '',
-            className: 'iconicon_Critical_warning',
-            iconColor: 'levelSerious'
-          }, {
-            key: '3',
-            label: '一般',
-            color: '',
-            className: 'iconicon_minus_alt',
-            iconColor: 'levelGeneral'
-          }, {
-            key: '4',
-            label: '提示',
-            color: '',
-            className: 'iconicon_info',
-            iconColor: 'levelprompt'
-          }],
-          filters: [{ text: '致命', value: '致命' }, { text: '严重', value: '严重' }, { text: '一般', value: '一般' }, { text: '提示', value: '提示' }]
-        }, {
-          label: '告警描述',
-          key: 'alarmDescription',
-          formatter: ''
-        }, {
-          label: '告警时间',
-          key: 'alarmTime',
-          formatter: ''
-        }, {
-          label: '告警状态',
-          key: 'alarmState',
-          formatter: '',
-          filters: [{ text: '已确认', value: '已确认' }, { text: '未确认', value: '未确认' }, { text: '已清除', value: '已清除' }, { text: '未清除', value: '未清除' }]
-        }, {
-          label: '确认时间',
-          key: 'setTime',
-          formatter: ''
-        }, {
-          label: '处理状态',
-          key: 'dealState',
-          formatter: '',
-          filters: [{ text: '待处理', value: '待处理' }, { text: '已派单', value: '已派单' }, { text: '已处理', value: '已处理' }]
-        }, {
-          label: '操作',
-          key: 'operation',
-          needTemp: true,
-          width: '200px',
-          buttons: [{
-            label: '转工单',
-            type: 'button',
-            method: 'turnOrder',
-            query: ['id', 'name'],
-            colorType: 'edit'
-          }, {
-            label: '清除',
-            type: 'button',
-            method: 'delete',
-            colorType: 'delete'
-          }]
-        }
-      ],
-      ruleForm: {
-        alarmSource: '',
-        dealingPeople: '',
-        solveTime: '',
-        note: ''
-      },
-      rules: {
-        alarmSource: [
-          { required: true, message: '请输入告警源', trigger: 'blur' }
-        ],
-        dealingPeople: [
-          { required: true, message: '请选择处理人', trigger: 'blur' }
-        ],
-        note: [
-          { message: '请输入备注信息', trigger: 'blur' }
-        ]
-      }
+      // dialogVisible: false,
+      alarmDialogVisible: false,
+      options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '川北监狱' }, { selectId: '3', label: '川西监狱' }]
+      // ruleForm: {
+      //   alarmSource: '',
+      //   dealingPeople: '',
+      //   solveTime: '',
+      //   note: ''
+      // },
+      // rules: {
+      //   alarmSource: [
+      //     { required: true, message: '请输入告警源', trigger: 'blur' }
+      //   ],
+      //   dealingPeople: [
+      //     { required: true, message: '请选择处理人', trigger: 'blur' }
+      //   ],
+      //   note: [
+      //     { message: '请输入备注信息', trigger: 'blur' }
+      //   ]
+      // }
     }
   },
   created () {
-    this.$store.dispatch('warn/index/getList')
   },
   methods: {
     edit (data) {
@@ -293,11 +209,6 @@ export default {
     // 触发关闭弹窗事件
     handleClose (done) {
       this.dialogVisible = false;
-      // this.$confirm('确认关闭？')
-      //   .then(_ => {
-      //     done();
-      //   })
-      //   .catch(_ => { });
     },
     alarmHandleClose (done) {
       this.alarmDialogVisible = false;
@@ -316,15 +227,15 @@ export default {
 <style lang="scss" scoped>
 .content {
   font-size: 14px;
-  padding: 28px 10px;
+  padding: 22px 10px;
+  padding-bottom: 0;
   box-sizing: border-box;
   background-color: #eeeff4;
   .headMenu {
     height: 60px;
     overflow: hidden;
-    margin-bottom: 23px;
+    margin-bottom: 20px;
     .headMenuLeft {
-      font-size: 18px;
       color: #0d0d0d;
       height: 60px;
       line-height: 60px;
@@ -346,7 +257,7 @@ export default {
           padding-left: 15%;
         }
         .alarm-event-num {
-          font-size: 26px;
+          font-size: 18px;
           color: #5466e0;
           padding-left: 15%;
           vertical-align: middle;
@@ -386,7 +297,7 @@ export default {
             vertical-align: middle;
           }
           span:nth-child(2) {
-            font-size: 26px;
+            font-size: 18px;
             color: #5466e0;
             padding-left: 1%;
             vertical-align: middle;
@@ -441,7 +352,7 @@ export default {
             color: #b2b2b2;
           }
           span:nth-of-type(2) {
-            font-size: 24px;
+            font-size: 18px;
             vertical-align: middle;
           }
         }
@@ -458,11 +369,11 @@ export default {
   }
   .tabs-body {
     position: relative;
-    padding: 21px 10px;
+    padding: 18px 10px;
     background-color: #fff;
     .tabs-right-head {
       position: absolute;
-      top: 10px;
+      top: 6px;
       right: 10px;
       z-index: 99;
     }
