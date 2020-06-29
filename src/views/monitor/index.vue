@@ -68,6 +68,7 @@ export default {
     padding: 10px;
     // box-sizing: border-box;
     background-color: #eff0f5;
+    overflow: auto;
   }
 }
 </style>
