@@ -129,11 +129,11 @@ export default {
       tableSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [10, 20, 30]
+          rowsPerPage: [5, 10, 20]
         },
         param: {
           page: 1,
-          rows: 10,
+          rows: 5,
           sord: 'desc',
           _search: false,
           filters: {

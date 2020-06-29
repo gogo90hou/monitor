@@ -33,7 +33,7 @@ const data = Mock.mock({
       var val = this.name.nameId === 1 && '锦江监狱' || this.name.nameId === 2 && '邑州监狱' || this.name.nameId === 3 && '川西监狱' || this.name.nameId === 4 && '川北监狱' || this.name.nameId === 5 && '雷马屏监狱'
       return val
     },
-    'position|1': ['机房门口', '新安装的设备', '二楼大门左侧', '机房内'],
+    'position|1': ['机房门口', '新安装的设备', '二楼大门左侧', '机房内']
   }]
 })
 const interchanger = Mock.mock({
@@ -48,7 +48,7 @@ const interchanger = Mock.mock({
       var val = this.name.nameId === 1 && '锦江监狱' || this.name.nameId === 2 && '邑州监狱' || this.name.nameId === 3 && '川西监狱' || this.name.nameId === 4 && '川北监狱' || this.name.nameId === 5 && '雷马屏监狱'
       return val
     },
-    'position|1': ['机房门口', '新安装的设备', '二楼大门左侧', '机房内'],
+    'position|1': ['机房门口', '新安装的设备', '二楼大门左侧', '机房内']
   }]
 })
 export default [
