@@ -6,16 +6,12 @@
     <div class="main-container">
       <!-- <div :class="{'fixed-header':fixedHeader}" /> -->
       <app-main />
-      <!-- <right-panel>
-        <settings />
-      </right-panel>-->
     </div>
   </div>
 </template>
 
 <script>
-import RightPanel from '@/components/RightPanel';
-import { AppMain, Settings, CommonHeader } from './components'
+import { AppMain, CommonHeader } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 import { mapState } from 'vuex';
 
@@ -23,9 +19,7 @@ export default {
   name: 'Layout',
   components: {
     AppMain,
-    RightPanel,
-    CommonHeader,
-    Settings
+    CommonHeader
   },
   mixins: [ResizeMixin],
   computed: {
