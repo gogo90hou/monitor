@@ -90,7 +90,8 @@ export default {
           formatter: ''
         }, {
           label: '规则名称',
-          key: 'name'
+          key: 'name',
+          width: '140'
         }, {
           label: '告警源',
           key: 'source',
@@ -99,7 +100,7 @@ export default {
         }, {
           label: '告警类别',
           key: 'type',
-          formatter: '',
+          width: '140',
           filters: [{ text: '安防设备', value: '安防设备' }, { text: '应用软件', value: '应用软件' }, { text: 'IT设备', value: 'IT设备' }, { text: '中间件', value: '中间件' }, { text: '云平台', value: '云平台' }, { text: '操作系统和数据库', value: '操作系统和数据库' }]
         }, {
           label: '告警级别',
@@ -129,7 +130,7 @@ export default {
         }, {
           label: '规则描述',
           key: 'des',
-          formatter: ''
+          width: '200'
         }, {
           label: '运行状态',
           key: 'runstate',
@@ -147,7 +148,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '256',
           buttons: [{
             label: '停止',
             type: 'button',
@@ -170,11 +171,11 @@ export default {
       tableSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {

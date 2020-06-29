@@ -4,6 +4,11 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
   const end = page * pagesize > data[key].length ? data[key].length : page * pagesize;
   const result = [];
   for (let i = start; i < end; i++) {
+    for (var item in data[key][i]) {
+      if (data[key][i][item] instanceof Object) {
+        data[key][i][item] = data[key][i][item].name;
+      }
+    }
     result.push(data[key][i]);//
   }
   const ret = {};
@@ -25,10 +30,13 @@ const data = Mock.mock({
     id: '@increment',
     'name|1': ['大门门禁', '二楼门禁', '三楼门禁', '摩天大楼', '保密室'],
     'type|1': ['门禁', '报警', '广播', '存储'],
-    'gateway|1': ['网关1', '网关2', '网关3'],
-    'accessEquipment|1': ['服务器1', '交换机2', '防火墙3'],
+    'gateway|1': [{ nameId: 1, name: '浏览器采集网关' }, { nameId: 2, name: '数据库采集网关' }, { nameId: 3, name: '服务器采集网关' }],
+    'accessEquipment|1': ['服务器', '交换机', '防火墙'],
     'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '雷马屏监狱'],
-    'location|1': ['省局1楼机房', '省局2楼机房', '省局3楼机房', '省局4楼机房', '省局5楼机房']
+    'location|1': function () {
+      var val = this.gateway.nameId === 1 && '浏览器一楼机房' || this.gateway.nameId === 2 && '数据库二楼机房' || this.gateway.nameId === 3 && '服务器三楼机房'
+      return val
+    }
   }]
 })
 export default [

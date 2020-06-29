@@ -123,19 +123,19 @@
           <el-row>
             <el-col :span="6">
               <bar :score="50" />
-              <span class="name">一体化平台</span>
+              <span class="name">刑罚执行</span>
             </el-col>
             <el-col :span="6">
               <bar :score="40" />
-              <span class="name">会见系统</span>
+              <span class="name">狱政管理</span>
             </el-col>
             <el-col :span="6">
               <bar :score="20" />
-              <span class="name">OA系统</span>
+              <span class="name">教育改造</span>
             </el-col>
             <el-col :span="6">
               <bar :score="80" />
-              <span class="name">狱政系统</span>
+              <span class="name">生活卫生</span>
             </el-col>
           </el-row>
           <!-- <img src="./ui/wave.svg" alt /> -->
@@ -257,38 +257,26 @@ export default {
       liHeight: 40,
       showNum: 5,
       warnList: [{
-        name: '省局服务器省局服务器省局服务器1',
+        name: '省局一体化平台应用软件服务器',
         num: 620
       }, {
-        name: '省局服务器省局服务器省局服务器1',
+        name: '省局一楼大门-门禁',
         num: 550
       }, {
-        name: '省局服务器省局服务器1',
-        num: 620
+        name: '省局数据库服务器',
+        num: 470
       }, {
-        name: '省局服务器省局服务器省局服务器1',
-        num: 620
+        name: '省局网络交换机',
+        num: 430
       }, {
-        name: '省局服务器1',
-        num: 620
+        name: '行政办公室windows操作系统',
+        num: 420
       }, {
-        name: '省局服务器省局服务器省局服务器1',
-        num: 620
+        name: '行政楼2楼东面摄像头',
+        num: 400
       }, {
-        name: '省局服务器省局服务器省局服务器1',
-        num: 620
-      }, {
-        name: '省局服务器省局服务器省局服务器1',
-        num: 620
-      }, {
-        name: '省局服务器省局服务器省局服务器1',
-        num: 620
-      }, {
-        name: '省局服务器省局服务器省局服务器1',
-        num: 620
-      }, {
-        name: '省局服务器省局服务器省局服务器1',
-        num: 620
+        name: '行政楼1楼西面摄像头',
+        num: 370
       }]
     }
   },

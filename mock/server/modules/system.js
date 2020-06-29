@@ -4,6 +4,11 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
   const end = page * pagesize > data[key].length ? data[key].length : page * pagesize;
   const result = [];
   for (let i = start; i < end; i++) {
+    for (var item in data[key][i]) {
+      if (data[key][i][item] instanceof Object) {
+        data[key][i][item] = data[key][i][item].name;
+      }
+    }
     result.push(data[key][i]);//
   }
   const ret = {};
@@ -287,11 +292,14 @@ const sysdetail = {
 const data = Mock.mock({
   'items|30': [{
     actualId: '@increment',
-    'areaName|1': ['省局服务器1', '省局服务器2'],
+    'areaName': function () {
+      var val = this.osName.nameId === 1 && '锦江一体化平台数据服务器' || this.osName.nameId === 2 && '邑州体罚系统运行服务器' || this.osName.nameId === 3 && '川西数据备份系统服务器' || this.osName.nameId === 4 && '川北OA系统运行服务器' || this.osName.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      return val
+    },
     'cpuStateName|1': [1, 0],
     'diskStateName|1': [1, 0],
     'memoryStateName|1': [1, 0],
-    'osName|1': ['操作系统名称1', '操作系统名称2', '操作系统名称3', '操作系统名称4', '操作系统名称5'],
+    'osName|1': [{ nameId: 1, name: '锦江操作系统' }, { nameId: 2, name: '邑州操作系统' }, { nameId: 3, name: '川西操作系统' }, { nameId: 4, name: '川北操作系统' }, { nameId: 5, name: '雷马屏操作系统' }],
     'osTypeName|1': ['windows操作系统', 'linux操作系统'],
     'runStateName|1': [1, 0]
   }]
@@ -299,7 +307,7 @@ const data = Mock.mock({
 const mysqlList = Mock.mock({
   'items|51': [{
     id: '@increment',
-    'databaseName|1': ['mysql1', 'mysql2', 'mysql3', 'mysql4'],
+    'databaseName|1': [{ nameId: 1, name: '锦江数据库' }, { nameId: 2, name: '邑州数据库' }, { nameId: 3, name: '川西数据库' }, { nameId: 4, name: '川北数据库' }, { nameId: 5, name: '雷马屏数据库' }],
     'runState|1': [1, 2, 3],
     'databaseFileSize': '@integer(30, 100)',
     'processNum': '@integer(30, 100)',
@@ -307,13 +315,16 @@ const mysqlList = Mock.mock({
     'conversation': '@integer(30, 100)',
     'audit|1': ['1', '0'],
     'databaseConnectionNum': '@integer(30, 100)',
-    'area|1': ['操作系统名称1', '操作系统名称2', '操作系统名称3', '操作系统名称4', '操作系统名称5']
+    'area': function () {
+      var val = this.databaseName.nameId === 1 && '锦江一体化平台数据服务器' || this.databaseName.nameId === 2 && '邑州体罚系统运行服务器' || this.databaseName.nameId === 3 && '川西数据备份系统服务器' || this.databaseName.nameId === 4 && '川北OA系统运行服务器' || this.databaseName.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      return val
+    }
   }]
 })
 const oracledata = Mock.mock({
   'items|31': [{
     id: '@increment',
-    'databaseName|1': ['oracle1', 'oracle2', 'oracle3', 'oracle4'],
+    'databaseName|1': [{ nameId: 1, name: '锦江数据库' }, { nameId: 2, name: '邑州数据库' }, { nameId: 3, name: '川西数据库' }, { nameId: 4, name: '川北数据库' }, { nameId: 5, name: '雷马屏数据库' }],
     'runState|1': [1, 2, 3],
     'processNum': '@integer(30, 100)',
     'databaseFileSize': '@integer(30, 100)',
@@ -321,13 +332,16 @@ const oracledata = Mock.mock({
     'conversation': '@integer(30, 100)',
     'audit|1': ['1', '0'],
     'databaseConnectionNum': '@integer(30, 100)',
-    'area|1': ['操作系统名称1', '操作系统名称2', '操作系统名称3', '操作系统名称4', '操作系统名称5']
+    'area|1': function () {
+      var val = this.databaseName.nameId === 1 && '锦江一体化平台数据服务器' || this.databaseName.nameId === 2 && '邑州体罚系统运行服务器' || this.databaseName.nameId === 3 && '川西数据备份系统服务器' || this.databaseName.nameId === 4 && '川北OA系统运行服务器' || this.databaseName.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      return val
+    }
   }]
 })
 const sqlserverData = Mock.mock({
   'items|71': [{
     id: '@increment',
-    'databaseName|1': ['sqlserver1', 'sqlserver2', 'sqlserver3', 'sqlserver4'],
+    'databaseName|1': [{ nameId: 1, name: '锦江数据库' }, { nameId: 2, name: '邑州数据库' }, { nameId: 3, name: '川西数据库' }, { nameId: 4, name: '川北数据库' }, { nameId: 5, name: '雷马屏数据库' }],
     'runState|1': [1, 2, 3],
     'processNum': '@integer(30, 100)',
     'databaseFileSize': '@integer(30, 100)',
@@ -335,7 +349,10 @@ const sqlserverData = Mock.mock({
     'conversation': '@integer(30, 100)',
     'audit|1': ['1', '0'],
     'databaseConnectionNum': '@integer(30, 100)',
-    'area|1': ['操作系统名称1', '操作系统名称2', '操作系统名称3', '操作系统名称4', '操作系统名称5']
+    'area|1': function () {
+      var val = this.databaseName.nameId === 1 && '锦江一体化平台数据服务器' || this.databaseName.nameId === 2 && '邑州体罚系统运行服务器' || this.databaseName.nameId === 3 && '川西数据备份系统服务器' || this.databaseName.nameId === 4 && '川北OA系统运行服务器' || this.databaseName.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      return val
+    }
   }]
 })
 export default [

@@ -4,6 +4,11 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
   const end = page * pagesize > data[key].length ? data[key].length : page * pagesize;
   const result = [];
   for (let i = start; i < end; i++) {
+    for (var item in data[key][i]) {
+      if (data[key][i][item] instanceof Object) {
+        data[key][i][item] = data[key][i][item].name;
+      }
+    }
     result.push(data[key][i]);//
   }
   const ret = {};
@@ -30,23 +35,47 @@ function removeData2 (id) {
 const data = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': ['操作系统1', '操作系统2', '操作系统3', '操作系统4', '操作系统5'],
+    'name|1': [{ nameId: 1, name: '锦江操作系统' }, { nameId: 2, name: '邑州操作系统' }, { nameId: 3, name: '川西操作系统' }, { nameId: 4, name: '川北操作系统' }, { nameId: 5, name: '雷马屏操作系统' }],
     'type|1': ['windows操作系统', 'liunx操作系统'],
-    'gateway|1': ['网关1', '网关2', '网关3'],
-    'accessSystem|1': ['操作系统1', '操作系统2', '操作系统3'],
-    'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '雷马屏监狱'],
-    'server|1': ['省局服务器1', '省局服务器2', '省局服务器3', '省局服务器4', '省局服务器5']
+    'gateway': function () {
+      var val = this.name.nameId === 1 && '锦江浏览器网关' || this.name.nameId === 2 && '邑州数据库网关' || this.name.nameId === 3 && '川西服务器网关' || this.name.nameId === 4 && '川北数据库网关' || this.name.nameId === 5 && '雷马屏服务器网关'
+      return val
+    },
+    'accessSystem': function () {
+      var val = this.name.nameId === 1 && '浏览器网关接入' || this.name.nameId === 2 && '数据库网关接入' || this.name.nameId === 3 && '服务器网关接入' || this.name.nameId === 4 && '川北数据库网关接入' || this.name.nameId === 5 && '雷马屏服务器网关接入'
+      return val
+    },
+    'area': function () {
+      var val = this.name.nameId === 1 && '锦江监狱' || this.name.nameId === 2 && '邑州监狱' || this.name.nameId === 3 && '川西监狱' || this.name.nameId === 4 && '川北监狱' || this.name.nameId === 5 && '雷马屏监狱'
+      return val
+    },
+    'server': function () {
+      var val = this.name.nameId === 1 && '锦江服务器' || this.name.nameId === 2 && '邑州服务器' || this.name.nameId === 3 && '川西服务器' || this.name.nameId === 4 && '川北服务器' || this.name.nameId === 5 && '雷马屏服务器'
+      return val
+    }
   }]
 })
 const data2 = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': ['数据库1', '数据库2', '数据库3', '数据库4', '数据库5'],
+    'name|1': [{ nameId: 1, name: '锦江数据库' }, { nameId: 2, name: '邑州数据库' }, { nameId: 3, name: '川西数据库' }, { nameId: 4, name: '川北数据库' }, { nameId: 5, name: '雷马屏数据库' }],
     'type|1': ['Orcle', 'MySQL', 'SqlServer'],
-    'gateway|1': ['网关1', '网关2', '网关3'],
-    'accessDatabase|1': ['数据库1', '数据库2', '数据库3'],
-    'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '雷马屏监狱'],
-    'server|1': ['省局服务器1', '省局服务器2', '省局服务器3', '省局服务器4', '省局服务器5']
+    'gateway|1': function () {
+      var val = this.name.nameId === 1 && '锦江浏览器网关' || this.name.nameId === 2 && '邑州数据库网关' || this.name.nameId === 3 && '川西服务器网关' || this.name.nameId === 4 && '川北数据库网关' || this.name.nameId === 5 && '雷马屏服务器网关'
+      return val
+    },
+    'accessDatabase|1': function () {
+      var val = this.name.nameId === 1 && '浏览器网关接入' || this.name.nameId === 2 && '数据库网关接入' || this.name.nameId === 3 && '服务器网关接入' || this.name.nameId === 4 && '川北数据库网关接入' || this.name.nameId === 5 && '雷马屏服务器网关接入'
+      return val
+    },
+    'area': function () {
+      var val = this.name.nameId === 1 && '锦江监狱' || this.name.nameId === 2 && '邑州监狱' || this.name.nameId === 3 && '川西监狱' || this.name.nameId === 4 && '川北监狱' || this.name.nameId === 5 && '雷马屏监狱'
+      return val
+    },
+    'server': function () {
+      var val = this.name.nameId === 1 && '锦江服务器' || this.name.nameId === 2 && '邑州服务器' || this.name.nameId === 3 && '川西服务器' || this.name.nameId === 4 && '川北服务器' || this.name.nameId === 5 && '雷马屏服务器'
+      return val
+    }
   }]
 })
 export default [

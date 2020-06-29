@@ -19,11 +19,11 @@ export default {
       tableSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -42,7 +42,7 @@ export default {
         {
           label: '应用软件名称',
           key: 'name',
-          formatter: ''
+          width: '220'
         }, {
           label: '运行状态',
           key: 'runstate',
@@ -98,11 +98,15 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('monitor/soft/getList')
   },
   methods: {
     edit (data) {
       console.log(data)
+    },
+    judgeEvent (val) {
+      if (val === 'manageHandle') {
+        this.$router.push('/softManage')
+      }
     }
   }
 }

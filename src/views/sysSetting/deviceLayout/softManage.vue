@@ -87,16 +87,17 @@ export default {
         }, {
           label: '采集网关',
           key: 'gateway',
-          formatter: '',
+          width: '180',
           filters: [{ text: '网关1', value: '网关1' }, { text: '网关2', value: '网关2' }, { text: '网关3', value: '网关3' }]
         }, {
           label: '接入软件',
           key: 'accessSoft',
+          width: '180',
           formatter: ''
         }, {
           label: '所在服务器',
           key: 'server',
-          formatter: ''
+          width: '220'
         }, {
           label: '所在区域',
           key: 'area',
@@ -105,7 +106,7 @@ export default {
         }, {
           label: '软件描述',
           key: 'des',
-          formatter: ''
+          width: '180'
         }, {
           label: '操作',
           key: 'operation',
@@ -127,11 +128,11 @@ export default {
       tableSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {

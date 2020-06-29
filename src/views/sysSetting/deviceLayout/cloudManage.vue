@@ -78,30 +78,30 @@ export default {
         {
           label: '云平台名称',
           key: 'name',
-          formatter: ''
+          width: '160'
         },
         {
           label: '采集网关',
           key: 'gateway',
-          formatter: '',
+          width: '180',
           filters: [{ text: '网关1', value: '网关1' }, { text: '网关2', value: '网关2' }, { text: '网关3', value: '网关3' }]
         }, {
           label: '接入平台',
           key: 'accessCloud',
-          formatter: ''
+          width: '180'
         }, {
           label: '所在区域',
           key: 'area',
-          formatter: '',
+          width: '160',
           filters: [{ text: '锦江监狱', value: '锦江监狱' }, { text: '邑州监狱', value: '邑州监狱' }, { text: '川西监狱', value: '川西监狱' }, { text: '川北监狱', value: '川北监狱' }, { text: '雷马屏监狱', value: '雷马屏监狱' }]
         }, {
           label: '所在服务器',
           key: 'location',
-          formatter: ''
+          width: '180'
         }, {
           label: '云平台描述',
           key: 'des',
-          formatter: ''
+          width: '180'
         }, {
           label: '操作',
           key: 'operation',
@@ -124,11 +124,11 @@ export default {
       tableSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {

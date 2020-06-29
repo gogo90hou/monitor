@@ -68,11 +68,11 @@ export default {
       tableSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 20]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -120,7 +120,7 @@ export default {
         }, {
           label: '所在服务器',
           key: 'areaName',
-          formatter: ''
+          width: '220'
         }, {
           label: '操作',
           key: 'operation',
@@ -137,11 +137,11 @@ export default {
       mysqlSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 20]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -159,11 +159,11 @@ export default {
       oracleSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 20]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -181,11 +181,11 @@ export default {
       sqlserverSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 20]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -255,8 +255,8 @@ export default {
         }, {
           label: '所在位置',
           key: 'area',
-          formatter: '',
-          filters: [{ text: '省局服务器1', value: '省局服务器1' }, { text: '省局服务器2', value: '省局服务器2' }, { text: '省局服务器3', value: '省局服务器3' }]
+          width: '220',
+          filters: [{ text: '锦江一体化平台数据服务器', value: '锦江一体化平台数据服务器' }, { text: '邑州体罚系统运行服务器', value: '邑州体罚系统运行服务器' }, { text: '雷马屏应急指挥平台数据服务器', value: '雷马屏应急指挥平台数据服务器' }, { text: '川北OA系统运行服务器', value: '川北OA系统运行服务器' }, { text: '川西数据备份系统服务器', value: '川西数据备份系统服务器' }]
         }, {
           label: '操作',
           key: 'operation',
@@ -280,7 +280,9 @@ export default {
       console.log(val);
     },
     managementHandle (val) {
-      console.log(val);
+      if (val === 'manageHandle') {
+        this.$router.push('/databaseManage')
+      }
     },
     edit (data) {
       console.log(data)

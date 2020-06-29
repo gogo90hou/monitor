@@ -61,11 +61,11 @@ export default {
         }, {
           label: '告警描述',
           key: 'des',
-          formatter: ''
+          width: '180'
         }, {
           label: '告警时间',
           key: 'alarmTime',
-          formatter: ''
+          width: '180'
         }, {
           label: '告警状态',
           key: 'state',
@@ -86,7 +86,7 @@ export default {
         }, {
           label: '确认时间',
           key: 'setTime',
-          formatter: ''
+          width: '180'
         }, {
           label: '处理状态',
           key: 'dealState',
@@ -123,11 +123,11 @@ export default {
       tableSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {

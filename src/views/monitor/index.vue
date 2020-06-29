@@ -62,7 +62,7 @@ export default {
     display: inline-block;
     width: calc(100% - 120px);
     height: calc(100vh - 64px);
-    // overflow: auto;
+    overflow: auto;
     vertical-align: top;
     font-size: 14px;
     padding: 10px;

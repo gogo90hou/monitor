@@ -4,6 +4,11 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
   const end = page * pagesize > data[key].length ? data[key].length : page * pagesize;
   const result = [];
   for (let i = start; i < end; i++) {
+    for (var item in data[key][i]) {
+      if (data[key][i][item] instanceof Object) {
+        data[key][i][item] = data[key][i][item].name;
+      }
+    }
     result.push(data[key][i]);//
   }
   const ret = {};
@@ -23,13 +28,22 @@ function removeData (id) {
 const data = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': ['省局Nginx1', '省局Nginx2', '省局Nginx3', '省局Nginx4', '省局Nginx5'],
+    'name|1': function () {
+      var val = this.gateway.nameId === 1 && '浏览器中间件' || this.gateway.nameId === 2 && '数据库中间件' || this.gateway.nameId === 3 && '服务器中间件'
+      return val
+    },
     'type|1': ['Nginx', 'Apache', 'Redis', 'JVM'],
-    'gateway|1': ['网关1', '网关2', '网关3'],
-    'access|1': ['网关接入1', '网关接入2', '网关接入3'],
-    'accessEquipment|1': ['中间件1', '中间件2', '中间件3'],
+    'gateway|1': [{ nameId: 1, name: '浏览器采集网关' }, { nameId: 2, name: '数据库采集网关' }, { nameId: 3, name: '服务器采集网关' }],
+    'access|1': function () {
+      var val = this.gateway.nameId === 1 && '浏览器网关接入' || this.gateway.nameId === 2 && '数据库网关接入' || this.gateway.nameId === 3 && '服务器网关接入'
+      return val
+    },
+    'accessEquipment|1': ['服务器', '交换机', '防火墙'],
     'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '雷马屏监狱'],
-    'location|1': ['省局服务器1', '省局服务器2', '省局服务器3']
+    'location|1': function () {
+      var val = this.gateway.nameId === 1 && '锦江一体化平台数据服务器' || this.gateway.nameId === 2 && '邑州体罚系统运行服务器' || this.gateway.nameId === 3 && '川西数据备份系统服务器' || this.gateway.nameId === 4 && '川北OA系统运行服务器' || this.gateway.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      return val
+    }
   }]
 })
 export default [

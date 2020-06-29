@@ -1,5 +1,6 @@
 'use strict'
 const path = require('path')
+// const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const defaultSettings = require('./src/settings.js')
 const $themes = require('./src/styles/variables.scss.js')
 const styles = `$themes:${JSON.stringify($themes).replace(/{/g, '(').replace(/}/g, ')').replace(/"/g, '')};`;
@@ -74,6 +75,14 @@ module.exports = {
         '&': resolve('src/components/topo')
       }
     }
+    // plugins: [
+    //   new PrerenderSPAPlugin({
+    //     // 指定构建好的文件目录
+    //     staticDir: path.join(__dirname, 'dist'),
+    //     // 指定需要预渲染的的页面的路由
+    //     routes: ['/about']
+    //   })
+    // ]
   },
   chainWebpack (config) {
     config.plugins.delete('preload') // TODO: need test

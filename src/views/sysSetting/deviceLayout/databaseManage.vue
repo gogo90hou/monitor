@@ -153,21 +153,22 @@ export default {
         {
           label: '操作系统名称',
           key: 'name',
+          width: '140',
           formatter: ''
         }, {
           label: '系统类型',
           key: 'type',
-          formatter: '',
+          width: '140',
           filters: [{ text: 'windows操作系统', value: 'windows操作系统' }, { text: 'liunx操作系统', value: 'liunx操作系统' }]
         }, {
           label: '采集网关',
           key: 'gateway',
-          formatter: '',
+          width: '140',
           filters: [{ text: '网关1', value: '网关1' }, { text: '网关2', value: '网关2' }, { text: '网关3', value: '网关3' }]
         }, {
           label: '接入系统',
           key: 'accessSystem',
-          formatter: ''
+          width: '200'
         }, {
           label: '所在区域',
           key: 'area',
@@ -176,7 +177,7 @@ export default {
         }, {
           label: '所在服务器',
           key: 'server',
-          formatter: ''
+          width: '140'
         }, {
           label: '操作',
           key: 'operation',
@@ -200,11 +201,11 @@ export default {
       tableSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -222,11 +223,11 @@ export default {
       tableSetting2: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -268,29 +269,30 @@ export default {
         {
           label: '数据库名称',
           key: 'name',
-          formatter: ''
+          width: '140'
         }, {
           label: '数据库类型',
           key: 'type',
+          width: '140',
           filters: [{ text: 'Orcle', value: 'Orcle' }, { text: 'MySQL', value: 'MySQL' }, { text: 'SqlServer', value: 'SqlServer' }]
         }, {
           label: '采集网关',
           key: 'gateway',
-          formatter: '',
+          width: '140',
           filters: [{ text: '网关1', value: '网关1' }, { text: '网关2', value: '网关2' }, { text: '网关3', value: '网关3' }]
         }, {
           label: '接入数据库',
           key: 'accessDatabase',
-          formatter: ''
+          width: '140'
         }, {
           label: '所在区域',
           key: 'area',
-          formatter: '',
+          width: '140',
           filters: [{ text: '锦江监狱', value: '锦江监狱' }, { text: '邑州监狱', value: '邑州监狱' }, { text: '川西监狱', value: '川西监狱' }, { text: '川北监狱', value: '川北监狱' }, { text: '雷马屏监狱', value: '雷马屏监狱' }]
         }, {
           label: '所在服务器',
           key: 'server',
-          formatter: ''
+          width: '140'
         }, {
           label: '操作',
           key: 'operation',

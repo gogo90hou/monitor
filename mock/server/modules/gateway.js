@@ -4,6 +4,11 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
   const end = page * pagesize > data[key].length ? data[key].length : page * pagesize;
   const result = [];
   for (let i = start; i < end; i++) {
+    for (var item in data[key][i]) {
+      if (data[key][i][item] instanceof Object) {
+        data[key][i][item] = data[key][i][item].name;
+      }
+    }
     result.push(data[key][i]);//
   }
   const ret = {};
@@ -23,10 +28,17 @@ function removeData (id) {
 const data = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': ['网关1', '网关2', '网关三'],
-    'collecting|1': ['网关采集源1', '网关采集源2', '网关采集源3'],
-    'area|1': ['锦江监狱', '乐山监狱', '监狱'],
-    'des': '这是一段描述'
+    'name|1': [{ nameId: 1, name: '浏览器采集网关' }, { nameId: 2, name: '数据库采集网关' }, { nameId: 3, name: '服务器采集网关' }],
+    'osTypeName|1': ['windows操作系统', 'linux操作系统'],
+    'collecting': function () {
+      var val = this.name.nameId === 1 && '浏览器采集源' || this.name.nameId === 2 && '数据库采集源' || this.name.nameId === 3 && '服务器采集源'
+      return val
+    },
+    'area|1': ['锦江监狱', '乐山监狱', '川北监狱', '川西监狱', '雷马屏监狱'],
+    'des|1': function () {
+      var val = this.name.nameId === 1 && '这是一个浏览器的描述' || this.name.nameId === 2 && '这是数据库描述信息' || this.name.nameId === 3 && '这是服务器的描述信息'
+      return val
+    }
   }]
 })
 export default [

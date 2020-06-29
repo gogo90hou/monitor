@@ -4,6 +4,11 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
   const end = page * pagesize > data[key].length ? data[key].length : page * pagesize;
   const result = [];
   for (let i = start; i < end; i++) {
+    for (var item in data[key][i]) {
+      if (data[key][i][item] instanceof Object) {
+        data[key][i][item] = data[key][i][item].name;
+      }
+    }
     result.push(data[key][i]);//
   }
   const ret = {};
@@ -23,12 +28,27 @@ function removeData (id) {
 const data = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': ['省局云平台1', '省局云平台2', '省局云平台3', '省局云平台4'],
-    'gateway|1': ['网关1', '网关2', '网关3'],
-    'accessCloud|1': ['平台1', '平台2', '平台3', '平台4'],
-    'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '雷马屏监狱'],
-    'location|1': ['省局服务器1', '省局服务器2', '省局服务器3'],
-    'des': '云平台描述'
+    'name|1': [{ nameId: 1, name: '锦江云平台' }, { nameId: 2, name: '邑州云平台' }, { nameId: 3, name: '川西云平台' }, { nameId: 4, name: '川北云平台' }, { nameId: 5, name: '雷马屏平台' }],
+    'gateway': function () {
+      var val = this.name.nameId === 1 && '锦江浏览器网关' || this.name.nameId === 2 && '邑州数据库网关' || this.name.nameId === 3 && '川西服务器网关' || this.name.nameId === 4 && '川北数据库网关' || this.name.nameId === 5 && '雷马屏服务器网关'
+      return val
+    },
+    'accessCloud': function () {
+      var val = this.name.nameId === 1 && '浏览器网关接入' || this.name.nameId === 2 && '数据库网关接入' || this.name.nameId === 3 && '服务器网关接入' || this.name.nameId === 4 && '川北数据库网关接入' || this.name.nameId === 5 && '雷马屏服务器网关接入'
+      return val
+    },
+    'area': function () {
+      var val = this.name.nameId === 1 && '锦江监狱' || this.name.nameId === 2 && '邑州监狱' || this.name.nameId === 3 && '川西监狱' || this.name.nameId === 4 && '川北监狱' || this.name.nameId === 5 && '雷马屏监狱'
+      return val
+    },
+    'location': function () {
+      var val = this.name.nameId === 1 && '锦江服务器' || this.name.nameId === 2 && '邑州服务器' || this.name.nameId === 3 && '川西服务器' || this.name.nameId === 4 && '川北服务器' || this.name.nameId === 5 && '雷马屏服务器'
+      return val
+    },
+    'des': function () {
+      var val = this.name.nameId === 1 && '锦江云平台描述' || this.name.nameId === 2 && '邑州云平台描述' || this.name.nameId === 3 && '川西云平台描述' || this.name.nameId === 4 && '川北云平台描述' || this.name.nameId === 5 && '雷马屏云平台描述'
+      return val
+    }
   }]
 })
 export default [

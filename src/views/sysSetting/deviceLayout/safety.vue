@@ -101,10 +101,12 @@ export default {
         }, {
           label: '接入方式',
           key: 'access',
+          width: '180',
           filters: [{ text: '网关接入1', value: '网关接入1' }, { text: '网关接入2', value: '网关接入2' }, { text: '网关接入3', value: '网关接入3' }]
         }, {
           label: '网关',
           key: 'gateway',
+          width: '180',
           filters: [{ text: '网关1', value: '网关1' }, { text: '网关2', value: '网关2' }, { text: '网关3', value: '网关3' }]
         }, {
           label: '设备ID',
@@ -118,7 +120,7 @@ export default {
         }, {
           label: '设备描述',
           key: 'des',
-          formatter: ''
+          width: '180'
         }, {
           label: '操作',
           key: 'operation',
@@ -140,11 +142,11 @@ export default {
       tableSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {

@@ -4,6 +4,11 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
   const end = page * pagesize > data[key].length ? data[key].length : page * pagesize;
   const result = [];
   for (let i = start; i < end; i++) {
+    for (var item in data[key][i]) {
+      if (data[key][i][item] instanceof Object) {
+        data[key][i][item] = data[key][i][item].name;
+      }
+    }
     result.push(data[key][i]);//
   }
   const ret = {};
@@ -25,11 +30,17 @@ const data = Mock.mock({
     id: '@increment',
     'name|1': ['大门门禁', '二楼门禁', '三楼门禁', '摩天大楼', '保密室'],
     'type|1': ['门禁', '报警', '广播'],
-    'access|1': ['网关接入1', '网关接入2', '网关接入3'],
-    'gateway|1': ['网关1', '网关2', '网关3'],
+    'access|1': function () {
+      var val = this.gateway.nameId === 1 && '浏览器网关接入' || this.gateway.nameId === 2 && '数据库网关接入' || this.gateway.nameId === 3 && '服务器网关接入'
+      return val
+    },
+    'gateway|1': [{ nameId: 1, name: '浏览器采集网关' }, { nameId: 2, name: '数据库采集网关' }, { nameId: 3, name: '服务器采集网关' }],
     'equipmentID|10000-99999': 10000,
     'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '雷马屏监狱'],
-    'des': '设备描述'
+    'des|1': function () {
+      var val = this.gateway.nameId === 1 && '浏览器描述信息' || this.gateway.nameId === 2 && '数据库描述信息' || this.gateway.nameId === 3 && '服务器描述信息'
+      return val
+    }
   }]
 })
 export default [

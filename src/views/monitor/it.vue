@@ -1,6 +1,16 @@
 <template>
   <div>
-    <div class="body-content"><HeadMenu title="IT设备监控列表" :options="options" :search="true" :btnarr="btnarr" @getValue="searchKey" @getSelectId="selectIdHandle" /></div>
+    <div class="body-content">
+      <HeadMenu
+        title="IT设备监控列表"
+        :options="options"
+        :search="true"
+        :btnarr="btnarr"
+        @getValue="searchKey"
+        @getSelectId="selectIdHandle"
+        @getEvent="judgeEvent"
+      />
+    </div>
     <el-tabs v-model="activeName" type="card" class="tab_body" @tab-click="handleClick">
       <el-tab-pane label="服务器" name="first">
         <v-table :field-arr="fieldArr" :table-setting="serverSetting" class="pdNone" @edit="edit" />
@@ -8,12 +18,12 @@
       <el-tab-pane label="交换机" name="second">
         <v-table :field-arr="switchesFieldArr" :table-setting="switchSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
-      <el-tab-pane label="防火墙" name="third">
+      <!-- <el-tab-pane label="防火墙" name="third">
         <v-table :field-arr="firewallFieldArr" :table-setting="firewallSetting" class="pdNone" @edit="edit" />
-      </el-tab-pane>
-      <el-tab-pane label="存储" name="four">
+      </el-tab-pane> -->
+      <!-- <el-tab-pane label="存储" name="four">
         <v-table :field-arr="storageFieldArr" :table-setting="storageSetting" class="pdNone" @edit="edit" />
-      </el-tab-pane>
+      </el-tab-pane> -->
     </el-tabs>
   </div>
 </template>
@@ -24,11 +34,11 @@ export default {
       serverSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -46,11 +56,11 @@ export default {
       switchSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -68,11 +78,11 @@ export default {
       firewallSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -90,11 +100,11 @@ export default {
       storageSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -119,7 +129,7 @@ export default {
         }, {
           label: '服务器名称',
           key: 'name',
-          formatter: ''
+          width: '220'
         }, {
           label: '运行状态',
           key: 'runstate',
@@ -179,7 +189,8 @@ export default {
           filters: 'layout/area'
         }, {
           label: '所在位置',
-          key: 'position'
+          key: 'position',
+          width: '140'
         }, {
           label: '操作',
           key: 'operation',
@@ -204,7 +215,7 @@ export default {
         }, {
           label: '交换机名称',
           key: 'name',
-          formatter: ''
+          width: '220'
         }, {
           label: '运行状态',
           key: 'runstate',
@@ -247,7 +258,8 @@ export default {
           filters: 'layout/area'
         }, {
           label: '所在位置',
-          key: 'position'
+          key: 'position',
+          width: '140'
         }, {
           label: '操作',
           key: 'operation',
@@ -426,6 +438,11 @@ export default {
     },
     handleClick () {
 
+    },
+    judgeEvent (val) {
+      if (val === 'manageHandle') {
+        this.$router.push('/itManage')
+      }
     }
   }
 }

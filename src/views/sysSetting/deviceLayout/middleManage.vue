@@ -83,7 +83,7 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
-          formatter: ''
+          width: '160'
         }, {
           label: '中间件类别',
           key: 'type',
@@ -92,7 +92,7 @@ export default {
         }, {
           label: '采集网关',
           key: 'gateway',
-          formatter: '',
+          width: '160',
           filters: [{ text: '网关1', value: '网关1' }, { text: '网关2', value: '网关2' }, { text: '网关3', value: '网关3' }]
         }, {
           label: '接入设备',
@@ -106,7 +106,7 @@ export default {
         }, {
           label: '所在服务器',
           key: 'location',
-          formatter: ''
+          width: '220'
         }, {
           label: '操作',
           key: 'operation',
@@ -129,11 +129,11 @@ export default {
       tableSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {

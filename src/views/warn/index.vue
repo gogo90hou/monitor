@@ -231,6 +231,12 @@ export default {
   padding-bottom: 0;
   box-sizing: border-box;
   background-color: #eeeff4;
+  .tabs-body {
+    display: inline-block;
+    width: 100%;
+    height: calc(100vh - 164px);
+    overflow: auto;
+  }
   .headMenu {
     height: 60px;
     overflow: hidden;

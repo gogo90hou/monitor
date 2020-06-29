@@ -4,7 +4,12 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
   const end = page * pagesize > data[key].length ? data[key].length : page * pagesize;
   const result = [];
   for (let i = start; i < end; i++) {
-    result.push(data[key][i]);//
+    for (var item in data[key][i]) {
+      if (data[key][i][item] instanceof Object) {
+        data[key][i][item] = data[key][i][item].name;
+      }
+    }
+    result.push(data[key][i]);
   }
   const ret = {};
   ret[key] = result;
@@ -16,12 +21,15 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
 const data = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': ['服务器1', '服务器2', '服务器3', '服务器4', '服务器5'],
+    'name|1': [{ nameId: 1, name: '锦江一体化平台数据服务器' }, { nameId: 2, name: '邑州体罚系统运行服务器' }, { nameId: 3, name: '川西数据备份系统服务器' }, { nameId: 4, name: '川北OA系统运行服务器' }, { nameId: 5, name: '雷马屏应急指挥平台数据服务器' }],
     'runstate|1': [1, 2, 3],
     'approvalProcess': '@integer(30, 100)',
     'todayPv|1': '@integer(1000, 3000)',
-    'area|1': ['锦江监狱', '乐山监狱', '监狱'],
-    'position|1': ['一楼大门左侧', '二楼大门左侧', '机房门口'],
+    'area': function () {
+      var val = this.name.nameId === 1 && '锦江监狱' || this.name.nameId === 2 && '邑州监狱' || this.name.nameId === 3 && '川西监狱' || this.name.nameId === 4 && '川北监狱' || this.name.nameId === 5 && '雷马屏监狱'
+      return val
+    },
+    'position|1': ['机房门口', '新安装的设备', '二楼大门左侧', '机房内'],
     des: '设备描述'
   }]
 })

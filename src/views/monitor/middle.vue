@@ -7,6 +7,7 @@
         :btnarr="btnarr"
         @getValue="searchKey"
         @getSelectId="selectIdHandle"
+        @getEvent="judgeEvent"
       />
     </div>
     <el-tabs v-model="activeName" type="card" class="tab_body" @tab-click="handleClick">
@@ -48,11 +49,11 @@ export default {
       apacheSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -70,11 +71,11 @@ export default {
       flumeSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -92,11 +93,11 @@ export default {
       redisSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -114,11 +115,11 @@ export default {
       jvmSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -136,11 +137,11 @@ export default {
       activeMQSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -158,11 +159,11 @@ export default {
       iisSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -180,11 +181,11 @@ export default {
       flinkSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -202,11 +203,11 @@ export default {
       kafkaSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -229,6 +230,7 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
+          width: '140',
           formatter: ''
         }, {
           label: '运行状态',
@@ -274,6 +276,7 @@ export default {
         {
           label: '所在服务器',
           key: 'serve',
+          width: '220',
           formatter: '',
           filters: [{ text: '服务器1', value: '1' }]
         }, {
@@ -296,6 +299,7 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
+          width: '140',
           formatter: ''
         }, {
           label: '运行状态',
@@ -334,6 +338,7 @@ export default {
         {
           label: '所在服务器',
           key: 'serve',
+          width: '220',
           formatter: '',
           filters: [{ text: '服务器1', value: '1' }]
         }, {
@@ -356,6 +361,7 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
+          width: '140',
           formatter: ''
         }, {
           label: '运行状态',
@@ -410,6 +416,7 @@ export default {
         {
           label: '所在服务器',
           key: 'serve',
+          width: '220',
           formatter: '',
           filters: [{ text: '服务器1', value: '1' }]
         }, {
@@ -432,6 +439,7 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
+          width: '140',
           formatter: ''
         }, {
           label: '运行状态',
@@ -476,6 +484,7 @@ export default {
         {
           label: '所在服务器',
           key: 'serve',
+          width: '220',
           formatter: '',
           filters: [{ text: '服务器1', value: '1' }]
         }, {
@@ -498,6 +507,7 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
+          width: '140',
           formatter: ''
         }, {
           label: '运行状态',
@@ -548,6 +558,7 @@ export default {
         {
           label: '所在服务器',
           key: 'serve',
+          width: '220',
           formatter: '',
           filters: [{ text: '服务器1', value: '1' }]
         }, {
@@ -570,6 +581,7 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
+          width: '140',
           formatter: ''
         }, {
           label: '运行状态',
@@ -612,6 +624,7 @@ export default {
         {
           label: '所在服务器',
           key: 'serve',
+          width: '220',
           formatter: '',
           filters: [{ text: '服务器1', value: '1' }]
         }, {
@@ -634,6 +647,7 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
+          width: '140',
           formatter: ''
         }, {
           label: '运行状态',
@@ -681,6 +695,7 @@ export default {
         {
           label: '所在服务器',
           key: 'serve',
+          width: '220',
           formatter: '',
           filters: [{ text: '服务器1', value: '1' }]
         }, {
@@ -703,6 +718,7 @@ export default {
         {
           label: '中间件名称',
           key: 'name',
+          width: '140',
           formatter: ''
         }, {
           label: '运行状态',
@@ -755,6 +771,7 @@ export default {
         {
           label: '所在服务器',
           key: 'serve',
+          width: '220',
           formatter: '',
           filters: [{ text: '服务器1', value: '1' }]
         }, {
@@ -784,8 +801,10 @@ export default {
     searchKey (val) {
       console.log(val);
     },
-    judgeEvent (event) {
-      this.managementHandle();
+    judgeEvent (val) {
+      if (val === 'manageHandle') {
+        this.$router.push('/middleManage')
+      }
     }
   }
 }

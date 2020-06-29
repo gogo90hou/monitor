@@ -4,6 +4,11 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
   const end = page * pagesize > data[key].length ? data[key].length : page * pagesize;
   const result = [];
   for (let i = start; i < end; i++) {
+    for (var item in data[key][i]) {
+      if (data[key][i][item] instanceof Object) {
+        data[key][i][item] = data[key][i][item].name;
+      }
+    }
     result.push(data[key][i]);//
   }
   const ret = {};
@@ -24,11 +29,20 @@ const data = Mock.mock({
   'items|30': [{
     id: '@increment',
     'name|1': ['会见系统', '目标跟踪系统', '刑罚执行', '狱政管理'],
-    'gateway|1': ['网关1', '网关2', '网关3'],
-    'accessSoft|1': ['应用软件1', '应用软件2', '应用软件3'],
-    'server|1': ['服务器1', '服务器2', '服务器3'],
+    'gateway|1': [{ nameId: 1, name: '浏览器采集网关' }, { nameId: 2, name: '数据库采集网关' }, { nameId: 3, name: '服务器采集网关' }],
+    'accessSoft|1': function () {
+      var val = this.gateway.nameId === 1 && '浏览器应用软件' || this.gateway.nameId === 2 && '数据库应用软件' || this.gateway.nameId === 3 && '服务器应用软件'
+      return val
+    },
+    'server|1': function () {
+      var val = this.gateway.nameId === 1 && '锦江一体化平台数据服务器' || this.gateway.nameId === 2 && '邑州体罚系统运行服务器' || this.gateway.nameId === 3 && '川西数据备份系统服务器' || this.gateway.nameId === 4 && '川北OA系统运行服务器' || this.gateway.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      return val
+    },
     'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '雷马屏监狱'],
-    'des': '软件描述内容'
+    'des|1': function () {
+      var val = this.gateway.nameId === 1 && '浏览器描述信息' || this.gateway.nameId === 2 && '数据库描述信息' || this.gateway.nameId === 3 && '服务器描述信息'
+      return val
+    }
   }]
 })
 export default [
