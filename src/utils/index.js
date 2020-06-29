@@ -130,8 +130,18 @@ export function param2Obj (url) {
   const parts = search.split('&');
   for (let i = 0, len = parts.length; i < len; i++) {
     const param = parts[i].split('=');
-    const key = param[0];
+    let key = param[0];
     const value = param.length > 1 ? param[1] : null;
+    // 判断参数是否是数组
+    if (key.indexOf('[]') !== -1) {
+      key = decodeURIComponent(key.substring(0, key.length - 2));
+      if (params[key] instanceof Array) {
+        params[key].push(decodeURIComponent(value));
+        continue;
+      }
+      params[key] = [decodeURIComponent(value)];
+      continue;
+    }
     params[decodeURIComponent(key)] = decodeURIComponent(value);
   }
   return params;
