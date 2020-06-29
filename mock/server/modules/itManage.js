@@ -15,7 +15,7 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
 }
 function removeData (id) {
   data.items.forEach((item, index) => {
-    if (id == item.id) {
+    if (id === item.id) {
       data.items.splice(index, 1);
     }
   });
@@ -31,7 +31,7 @@ const data = Mock.mock({
     'location|1': ['省局1楼机房', '省局2楼机房', '省局3楼机房', '省局4楼机房', '省局5楼机房']
   }]
 })
-module.exports = [
+export default [
   {
     url: '/itManage',
     type: 'get',

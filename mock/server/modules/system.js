@@ -338,7 +338,7 @@ const sqlserverData = Mock.mock({
     'area|1': ['操作系统名称1', '操作系统名称2', '操作系统名称3', '操作系统名称4', '操作系统名称5']
   }]
 })
-module.exports = [
+export default [
   {
     url: '/os/metric/list',
     type: 'get',

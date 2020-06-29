@@ -15,7 +15,7 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
 }
 function removeData (id) {
   data.items.forEach((item, index) => {
-    if (id == item.id) {
+    if (id === item.id) {
       data.items.splice(index, 1);
     }
   });
@@ -32,7 +32,7 @@ const data = Mock.mock({
     'location|1': ['省局服务器1', '省局服务器2', '省局服务器3']
   }]
 })
-module.exports = [
+export default [
   {
     url: '/middleManage',
     type: 'get',

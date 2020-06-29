@@ -11,7 +11,7 @@ const data = Mock.mock({
   }]
 })
 
-module.exports = [
+export default [
   { // 创建文章和批量删除
     name: '创建文章和批量删除',
     url: '/V03R00C028B001/articleService/articles',
@@ -123,17 +123,17 @@ module.exports = [
     type: 'get',
     response: (req, res) => {
       const id = req.params.id;
-      const item = null;
+      const temp = null;
       data.items.filter((item) => {
         if (item.id === id) {
-          item === item;
+          temp === item;
         }
       });
       return {
         'statusText': '通讯成功',
         'statusCode': 0,
         'data': {
-          ...item
+          ...temp
         }
       }
     }

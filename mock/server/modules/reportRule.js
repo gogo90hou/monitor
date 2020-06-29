@@ -15,21 +15,21 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
 }
 function removeData (id) {
   data.items.forEach((item, index) => {
-    if (id == item.id) {
+    if (id === item.id) {
       data.items.splice(index, 1);
     }
   });
 }
 function removeData2 (id) {
   data2.items.forEach((item, index) => {
-    if (id == item.id) {
+    if (id === item.id) {
       data2.items.splice(index, 1);
     }
   });
 }
 function removeData3 (id) {
   data3.items.forEach((item, index) => {
-    if (id == item.id) {
+    if (id === item.id) {
       data3.items.splice(index, 1);
     }
   });
@@ -69,7 +69,7 @@ const data3 = Mock.mock({
     'redirectLevel|1': [1, 2, 3, 4]
   }]
 })
-module.exports = [
+export default [
   {
     url: '/ruleFilter',
     type: 'get',

@@ -419,7 +419,7 @@ const data = [{
 //     'appClientId': '2493ebd832074abbbeffbb06da88245c'
 //   },
 //   'appClientId': '2493ebd832074abbbeffbb06da88245c'
-// }, 
+// },
 {
   'id': '242d69516b70487680d4d9abbea92e16',
   'menuName': '设备配置',
@@ -501,7 +501,7 @@ const data = [{
 //     'appClientId': '2493ebd832074abbbeffbb06da88245c'
 //   },
 //   'appClientId': '2493ebd832074abbbeffbb06da88245c'
-// }, 
+// },
 // {
 //   'id': '3c5e3b08679047ff8e4d18199402238b',
 //   'menuName': '数据备份',
@@ -522,7 +522,7 @@ const data = [{
 //     'appClientId': '2493ebd832074abbbeffbb06da88245c'
 //   },
 //   'appClientId': '2493ebd832074abbbeffbb06da88245c'
-// }, 
+// },
 {
   'id': '353bb0b22b0b4418b11638819a1fe7fd',
   'menuName': '编辑拓扑图',
@@ -970,7 +970,7 @@ const permList =
     { 'isParent': false, 'name': '删除', 'id': '92DF91A44284412BE053D000A8C0C1C3' },
     { 'isParent': false, 'name': '编辑', 'id': '92DF91A44285412BE053D000A8C0C1C3' },
     { 'isParent': false, 'name': '导出', 'id': '92DF91A44286412BE053D000A8C0C1C3' }, { 'isParent': false, 'name': '导出到json', 'id': '92DF91A44287412BE053D000A8C0C1C3' }, { 'isParent': false, 'name': '从json导入', 'id': '92DF91A44288412BE053D000A8C0C1C3' }]
-module.exports = [
+export default [
   {
     url: '/list',
     type: 'post',

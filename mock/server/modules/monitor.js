@@ -24,7 +24,7 @@ const data = Mock.mock({
     des: '设备描述'
   }]
 })
-module.exports = [
+export default [
   {
     url: '/monitor/list',
     type: 'get',

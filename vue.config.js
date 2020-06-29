@@ -48,7 +48,7 @@ module.exports = {
   devServer: {
     open: false,
     contentBase: path.join(__dirname, 'public'),
-    disableHostCheck: true
+    disableHostCheck: true,
     // proxy: {
     //   '/dev-api': {
     //     // target: 'http://localhost:9999',
@@ -62,6 +62,7 @@ module.exports = {
     //     }
     //   }
     // }
+    before: require('./mock/localServer/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that

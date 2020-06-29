@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     url: '/database/mysql/innodbBufferPoolReadSec/:actualid', // mysql物理磁盘读取次数(折线图)
     type: 'get',

@@ -40,7 +40,7 @@ const interchanger = Mock.mock({
     'position|1': ['一楼大门左侧', '二楼大门左侧', '机房门口']
   }]
 })
-module.exports = [
+export default [
   {
     url: '/server/list',
     type: 'get',

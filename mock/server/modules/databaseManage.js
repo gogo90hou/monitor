@@ -15,14 +15,14 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
 }
 function removeData (id) {
   data.items.forEach((item, index) => {
-    if (id == item.id) {
+    if (id === item.id) {
       data.items.splice(index, 1);
     }
   });
 }
 function removeData2 (id) {
   data2.items.forEach((item, index) => {
-    if (id == item.id) {
+    if (id === item.id) {
       data2.items.splice(index, 1);
     }
   });
@@ -49,7 +49,7 @@ const data2 = Mock.mock({
     'server|1': ['省局服务器1', '省局服务器2', '省局服务器3', '省局服务器4', '省局服务器5']
   }]
 })
-module.exports = [
+export default [
   {
     url: '/systemManage',
     type: 'get',

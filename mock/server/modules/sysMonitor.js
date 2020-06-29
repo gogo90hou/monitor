@@ -15,7 +15,7 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
 }
 function removeData (id) {
   data.items.forEach((item, index) => {
-    if (id == item.id) {
+    if (id === item.id) {
       data.items.splice(index, 1);
     }
   });
@@ -32,7 +32,7 @@ const data = Mock.mock({
     'des': '新安装的设备'
   }]
 })
-module.exports = [
+export default [
   {
     url: '/sysmonitor',
     type: 'get',

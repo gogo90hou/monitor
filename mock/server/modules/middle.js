@@ -124,7 +124,7 @@ const kafka = Mock.mock({
     'serve|1': ['服务器1', '服务器2', '服务器3', '服务器4', '服务器5']
   }]
 })
-module.exports = [
+export default [
   {
     url: '/apache/list',
     type: 'get',

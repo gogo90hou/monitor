@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   // 获得用户信息
   {
     url: '/user',

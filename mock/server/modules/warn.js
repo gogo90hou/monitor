@@ -15,14 +15,14 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
 }
 function removeData (id) {
   data.items.forEach((item, index) => {
-    if (id == item.id) {
+    if (id === item.id) {
       data.items.splice(index, 1);
     }
   });
 }
 function removeData3 (id) {
   data3.items.forEach((item, index) => {
-    if (id == item.id) {
+    if (id === item.id) {
       data3.items.splice(index, 1);
     }
   });
@@ -78,7 +78,7 @@ const data4 = Mock.mock({
     'dealState|1': [1, 2, 3]
   }]
 })
-module.exports = [
+export default [
   {
     url: '/warn/list',
     type: 'get',

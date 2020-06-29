@@ -1,5 +1,5 @@
 
-module.exports = [
+export default [
   { // 创建文章和批量删除
     url: '/V03R00C028B001/articleService/articles',
     type: 'post',

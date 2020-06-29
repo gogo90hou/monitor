@@ -253,7 +253,7 @@ const detail = {
     }
   }
 }
-module.exports = [
+export default [
   {
     url: '/soft/list',
     type: 'get',
