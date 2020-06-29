@@ -1,8 +1,8 @@
 // @import './variables.scss';
-@import './mixin.scss';
-@import './transition.scss';
-@import './element-ui.scss';
-@import './sidebar.scss';
+@import "./mixin.scss";
+@import "./transition.scss";
+@import "./element-ui.scss";
+@import "./sidebar.scss";
 
 body {
   height: 100%;
@@ -65,85 +65,85 @@ div:focus {
 }
 html {
   overflow-x: auto;
-  overflow-y: scroll;
-  }
-  body,
-  dl,
-  dt,
-  dd,
-  ul,
-  ol,
-  li,
-  pre,
-  form,
-  fieldset,
-  input,
-  p,
-  blockquote,
-  th,
-  td {
+  overflow-y: hidden;
+}
+body,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+input,
+p,
+blockquote,
+th,
+td {
   font-weight: 400;
   margin: 0;
   padding: 0;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h4,
-  h5 {
+}
+h1,
+h2,
+h3,
+h4,
+h4,
+h5 {
   margin: 0;
   padding: 0;
   font-style: normal;
   font-weight: normal;
-  }
-  select {
+}
+select {
   font-size: 12px;
-  }
-  table {
+}
+table {
   border-collapse: collapse;
-  }
-  fieldset,
-  img {
+}
+fieldset,
+img {
   border: none;
-  }
-  fieldset {
+}
+fieldset {
   margin: 0;
   padding: 0;
-  }
-  fieldset p {
+}
+fieldset p {
   margin: 0;
   padding: 0008px;
-  }
-  legend {
+}
+legend {
   display: none;
-  }
-  address,
-  caption,
-  em,
-  strong,
-  th,
-  i {
+}
+address,
+caption,
+em,
+strong,
+th,
+i {
   font-style: normal;
   font-weight: 400;
-  }
-  ol,
-  ul {
+}
+ol,
+ul {
   list-style-image: none;
   list-style-position: outside;
   list-style-type: none;
-  }
-  caption,
-  th {
+}
+caption,
+th {
   text-align: left;
-  }
-  q:before,
-  q:after,
-  blockquote:before,
-  blockquote:after {
+}
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
   content: ””;
-  }
-  
+}
+
 .g6-tooltip {
   border: 1px solid #e2e2e2;
   border-radius: 4px;
