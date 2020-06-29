@@ -6,9 +6,9 @@
     <div class="main-container">
       <!-- <div :class="{'fixed-header':fixedHeader}" /> -->
       <app-main />
-      <right-panel>
+      <!-- <right-panel>
         <settings />
-      </right-panel>
+      </right-panel>-->
     </div>
   </div>
 </template>
