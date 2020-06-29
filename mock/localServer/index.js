@@ -32,6 +32,7 @@ import table from '../server/modules/table';
 import topo from '../server/modules/topo';
 import users from '../server/modules/users';
 import warn from '../server/modules/warn';
+import cas from '../server/modules/cas';
 
 const mocks = [
   ...cloud,
@@ -55,7 +56,8 @@ const mocks = [
   ...table,
   ...topo,
   ...users,
-  ...warn
+  ...warn,
+  ...cas
 ]
 
 // for front mock
