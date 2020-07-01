@@ -7,7 +7,7 @@
           <span>图元选择</span>
         </div>
         <div class="close">
-          <span class="icon iconfont iconicon_close" @click="toggle = !toggle" />
+          <span class="icon iconfont iconicon_close" @click="toggleFold()" />
         </div>
       </div>
       <item

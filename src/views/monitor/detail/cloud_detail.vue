@@ -7,7 +7,7 @@
  * @FilePath: \monitor\src\views\monitor\detail\soft_detail.vue
 -->
 <template>
-  <div class="soft_detail">
+  <div class="cloud_detail">
     <div class="headNav">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/cloud' }">云平台监控列表</el-breadcrumb-item>
@@ -37,7 +37,7 @@
           </div>
         </el-col>
         <el-col :span="5">
-          <div class="detail process_detail noMargin">
+          <div class="detail process_detail">
             <div class="title">
               <span class="box_title">流程</span>
             </div>
@@ -58,15 +58,15 @@
           </div>
         </el-col>
         <el-col :span="14">
-          <div class="tables">
-            <dynamic-table :field-arr="fieldArr" :getters="getters" />
+          <div class="detail">
+            <dynamic-table :field-arr="fieldArr" :getters="getters" class="tables" />
             <!-- <div class="title">
               <span class="box_title">流程</span>
             </div>-->
           </div>
         </el-col>
       </el-row>
-      <el-row class="detail_box run_hardDisk_box" style="margin-top:20px">
+      <el-row class="detail_box system_box">
         <el-col>
           <div class="detail run_detail" style="height:auto">
             <div class="title">
@@ -81,13 +81,6 @@
             </div>
             <div class="sysTable">
               <v-table :field-arr="cloudArr" :table-setting="cloudSetting" @edit="edit" />
-              <!-- <dynamic-table :field-arr="fieldArr" :getters="getters" />
-              <pagination
-                v-show="listQuery.total>0"
-                :total="listQuery.total"
-                :page.sync="listQuery.page"
-                :limit.sync="listQuery.limit"
-              /> -->
             </div>
             <el-row :gutter="20">
               <el-col :span="12">
@@ -133,13 +126,13 @@
                 </el-col>
                 <el-col :span="18">
                   所在服务器：
-                  <span class="black">省局服务器1</span>
+                  <span class="black">省局服务器</span>
                 </el-col>
                 <el-col :span="24" class="last_info">
                   <span class="title">应用软件描述：</span>
                   <span
                     class="black content"
-                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS,阿里云提供的云服务器ECS,阿里云提供的云服务器ECS</span>
+                  >相较于普通的IDC机房以及服务器厂商，云服务器具有高可用性的特点，阿里云使用更严格的IDC标准、服务器准入标准以及运维标准，保证云计算基础框架的高可用性、数据的可靠性以及云服务器的高可用性。方便快捷</span>
                 </el-col>
               </el-row>
             </div>
@@ -192,16 +185,16 @@ export default {
         {
           label: '流程名称',
           key: 'name',
-          formatter: ''
+          width: '180'
         }, {
           label: '流程状态',
           key: 'state',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
+          filters: [{ text: '进行中', value: '进行中' }, { text: '已完结', value: '已完结' }, { text: '已拒绝', value: '已拒绝' }]
 
         }, {
           label: '发起时间',
           key: 'time',
-          formatter: ''
+          width: '180'
         }, {
           label: '耗时',
           key: 'payTime'
@@ -230,7 +223,7 @@ export default {
         }, {
           label: '主机信息',
           key: 'name',
-          formatter: ''
+          width: '200'
         }, {
           label: '所在区域',
           key: 'area',
@@ -296,16 +289,14 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.soft_detail {
+<style lang="scss" scoped >
+.cloud_detail {
   .tables {
     background-color: #ffffff;
-    height: 240px;
+    height: 220px;
     width: 100%;
-    .el-table__body-wrapper {
-      height: 189px;
-      overflow-y: scroll;
-    }
+    padding: 6px;
+    overflow-y: scroll;
   }
   .tips {
     font-size: 14px;
@@ -335,21 +326,19 @@ export default {
   .sysTable {
     margin-top: 40px;
   }
-  .detail_body .run_process_box {
-    &.noMargin {
-      margin: 0;
-    }
-    .run_detail {
+  .run_process_box {
+    .detail {
       height: 240px;
-      .row {
-        margin-bottom: 20px;
-      }
     }
     .process_detail {
-      height: 240px;
       .row {
         margin-bottom: 20px;
       }
+    }
+  }
+  .system_box {
+    .tables {
+      height: 240px;
     }
   }
   .describe_box {

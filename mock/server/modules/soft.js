@@ -256,7 +256,7 @@ const detail = {
       'jappName': '狱政3.0',
       'version': 'V12.3',
       'areaName': '省监狱管理局',
-      'serverName': '省局服务器10',
+      'serverName': '省局服务器0',
       'jappDescribe': '狱政管理3.0软件系统。。。。。'
     }
   }

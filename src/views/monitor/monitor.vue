@@ -14,7 +14,7 @@
         </li>
       </ul>
     </div>
-    <el-row class="list" :gutter="30">
+    <el-row class="list" :gutter="20">
       <el-col :span="4">
         <div class="content">
           <div class="left">
@@ -26,7 +26,7 @@
             </p>
           </div>
           <div class="right">
-            <span class="icon iconfont iconicon_Access_control"></span>
+            <span class="icon iconfont iconicon_Access_control-copy"></span>
           </div>
         </div>
       </el-col>
@@ -86,7 +86,7 @@
             </p>
           </div>
           <div class="right">
-            <span class="icon iconfont iconicon_Monitor_intercom"></span>
+            <span class="icon iconfont iconicon_Monitor_intercom-copy"></span>
           </div>
         </div>
       </el-col>
@@ -193,7 +193,7 @@ export default {
         }, {
           label: '操作',
           key: 'operation',
-          width: '200px',
+          width: '200',
           buttons: [{
             label: '查看详情',
             type: 'url',
@@ -249,19 +249,19 @@ export default {
           background-color: #999999;
         }
         &.blue {
-          background-color: #afa9dc;
+          background-color: #5466e0;
         }
       }
     }
   }
   .list {
-    padding-bottom: 26px;
+    padding-bottom: 20px;
     .content {
       padding: 10px;
       width: 100%;
       color: #545454;
       font-size: 0;
-      background: rgba(135, 116, 255, 0.07);
+      background: #fff;
       .left {
         display: inline-block;
         width: 70%;
@@ -275,7 +275,7 @@ export default {
       }
       .icon {
         font-size: 38px;
-        color: #5466e0;
+        color: #cccccc;
       }
       .name {
         margin-bottom: 20px;
@@ -291,7 +291,7 @@ export default {
           color: #999999;
         }
         .blue {
-          color: #afa9dc;
+          color: #5466e0;
         }
       }
     }

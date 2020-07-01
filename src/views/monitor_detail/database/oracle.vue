@@ -45,7 +45,7 @@
               <span class="title_blue">60</span>
             </span>
           </div>
-          <echarts-line style="height:240px" :charts-data="chartsData"></echarts-line>
+          <echarts-line style="height:260px" :charts-data="chartsData"></echarts-line>
         </div>
       </el-col>
     </el-row>
@@ -155,7 +155,7 @@
               <span>每秒事务数（tps）:32次</span>
             </div>
             <div class="lineChart_body">
-              <echarts-line style="height:200px" :charts-data="chartsData2"></echarts-line>
+              <echarts-line style="height:220px" :charts-data="chartsData2"></echarts-line>
             </div>
           </div>
         </div>
@@ -233,7 +233,7 @@
               <span class="title_green">32次/秒</span>
             </span>
           </div>
-          <echarts-line style="height:200px" :charts-data="chartsData3"></echarts-line>
+          <echarts-line style="height:230px" :charts-data="chartsData3"></echarts-line>
         </div>
       </el-col>
     </el-row>
@@ -286,13 +286,13 @@
                 </el-col>
                 <el-col :span="10">
                   所在服务器:
-                  <span class="black">省局服务器1</span>
+                  <span class="black">省局服务器</span>
                 </el-col>
                 <el-col :span="24" class="last_info">
                   <span class="title">描述信息:</span>
                   <span
                     class="black content"
-                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
+                  >相较于普通的IDC机房以及服务器厂商，云服务器具有高可用性的特点，阿里云使用更严格的IDC标准、服务器准入标准以及运维标准，保证云计算基础框架的高可用性、数据的可靠性以及云服务器的高可用性。</span>
                 </el-col>
               </el-row>
             </div>
@@ -341,8 +341,7 @@ export default {
         }, {
           label: '流程状态',
           key: 'state',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
-
+          filters: [{ text: '进行中', value: '进行中' }, { text: '已完结', value: '已完结' }, { text: '已拒绝', value: '已拒绝' }]
         }, {
           label: '发起时间',
           key: 'time',
@@ -361,12 +360,9 @@ export default {
 .detail_body {
   .tables {
     background-color: #ffffff;
-    height: calc(100% - 52px);
+    height: calc(100% - 42px);
     width: 100%;
-    >>> .el-table__body-wrapper {
-      height: calc(224px - 57px);
-      overflow-y: scroll;
-    }
+    overflow-y: scroll;
   }
   .tm {
     text-align: center;
@@ -458,15 +454,16 @@ export default {
   }
   .key_box {
     .key_detail {
-      height: 643px;
+      height: 644px;
       .tableBox {
         height: calc(50% - 36px);
         .table_title {
           color: #606060;
+          margin-top: 20px;
           font-size: 16px;
         }
         .table_body {
-          margin-top: 15px;
+          margin-top: 26px;
         }
       }
     }

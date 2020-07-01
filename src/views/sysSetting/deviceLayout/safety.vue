@@ -115,7 +115,7 @@ export default {
         }, {
           label: '所在区域',
           key: 'area',
-          formatter: '',
+          width: '140',
           filters: 'layout/area'
         }, {
           label: '设备描述',

@@ -33,7 +33,7 @@ const data = Mock.mock({
       var val = this.name.nameId === 1 && '锦江监狱' || this.name.nameId === 2 && '邑州监狱' || this.name.nameId === 3 && '川西监狱' || this.name.nameId === 4 && '川北监狱' || this.name.nameId === 5 && '雷马屏监狱'
       return val
     },
-    'position|1': ['机房门口', '新安装的设备', '二楼大门左侧', '机房内'],
+    'position|1': ['机房门口', '新安装的设备', '二楼大门左侧', '机房内']
   }]
 })
 const interchanger = Mock.mock({
@@ -48,7 +48,24 @@ const interchanger = Mock.mock({
       var val = this.name.nameId === 1 && '锦江监狱' || this.name.nameId === 2 && '邑州监狱' || this.name.nameId === 3 && '川西监狱' || this.name.nameId === 4 && '川北监狱' || this.name.nameId === 5 && '雷马屏监狱'
       return val
     },
-    'position|1': ['机房门口', '新安装的设备', '二楼大门左侧', '机房内'],
+    'position|1': ['机房门口', '新安装的设备', '二楼大门左侧', '机房内']
+  }]
+})
+const firewall = Mock.mock({
+  'items|30': [{
+    id: '@increment',
+    'num': '@integer(1, 10000)',
+    'ip|1-255': 1,
+    'runState|1': [1, 2, 3],
+    'diskState|1': [1, 2],
+    'pingState|1': [1, 2],
+    'memory|1-1024': 1,
+    'memoryPrecent|1-100': 1,
+    'cpuPrecent|1-100': 1,
+    'sessionState|1': [1, 2],
+    'apiState|1': [1, 2],
+    'flow|1-1024': 1,
+    'dataState|1': [1, 2]
   }]
 })
 export default [
@@ -75,6 +92,19 @@ export default [
         'statusText': '创建成功',
         'statusCode': 0,
         'data': getDataByPage(page, rows, interchanger, 'items')
+      }
+    }
+  },
+  {
+    url: '/firewall/list',
+    type: 'get',
+    response: config => {
+      const page = config.query.page;
+      const rows = config.query.rows;
+      return {
+        'statusText': '创建成功',
+        'statusCode': 0,
+        'data': getDataByPage(page, rows, firewall, 'items')
       }
     }
   }

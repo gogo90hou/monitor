@@ -6,6 +6,12 @@ var echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/bar');
 require('echarts/lib/component/dataZoom');
 export default {
+  props: {
+    filterName: {
+      type: String,
+      default: 'week'
+    }
+  },
   data () {
     return {
       option: {
@@ -106,6 +112,44 @@ export default {
             formatter: '{c}%'
           }
         }]
+      }
+    }
+  },
+  watch: {
+    filterName (val) {
+      if (val === 'week') {
+        this.option.xAxis.data = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
+        this.option.series[0].data = [90, 80, 60, 80, 70, 10, 80];
+        this.echartBar.setOption({
+          xAxis: {
+            data: this.option.xAxis.data
+          },
+          series: [{
+            data: this.option.series[0].data
+          }]
+        });
+      } else if (val === 'month') {
+        this.option.xAxis.data = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+        this.option.series[0].data = [90, 80, 60, 80, 70, 50, 80, 60, 80, 70, 50, 80];
+        this.echartBar.setOption({
+          xAxis: {
+            data: this.option.xAxis.data
+          },
+          series: [{
+            data: this.option.series[0].data
+          }]
+        });
+      } else if (val === 'year') {
+        this.option.xAxis.data = ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
+        this.option.series[0].data = [70, 80, 60, 80, 70, 50, 70, 60, 80, 90];
+        this.echartBar.setOption({
+          xAxis: {
+            data: this.option.xAxis.data
+          },
+          series: [{
+            data: this.option.series[0].data
+          }]
+        });
       }
     }
   },

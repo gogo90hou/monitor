@@ -60,12 +60,12 @@ export default {
             iconColor: 'red'
           }, {
             key: 3,
-            label: '维护中',
-            color: 'stateNormal',
+            label: '断连',
+            color: '#B1B1B1',
             className: 'iconicon_power_failure',
-            iconColor: 'stateMaintenance'
+            iconColor: '#626262'
           }],
-          filters: 'layout/runState'
+          filters: 'layout/runState2'
         }, {
           label: '当前审批流程',
           key: 'approvalProcess',

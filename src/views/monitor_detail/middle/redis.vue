@@ -30,11 +30,11 @@
             <span class="box_title">统计</span>
           </div>
           <div class="detail_info">
-            <div class="row"><span class="col one">连接客户端数</span><span class="col two">332</span></div>
-            <div class="row"><span class="col one">连接从库数</span><span class="col two">332</span></div>
-            <div class="row"><span class="col one">阻塞客户端数</span><span class="col two">332</span></div>
-            <div class="row"><span class="col one">pub/sub通道数</span><span class="col two">332</span></div>
-            <div class="row last"><span class="col one">pub/sub模式数</span><span class="col two">332</span></div>
+            <div class="row"><span class="col one">连接客户端数</span><span class="col two">375</span></div>
+            <div class="row"><span class="col one">连接从库数</span><span class="col two">218</span></div>
+            <div class="row"><span class="col one">阻塞客户端数</span><span class="col two">62</span></div>
+            <div class="row"><span class="col one">pub/sub通道数</span><span class="col two">347</span></div>
+            <div class="row last"><span class="col one">pub/sub模式数</span><span class="col two">667</span></div>
           </div>
         </div>
       </el-col>
@@ -46,7 +46,7 @@
           </div>
           <div class="lineChart">
             <div class="lineChart_body">
-              <echarts-line style="height:190px" :charts-data="chartsData" class="echarts"></echarts-line>
+              <echarts-line style="height:180px" :charts-data="chartsData" class="echarts"></echarts-line>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
           </div>
           <div class="lineChart">
             <div class="lineChart_body">
-              <echarts-line style="height:220px" :charts-data="chartsData2" class="echarts"></echarts-line>
+              <echarts-line style="height:226px" :charts-data="chartsData2" class="echarts"></echarts-line>
             </div>
           </div>
         </div>
@@ -104,13 +104,13 @@
                 </el-col>
                 <el-col :span="18">
                   所在服务器：
-                  <span class="black">省局服务器1</span>
+                  <span class="black">省局服务器</span>
                 </el-col>
                 <el-col :span="24" class="last_info">
                   <span class="title">中间件描述：</span>
                   <span
                     class="black content"
-                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS,服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
+                  >相较于普通的IDC机房以及服务器厂商，云服务器具有高可用性的特点，阿里云使用更严格的IDC标准、服务器准入标准以及运维标准，保证云计算基础框架的高可用性、数据的可靠性以及云服务器的高可用性。</span>
                 </el-col>
               </el-row>
             </div>
@@ -153,7 +153,7 @@ export default {
         }, {
           label: '流程状态',
           key: 'state',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
+          filters: [{ text: '进行中', value: '进行中' }, { text: '已完结', value: '已完结' }, { text: '已拒绝', value: '已拒绝' }]
 
         }, {
           label: '发起时间',

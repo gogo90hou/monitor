@@ -20,7 +20,7 @@ export default {
             left: 0,
             width: '100%',
             label: {
-              show: true,
+              show: false,
               position: 'center'
             },
             emphasis: {
@@ -34,7 +34,14 @@ export default {
             labelLine: {
               show: false
             },
-            data: [121, 231, 232, 233, 234, 456]
+            data: [
+              { value: 62, name: '每秒请求数' },
+              { value: 58, name: '运行线程数' },
+              { value: 35, name: '空闲线程数' },
+              { value: 75, name: '停止线程数' },
+              { value: 64, name: '数据发送数' },
+              { value: 68, name: '数据接收数' }
+            ]
           }
         ]
       }
@@ -43,6 +50,40 @@ export default {
   mounted () {
     this.echartBar = echarts.init(this.$refs.echartBar, 'light');
     this.echartBar.setOption(this.option);
+    var that = this;
+    // 默认高亮
+    let index = 0; // 高亮索引
+    this.echartBar.dispatchAction({
+      type: 'highlight',
+      seriesIndex: index,
+      dataIndex: index
+    });
+    this.echartBar.on('mouseover', function (e) {
+      if (e.dataIndex !== index) {
+        that.echartBar.dispatchAction({
+          type: 'downplay',
+          seriesIndex: 0,
+          dataIndex: index
+        });
+      }
+    });
+    this.echartBar.on('mouseout', function (e) {
+      index = e.dataIndex;
+      that.echartBar.dispatchAction({
+        type: 'highlight',
+        seriesIndex: 0,
+        dataIndex: e.dataIndex
+      });
+    });
+    // 自适应布局
+    window.addEventListener('resize', function () {
+      const width = that.$refs.echartBar.clientWidth;
+      const height = that.$refs.echartBar.clientHeight;
+      that.echartBar.resize({
+        width: width,
+        height: height
+      })
+    })
   }
 }
 </script>

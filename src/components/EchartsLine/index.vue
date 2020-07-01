@@ -111,6 +111,36 @@ export default {
               color: '#6577E0'
             }
           }
+        ],
+        multipleStyle2: [
+          {
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(
+                0, 1, 0, 0,
+                [
+                  { offset: 0, color: 'rgba(92, 171, 251, 0)' },
+                  { offset: 1, color: 'rgba(92, 171, 251, 0.5)' }
+                ]
+              )
+            },
+            itemStyle: {
+              color: '#5CABFB'
+            }
+          },
+          {
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(
+                0, 1, 0, 0,
+                [
+                  { offset: 0, color: 'rgba(255, 208, 78, 0)' },
+                  { offset: 1, color: 'rgba(255, 208, 78, 0.3)' }
+                ]
+              )
+            },
+            itemStyle: {
+              color: '#FFD04E'
+            }
+          }
         ]
       },
       option: {
@@ -144,13 +174,12 @@ export default {
           }
         },
         grid: {
-          top: '5%',
+          top: '10px',
           left: '50px',
           right: '80px',
-          bottom: '2%',
+          bottom: '20px',
           backgroundColor: '#fff',
-          width: 'auto',
-          height: '75%'
+          width: 'auto'
         },
         yAxis: {
           type: 'value',
@@ -227,6 +256,20 @@ export default {
       }
     }
   },
+  watch: {
+    chartsData: {
+      handler (val) {
+        if (!val.multiple) {
+          this.echartLine.setOption({
+            series: [{
+              data: val.y
+            }]
+          })
+        }
+      },
+      deep: true
+    }
+  },
   created () {
     this.option.xAxis.data = this.chartsData.x;
     if (this.chartsData.multiple) {
@@ -293,6 +336,6 @@ export default {
 </script>
 <style lang="scss">
 .echartLine {
-  height: 90%;
+  height: 100%;
 }
 </style>

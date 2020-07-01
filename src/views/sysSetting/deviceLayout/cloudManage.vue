@@ -77,36 +77,31 @@ export default {
       fieldArr: [
         {
           label: '云平台名称',
-          key: 'name',
-          width: '160'
+          key: 'name'
         },
         {
           label: '采集网关',
           key: 'gateway',
-          width: '180',
           filters: [{ text: '网关1', value: '网关1' }, { text: '网关2', value: '网关2' }, { text: '网关3', value: '网关3' }]
         }, {
           label: '接入平台',
           key: 'accessCloud',
-          width: '180'
+          width: '200'
         }, {
           label: '所在区域',
           key: 'area',
-          width: '160',
           filters: [{ text: '锦江监狱', value: '锦江监狱' }, { text: '邑州监狱', value: '邑州监狱' }, { text: '川西监狱', value: '川西监狱' }, { text: '川北监狱', value: '川北监狱' }, { text: '雷马屏监狱', value: '雷马屏监狱' }]
         }, {
           label: '所在服务器',
-          key: 'location',
-          width: '180'
+          key: 'location'
         }, {
           label: '云平台描述',
-          key: 'des',
-          width: '180'
+          key: 'des'
         }, {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '180',
           buttons: [{
             label: '编辑',
             type: 'button',

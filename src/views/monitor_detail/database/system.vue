@@ -137,7 +137,7 @@
                 <span class="title_green">60%</span>
               </span>
             </div>
-            <echarts-line style="height:220px" :charts-data="chartsData2"></echarts-line>
+            <echarts-line style="height:260px" :charts-data="chartsData2"></echarts-line>
           </div>
         </div>
       </el-col>
@@ -155,7 +155,7 @@
                 <span class="title_yellow">45kb/s</span>
               </span>
             </div>
-            <echarts-line style="height:220px" :charts-data="chartsData3"></echarts-line>
+            <echarts-line style="height:260px" :charts-data="chartsData3"></echarts-line>
           </div>
         </div>
       </el-col>
@@ -183,13 +183,13 @@
                 </el-col>
                 <el-col :span="10">
                   所在服务器：
-                  <span class="black">省局服务器1</span>
+                  <span class="black">省局服务器</span>
                 </el-col>
                 <el-col :span="24" class="last_info">
                   <span class="title">描述信息：</span>
                   <span
                     class="black content"
-                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
+                  >相较于普通的IDC机房以及服务器厂商，云服务器具有高可用性的特点，阿里云使用更严格的IDC标准、服务器准入标准以及运维标准，保证云计算基础框架的高可用性、数据的可靠性以及云服务器的高可用性。</span>
                 </el-col>
               </el-row>
             </div>
@@ -219,9 +219,13 @@ export default {
       },
       chartsData3: {
         x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
-        y: [72, 53, 61, 78, 25, 60, 70, 70, 53, 60, 70, 80, 71],
-        markLine: { yAxis: 2000, name: '门限' },
-        style: 'purple'
+        y: [
+          [92, 65, 64, 62, 65, 20, 23, 60, 30, 80, 26, 60, 87],
+          [63, 66, 63, 62, 66, 60, 70, 25, 26, 66, 30, 90, 26]
+        ],
+        multiple: true,
+        markLine: { yAxis: 80, name: '门限' },
+        style: 'multipleStyle2'
       },
       circleData: {
         precent: 92
