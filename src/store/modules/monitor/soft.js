@@ -35,38 +35,38 @@ const data = [
 ]
 const flowList = [
   {
-    name: '流程1',
+    name: '省局流程',
     state: '进行中',
-    time: '2020 03-12  12:33:22',
+    time: '2020-03-12  12:33:22',
     payTime: '2min'
   },
   {
-    name: '流程1',
-    state: '进行中',
-    time: '2020 03-12  12:33:22',
-    payTime: '2min'
+    name: '锦江监狱数据流程',
+    state: '已完结',
+    time: '2020-05-11  11:53:22',
+    payTime: '3min'
   }, {
-    name: '流程1',
-    state: '进行中',
-    time: '2020 03-12  12:33:22',
-    payTime: '2min'
+    name: '邑州监狱数据流程',
+    state: '已拒绝',
+    time: '2020-06-12  08:33:42',
+    payTime: '4min'
   },
   {
-    name: '流程1',
+    name: '川北监狱数据流程',
     state: '进行中',
-    time: '2020 03-12  12:33:22',
-    payTime: '2min'
+    time: '2020-06-12  11:33:22',
+    payTime: '5min'
   }, {
-    name: '流程1',
+    name: '川西监狱数据流程',
     state: '进行中',
-    time: '2020 03-12  12:33:22',
-    payTime: '2min'
+    time: '2020-06-12  14:33:42',
+    payTime: '6min'
   },
   {
-    name: '流程1',
+    name: '雷马屏监狱数据流程',
     state: '进行中',
-    time: '2020 03-12  12:33:22',
-    payTime: '2min'
+    time: '2020-07-01  19:33:22',
+    payTime: '6min'
   }
 ]
 const state = {

@@ -283,7 +283,7 @@ const sysdetail = {
       'osType': 'windows操作系统',
       'osVer': 'v1.2',
       'osModel': '64位操作系统',
-      'areaName': '省局服务器1',
+      'areaName': '省局服务器',
       'cpuModel': 'Intel 酷睿i5 9600KF',
       'description': ' 描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息'
     }

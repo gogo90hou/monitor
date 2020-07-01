@@ -194,24 +194,24 @@
           <el-row class="chooseGroup">
             <el-col :span="8">
               <div>
-                <span class="checkboxs active"></span>
+                <span class="checkboxs" :class="filterName==='week' ? 'active': ''" @click="filterTab('week')"></span>
                 <span>周</span>
               </div>
             </el-col>
             <el-col :span="8">
               <div>
-                <span class="checkboxs"></span>
+                <span class="checkboxs" :class="filterName==='month' ? 'active': ''" @click="filterTab('month')"></span>
                 <span>月</span>
               </div>
             </el-col>
             <el-col :span="8">
               <div>
-                <span class="checkboxs"></span>
+                <span class="checkboxs" :class="filterName==='year' ? 'active': ''" @click="filterTab('year')"></span>
                 <span>年</span>
               </div>
             </el-col>
           </el-row>
-          <echartBar></echartBar>
+          <echartBar :filter-name="filterName"></echartBar>
         </div>
       </el-col>
       <el-col :span="8">
@@ -220,24 +220,24 @@
           <el-row class="chooseGroup">
             <el-col :span="8">
               <div>
-                <span class="checkboxs active"></span>
+                <span class="checkboxs" :class="filterName2==='week' ? 'active': ''" @click="filterTab2('week')"></span>
                 <span>周</span>
               </div>
             </el-col>
             <el-col :span="8">
               <div>
-                <span class="checkboxs"></span>
+                <span class="checkboxs" :class="filterName2==='month' ? 'active': ''" @click="filterTab2('month')"></span>
                 <span>月</span>
               </div>
             </el-col>
             <el-col :span="8">
               <div>
-                <span class="checkboxs"></span>
+                <span class="checkboxs" :class="filterName2==='year' ? 'active': ''" @click="filterTab2('year')"></span>
                 <span>年</span>
               </div>
             </el-col>
           </el-row>
-          <echartLine></echartLine>
+          <echartLine :filter-name="filterName2"></echartLine>
         </div>
       </el-col>
     </el-row>
@@ -256,6 +256,8 @@ export default {
       gutter: 20,
       liHeight: 40,
       showNum: 5,
+      filterName: 'week',
+      filterName2: 'week',
       warnList: [{
         name: '省局一体化平台应用软件服务器',
         num: 620
@@ -292,6 +294,12 @@ export default {
       }
       this.liHeight = ulHeight / i;
       this.showNum = i;
+    },
+    filterTab (val) {
+      this.filterName = val;
+    },
+    filterTab2 (val) {
+      this.filterName2 = val;
     }
   }
 }

@@ -57,7 +57,8 @@ export default {
         }, {
           label: '主机信息',
           key: 'name',
-          formatter: ''
+          formatter: '',
+          width: '140'
         }, {
           label: '所在区域',
           key: 'area',
@@ -82,7 +83,7 @@ export default {
             label: '断连',
             color: '#999999',
             className: 'iconicon_power_failure',
-            iconColor: '#999999'
+            iconColor: '#626262'
           }],
           filters: [{ text: '正常', value: '1' }, { text: '异常', value: '2' }, { text: '断连', value: '3' }]
         }, {

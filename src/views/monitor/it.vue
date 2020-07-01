@@ -18,9 +18,9 @@
       <el-tab-pane label="交换机" name="second">
         <v-table :field-arr="switchesFieldArr" :table-setting="switchSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
-      <!-- <el-tab-pane label="防火墙" name="third">
+      <el-tab-pane label="防火墙" name="third">
         <v-table :field-arr="firewallFieldArr" :table-setting="firewallSetting" class="pdNone" @edit="edit" />
-      </el-tab-pane> -->
+      </el-tab-pane>
       <!-- <el-tab-pane label="存储" name="four">
         <v-table :field-arr="storageFieldArr" :table-setting="storageSetting" class="pdNone" @edit="edit" />
       </el-tab-pane> -->
@@ -90,7 +90,7 @@ export default {
             rules: []
           }
         },
-        apiUrl: 'interchanger/list',
+        apiUrl: 'firewall/list',
         socket: {
           url: 'http://localhost:9999/echo',
           subscribe: 'data',
@@ -150,7 +150,7 @@ export default {
             label: '断连',
             color: '#999999',
             className: 'iconicon_power_failure',
-            iconColor: '#999999'
+            iconColor: '#626262'
           }],
           filters: 'layout/runState'
         }, {
@@ -236,7 +236,7 @@ export default {
             label: '断连',
             color: '#999999',
             className: 'iconicon_power_failure',
-            iconColor: '#999999'
+            iconColor: '#626262'
           }],
           filters: 'layout/runState'
         }, {
@@ -278,14 +278,16 @@ export default {
       return [
         {
           label: '序号',
-          key: 'id'
+          key: 'num'
         },
         {
           label: '防火墙主机IP',
-          key: 'name'
+          key: 'ip',
+          formatter: '192.168.34.(ip)',
+          width: '160'
         }, {
           label: '运行状态',
-          key: 'runstate',
+          key: 'runState',
           formatter: [{
             key: 1,
             label: '正常',
@@ -303,44 +305,43 @@ export default {
             label: '断连',
             color: '#999999',
             className: 'iconicon_power_failure',
-            iconColor: '#999999'
+            iconColor: '#626262'
           }],
-          filters: 'layout/runState'
+          filters: 'layout/runState2'
         }, {
           label: '硬盘状态',
-          key: 'portNum',
-          formatter: '(portNum)TB'
+          key: 'diskState',
+          formatter: '(diskState)TB'
         }, {
           label: 'ping服务器状态',
-          key: 'cpuLoad',
+          key: 'pingState',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }]
         }, {
           label: '内存使用',
-          key: 'cpuLoad',
-          formatter: '(cpuLoad)G/1TB'
+          key: 'memory',
+          formatter: '(memory)G/1TB',
+          width: '120'
         }, {
           label: '内存利用率',
-          key: 'cpuMemory',
-          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }]
+          key: 'memoryPrecent'
         }, {
           label: 'cpu使用率',
-          key: 'cpuMemory',
-          formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }]
+          key: 'cpuPrecent'
         }, {
           label: '会话状态',
-          key: 'cpuLoad',
+          key: 'sessionState',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }]
         }, {
           label: '接口状态',
-          key: 'cpuLoad',
+          key: 'apiState',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }]
         }, {
           label: '流量统计',
-          key: 'portNum',
-          formatter: '(portNum)m/s'
+          key: 'flow',
+          formatter: '(flow)m/s'
         }, {
           label: '数据包状态',
-          key: 'cpuLoad',
+          key: 'dataState',
           formatter: [{ label: '正常', key: 1 }, { label: '异常', key: 2, color: '#f00' }]
         }, {
           label: '操作',

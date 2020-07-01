@@ -101,7 +101,7 @@ export default {
 .head-menu {
   height: 36px;
   line-height: 36px;
-  margin-bottom: 23px;
+  margin-bottom: 10px;
   box-sizing: border-box;
   overflow: hidden;
 }

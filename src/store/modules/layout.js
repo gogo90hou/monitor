@@ -80,6 +80,20 @@ const state = {
       text: '维护中'
     }
   ],
+  runState2: [
+    {
+      value: '1',
+      text: '正常'
+    },
+    {
+      value: '2',
+      text: '异常'
+    },
+    {
+      value: '3',
+      text: '断连'
+    }
+  ],
   state: [
     {
       value: '1',
@@ -104,6 +118,9 @@ const mutations = {
   getRunState: (state, list) => {
     state.runState = list
   },
+  getRunState2: (state, list) => {
+    state.runState2 = list
+  },
   getState: (state, list) => {
     state.state = list;
   }
@@ -123,6 +140,10 @@ const actions = {
     // get api data
     commit('getRunState')
   },
+  getRunState2 ({ commit }) {
+    // get api data
+    commit('getRunState2')
+  },
   getState ({ commit }) {
     // get api data
     commit('getState')
@@ -132,6 +153,7 @@ const getters = {
   area: state => state.area,
   deviceType: state => state.deviceType,
   runState: state => state.runState,
+  runState2: state => state.runState2,
   state: state => state.state
 }
 export default {

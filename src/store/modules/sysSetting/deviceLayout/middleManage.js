@@ -21,7 +21,7 @@ const data = [
     gateway: '网关一',
     accessEquipment: '中间件1',
     area: '锦江监狱',
-    currentServer: '省局服务器1'
+    currentServer: '省局服务器'
   }
 ]
 // vuex的基本数据，用来存储变量

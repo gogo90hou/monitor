@@ -167,7 +167,7 @@ export default {
       activeName: 'first',
       // dialogVisible: false,
       alarmDialogVisible: false,
-      options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '川北监狱' }, { selectId: '3', label: '川西监狱' }]
+      options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '邑州监狱' }, { selectId: '3', label: '川西监狱' }, { selectId: '4', label: '川北监狱' }, { selectId: '5', label: '雷马屏监狱' }]
       // ruleForm: {
       //   alarmSource: '',
       //   dealingPeople: '',

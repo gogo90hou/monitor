@@ -83,14 +83,14 @@
             <span class="box_title">磁盘</span>
             <span class="box_title_two">
               物理磁盘读取次数：
-              <span class="title_blue">24次</span>
+              <span class="title_blue">2224次</span>
             </span>
             <span class="box_title_three">
               物理磁盘读取次数：
               <span class="title_yellow">49%</span>
             </span>
           </div>
-          <echarts-line style="height:200px" :charts-data="chartsData"></echarts-line>
+          <echarts-line style="height:260px" :charts-data="chartsData"></echarts-line>
         </div>
       </el-col>
       <el-col :span="12">
@@ -99,10 +99,10 @@
             <span class="box_title">TPS</span>
             <span class="box_title_center">
               每秒事务数( tps )：
-              <span class="title_blue">32次</span>
+              <span class="title_blue">1232次</span>
             </span>
           </div>
-          <echarts-line style="height:200px" :charts-data="chartsData2"></echarts-line>
+          <echarts-line style="height:260px" :charts-data="chartsData2"></echarts-line>
         </div>
       </el-col>
     </el-row>
@@ -113,7 +113,7 @@
             <span class="box_title">缓存管理</span>
             <span class="box_title_two">
               当前线程缓存命中个数：
-              <span class="title_blue">32个</span>
+              <span class="title_blue">72个</span>
             </span>
             <span class="box_title_three">
               当前线程缓存命中率：
@@ -131,11 +131,11 @@
           <div class="title">
             <span class="box_title_two">
               当前查询缓存命中个数：
-              <span class="title_blue">32个</span>
+              <span class="title_blue">92个</span>
             </span>
             <span class="box_title_three">
               当前查询缓存命中率：
-              <span class="title_yellow">43%</span>
+              <span class="title_yellow">73%</span>
             </span>
           </div>
           <div class="main line_title">近段时间查询缓存命中个数: ( % )</div>
@@ -168,13 +168,13 @@
                 </el-col>
                 <el-col :span="10">
                   所在服务器：
-                  <span class="black">省局服务器1</span>
+                  <span class="black">省局服务器</span>
                 </el-col>
                 <el-col :span="24" class="last_info">
                   <span class="title">描述信息：</span>
                   <span
                     class="black content"
-                  >服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS,服务器设备信息表与普通的IDC(Integrated Data Center)机房或服务器厂商相比,阿里云提供的云服务器ECS</span>
+                  >相较于普通的IDC机房以及服务器厂商，云服务器具有高可用性的特点，阿里云使用更严格的IDC标准、服务器准入标准以及运维标准，保证云计算基础框架的高可用性、数据的可靠性以及云服务器的高可用性。</span>
                 </el-col>
               </el-row>
             </div>
@@ -205,13 +205,13 @@ export default {
       },
       chartsData3: {
         x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
-        y: [1200, 2300, 1100, 1800, 1500, 1060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        y: [92, 73, 57, 78, 75, 60, 70, 40, 23, 70, 70, 80, 27],
         markLine: { yAxis: 2000, name: '门限' },
         style: 'purple'
       },
       chartsData4: {
         x: ['11:10', '11:20', '11:30', '11:40', '11:50', '12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
-        y: [1200, 1300, 2100, 1800, 1500, 2060, 1870, 2000, 2300, 1000, 1130, 1080, 2100],
+        y: [92, 63, 56, 68, 65, 60, 60, 40, 23, 60, 60, 80, 26],
         markLine: { yAxis: 2000, name: '门限' },
         style: 'purple'
       },
@@ -223,7 +223,7 @@ export default {
         }, {
           label: '流程状态',
           key: 'state',
-          filters: [{ text: '2016-05-01', value: '2016-05-01' }, { text: '2016-05-02', value: '2016-05-02' }, { text: '2016-05-03', value: '2016-05-03' }, { text: '2016-05-04', value: '2016-05-04' }]
+          filters: [{ text: '进行中', value: '进行中' }, { text: '已完结', value: '已完结' }, { text: '已拒绝', value: '已拒绝' }]
 
         }, {
           label: '发起时间',

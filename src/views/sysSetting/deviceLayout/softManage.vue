@@ -87,21 +87,19 @@ export default {
         }, {
           label: '采集网关',
           key: 'gateway',
-          width: '180',
           filters: [{ text: '网关1', value: '网关1' }, { text: '网关2', value: '网关2' }, { text: '网关3', value: '网关3' }]
         }, {
           label: '接入软件',
           key: 'accessSoft',
-          width: '180',
           formatter: ''
         }, {
           label: '所在服务器',
           key: 'server',
-          width: '220'
+          width: '210'
         }, {
           label: '所在区域',
           key: 'area',
-          formatter: '',
+          width: '120',
           filters: [{ text: '锦江监狱', value: '锦江监狱' }, { text: '邑州监狱', value: '邑州监狱' }, { text: '川西监狱', value: '川西监狱' }, { text: '川北监狱', value: '川北监狱' }, { text: '雷马屏监狱', value: '雷马屏监狱' }]
         }, {
           label: '软件描述',
@@ -111,7 +109,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '180',
           buttons: [{
             label: '编辑',
             type: 'button',

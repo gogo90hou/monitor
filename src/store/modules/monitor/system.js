@@ -37,7 +37,7 @@ const data = [
     disk: '正常',
     memory: '异常',
     cpu: '正常',
-    hostServer: '省局服务器1'
+    hostServer: '省局服务器'
   }
 ]
 const databaseData = [
@@ -50,7 +50,7 @@ const databaseData = [
     activitySession: '13',
     audit: '开启',
     databaseConnectionNum: '41',
-    area: '省局服务器1'
+    area: '省局服务器'
   }
 ]
 const databaseData1 = [
@@ -63,7 +63,7 @@ const databaseData1 = [
     activitySession: '13',
     audit: '开启',
     databaseConnectionNum: '41',
-    area: '省局服务器1'
+    area: '省局服务器'
   }
 ]
 const databaseData2 = [
@@ -76,7 +76,7 @@ const databaseData2 = [
     activitySession: '13',
     audit: '开启',
     databaseConnectionNum: '41',
-    area: '省局服务器1'
+    area: '省局服务器'
   }
 ]
 // vuex的基本数据，用来存储变量

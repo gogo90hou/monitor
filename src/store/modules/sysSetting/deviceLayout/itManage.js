@@ -16,7 +16,7 @@
 const data = [
   {
     id: '1',
-    equipmentName: '省局服务器1',
+    equipmentName: '省局服务器',
     equipmentCategory: '服务器',
     gateway: '网关一',
     accessEquipment: '服务器1',
