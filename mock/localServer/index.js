@@ -32,6 +32,7 @@ import table from '../server/modules/table';
 import topo from '../server/modules/topo';
 import users from '../server/modules/users';
 import warn from '../server/modules/warn';
+import cas from '../server/modules/cas';
 
 const mocks = [
   ...cloud,
@@ -55,7 +56,8 @@ const mocks = [
   ...table,
   ...topo,
   ...users,
-  ...warn
+  ...warn,
+  ...cas
 ]
 
 // for front mock
@@ -96,6 +98,9 @@ export function mockXHR () {
 
   for (const i of mocks) {
     Mock.mock(new RegExp(i.url), i.type || 'get', XHR2ExpressReqWrap(i.response))
+    if ((i.type + '').toLowerCase !== 'get') {
+      Mock.mock(new RegExp(i.url), 'options', XHR2ExpressReqWrap(i.response))
+    }
   }
 }
 

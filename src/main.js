@@ -37,10 +37,16 @@ import request from './utils/request.js'
  * Currently MockJs will be used in the production environment,
  * please remove it before going online ! ! !
  */
+<<<<<<< HEAD
 // if (process.env.NODE_ENV === 'production') {
 const { mockXHR } = require('../mock/localServer')
 mockXHR()
 // }
+=======
+
+const { mockXHR } = require('../mock/localServer')
+mockXHR()
+>>>>>>> 590b87cd1b4490b5ee2d569aaa6659506b3a8438
 
 // set ElementUI lang to EN
 Vue.use(HyfeUi)
