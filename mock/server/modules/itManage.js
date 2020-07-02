@@ -32,7 +32,7 @@ const data = Mock.mock({
     'type|1': ['门禁', '报警', '广播', '存储'],
     'gateway|1': [{ nameId: 1, name: '浏览器采集网关' }, { nameId: 2, name: '数据库采集网关' }, { nameId: 3, name: '服务器采集网关' }],
     'accessEquipment|1': ['服务器', '交换机', '防火墙'],
-    'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '雷马屏监狱'],
+    'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '乐山监狱'],
     'location': function () {
       var val = this.gateway.nameId === 1 && '浏览器一楼机房' || this.gateway.nameId === 2 && '数据库二楼机房' || this.gateway.nameId === 3 && '服务器三楼机房'
       return val

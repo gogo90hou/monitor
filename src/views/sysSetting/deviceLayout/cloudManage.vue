@@ -44,7 +44,7 @@
                 <el-option label="邑州监狱" value="邑州监狱"></el-option>
                 <el-option label="川西监狱" value="川西监狱"></el-option>
                 <el-option label="川北监狱" value="川北监狱"></el-option>
-                <el-option label="雷马屏监狱" value="雷马屏监狱"></el-option>
+                <el-option label="乐山监狱" value="乐山监狱"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
@@ -82,7 +82,7 @@ export default {
         {
           label: '采集网关',
           key: 'gateway',
-          filters: [{ text: '网关1', value: '网关1' }, { text: '网关2', value: '网关2' }, { text: '网关3', value: '网关3' }]
+          filters: [{ text: '锦江浏览器网关', value: '锦江浏览器网关' }, { text: '邑州数据库网关', value: '邑州数据库网关' }, { text: '川西服务器网关', value: '川西服务器网关' }, { text: '川北数据库网关', value: '川北数据库网关' }, { text: '乐山服务器网关', value: '乐山服务器网关' }]
         }, {
           label: '接入平台',
           key: 'accessCloud',
@@ -90,7 +90,7 @@ export default {
         }, {
           label: '所在区域',
           key: 'area',
-          filters: [{ text: '锦江监狱', value: '锦江监狱' }, { text: '邑州监狱', value: '邑州监狱' }, { text: '川西监狱', value: '川西监狱' }, { text: '川北监狱', value: '川北监狱' }, { text: '雷马屏监狱', value: '雷马屏监狱' }]
+          filters: [{ text: '锦江监狱', value: '锦江监狱' }, { text: '邑州监狱', value: '邑州监狱' }, { text: '川西监狱', value: '川西监狱' }, { text: '川北监狱', value: '川北监狱' }, { text: '乐山监狱', value: '乐山监狱' }]
         }, {
           label: '所在服务器',
           key: 'location'

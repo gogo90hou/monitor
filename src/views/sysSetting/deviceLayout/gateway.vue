@@ -28,7 +28,7 @@
                 <el-option label="邑州监狱" value="邑州监狱"></el-option>
                 <el-option label="川西监狱" value="川西监狱"></el-option>
                 <el-option label="川北监狱" value="川北监狱"></el-option>
-                <el-option label="雷马屏监狱" value="雷马屏监狱"></el-option>
+                <el-option label="乐山监狱" value="乐山监狱"></el-option>
               </el-select>
             </el-form-item>
           </el-col>

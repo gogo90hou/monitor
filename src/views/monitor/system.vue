@@ -95,7 +95,7 @@ export default {
         }, {
           label: '系统类别',
           key: 'osTypeName',
-          formatter: '',
+          width: '200',
           filters: [{ text: 'windows操作系统', value: 'windows操作系统' }, { text: 'liunx操作系统', value: 'liunx操作系统' }]
         }, {
           label: '运行状态',
@@ -256,7 +256,7 @@ export default {
           label: '所在位置',
           key: 'area',
           width: '220',
-          filters: [{ text: '锦江一体化平台数据服务器', value: '锦江一体化平台数据服务器' }, { text: '邑州体罚系统运行服务器', value: '邑州体罚系统运行服务器' }, { text: '雷马屏应急指挥平台数据服务器', value: '雷马屏应急指挥平台数据服务器' }, { text: '川北OA系统运行服务器', value: '川北OA系统运行服务器' }, { text: '川西数据备份系统服务器', value: '川西数据备份系统服务器' }]
+          filters: [{ text: '锦江一体化平台数据服务器', value: '锦江一体化平台数据服务器' }, { text: '邑州体罚系统运行服务器', value: '邑州体罚系统运行服务器' }, { text: '乐山应急指挥平台数据服务器', value: '乐山应急指挥平台数据服务器' }, { text: '川北OA系统运行服务器', value: '川北OA系统运行服务器' }, { text: '川西数据备份系统服务器', value: '川西数据备份系统服务器' }]
         }, {
           label: '操作',
           key: 'operation',

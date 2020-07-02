@@ -39,7 +39,7 @@ const data = Mock.mock({
       var val = this.gateway.nameId === 1 && '浏览器设备' || this.gateway.nameId === 2 && '数据库设备' || this.gateway.nameId === 3 && '服务器设备'
       return val
     },
-    'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '雷马屏监狱'],
+    'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '乐山监狱'],
     'pos|1': ['省局机房', '门禁左侧', '门禁右侧', '川北监狱'],
     'des|1': function () {
       var val = this.gateway.nameId === 1 && '浏览器描述信息' || this.gateway.nameId === 2 && '数据库描述信息' || this.gateway.nameId === 3 && '服务器描述信息'

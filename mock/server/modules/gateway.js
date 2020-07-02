@@ -34,7 +34,7 @@ const data = Mock.mock({
       var val = this.name.nameId === 1 && '浏览器采集源' || this.name.nameId === 2 && '数据库采集源' || this.name.nameId === 3 && '服务器采集源'
       return val
     },
-    'area|1': ['锦江监狱', '乐山监狱', '川北监狱', '川西监狱', '雷马屏监狱'],
+    'area|1': ['锦江监狱', '乐山监狱', '川北监狱', '川西监狱', '乐山监狱'],
     'des|1': function () {
       var val = this.name.nameId === 1 && '这是一个浏览器的描述' || this.name.nameId === 2 && '这是数据库描述信息' || this.name.nameId === 3 && '这是服务器的描述信息'
       return val

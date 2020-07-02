@@ -113,13 +113,44 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '220',
           buttons: [{
+            label: '确认',
+            type: 'button',
+            method: 'turnOrder',
+            query: ['id', 'name'],
+            colorType: 'edit',
+            showRule: [{
+              key: 'state',
+              value: 2
+            }]
+          },
+          {
+            label: '工单详情',
+            type: 'button',
+            method: 'turnOrder',
+            query: ['id', 'name'],
+            colorType: 'edit',
+            showRule: [{
+              key: 'state',
+              value: 1
+            }, {
+              key: 'dealState',
+              value: 2
+            }]
+          }, {
             label: '转工单',
             type: 'button',
             method: 'turnOrder',
             query: ['id', 'name'],
-            colorType: 'edit'
+            colorType: 'edit',
+            showRule: [{
+              key: 'state',
+              value: 1
+            }, {
+              key: 'dealState',
+              value: 1
+            }]
           }, {
             label: '清除',
             type: 'button',

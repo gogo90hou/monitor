@@ -28,25 +28,25 @@ function removeData (id) {
 const data = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': [{ nameId: 1, name: '锦江云平台' }, { nameId: 2, name: '邑州云平台' }, { nameId: 3, name: '川西云平台' }, { nameId: 4, name: '川北云平台' }, { nameId: 5, name: '雷马屏平台' }],
+    'name|1': [{ nameId: 1, name: '锦江云平台' }, { nameId: 2, name: '邑州云平台' }, { nameId: 3, name: '川西云平台' }, { nameId: 4, name: '川北云平台' }, { nameId: 5, name: '乐山平台' }],
     'gateway': function () {
-      var val = this.name.nameId === 1 && '锦江浏览器网关' || this.name.nameId === 2 && '邑州数据库网关' || this.name.nameId === 3 && '川西服务器网关' || this.name.nameId === 4 && '川北数据库网关' || this.name.nameId === 5 && '雷马屏服务器网关'
+      var val = this.name.nameId === 1 && '锦江浏览器网关' || this.name.nameId === 2 && '邑州数据库网关' || this.name.nameId === 3 && '川西服务器网关' || this.name.nameId === 4 && '川北数据库网关' || this.name.nameId === 5 && '乐山服务器网关'
       return val
     },
     'accessCloud': function () {
-      var val = this.name.nameId === 1 && '浏览器网关接入' || this.name.nameId === 2 && '数据库网关接入' || this.name.nameId === 3 && '服务器网关接入' || this.name.nameId === 4 && '川北数据库网关接入' || this.name.nameId === 5 && '雷马屏服务器网关接入'
+      var val = this.name.nameId === 1 && '浏览器网关接入' || this.name.nameId === 2 && '数据库网关接入' || this.name.nameId === 3 && '服务器网关接入' || this.name.nameId === 4 && '川北数据库网关接入' || this.name.nameId === 5 && '乐山服务器网关接入'
       return val
     },
     'area': function () {
-      var val = this.name.nameId === 1 && '锦江监狱' || this.name.nameId === 2 && '邑州监狱' || this.name.nameId === 3 && '川西监狱' || this.name.nameId === 4 && '川北监狱' || this.name.nameId === 5 && '雷马屏监狱'
+      var val = this.name.nameId === 1 && '锦江监狱' || this.name.nameId === 2 && '邑州监狱' || this.name.nameId === 3 && '川西监狱' || this.name.nameId === 4 && '川北监狱' || this.name.nameId === 5 && '乐山监狱'
       return val
     },
     'location': function () {
-      var val = this.name.nameId === 1 && '锦江服务器' || this.name.nameId === 2 && '邑州服务器' || this.name.nameId === 3 && '川西服务器' || this.name.nameId === 4 && '川北服务器' || this.name.nameId === 5 && '雷马屏服务器'
+      var val = this.name.nameId === 1 && '锦江服务器' || this.name.nameId === 2 && '邑州服务器' || this.name.nameId === 3 && '川西服务器' || this.name.nameId === 4 && '川北服务器' || this.name.nameId === 5 && '乐山服务器'
       return val
     },
     'des': function () {
-      var val = this.name.nameId === 1 && '锦江云平台描述' || this.name.nameId === 2 && '邑州云平台描述' || this.name.nameId === 3 && '川西云平台描述' || this.name.nameId === 4 && '川北云平台描述' || this.name.nameId === 5 && '雷马屏云平台描述'
+      var val = this.name.nameId === 1 && '锦江云平台描述' || this.name.nameId === 2 && '邑州云平台描述' || this.name.nameId === 3 && '川西云平台描述' || this.name.nameId === 4 && '川北云平台描述' || this.name.nameId === 5 && '乐山云平台描述'
       return val
     }
   }]

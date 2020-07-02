@@ -39,7 +39,7 @@ const state = {
     },
     {
       value: '5',
-      text: '雷马屏监狱'
+      text: '乐山监狱'
     }
   ],
   deviceType: [

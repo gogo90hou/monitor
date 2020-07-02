@@ -62,7 +62,7 @@ export default {
         }, {
           label: '所在区域',
           key: 'area',
-          filters: [{ value: '1', text: '锦江监狱' }, { value: '2', text: '邑州监狱' }, { value: '3', text: '川西监狱' }, { value: '4', text: '川北监狱' }, { value: '5', text: '雷马屏监狱' }]
+          filters: [{ value: '1', text: '锦江监狱' }, { value: '2', text: '邑州监狱' }, { value: '3', text: '川西监狱' }, { value: '4', text: '川北监狱' }, { value: '5', text: '乐山监狱' }]
         }, {
           label: '运行状态',
           key: 'state',

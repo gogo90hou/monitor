@@ -21,7 +21,7 @@ function getDataByPage (page, pagesize, data, key) { // 根据页码 页尺寸 �
 const apache = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '雷马屏中间件' }],
+    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '乐山中间件' }],
     'runstate|1': [1, 2, 3],
     'totalRequest': '@integer(30, 100)',
     'totalSize': '@integer(30, 100)',
@@ -30,7 +30,7 @@ const apache = Mock.mock({
     'dataSendSpeed': '@integer(10, 300)',
     'dataReceptionSpeed': '@integer(10, 300)',
     'serve': function () {
-      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '乐山应急指挥平台数据服务器'
       return val
     }
   }]
@@ -38,13 +38,13 @@ const apache = Mock.mock({
 const flume = Mock.mock({
   'items|43': [{
     id: '@increment',
-    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '雷马屏中间件' }],
+    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '乐山中间件' }],
     'runstate|1': [1, 2, 3],
     'readEvents': '@integer(30, 100)',
     'sendEvents': '@integer(30, 100)',
     'channelCapacity': '@integer(30, 100)',
     'serve': function () {
-      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '乐山应急指挥平台数据服务器'
       return val
     }
   }]
@@ -52,7 +52,7 @@ const flume = Mock.mock({
 const redis = Mock.mock({
   'items|50': [{
     id: '@increment',
-    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '雷马屏中间件' }],
+    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '乐山中间件' }],
     'runstate|1': [1, 2, 3],
     'connectUser': '@integer(30, 100)',
     'connectLib': '@integer(30, 100)',
@@ -62,7 +62,7 @@ const redis = Mock.mock({
     'mem': '@integer(1, 10)',
     'minuteExecute': '@integer(1, 10)',
     'serve': function () {
-      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '乐山应急指挥平台数据服务器'
       return val
     }
   }]
@@ -70,7 +70,7 @@ const redis = Mock.mock({
 const jvm = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '雷马屏中间件' }],
+    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '乐山中间件' }],
     'runstate|1': [1, 2, 3],
     'heapMemory': '@integer(30, 100)',
     'threadCount': '@integer(30, 100)',
@@ -78,7 +78,7 @@ const jvm = Mock.mock({
     'youngGc': '@integer(1, 100)',
     'loadClass': '@integer(1, 100)',
     'serve': function () {
-      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '乐山应急指挥平台数据服务器'
       return val
     }
   }]
@@ -86,7 +86,7 @@ const jvm = Mock.mock({
 const activemq = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '雷马屏中间件' }],
+    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '乐山中间件' }],
     'runstate|1': [1, 2, 3],
     'costCount': '@integer(30, 100)',
     'prodCount': '@integer(30, 100)',
@@ -95,7 +95,7 @@ const activemq = Mock.mock({
     'storageSpace': '@integer(1, 100)',
     'stagingSpace': '@integer(1, 100)',
     'serve': function () {
-      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '乐山应急指挥平台数据服务器'
       return val
     }
   }]
@@ -103,14 +103,14 @@ const activemq = Mock.mock({
 const iis = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '雷马屏中间件' }],
+    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '乐山中间件' }],
     'runstate|1': [1, 2, 3],
     'connectCount': '@integer(30, 100)',
     'activeReq': '@integer(30, 100)',
     'fileSave': '@integer(1, 10)',
     'cpuUseage': '@integer(1, 100)',
     'serve': function () {
-      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '乐山应急指挥平台数据服务器'
       return val
     }
   }]
@@ -118,7 +118,7 @@ const iis = Mock.mock({
 const flink = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '雷马屏中间件' }],
+    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '乐山中间件' }],
     'runstate|1': [1, 2, 3],
     'heapMemony': '@integer(30, 100)',
     'threadCount': '@integer(30, 100)',
@@ -127,7 +127,7 @@ const flink = Mock.mock({
     'registerNum': '@integer(1, 100)',
     'taskNum': '@integer(1, 100)',
     'serve': function () {
-      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '乐山应急指挥平台数据服务器'
       return val
     }
   }]
@@ -135,7 +135,7 @@ const flink = Mock.mock({
 const kafka = Mock.mock({
   'items|30': [{
     id: '@increment',
-    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '雷马屏中间件' }],
+    'name|1': [{ nameId: 1, name: '锦江中间件' }, { nameId: 2, name: '邑州中间件' }, { nameId: 3, name: '川西中间件' }, { nameId: 4, name: '川北中间件' }, { nameId: 5, name: '乐山中间件' }],
     'runstate|1': [1, 2, 3],
     'heapMemony': '@integer(30, 100)',
     'threadCount': '@integer(30, 100)',
@@ -148,7 +148,7 @@ const kafka = Mock.mock({
     'errorFetch': '@integer(1, 100)',
     'errorProducer': '@integer(1, 100)',
     'serve': function () {
-      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      var val = this.name.nameId === 1 && '锦江一体化平台数据服务器' || this.name.nameId === 2 && '邑州体罚系统运行服务器' || this.name.nameId === 3 && '川西数据备份系统服务器' || this.name.nameId === 4 && '川北OA系统运行服务器' || this.name.nameId === 5 && '乐山应急指挥平台数据服务器'
       return val
     }
   }]

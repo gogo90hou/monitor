@@ -35,10 +35,10 @@ const data = Mock.mock({
       return val
     },
     'server|1': function () {
-      var val = this.gateway.nameId === 1 && '锦江一体化平台数据服务器' || this.gateway.nameId === 2 && '邑州体罚系统运行服务器' || this.gateway.nameId === 3 && '川西数据备份系统服务器' || this.gateway.nameId === 4 && '川北OA系统运行服务器' || this.gateway.nameId === 5 && '雷马屏应急指挥平台数据服务器'
+      var val = this.gateway.nameId === 1 && '锦江一体化平台数据服务器' || this.gateway.nameId === 2 && '邑州体罚系统运行服务器' || this.gateway.nameId === 3 && '川西数据备份系统服务器' || this.gateway.nameId === 4 && '川北OA系统运行服务器' || this.gateway.nameId === 5 && '乐山应急指挥平台数据服务器'
       return val
     },
-    'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '雷马屏监狱'],
+    'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '乐山监狱'],
     'des|1': function () {
       var val = this.gateway.nameId === 1 && '浏览器描述信息' || this.gateway.nameId === 2 && '数据库描述信息' || this.gateway.nameId === 3 && '服务器描述信息'
       return val

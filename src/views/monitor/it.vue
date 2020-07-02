@@ -121,7 +121,7 @@ export default {
       },
       activeName: 'first',
       btnarr: [{ id: '1', value: ' 管理设备', eventName: 'manageHandle', type: 'info' }],
-      options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '邑州监狱' }, { selectId: '3', label: '川西监狱' }, { selectId: '4', label: '川北监狱' }, { selectId: '5', label: '雷马屏监狱' }],
+      options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '邑州监狱' }, { selectId: '3', label: '川西监狱' }, { selectId: '4', label: '川北监狱' }, { selectId: '5', label: '乐山监狱' }],
       fieldArr: [
         {
           label: '序号',

@@ -24,7 +24,7 @@ const data = Mock.mock({
     'name|1': [{ nameId: 1, name: '大门门禁' }, { nameId: 2, name: '二楼门禁' }, { nameId: 3, name: '三楼机房门禁' }, { nameId: 4, name: '保密室' }],
     'type|1': ['门禁', '报警', '广播'],
     'state|1': [1, 2, 3],
-    'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '雷马屏监狱'],
+    'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '乐山监狱'],
     'position': function () {
       var val = this.name.nameId === 1 && '一楼大门左侧' || this.name.nameId === 2 && '二楼大门左侧' || this.name.nameId === 3 && '机房门口' || this.name.nameId === 4 && '保密室入口'
       return val
