@@ -10,7 +10,15 @@
 
 <script>
 export default {
-  name: 'RuleTable1',
+  name: 'RuleTable4',
+  props: {
+    filtersParam: {
+      type: Object,
+      default: function () {
+        return {}
+      }
+    }
+  },
   data () {
     return {
       fieldArr: [
@@ -125,6 +133,14 @@ export default {
       },
       // 选中数据ID
       ids: []
+    }
+  },
+  watch: {
+    filtersParam: {
+      handler (val) {
+        this.tableSetting.param = val;
+      },
+      deep: true
     }
   },
   methods: {

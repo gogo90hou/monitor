@@ -528,7 +528,7 @@ const data = [{
   'menuName': '编辑拓扑图',
   'menuType': 'url',
   'menuValue': '/edit_topo',
-  'pxNum': 1,
+  'pxNum': 2,
   'icon': null,
   'memo': null,
   'parent': {
@@ -748,7 +748,7 @@ const data = [{
   'menuName': '预览拓扑图',
   'menuType': 'url',
   'menuValue': '/preview_topo',
-  'pxNum': 2,
+  'pxNum': 1,
   'icon': null,
   'memo': null,
   'parent': {

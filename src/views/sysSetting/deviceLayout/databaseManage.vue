@@ -51,9 +51,9 @@
           <el-col :span="12">
             <el-form-item label="采集网关:">
               <el-select v-model="ruleForm.gateway">
-                <el-option label="网关1" value="网关1"></el-option>
-                <el-option label="网关2" value="网关2"></el-option>
-                <el-option label="网关3" value="网关3"></el-option>
+                <el-option label="数据库采集网关" value="数据库采集网关"></el-option>
+                <el-option label="浏览器采集网关" value="浏览器采集网关"></el-option>
+                <el-option label="服务器采集网关" value="服务器采集网关"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
@@ -105,9 +105,9 @@
           <el-col :span="12">
             <el-form-item label="采集网关:">
               <el-select v-model="ruleForm2.gateway">
-                <el-option label="网关1" value="网关1"></el-option>
-                <el-option label="网关2" value="网关2"></el-option>
-                <el-option label="网关3" value="网关3"></el-option>
+                <el-option label="数据库采集网关" value="数据库采集网关"></el-option>
+                <el-option label="浏览器采集网关" value="浏览器采集网关"></el-option>
+                <el-option label="服务器采集网关" value="服务器采集网关"></el-option>
               </el-select>
             </el-form-item>
           </el-col>

@@ -26,9 +26,9 @@
           <el-col :span="12">
             <el-form-item label="采集网关:">
               <el-select v-model="ruleForm.gateway">
-                <el-option label="网关1" value="网关1"></el-option>
-                <el-option label="网关2" value="网关2"></el-option>
-                <el-option label="网关3" value="网关3"></el-option>
+                <el-option label="数据库采集网关" value="数据库采集网关"></el-option>
+                <el-option label="浏览器采集网关" value="浏览器采集网关"></el-option>
+                <el-option label="服务器采集网关" value="服务器采集网关"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
@@ -77,7 +77,7 @@ export default {
   data () {
     return {
       dialogVisible: false,
-      btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '批量导入', eventName: 'importHandle', type: 'success' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
+      btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
       smalltitle: { name: '监控列表', path: '/soft' },
       fieldArr: [
         {

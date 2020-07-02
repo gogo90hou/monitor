@@ -100,7 +100,7 @@
     padding: 10px 0;
     .el-input {
       width: 70%;
-      height: 32px;
+      height: 36px;
       border: 1px solid rgba(236, 236, 238, 1);
       border-radius: 3px;
       color: #595959;

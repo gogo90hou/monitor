@@ -238,7 +238,7 @@ export default {
     top: 0;
     bottom: 0;
     right: -8px;
-    background-color: #c7c2ec;
+    background-color: #5466e0;
     div {
       position: absolute;
       top: 0;

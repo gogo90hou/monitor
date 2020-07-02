@@ -12,7 +12,15 @@
 
 <script>
 export default {
-  name: 'RuleTable1',
+  name: 'RuleTable3',
+  props: {
+    filtersParam: {
+      type: Object,
+      default: function () {
+        return {}
+      }
+    }
+  },
   data () {
     return {
       fieldArr: [
@@ -125,16 +133,7 @@ export default {
           show: true,
           rowsPerPage: [10, 20, 30]
         },
-        param: {
-          page: 1,
-          rows: 10,
-          sord: 'desc',
-          _search: false,
-          filters: {
-            groupOp: 'AND',
-            rules: []
-          }
-        },
+        param: this.filtersParam,
         apiUrl: '/smart/list',
         socket: {
           url: 'http://localhost:9999/echo',
@@ -144,6 +143,14 @@ export default {
       },
       // 选中数据ID
       ids: []
+    }
+  },
+  watch: {
+    filtersParam: {
+      handler (val) {
+        this.tableSetting.param = val;
+      },
+      deep: true
     }
   },
   methods: {

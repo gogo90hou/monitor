@@ -6,14 +6,14 @@
         <el-col :span="22">
           <el-row class="headMenuRight">
             <el-col :span="4">
-              <div class="alarm-event">
+              <div class="alarm-event" @click="filterList('alarm')">
                 <span class="alarm-event-text">告警</span>
                 <span class="alarm-event-num">23</span>
                 <i class="iconfont iconicon_call_police before" />
               </div>
             </el-col>
             <el-col :span="4">
-              <div class="alarm-event">
+              <div class="alarm-event" @click="filterList('event')">
                 <span class="alarm-event-text">事件</span>
                 <span class="alarm-event-num">24</span>
                 <i class="iconfont iconshijian before" />
@@ -21,26 +21,26 @@
             </el-col>
             <el-col :span="16">
               <div class="alarm-level">
-                <span class="untreated">
+                <span class="untreated" @click="filterList('untreated')">
                   <span>未处理告警:</span>
                   <span>147</span>
                 </span>
-                <span class="iconBox deadly">
+                <span class="iconBox deadly" @click="filterList('level',1)">
                   <i class="iconfont iconicon_close_alt" />
                   <span>致命</span>
                   <span>23</span>
                 </span>
-                <span class="iconBox serious">
+                <span class="iconBox serious" @click="filterList('level',2)">
                   <i class="iconfont iconicon_Critical_warning" />
                   <span>严重</span>
                   <span>24</span>
                 </span>
-                <span class="iconBox general">
+                <span class="iconBox general" @click="filterList('level',3)">
                   <i class="iconfont iconicon_minus_alt" />
                   <span>一般</span>
                   <span>25</span>
                 </span>
-                <span class="iconBox prompt">
+                <span class="iconBox prompt" @click="filterList('level',4)">
                   <i class="iconfont iconicon_info" />
                   <span>提示</span>
                   <span>26</span>
@@ -55,16 +55,16 @@
       <HeadMenu class="tabs-right-head" :search="true" :options="options" @getValue="searchKey" />
       <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
         <el-tab-pane label="告警列表" name="first">
-          <table1 />
+          <table1 :filters-param="param" />
         </el-tab-pane>
         <el-tab-pane label="事件列表" name="second">
-          <table2 />
+          <table2 :filters-param="param" />
         </el-tab-pane>
-        <el-tab-pane label="智能告警" name="third">
-          <table3 />
+        <el-tab-pane label="智能告警" name="three">
+          <table3 :filters-param="param" />
         </el-tab-pane>
         <el-tab-pane label="历史告警" name="four">
-          <table4 />
+          <table4 :filters-param="param" />
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -167,33 +167,34 @@ export default {
       activeName: 'first',
       // dialogVisible: false,
       alarmDialogVisible: false,
-      options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '邑州监狱' }, { selectId: '3', label: '川西监狱' }, { selectId: '4', label: '川北监狱' }, { selectId: '5', label: '雷马屏监狱' }]
-      // ruleForm: {
-      //   alarmSource: '',
-      //   dealingPeople: '',
-      //   solveTime: '',
-      //   note: ''
-      // },
-      // rules: {
-      //   alarmSource: [
-      //     { required: true, message: '请输入告警源', trigger: 'blur' }
-      //   ],
-      //   dealingPeople: [
-      //     { required: true, message: '请选择处理人', trigger: 'blur' }
-      //   ],
-      //   note: [
-      //     { message: '请输入备注信息', trigger: 'blur' }
-      //   ]
-      // }
+      options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '邑州监狱' }, { selectId: '3', label: '川西监狱' }, { selectId: '4', label: '川北监狱' }, { selectId: '5', label: '雷马屏监狱' }],
+      param: {
+        page: 1,
+        rows: 10,
+        sord: 'desc',
+        _search: false,
+        filters: {
+          groupOp: 'AND',
+          rules: []
+        }
+      }
     }
   },
   created () {
   },
   methods: {
-    edit (data) {
-      console.log(data);
+    handleClick () {
+      this.param = {
+        page: 1,
+        rows: 10,
+        sord: 'desc',
+        _search: false,
+        filters: {
+          groupOp: 'AND',
+          rules: []
+        }
+      }
     },
-    handleClick () { },
     pagination (val) {
       this.listQuery.page = val.page;
       this.listQuery.limit = val.limit;
@@ -219,6 +220,38 @@ export default {
     },
     dealAlarm () {
       this.alarmDialogVisible = false;
+    },
+    filterList (val, num) {
+      // console.log(val);
+      const date = this.getNowFormatDate()
+      if (val === 'alarm') {
+        this.param.filters.rules = [{ key: 'alarmDate', filter: date }];
+        this.activeName = 'first'
+      } else if (val === 'event') {
+        this.param.filters.rules = [{ key: 'eventDate', filter: date }];
+        this.activeName = 'second'
+      } else if (val === 'untreated') {
+        this.param.filters.rules = [{ key: 'untreated', filter: 1 }];
+        this.activeName = 'three'
+      } else if (val === 'level') {
+        this.param.filters.rules = [{ key: 'level', filter: num }];
+        this.activeName = 'four'
+      }
+    },
+    getNowFormatDate () {
+      var date = new Date();
+      var seperator1 = '-';
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      if (month >= 1 && month <= 9) {
+        month = '0' + month;
+      }
+      if (strDate >= 0 && strDate <= 9) {
+        strDate = '0' + strDate;
+      }
+      var currentdate = year + seperator1 + month + seperator1 + strDate;
+      return currentdate;
     }
   }
 }
@@ -257,6 +290,7 @@ export default {
         box-sizing: border-box;
         color: #0d0d0d;
         margin-right: 15px;
+        cursor: pointer;
         .alarm-event-text {
           font-size: 14px;
           vertical-align: middle;

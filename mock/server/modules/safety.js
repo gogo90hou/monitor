@@ -30,13 +30,17 @@ const data = Mock.mock({
     id: '@increment',
     'name|1': ['大门门禁', '二楼门禁', '三楼门禁', '摩天大楼', '保密室'],
     'type|1': ['门禁', '报警', '广播'],
-    'access|1': function () {
-      var val = this.gateway.nameId === 1 && '浏览器网关接入' || this.gateway.nameId === 2 && '数据库网关接入' || this.gateway.nameId === 3 && '服务器网关接入'
+    // 'access|1': function () {
+    //   var val = this.gateway.nameId === 1 && '浏览器网关接入' || this.gateway.nameId === 2 && '数据库网关接入' || this.gateway.nameId === 3 && '服务器网关接入'
+    //   return val
+    // },
+    'gateway|1': [{ nameId: 1, name: '浏览器采集网关' }, { nameId: 2, name: '数据库采集网关' }, { nameId: 3, name: '服务器采集网关' }],
+    'accessEquipment|1': function () {
+      var val = this.gateway.nameId === 1 && '浏览器设备' || this.gateway.nameId === 2 && '数据库设备' || this.gateway.nameId === 3 && '服务器设备'
       return val
     },
-    'gateway|1': [{ nameId: 1, name: '浏览器采集网关' }, { nameId: 2, name: '数据库采集网关' }, { nameId: 3, name: '服务器采集网关' }],
-    'equipmentID|10000-99999': 10000,
     'area|1': ['锦江监狱', '邑州监狱', '川西监狱', '川北监狱', '雷马屏监狱'],
+    'pos|1': ['省局机房', '门禁左侧', '门禁右侧', '川北监狱'],
     'des|1': function () {
       var val = this.gateway.nameId === 1 && '浏览器描述信息' || this.gateway.nameId === 2 && '数据库描述信息' || this.gateway.nameId === 3 && '服务器描述信息'
       return val

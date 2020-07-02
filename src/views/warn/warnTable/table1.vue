@@ -5,8 +5,8 @@
       :field-arr="fieldArr"
       :table-setting="tableSetting"
       class="pdNone"
-      @edit="edit"
       @delete="deleteItem"
+      @edit="edit"
     />
   </div>
 </template>
@@ -14,6 +14,14 @@
 <script>
 export default {
   name: 'RuleTable1',
+  props: {
+    filtersParam: {
+      type: Object,
+      default: function () {
+        return {}
+      }
+    }
+  },
   data () {
     return {
       fieldArr: [
@@ -107,13 +115,44 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '220',
           buttons: [{
+            label: '确认',
+            type: 'button',
+            method: 'turnOrder',
+            query: ['id', 'name'],
+            colorType: 'edit',
+            showRule: [{
+              key: 'state',
+              value: 2
+            }]
+          },
+          {
+            label: '工单详情',
+            type: 'button',
+            method: 'turnOrder',
+            query: ['id', 'name'],
+            colorType: 'edit',
+            showRule: [{
+              key: 'state',
+              value: 1
+            }, {
+              key: 'dealState',
+              value: 2
+            }]
+          }, {
             label: '转工单',
             type: 'button',
             method: 'turnOrder',
             query: ['id', 'name'],
-            colorType: 'edit'
+            colorType: 'edit',
+            showRule: [{
+              key: 'state',
+              value: 1
+            }, {
+              key: 'dealState',
+              value: 1
+            }]
           }, {
             label: '清除',
             type: 'button',
@@ -127,16 +166,7 @@ export default {
           show: true,
           rowsPerPage: [10, 20, 30]
         },
-        param: {
-          page: 1,
-          rows: 10,
-          sord: 'desc',
-          _search: false,
-          filters: {
-            groupOp: 'AND',
-            rules: []
-          }
-        },
+        param: this.filtersParam,
         apiUrl: '/warn/list',
         socket: {
           url: 'http://localhost:9999/echo',
@@ -148,6 +178,15 @@ export default {
       ids: []
     }
   },
+  watch: {
+    filtersParam: {
+      handler (val) {
+        // console.log(val);
+        this.tableSetting.param = val;
+      },
+      deep: true
+    }
+  },
   methods: {
     deleteItem (data) {
       const deleteIds = [];
@@ -156,6 +195,9 @@ export default {
     },
     remove () {
       this.$refs.table.deleteItem(this.ids)
+    },
+    edit (data) {
+      console.log(data);
     }
   }
 }

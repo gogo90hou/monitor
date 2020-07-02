@@ -33,26 +33,17 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="接入方式:">
-              <el-select v-model="ruleForm.access">
-                <el-option label="网关接入1" value="网关接入1"></el-option>
-                <el-option label="网关接入2" value="网关接入2"></el-option>
-                <el-option label="网关接入3" value="网关接入3"></el-option>
-              </el-select>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="网关:">
+            <el-form-item label="采集网关:">
               <el-select v-model="ruleForm.gateway">
-                <el-option label="网关1" value="网关1"></el-option>
-                <el-option label="网关2" value="网关2"></el-option>
-                <el-option label="网关3" value="网关3"></el-option>
+                <el-option label="数据库采集网关" value="数据库采集网关"></el-option>
+                <el-option label="浏览器采集网关" value="浏览器采集网关"></el-option>
+                <el-option label="服务器采集网关" value="服务器采集网关"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="设备ID:">
-              <el-input v-model="ruleForm.equipmentID" placeholder="设备ID" />
+            <el-form-item label="接入设备:">
+              <el-input v-model="ruleForm.accessEquipment" placeholder="接入设备" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -64,6 +55,11 @@
                 <el-option label="川北监狱" value="川北监狱"></el-option>
                 <el-option label="雷马屏监狱" value="雷马屏监狱"></el-option>
               </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="所在位置:">
+              <el-input v-model="ruleForm.pos" placeholder="所在位置" />
             </el-form-item>
           </el-col>
           <el-col :span="24">
@@ -86,7 +82,7 @@ export default {
   data () {
     return {
       dialogVisible: false,
-      btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '批量导入', eventName: 'importHandle', type: 'success' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
+      btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '3', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
       smalltitle: { name: '查看监控列表', path: '/monitor' },
       fieldArr: [
         {
@@ -99,24 +95,20 @@ export default {
           formatter: '',
           filters: 'layout/deviceType'
         }, {
-          label: '接入方式',
-          key: 'access',
-          width: '180',
-          filters: [{ text: '网关接入1', value: '网关接入1' }, { text: '网关接入2', value: '网关接入2' }, { text: '网关接入3', value: '网关接入3' }]
-        }, {
-          label: '网关',
+          label: '采集网关',
           key: 'gateway',
-          width: '180',
           filters: [{ text: '网关1', value: '网关1' }, { text: '网关2', value: '网关2' }, { text: '网关3', value: '网关3' }]
         }, {
-          label: '设备ID',
-          key: 'equipmentID',
+          label: '接入设备',
+          key: 'accessEquipment',
           formatter: ''
         }, {
           label: '所在区域',
           key: 'area',
-          width: '140',
           filters: 'layout/area'
+        }, {
+          label: '所在位置',
+          key: 'pos'
         }, {
           label: '设备描述',
           key: 'des',
@@ -125,7 +117,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '200',
           buttons: [{
             label: '编辑',
             type: 'button',

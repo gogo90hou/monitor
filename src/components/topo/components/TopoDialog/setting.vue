@@ -37,43 +37,19 @@ export default {
       deviceList: [
         {
           key: '0001',
-          label: '设备1'
+          label: '交换机'
         },
         {
           key: '0002',
-          label: '设备2'
+          label: '服务器'
         },
         {
           key: '0003',
-          label: '设备3'
+          label: '存储'
         },
         {
           key: '0004',
-          label: '设备4'
-        },
-        {
-          key: '0005',
-          label: '设备5'
-        },
-        {
-          key: '0006',
-          label: '设备6'
-        },
-        {
-          key: '0007',
-          label: '设备7'
-        },
-        {
-          key: '0008',
-          label: '设备8'
-        },
-        {
-          key: '0009',
-          label: '设备9'
-        },
-        {
-          key: '00010',
-          label: '设备10'
+          label: '应用软件'
         }
       ],
       form: {
