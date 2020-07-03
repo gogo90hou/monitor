@@ -283,7 +283,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '230',
           buttons: [{
             label: '查看详情',
             type: 'url',
@@ -345,7 +345,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '230',
           buttons: [{
             label: '查看详情',
             type: 'url',
@@ -423,7 +423,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '230',
           buttons: [{
             label: '查看详情',
             type: 'url',
@@ -491,7 +491,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '230',
           buttons: [{
             label: '查看详情',
             type: 'url',
@@ -565,7 +565,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '230',
           buttons: [{
             label: '查看详情',
             type: 'url',
@@ -631,7 +631,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '230',
           buttons: [{
             label: '查看详情',
             type: 'url',
@@ -702,7 +702,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '230',
           buttons: [{
             label: '查看详情',
             type: 'url',
@@ -778,7 +778,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '230',
           buttons: [{
             label: '查看详情',
             type: 'url',

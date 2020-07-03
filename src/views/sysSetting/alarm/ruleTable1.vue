@@ -148,7 +148,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '256',
+          width: '262',
           buttons: [{
             label: '停止',
             type: 'button',

@@ -138,6 +138,7 @@ export default {
     margin-left: 12px;
     font-size: 14px;
     border-radius: 3px;
+    background-color: #fff;
     .el-icon-search:hover:before {
       color: #5466e0;
     }

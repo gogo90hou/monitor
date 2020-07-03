@@ -24,7 +24,7 @@
     "fuse.js": "^3.4.4",
     "g": "^2.0.1",
     "html-webpack-plugin": "^4.0.0-beta.8",
-    "hyfe-ui": "^0.1.7",
+    "hyfe-ui": "^0.1.8",
     "js-cookie": "^2.2.0",
     "jsdoc": "^3.6.4",
     "lodash": "^4.17.15",

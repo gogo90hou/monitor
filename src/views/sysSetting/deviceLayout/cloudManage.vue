@@ -11,6 +11,7 @@
       :field-arr="fieldArr"
       :table-setting="tableSetting"
       :show-check-box="true"
+      class="tab_body"
       @edit="edit"
       @delete="deleteItem"
       @selection-change="handleSelectionChange"
@@ -101,7 +102,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '180',
+          width: '230',
           buttons: [{
             label: '编辑',
             type: 'button',

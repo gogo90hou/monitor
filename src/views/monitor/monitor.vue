@@ -113,7 +113,7 @@
       @getValue="searchKey"
       @getEvent="judgeEvent"
     />
-    <v-table :field-arr="fieldArr" :table-setting="tableSetting" />
+    <v-table :field-arr="fieldArr" :table-setting="tableSetting" class="tab_body" />
   </div>
 </template>
 <script>

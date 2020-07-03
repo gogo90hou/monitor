@@ -146,7 +146,7 @@
           </div>
           <div class="tableBox">
             <div class="tables table_body">
-              <dynamic-table :field-arr="fieldArr" :getters="getters" />
+              <dynamic-table :field-arr="fieldArr" :getters="getters" :height="240" class="tables"/>
             </div>
           </div>
           <div class="tableBox two">
@@ -418,9 +418,15 @@ export default {
 .detail_body {
   .tables {
     background-color: #ffffff;
-    height: calc(100% - 20px);
     width: 100%;
-    overflow-y: scroll;
+    height: 240px;
+    padding: 0px;
+  }
+  .tables >>> .el-table__header {
+    width: calc(100% + 17px) !important;
+  }
+  .tables >>> .el-table__body {
+    width: calc(100% + 5px) !important;
   }
   .run_cache_box {
     // 运行情况

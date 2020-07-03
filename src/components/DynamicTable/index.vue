@@ -1,6 +1,6 @@
 <template>
   <div class="dynamicTable">
-    <el-table :data="tableData" border @selection-change="handleSelectionChange">
+    <el-table :data="tableData" :max-height="height" border @selection-change="handleSelectionChange">
       <el-table-column v-if="showCheckBox" type="selection" width="55" label="全选" />
       <el-table-column
         v-for="(item,index) in fieldArr"
@@ -105,6 +105,10 @@ export default {
       default: () => {
         return []
       }
+    },
+    height: {
+      type: String,
+      default: ''
     }
   },
   data () {

@@ -69,6 +69,13 @@ export default {
     // box-sizing: border-box;
     background-color: #eff0f5;
     overflow: auto;
+    .tab_body {
+      padding: 17px 12px;
+      background-color: #fff;
+      .pdNone {
+        padding: 0 !important;
+      }
+    }
   }
 }
 </style>

@@ -7,7 +7,7 @@
       @getValue="searchKey"
       @getEvent="judgeEvent"
     />
-    <v-table :field-arr="fieldArr" :table-setting="tableSetting" @edit="edit" />
+    <v-table :field-arr="fieldArr" :table-setting="tableSetting" class="tab_body" @edit="edit" />
   </div>
 </template>
 <script>
@@ -86,7 +86,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '200',
           buttons: [{
             label: '查看详情',
             type: 'url',

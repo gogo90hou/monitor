@@ -115,50 +115,54 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '220',
-          buttons: [{
-            label: '确认',
-            type: 'button',
-            method: 'turnOrder',
-            query: ['id', 'name'],
-            colorType: 'edit',
-            showRule: [{
-              key: 'state',
-              value: 2
-            }]
-          },
-          {
-            label: '工单详情',
-            type: 'button',
-            method: 'turnOrder',
-            query: ['id', 'name'],
-            colorType: 'edit',
-            showRule: [{
-              key: 'state',
-              value: 1
+          width: '180',
+          buttons: [
+            {
+              label: '确认',
+              type: 'button',
+              method: 'turnOrder',
+              query: ['id', 'name'],
+              colorType: 'edit',
+              showRule: [{
+                key: 'state',
+                value: 2
+              }, {
+                key: 'dealState',
+                value: 1
+              }]
+            },
+            {
+              label: '工单详情',
+              type: 'button',
+              method: 'turnOrder',
+              query: ['id', 'name'],
+              colorType: 'edit',
+              showRule: [{
+                key: 'state',
+                value: 1
+              }, {
+                key: 'dealState',
+                value: 2
+              }]
             }, {
-              key: 'dealState',
-              value: 2
-            }]
-          }, {
-            label: '转工单',
-            type: 'button',
-            method: 'turnOrder',
-            query: ['id', 'name'],
-            colorType: 'edit',
-            showRule: [{
-              key: 'state',
-              value: 1
+              label: '转工单',
+              type: 'button',
+              method: 'turnOrder',
+              query: ['id', 'name'],
+              colorType: 'edit',
+              showRule: [{
+                key: 'state',
+                value: 1
+              }, {
+                key: 'dealState',
+                value: 1
+              }]
             }, {
-              key: 'dealState',
-              value: 1
+              label: '清除',
+              type: 'button',
+              method: 'delete',
+              colorType: 'delete'
             }]
-          }, {
-            label: '清除',
-            type: 'button',
-            method: 'delete',
-            colorType: 'delete'
-          }]
         }
       ],
       tableSetting: {
@@ -206,6 +210,21 @@ export default {
 <style lang="scss" scoped>
 .pdNone {
   padding: 0 !important;
+}
+.pdNone >>> .el-table {
+  .el-table__body {
+    .dynamicTable__operation {
+      text-align: left;
+      .el-button--medium {
+        padding: 0;
+        width: 80px;
+        padding-left: 10px;
+      }
+      .el-button--medium:nth-last-child(1) {
+        width: auto;
+      }
+    }
+  }
 }
 </style>
 

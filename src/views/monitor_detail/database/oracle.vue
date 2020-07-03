@@ -172,7 +172,7 @@
             </span>
           </div>
           <div class="tables">
-            <dynamic-table :field-arr="fieldArr" :getters="getters" />
+            <dynamic-table :field-arr="fieldArr" :getters="getters" :height="230" />
           </div>
         </div>
       </el-col>
@@ -187,7 +187,7 @@
             </span>
           </div>
           <div class="tables">
-            <dynamic-table :field-arr="fieldArr" :getters="getters" />
+            <dynamic-table :field-arr="fieldArr" :getters="getters" :height="230" />
           </div>
         </div>
       </el-col>
@@ -201,13 +201,13 @@
           <div class="tableBox">
             <div class="table_title">锁等待列表</div>
             <div class="tables table_body">
-              <dynamic-table :field-arr="fieldArr" :getters="getters" />
+              <dynamic-table :field-arr="fieldArr" :getters="getters" :height="240" />
             </div>
           </div>
           <div class="tableBox">
             <div class="table_title">死锁会话信息</div>
             <div class="tables table_body">
-              <dynamic-table :field-arr="fieldArr" :getters="getters" />
+              <dynamic-table :field-arr="fieldArr" :getters="getters" :height="240" />
             </div>
           </div>
         </div>
@@ -220,7 +220,7 @@
             <span class="box_title">表空间</span>
           </div>
           <div class="tables table_body">
-            <dynamic-table :field-arr="fieldArr" :getters="getters" />
+            <dynamic-table :field-arr="fieldArr" :getters="getters" :height="230" />
           </div>
         </div>
       </el-col>
@@ -360,9 +360,15 @@ export default {
 .detail_body {
   .tables {
     background-color: #ffffff;
-    height: calc(100% - 42px);
+    height: 230px;
     width: 100%;
-    overflow-y: scroll;
+    padding: 0px;
+  }
+  .tables >>> .el-table__header {
+    width: calc(100% + 17px) !important;
+  }
+  .tables >>> .el-table__body {
+    width: calc(100% + 5px) !important;
   }
   .tm {
     text-align: center;

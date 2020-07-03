@@ -164,8 +164,7 @@ export default {
           filters: [{ text: '锦江浏览器网关', value: '锦江浏览器网关' }, { text: '邑州数据库网关', value: '邑州数据库网关' }, { text: '川西服务器网关', value: '川西服务器网关' }, { text: '川北数据库网关', value: '川北数据库网关' }, { text: '乐山服务器网关', value: '乐山服务器网关' }]
         }, {
           label: '接入系统',
-          key: 'accessSystem',
-          width: '210'
+          key: 'accessSystem'
         }, {
           label: '所在区域',
           key: 'area',
@@ -178,7 +177,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '230',
           buttons: [{
             label: '编辑',
             type: 'button',
@@ -288,7 +287,7 @@ export default {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '200px',
+          width: '230',
           buttons: [{
             label: '编辑',
             type: 'button',

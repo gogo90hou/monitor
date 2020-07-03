@@ -30,7 +30,7 @@
             <span class="box_title">速率</span>
           </div>
           <div class="tables">
-            <dynamic-table :field-arr="fieldArr" :getters="getters"/>
+            <dynamic-table :field-arr="fieldArr" :height="270" :getters="getters"/>
           </div>
         </div>
       </el-col>
@@ -127,9 +127,8 @@ export default {
 .detail_body {
   .tables {
     background-color: #ffffff;
-    height: calc(100% - 42px);
+    height: 270px;
     width: 100%;
-    overflow-y: scroll;
   }
   .run_speed_box {
     // 运行情况

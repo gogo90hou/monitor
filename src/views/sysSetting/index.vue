@@ -68,6 +68,13 @@ export default {
     font-size: 20px;
     padding: 10px;
     background-color: #eff0f5;
+    .tab_body {
+      padding: 17px 12px;
+      background-color: #fff;
+      .pdNone {
+        padding: 0 !important;
+      }
+    }
   }
 }
 </style>

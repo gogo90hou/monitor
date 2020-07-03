@@ -11,6 +11,7 @@
       :field-arr="fieldArr"
       :table-setting="tableSetting"
       :show-check-box="true"
+      class="tab_body"
       @edit="edit"
       @delete="deleteItem"
       @selection-change="handleSelectionChange"
@@ -95,21 +96,19 @@ export default {
         }, {
           label: '所在服务器',
           key: 'server',
-          width: '210'
+          width: '230'
         }, {
           label: '所在区域',
           key: 'area',
-          width: '120',
           filters: [{ text: '锦江监狱', value: '锦江监狱' }, { text: '邑州监狱', value: '邑州监狱' }, { text: '川西监狱', value: '川西监狱' }, { text: '川北监狱', value: '川北监狱' }, { text: '乐山监狱', value: '乐山监狱' }]
         }, {
           label: '软件描述',
-          key: 'des',
-          width: '180'
+          key: 'des'
         }, {
           label: '操作',
           key: 'operation',
           needTemp: true,
-          width: '180',
+          width: '230',
           buttons: [{
             label: '编辑',
             type: 'button',

@@ -59,10 +59,7 @@
         </el-col>
         <el-col :span="14">
           <div class="detail">
-            <dynamic-table :field-arr="fieldArr" :getters="getters" class="tables" />
-            <!-- <div class="title">
-              <span class="box_title">流程</span>
-            </div>-->
+            <dynamic-table :field-arr="fieldArr" :getters="getters" :height="212" class="tables"/>
           </div>
         </el-col>
       </el-row>
@@ -95,7 +92,7 @@
                   今日异常:
                   <strong>344</strong>
                 </div>
-                <dynamic-table :field-arr="abnormalArr" :getters="getters" class="tables" />
+                <dynamic-table :field-arr="abnormalArr" :getters="getters" :height="240" class="tables" />
               </el-col>
             </el-row>
             <!-- <div class="title">
@@ -278,7 +275,13 @@ export default {
     height: 212px;
     width: 100%;
     padding: 0px;
-    overflow-y: scroll;
+    overflow: auto;
+  }
+  .tables >>> .el-table__header {
+    width: calc(100% + 17px) !important;
+  }
+  .tables >>> .el-table__body {
+    width: calc(100% + 5px) !important;
   }
   .tips {
     font-size: 14px;
