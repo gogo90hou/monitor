@@ -20,8 +20,8 @@
     </div>
     <div class="right-panel">
       <div class="title-container">
-        <span class="title">{{ selectTopo.label || "查询中" }}</span>
-        <el-button type="info" class="edit-top" @click="editTopo">修改配置</el-button>
+        <span class="title">{{ selectTopo.topoName || selectTopo.topoTypeName || "查询中" }}</span>
+        <el-button type="primary" class="edit-top" @click="editTopo">修改配置</el-button>
       </div>
       <G6Editor :mode="'view'" :data="topo" @deal="deal" />
     </div>
@@ -89,7 +89,7 @@ export default {
       //   console.log(err);
       // })
       getTopo().then(res => {
-        console.log(res.items);
+        // console.log(res.items);
         this.menu = res.items;
       }).catch(err => {
         console.log(err);
@@ -226,7 +226,7 @@ export default {
 <style scoped lang="scss">
 .topological-container {
   $title-height: 68px;
-  $menu-width: 320px;
+  $menu-width: 280px;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -264,12 +264,18 @@ export default {
       padding-right: 28px;
       box-shadow: 0px -1px 4px #909090;
       span {
-        border-left: 5px solid;
         font-size: 20px;
         font-weight: bold;
-        color: rgba(161, 153, 214, 1);
+        color: #7785e6;
         line-height: 56px;
-        padding-left: 5px;
+      }
+      span:before {
+        content: '';
+        display: inline-block;
+        width: 5px;
+        height: 16px;
+        background-color: #5365df;
+        margin-right: 5px;
       }
     }
   }

@@ -17,7 +17,7 @@ export function warningLevel (level) {
       label: '提示'
     },
     '0': {
-      color: '#978ED9',
+      color: '#5466e0',
       label: '正常'
     }
   };

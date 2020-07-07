@@ -30,7 +30,7 @@ const data = [{
   'appClientId': '2493ebd832074abbbeffbb06da88245c'
 }, {
   'id': 'b115d8a185a041ecb7cf77cbfebaee0d',
-  'menuName': '安防运维详情',
+  'menuName': '安防设备详情',
   'menuType': 'url',
   'menuValue': '/monitor_detail',
   'pxNum': 1,
@@ -38,7 +38,7 @@ const data = [{
   'memo': null,
   'parent': {
     'id': '1b82365c00254b83ad9f262a315db439',
-    'menuName': '安防运维',
+    'menuName': '安防设备',
     'menuType': 'url',
     'menuValue': '/monitor',
     'pxNum': 1,
@@ -260,7 +260,7 @@ const data = [{
   'appClientId': '2493ebd832074abbbeffbb06da88245c'
 }, {
   'id': '1b82365c00254b83ad9f262a315db439',
-  'menuName': '安防运维',
+  'menuName': '安防设备',
   'menuType': 'url',
   'menuValue': '/monitor',
   'pxNum': 1,

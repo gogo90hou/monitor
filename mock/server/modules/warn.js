@@ -40,6 +40,10 @@ function filterData (val) {
     const filterData = {};
     filterData.items = data.items.filter(item => item.setTime === val.rules[0].filter)
     return filterData;
+  } else if (val.rules[0].key === 'type') {
+    const filterData = {};
+    filterData.items = data.items.filter(item => item.type === val.rules[0].filter)
+    return filterData;
   } else if (val.rules[0].key === 'eventDate') {
     const filterData = {};
     filterData.items = data2.items.filter(item => item.eventTime === val.rules[0].filter)
@@ -59,7 +63,7 @@ const data = Mock.mock({
     id: '@increment',
     'num|+1': 100000,
     'source|1': ['刑罚执行系统', '行政楼大门-门禁', '锦江监狱-二楼楼梯报警设备', '锦江监狱数据备份服务器 ', '乐山监狱-大门门禁'],
-    'type|1': ['门禁告警一', '服务器告警', '应用软件告警', '广播告警'],
+    'type|1': ['安防设备', '应用软件', 'IT设备', '中间件', '云平台', '操作系统和数据库'],
     'level|1': [1, 2, 3, 4],
     'des|1': ['服务器异常', '服务器温度过高', '风扇异常'],
     'alarmTime|1': ['@now("yyyy-MM-dd")', '2019-@datetime("MM-dd")'],
@@ -85,7 +89,7 @@ const data3 = Mock.mock({
     id: '@increment',
     'num|+1': 100000,
     'source|1': ['锦江监狱-大门门禁', '邑州监狱-大门门禁', '川西监狱-大门门禁', '川北监狱-大门门禁', '乐山监狱-大门门禁'],
-    'type|1': ['门禁告警一', '服务器告警', '应用软件告警三', '广播告警'],
+    'type|1': ['安防设备', '应用软件', 'IT设备', '中间件', '云平台', '操作系统和数据库'],
     'level|1': [1, 2, 3, 4],
     'des|1': ['服务器异常', '服务器温度过高', '风扇异常'],
     'alarmTime': '@datetime("yyyy-MM-dd")',
@@ -99,7 +103,7 @@ const data4 = Mock.mock({
     id: '@increment',
     'num|+1': 100000,
     'source|1': ['锦江监狱-大门门禁', '邑州监狱-大门门禁', '川西监狱-大门门禁', '川北监狱-大门门禁', '乐山监狱-大门门禁'],
-    'type|1': ['门禁告警一', '服务器告警', '应用软件告警三', '广播告警'],
+    'type|1': ['安防设备', '应用软件', 'IT设备', '中间件', '云平台', '操作系统和数据库'],
     'level|1': [1, 2, 3, 4],
     'des|1': ['服务器异常', '服务器温度过高', '风扇异常'],
     'alarmTime': '@datetime("yyyy-MM-dd")',

@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: '安防运维',
+  title: '安防设备',
 
   /**
    * @type {boolean} true | false

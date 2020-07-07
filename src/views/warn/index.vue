@@ -156,6 +156,7 @@ import table2 from './warnTable/table2';
 import table3 from './warnTable/table3';
 import table4 from './warnTable/table4';
 export default {
+  name: 'Warn',
   components: {
     table1,
     table2,
@@ -180,7 +181,13 @@ export default {
       }
     }
   },
-  created () {
+  mounted () {
+    var valueType = typeof this.$route.query.filters;
+    if (this.$route.query.filters && valueType === 'string') {
+      this.param.filters.rules = [{ key: 'type', filter: this.$route.query.filters }];
+    } else if (this.$route.query.filters && valueType === 'number') {
+      this.param.filters.rules = [{ key: 'level', filter: this.$route.query.filters }];
+    }
   },
   methods: {
     handleClick () {

@@ -32,15 +32,28 @@
                 <span class="box_title">请求</span>
               </div>
               <div class="round-box">
-                <CircleBar :circle-data="circleData" class="roundBar" style="width: 5.20vw;" />
+                <CircleBar :circle-data="circleData" class="roundBar" style="width: 5.20vw;"/>
                 <div class="usage">通道使用百分比</div>
               </div>
             </el-col>
-            <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="4" class="detail borderLeftNone borderRightNone info_box">
+            <el-col
+              :xs="6"
+              :sm="6"
+              :md="6"
+              :lg="6"
+              :xl="4"
+              class="detail borderLeftNone borderRightNone info_box"
+            >
               <div class="box">
-                <div class="info">通道容量：<span class="black">3000</span></div>
-                <div class="info">通道事件数量：<span class="black">3500</span></div>
-                <div class="info">成功发送的事件数量：<span class="black">3600</span></div>
+                <div class="info">通道容量：
+                  <span class="black">3000</span>
+                </div>
+                <div class="info">通道事件数量：
+                  <span class="black">3500</span>
+                </div>
+                <div class="info">成功发送的事件数量：
+                  <span class="black">3600</span>
+                </div>
               </div>
             </el-col>
             <el-col :xs="15" :sm="15" :md="15" :lg="15" :xl="17" class="lineChart_box">
@@ -65,9 +78,15 @@
           </div>
           <div class="main">
             <el-row>
-              <el-col :span="7">数据源连接数量：<span class="blue">3442</span></el-col>
-              <el-col :span="8">写入通道事件数量：<span class="blue">3442</span></el-col>
-              <el-col :span="9">接收到的事件总数量：<span class="blue">3442</span></el-col>
+              <el-col :span="7">数据源连接数量：
+                <span class="blue">3442</span>
+              </el-col>
+              <el-col :span="8">写入通道事件数量：
+                <span class="blue">3442</span>
+              </el-col>
+              <el-col :span="9">接收到的事件总数量：
+                <span class="blue">3442</span>
+              </el-col>
             </el-row>
           </div>
         </div>
@@ -79,9 +98,15 @@
           </div>
           <div class="main">
             <el-row>
-              <el-col :span="7">发送连接数量：<span class="blue">3442</span></el-col>
-              <el-col :span="10">由于错误关闭的连接数量：<span class="blue">3442</span></el-col>
-              <el-col :span="7">成功发送数量：<span class="blue">3442</span></el-col>
+              <el-col :span="7">发送连接数量：
+                <span class="blue">3442</span>
+              </el-col>
+              <el-col :span="10">由于错误关闭的连接数量：
+                <span class="blue">3442</span>
+              </el-col>
+              <el-col :span="7">成功发送数量：
+                <span class="blue">3442</span>
+              </el-col>
             </el-row>
           </div>
         </div>
@@ -186,6 +211,7 @@ export default {
     }
   }
   .run_request_box {
+    margin-bottom: 0;
     // 运行情况
     .detail {
       position: relative;

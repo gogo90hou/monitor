@@ -4,17 +4,17 @@
       <el-col :span="4">
         <div class="boxs">
           <h3>
-            <img src="../../assets/icon/afsb_icon.svg" />
+            <img src="../../assets/icon/afsb_icon.svg">
             <span class="icon iconfont iconicon_Security_maintenance"></span>
             <span>安防设备</span>
           </h3>
           <div class="content">
             <div class="left">
-              <strong>432</strong>
+              <strong @click="gotoCloud('monitor')">30</strong>
               <p>总个数</p>
             </div>
             <div class="right">
-              <strong>0</strong>
+              <strong @click="gotoWarn('安防设备')">7</strong>
               <p>告警个数</p>
             </div>
           </div>
@@ -23,17 +23,17 @@
       <el-col :span="4">
         <div class="boxs">
           <h3>
-            <img src="../../assets/icon/yyrj_icon.svg" />
+            <img src="../../assets/icon/yyrj_icon.svg">
             <span class="icon iconfont iconicon_Application_software"></span>
             <span>应用软件</span>
           </h3>
           <div class="content">
             <div class="left">
-              <strong>432</strong>
+              <strong @click="gotoCloud('soft')">30</strong>
               <p>总个数</p>
             </div>
             <div class="right">
-              <strong>0</strong>
+              <strong @click="gotoWarn('应用软件')">5</strong>
               <p>告警个数</p>
             </div>
           </div>
@@ -42,17 +42,17 @@
       <el-col :span="4">
         <div class="boxs">
           <h3>
-            <img src="../../assets/icon/itsb_icon.svg" />
+            <img src="../../assets/icon/itsb_icon.svg">
             <span class="icon iconfont iconicon_IT_equipment"></span>
             <span>IT设备</span>
           </h3>
           <div class="content">
             <div class="left">
-              <strong>432</strong>
+              <strong @click="gotoCloud('it')">30</strong>
               <p>总个数</p>
             </div>
             <div class="right">
-              <strong>0</strong>
+              <strong @click="gotoWarn('IT设备')">6</strong>
               <p>告警个数</p>
             </div>
           </div>
@@ -61,17 +61,17 @@
       <el-col :span="4">
         <div class="boxs">
           <h3>
-            <img src="../../assets/icon/zjj_icon.svg" />
+            <img src="../../assets/icon/zjj_icon.svg">
             <span class="icon iconfont iconicon_Intermediate_key"></span>
             <span>中间件</span>
           </h3>
           <div class="content">
             <div class="left">
-              <strong>432</strong>
+              <strong @click="gotoCloud('middle')">30</strong>
               <p>总个数</p>
             </div>
             <div class="right">
-              <strong>0</strong>
+              <strong @click="gotoWarn('中间件')">4</strong>
               <p>告警个数</p>
             </div>
           </div>
@@ -80,17 +80,17 @@
       <el-col :span="4">
         <div class="boxs">
           <h3>
-            <img src="../../assets/icon/ypt_icon.svg" />
+            <img src="../../assets/icon/ypt_icon.svg">
             <span class="icon iconfont iconicon_Cloud_platform"></span>
             <span>云平台</span>
           </h3>
           <div class="content">
             <div class="left">
-              <strong>432</strong>
+              <strong @click="gotoCloud('cloud')">30</strong>
               <p>总个数</p>
             </div>
             <div class="right">
-              <strong>0</strong>
+              <strong @click="gotoWarn('云平台')">6</strong>
               <p>告警个数</p>
             </div>
           </div>
@@ -99,17 +99,17 @@
       <el-col :span="4">
         <div class="boxs">
           <h3>
-            <img src="../../assets/icon/czxt-icon.svg" />
+            <img src="../../assets/icon/czxt-icon.svg">
             <span class="icon iconfont iconczxt-icon"></span>
             <span>操作系统和数据库</span>
           </h3>
           <div class="content">
             <div class="left">
-              <strong>432</strong>
+              <strong @click="gotoCloud('system')">30</strong>
               <p>总个数</p>
             </div>
             <div class="right">
-              <strong>0</strong>
+              <strong @click="gotoWarn('操作系统和数据库')">2</strong>
               <p>告警个数</p>
             </div>
           </div>
@@ -122,19 +122,19 @@
           <h3>应用系统健康度</h3>
           <el-row>
             <el-col :span="6">
-              <bar :score="50" />
+              <bar :score="50"/>
               <span class="name">刑罚执行</span>
             </el-col>
             <el-col :span="6">
-              <bar :score="40" />
+              <bar :score="40"/>
               <span class="name">狱政管理</span>
             </el-col>
             <el-col :span="6">
-              <bar :score="20" />
+              <bar :score="20"/>
               <span class="name">教育改造</span>
             </el-col>
             <el-col :span="6">
-              <bar :score="80" />
+              <bar :score="80"/>
               <span class="name">生活卫生</span>
             </el-col>
           </el-row>
@@ -146,20 +146,20 @@
           <h3>告警级别状态</h3>
           <el-row>
             <el-col :span="6">
-              <pie :num="50" :type="1" />
-              <span class="name">致命告警</span>
+              <pie :num="8" :type="1"/>
+              <span class="name" @click="gotoWarn(1)">致命告警</span>
             </el-col>
-            <el-col :span="6">
-              <pie :num="40" :type="2" />
-              <span class="name">严重告警</span>
+            <el-col :span="6" @click="gotoWarn(2)">
+              <pie :num="6" :type="2"/>
+              <span class="name" @click="gotoWarn(2)">严重告警</span>
             </el-col>
-            <el-col :span="6">
-              <pie :num="20" :type="3" />
-              <span class="name">一般告警</span>
+            <el-col :span="6" @click="gotoWarn(3)">
+              <pie :num="7" :type="3"/>
+              <span class="name" @click="gotoWarn(3)">一般告警</span>
             </el-col>
-            <el-col :span="6">
-              <pie :num="80" :type="4" />
-              <span class="name">提示告警</span>
+            <el-col :span="6" @click="gotoWarn(4)">
+              <pie :num="9" :type="4"/>
+              <span class="name" @click="gotoWarn(4)">提示告警</span>
             </el-col>
           </el-row>
         </div>
@@ -178,9 +178,9 @@
               :key="index"
               :style="{height:liHeight + 'px',lineHeight:liHeight+'px'}"
             >
-              <img v-if="index==0" src="../../assets/icon/one_icon.svg" alt />
-              <img v-if="index==1" src="../../assets/icon/two_icon.svg" alt />
-              <img v-if="index==2" src="../../assets/icon/three_icon.svg" alt />
+              <img v-if="index==0" src="../../assets/icon/one_icon.svg" alt="">
+              <img v-if="index==1" src="../../assets/icon/two_icon.svg" alt="">
+              <img v-if="index==2" src="../../assets/icon/three_icon.svg" alt="">
               <span v-if="index>2" class="sort">{{ index+1 }}</span>
               <span class="name">{{ item.name }}</span>
               <span class="right">{{ item.num }}个</span>
@@ -194,19 +194,31 @@
           <el-row class="chooseGroup">
             <el-col :span="8">
               <div>
-                <span class="checkboxs" :class="filterName==='week' ? 'active': ''" @click="filterTab('week')"></span>
+                <span
+                  class="checkboxs"
+                  :class="filterName==='week' ? 'active': ''"
+                  @click="filterTab('week')"
+                ></span>
                 <span>周</span>
               </div>
             </el-col>
             <el-col :span="8">
               <div>
-                <span class="checkboxs" :class="filterName==='month' ? 'active': ''" @click="filterTab('month')"></span>
+                <span
+                  class="checkboxs"
+                  :class="filterName==='month' ? 'active': ''"
+                  @click="filterTab('month')"
+                ></span>
                 <span>月</span>
               </div>
             </el-col>
             <el-col :span="8">
               <div>
-                <span class="checkboxs" :class="filterName==='year' ? 'active': ''" @click="filterTab('year')"></span>
+                <span
+                  class="checkboxs"
+                  :class="filterName==='year' ? 'active': ''"
+                  @click="filterTab('year')"
+                ></span>
                 <span>年</span>
               </div>
             </el-col>
@@ -220,19 +232,31 @@
           <el-row class="chooseGroup">
             <el-col :span="8">
               <div>
-                <span class="checkboxs" :class="filterName2==='week' ? 'active': ''" @click="filterTab2('week')"></span>
+                <span
+                  class="checkboxs"
+                  :class="filterName2==='week' ? 'active': ''"
+                  @click="filterTab2('week')"
+                ></span>
                 <span>周</span>
               </div>
             </el-col>
             <el-col :span="8">
               <div>
-                <span class="checkboxs" :class="filterName2==='month' ? 'active': ''" @click="filterTab2('month')"></span>
+                <span
+                  class="checkboxs"
+                  :class="filterName2==='month' ? 'active': ''"
+                  @click="filterTab2('month')"
+                ></span>
                 <span>月</span>
               </div>
             </el-col>
             <el-col :span="8">
               <div>
-                <span class="checkboxs" :class="filterName2==='year' ? 'active': ''" @click="filterTab2('year')"></span>
+                <span
+                  class="checkboxs"
+                  :class="filterName2==='year' ? 'active': ''"
+                  @click="filterTab2('year')"
+                ></span>
                 <span>年</span>
               </div>
             </el-col>
@@ -249,6 +273,7 @@ import pie from './ui/pie.vue'
 import echartBar from './ui/echartBar.vue'
 import echartLine from './ui/echartLine.vue'
 export default {
+  name: 'Dashboard',
   components: { bar, pie, echartBar, echartLine },
   data () {
     return {
@@ -300,6 +325,17 @@ export default {
     },
     filterTab2 (val) {
       this.filterName2 = val;
+    },
+    gotoCloud (val) {
+      this.$router.push('/' + val);
+    },
+    gotoWarn (val) {
+      this.$router.push({
+        path: '/warn',
+        query: {
+          filters: val
+        }
+      })
     }
   }
 }
@@ -348,6 +384,7 @@ export default {
             font-size: 24px;
             font-family: 'Arial-BoldMT', Arial;
             font-weight: bold;
+            cursor: pointer;
           }
         }
         p {
@@ -435,6 +472,7 @@ export default {
         color: #000000;
         display: inline-block;
         margin-top: 20px;
+        cursor: pointer;
       }
     }
   }

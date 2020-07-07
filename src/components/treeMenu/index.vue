@@ -12,8 +12,9 @@
     >
       <span slot-scope="{ node, data }" class="custom-tree-node">
         <span class="dashed-line"></span>
-        <span class="icon iconfont iconicon_topology"></span>
-        <span>{{ data.topoTypeName || data.topoName }}</span>
+        <span class="icon iconfont" :class="data.topoTypeName ? 'iconicon_topology':''"></span>
+        <span>{{ data.topoTypeName }}</span>
+        <span style="font-size:14px">{{ data.topoName }}</span>
       </span>
     </el-tree>
     <el-dialog title="新建应用拓扑图" :visible.sync="dialogFormVisible" width="37%">
@@ -60,7 +61,7 @@ export default {
     }
   },
   created () {
-    // console.log(this.menu);
+    console.log(this.menu);
   },
   methods: {
     handleNodeClick (data) {
@@ -110,8 +111,9 @@ export default {
   .el-tree {
     color: rgba(234, 234, 234, 1);
     background-color: transparent;
-    font-size: 18px;
-    padding: 0px 10px;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 16px;
     > .el-tree-node {
       > .el-tree-node__children {
         > .el-tree-node {

@@ -10,7 +10,7 @@
   <div class="monitor_detail">
     <div class="headNav">
       <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/monitor' }">安防运维</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/monitor' }">安防设备</el-breadcrumb-item>
         <el-breadcrumb-item>windows</el-breadcrumb-item>
       </el-breadcrumb>
       <el-button @click="$router.back(-1)">返回</el-button>
@@ -24,12 +24,15 @@
             </div>
             <div>
               <div class="row row_one">
-                <span class="col_one">设备名称： <span class="black">大门门禁</span></span>
+                <span class="col_one">设备名称：
+                  <span class="black">大门门禁</span>
+                </span>
               </div>
               <div class="row row_two">
                 <span class="col_one">
                   运行状态 ：
-                  <i class="small_round" :style="{backgroundColor: runStateColor}"></i><span class="black">正常</span>
+                  <i class="small_round" :style="{backgroundColor: runStateColor}"></i>
+                  <span class="black">正常</span>
                 </span>
               </div>
             </div>
@@ -41,13 +44,19 @@
             </div>
             <div>
               <div class="row row_one">
-                <span class="col_one">所在区域 :<span class="black">锦江监狱</span></span>
+                <span class="col_one">所在区域 :
+                  <span class="black">锦江监狱</span>
+                </span>
               </div>
               <div class="row row_two">
-                <span class="col_one">所在位置 :<span class="black">一楼西门</span></span>
+                <span class="col_one">所在位置 :
+                  <span class="black">一楼西门</span>
+                </span>
               </div>
               <div class="row row_three">
-                <span class="col_one">其他信息 :<span class="black">大门门禁信息|orem</span></span>
+                <span class="col_one">其他信息 :
+                  <span class="black">大门门禁信息|orem</span>
+                </span>
               </div>
             </div>
           </div>

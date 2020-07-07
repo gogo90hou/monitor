@@ -35,7 +35,7 @@ export default [
       } else {
         const ids = req.body.items || [];
         ids.filter((id) => {
-          for (const i = 0, len = data.items.length; i < len; i++) {
+          for (var i = 0, len = data.items.length; i < len; i++) {
             if (data.items[i].id === Number(id)) {
               data.items.splice(i, 1);
               break;
@@ -57,7 +57,7 @@ export default [
     response: (req, res) => {
       const id = Number(req.params.id)
       let i;
-      deletedItem = undefined;
+      var deletedItem = '';
       data.items.findIndex((item, index) => {
         if (item.id === id) {
           i = index;
