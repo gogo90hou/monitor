@@ -26,14 +26,27 @@ export default {
             emphasis: {
               label: {
                 show: true,
-                fontSize: '18',
-                fontWeight: 'bold',
-                formatter: '{c}个\n {b}'
+                fontSize: '22',
+                fontWeight: '400',
+                formatter: [
+                  '{a|220个}',
+                  '{b|总请求数}'
+                ].join('\n'),
+                rich: {
+                  a: {
+                    fontSize: 30,
+                    color: '#2F394E'
+                  },
+                  b: {
+                    fontSize: 14,
+                    color: '#666666'
+                  }
+                }
               }
             },
-            labelLine: {
-              show: false
-            },
+            // labelLine: {
+            //   show: false
+            // },
             data: [
               { value: 62, name: '每秒请求数' },
               { value: 58, name: '运行线程数' },

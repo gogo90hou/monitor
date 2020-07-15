@@ -66,7 +66,7 @@ export default {
       margin-bottom: 6px;
       position: relative;
       &::after {
-        content: "";
+        content: '';
         display: inline-block;
         width: 6px;
         height: 6px;

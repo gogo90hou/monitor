@@ -61,7 +61,7 @@ export default {
   text-align: center;
   padding: 1px;
   // border-image: -webkit-linear-gradient(#111, #1bd0db, #111) 30 30;
-  background-color: #2c2b40;
+  background-color: #1b2238;
   min-height: calc(100vh - 64px);
   box-sizing: border-box;
   // @include themeify {
@@ -69,8 +69,8 @@ export default {
   // }
   li {
     padding: 20px;
-    background-color: #2c2b40;
-    border-bottom: 1px solid #181d2b;
+    background-color: #1b2238;
+    border-bottom: 1px solid #111934;
     color: #8d8f98;
     cursor: pointer;
     &:hover,

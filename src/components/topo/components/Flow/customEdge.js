@@ -119,7 +119,7 @@ const customEdge = {
       afterDraw (cfg, group) {
         if (cfg.source.getModel().isDoingStart && cfg.target.getModel().isDoingEnd) {
           const shape = group.get('children')[0];
-          const length = shape.getTotalLength(); // G 增加了 totalLength 的接口
+          const length = shape.getTotalLength(); // G 新增了 totalLength 的接口
           let totalArray = [];
           for (var i = 0; i < length; i += interval) {
             totalArray = totalArray.concat(lineDash);
@@ -258,7 +258,7 @@ const customEdge = {
       afterDraw (cfg, group) {
         if (cfg.source.getModel().isDoingStart && cfg.target.getModel().isDoingEnd) {
           const shape = group.get('children')[0];
-          const length = shape.getTotalLength(); // G 增加了 totalLength 的接口
+          const length = shape.getTotalLength(); // G 新增了 totalLength 的接口
           let totalArray = [];
           for (var i = 0; i < length; i += interval) {
             totalArray = totalArray.concat(lineDash);

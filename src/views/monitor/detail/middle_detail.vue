@@ -3,6 +3,9 @@
     <div class="headNav">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/middle' }">中间件监控列表</el-breadcrumb-item>
+        <el-breadcrumb-item
+          :to="{ path: '/middle?type=' + queryData.type }"
+        >{{ queryData.type }}</el-breadcrumb-item>
         <el-breadcrumb-item>{{ queryData.name }}</el-breadcrumb-item>
       </el-breadcrumb>
       <el-button @click="$router.back(-1)">返回</el-button>

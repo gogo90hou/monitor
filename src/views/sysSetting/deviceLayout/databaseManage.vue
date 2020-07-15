@@ -78,6 +78,11 @@
               <el-input v-model="ruleForm.server" placeholder="所在服务器" />
             </el-form-item>
           </el-col>
+          <el-col :span="24">
+            <el-form-item label="操作系统描述:">
+              <el-input v-model="ruleForm.des" type="textarea" placeholder="操作系统描述" />
+            </el-form-item>
+          </el-col>
         </el-row>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -132,6 +137,11 @@
               <el-input v-model="ruleForm2.server" placeholder="所在服务器" />
             </el-form-item>
           </el-col>
+          <el-col :span="24">
+            <el-form-item label="数据库描述:">
+              <el-input v-model="ruleForm.des" type="textarea" placeholder="数据库描述" />
+            </el-form-item>
+          </el-col>
         </el-row>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -147,7 +157,7 @@ export default {
   data () {
     return {
       activeName: 'first',
-      btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
+      btnarr: [{ id: '1', value: '新增', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
       smalltitle: { name: '监控列表', path: '/system' },
       fieldArr: [
         {
@@ -243,7 +253,8 @@ export default {
         gateway: '',
         accessSystem: '',
         area: '',
-        location: ''
+        location: '',
+        des: ''
       },
       ruleForm2: {
         name: '',
@@ -251,7 +262,8 @@ export default {
         gateway: '',
         accessDatabase: '',
         area: '',
-        location: ''
+        location: '',
+        des: ''
       },
       // 选中数据ID
       ids: [],

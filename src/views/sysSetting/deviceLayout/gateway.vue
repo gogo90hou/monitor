@@ -49,7 +49,7 @@
 export default {
   data () {
     return {
-      btnarr: [{ id: '1', value: '增加', eventName: 'addHandle' }, { id: '2', value: '删除', eventName: 'deleteHandle' }],
+      btnarr: [{ id: '1', value: '新增', eventName: 'addHandle' }, { id: '2', value: '删除', eventName: 'deleteHandle' }],
       showCheckBox: true,
       dialogVisible: false,
       tableSetting: {

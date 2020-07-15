@@ -205,25 +205,26 @@ export default {
             width: 8px;
             height: 8px;
             margin-right: 10px;
-          }
-          .one:before {
             background-color: #5466e0;
           }
-          .two:before {
-            background-color: #5cabfb;
-          }
-          .three:before {
-            background-color: #2ed6c6;
-          }
-          .four:before {
-            background-color: #ffc34e;
-          }
-          .five:before {
-            background-color: #aa49d6;
-          }
-          .six:before {
-            background-color: #26b414;
-          }
+          // .one:before {
+          //   background-color: #5466e0;
+          // }
+          // .two:before {
+          //   background-color: #5cabfb;
+          // }
+          // .three:before {
+          //   background-color: #2ed6c6;
+          // }
+          // .four:before {
+          //   background-color: #ffc34e;
+          // }
+          // .five:before {
+          //   background-color: #aa49d6;
+          // }
+          // .six:before {
+          //   background-color: #26b414;
+          // }
         }
       }
       .lineChart_title .one {

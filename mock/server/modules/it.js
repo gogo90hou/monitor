@@ -23,6 +23,7 @@ const data = Mock.mock({
     id: '@increment',
     'name|1': [{ nameId: 1, name: '锦江一体化平台数据服务器' }, { nameId: 2, name: '邑州体罚系统运行服务器' }, { nameId: 3, name: '川西数据备份系统服务器' }, { nameId: 4, name: '川北OA系统运行服务器' }, { nameId: 5, name: '乐山应急指挥平台数据服务器' }],
     'runstate|1': [1, 2, 3],
+    'ipArea|1': ['192.168.1.123', '192.168.12.167', '192.168.15.18'],
     'diskstate|1': [1, 2],
     'fanstate|1': [1, 2],
     'memorystate|1': [1, 2],

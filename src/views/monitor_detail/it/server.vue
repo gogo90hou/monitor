@@ -20,6 +20,12 @@
                 <span class="black">正常</span>
               </span>
             </div>
+            <div class="row row_three">
+              <span class="col_three">
+                IP地址 ：
+                <span class="black">192.168.15.18</span>
+              </span>
+            </div>
           </div>
           <div class="iconfont iconicon_cog"></div>
         </div>

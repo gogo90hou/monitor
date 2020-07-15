@@ -12,16 +12,16 @@
       />
     </div>
     <el-tabs v-model="activeName" type="card" class="tab_body" @tab-click="handleClick">
-      <el-tab-pane label="服务器" name="first">
+      <el-tab-pane label="服务器" name="服务器">
         <v-table :field-arr="fieldArr" :table-setting="serverSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
-      <el-tab-pane label="交换机" name="second">
+      <el-tab-pane label="交换机" name="交换机">
         <v-table :field-arr="switchesFieldArr" :table-setting="switchSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
-      <el-tab-pane label="防火墙" name="third">
+      <el-tab-pane label="防火墙" name="防火墙">
         <v-table :field-arr="firewallFieldArr" :table-setting="firewallSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
-      <!-- <el-tab-pane label="存储" name="four">
+      <!-- <el-tab-pane label="存储" name="存储">
         <v-table :field-arr="storageFieldArr" :table-setting="storageSetting" class="pdNone" @edit="edit" />
       </el-tab-pane> -->
     </el-tabs>
@@ -119,7 +119,7 @@ export default {
           tagName: 'id'
         }
       },
-      activeName: 'first',
+      activeName: this.$route.query.type || '服务器',
       btnarr: [{ id: '1', value: ' 管理设备', eventName: 'manageHandle', type: 'info' }],
       options: [{ selectId: '1', label: '锦江监狱' }, { selectId: '2', label: '邑州监狱' }, { selectId: '3', label: '川西监狱' }, { selectId: '4', label: '川北监狱' }, { selectId: '5', label: '乐山监狱' }],
       fieldArr: [
@@ -153,6 +153,10 @@ export default {
             iconColor: '#626262'
           }],
           filters: 'layout/runState'
+        }, {
+          label: 'IP地址',
+          key: 'ipArea',
+          width: '140'
         }, {
           label: '硬盘状态',
           key: 'diskstate',
@@ -198,7 +202,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/it_detail?type=1',
+            path: '/it_detail?type=服务器',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -267,7 +271,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/it_detail?type=2',
+            path: '/it_detail?type=交换机',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]
@@ -350,8 +354,8 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/it_detail?type=1',
-            query: ['id', 'name'],
+            path: '/it_detail?type=服务器',
+            query: ['id'],
             colorType: 'tableBlue'
           }]
         }
@@ -417,7 +421,7 @@ export default {
           buttons: [{
             label: '查看详情',
             type: 'url',
-            path: '/it_detail?type=1',
+            path: '/it_detail?type=存储',
             query: ['id', 'name'],
             colorType: 'tableBlue'
           }]

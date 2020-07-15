@@ -11,28 +11,28 @@
       />
     </div>
     <el-tabs v-model="activeName" type="card" class="tab_body" @tab-click="handleClick">
-      <el-tab-pane label="Apache" name="first">
+      <el-tab-pane label="Apache" name="Apache">
         <v-table :field-arr="apacheArr" :table-setting="apacheSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
-      <el-tab-pane label="Flume" name="second">
+      <el-tab-pane label="Flume" name="Flume">
         <v-table :field-arr="flumeArr" :table-setting="flumeSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
-      <el-tab-pane label="Redis" name="third">
+      <el-tab-pane label="Redis" name="Redis">
         <v-table :field-arr="redisArr" :table-setting="redisSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
-      <el-tab-pane label="JVM" name="fourth">
+      <el-tab-pane label="JVM" name="JVM">
         <v-table :field-arr="jvmArr" :table-setting="jvmSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
-      <el-tab-pane label="ActiveMQ" name="five">
+      <el-tab-pane label="ActiveMQ" name="ActiveMQ">
         <v-table :field-arr="activeMQArr" :table-setting="activeMQSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
-      <el-tab-pane label="IIS" name="six">
+      <el-tab-pane label="IIS" name="IIS">
         <v-table :field-arr="iisArr" :table-setting="iisSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
-      <el-tab-pane label="Flink" name="seven">
+      <el-tab-pane label="Flink" name="Flink">
         <v-table :field-arr="flinkArr" :table-setting="flinkSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
-      <el-tab-pane label="Kafka" name="eight">
+      <el-tab-pane label="Kafka" name="Kafka">
         <v-table :field-arr="kafkaArr" :table-setting="kafkaSetting" class="pdNone" @edit="edit" />
       </el-tab-pane>
     </el-tabs>
@@ -40,11 +40,9 @@
 </template>
 <script>
 export default {
-
   data () {
     return {
-      getters: 'monitor/soft/list',
-      activeName: 'first',
+      activeName: this.$route.query.type || 'Apache',
       btnarr: [{ id: '1', value: ' 管理中间件', eventName: 'manageHandle', type: 'info' }],
       apacheSetting: {
         pagination: {

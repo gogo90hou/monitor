@@ -122,7 +122,7 @@ export default {
     } else {
       const point = { x: e.x, y: e.y };
       if (this.edge) {
-        // 增加边的过程中，移动时边跟着移动
+        // 新增边的过程中，移动时边跟着移动
         this.graph.updateItem(this.edge, {
           //  start: startPoint,
           target: point

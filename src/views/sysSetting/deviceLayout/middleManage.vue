@@ -64,6 +64,11 @@
               <el-input v-model="ruleForm.location" placeholder="所在服务器" />
             </el-form-item>
           </el-col>
+          <el-col :span="24">
+            <el-form-item label="中间件描述:">
+              <el-input v-model="ruleForm.des" type="textarea" placeholder="中间件描述" />
+            </el-form-item>
+          </el-col>
         </el-row>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -78,7 +83,7 @@
 export default {
   data () {
     return {
-      btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
+      btnarr: [{ id: '1', value: '新增', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
       smalltitle: { name: '监控列表', path: '/middle' },
       fieldArr: [
         {
@@ -155,7 +160,8 @@ export default {
         gateway: '',
         accessEquipment: '',
         area: '',
-        location: ''
+        location: '',
+        des: ''
       },
       // 选中数据ID
       ids: []

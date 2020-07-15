@@ -20,51 +20,20 @@
       <el-form :model="ruleForm" label-position="right" label-width="100px">
         <el-row class="inlineSelect" :gutter="50">
           <el-col :span="12">
-            <el-form-item label="设备名称:">
-              <el-input v-model="ruleForm.name" placeholder="设备名称" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
             <el-form-item label="设备类型:">
-              <el-select v-model="ruleForm.type">
-                <el-option label="门禁" value="门禁"></el-option>
-                <el-option label="报警" value="报警"></el-option>
-                <el-option label="广播" value="广播"></el-option>
+              <el-select v-model="ruleForm.type" @change="changeType">
+                <el-option label="服务器" value="服务器"></el-option>
+                <el-option label="交换机" value="交换机"></el-option>
+                <el-option label="防火墙" value="防火墙"></el-option>
                 <el-option label="存储" value="存储"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
-          <el-col :span="12">
-            <el-form-item label="采集网关:">
-              <el-select v-model="ruleForm.gateway">
-                <el-option label="数据库采集网关" value="数据库采集网关"></el-option>
-                <el-option label="浏览器采集网关" value="浏览器采集网关"></el-option>
-                <el-option label="服务器采集网关" value="服务器采集网关"></el-option>
-              </el-select>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="接入设备:">
-              <el-input v-model="ruleForm.accessEquipment" placeholder="接入设备名称" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="所在区域:">
-              <el-select v-model="ruleForm.area">
-                <el-option label="锦江监狱" value="锦江监狱"></el-option>
-                <el-option label="邑州监狱" value="邑州监狱"></el-option>
-                <el-option label="川西监狱" value="川西监狱"></el-option>
-                <el-option label="川北监狱" value="川北监狱"></el-option>
-                <el-option label="乐山监狱" value="乐山监狱"></el-option>
-              </el-select>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="所在位置:">
-              <el-input v-model="ruleForm.location" placeholder="所在位置" />
-            </el-form-item>
-          </el-col>
         </el-row>
+        <addServer v-if="currentType === '服务器'" />
+        <addSwitch v-if="currentType === '交换机'" />
+        <addFirewall v-if="currentType === '防火墙'" />
+        <addStorage v-if="currentType === '存储'" />
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button type="warning" @click="dialogVisible = false">关 闭</el-button>
@@ -75,10 +44,20 @@
 </template>
 
 <script>
+import addServer from './itDialog/addServer';
+import addSwitch from './itDialog/addSwitch';
+import addStorage from './itDialog/addStorage';
+import addFirewall from './itDialog/addFirewall';
 export default {
+  components: {
+    addServer,
+    addSwitch,
+    addStorage,
+    addFirewall
+  },
   data () {
     return {
-      btnarr: [{ id: '1', value: '增加', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
+      btnarr: [{ id: '1', value: '新增', eventName: 'addHandle', type: 'primary' }, { id: '2', value: '删除', eventName: 'deleteHandle', type: 'warning' }],
       smalltitle: { name: '监控列表', path: '/it' },
       fieldArr: [
         {
@@ -130,11 +109,11 @@ export default {
       tableSetting: {
         pagination: {
           show: true,
-          rowsPerPage: [5, 10, 20]
+          rowsPerPage: [10, 20, 30]
         },
         param: {
           page: 1,
-          rows: 5,
+          rows: 10,
           sord: 'desc',
           _search: false,
           filters: {
@@ -155,15 +134,20 @@ export default {
         gateway: '',
         accessEquipment: '',
         area: '',
-        location: ''
+        location: '',
+        des: ''
       },
       // 选中数据ID
-      ids: []
+      ids: [],
+      currentType: '服务器'
     }
   },
   created () {
   },
   methods: {
+    changeType (val) {
+      this.currentType = val;
+    },
     onSubmit () {
       if (this.ruleForm.id) {
         this.$refs.table.update(this.ruleForm).then(() => {
