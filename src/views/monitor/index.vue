@@ -60,6 +60,7 @@ export default {
   }
   .main-content {
     display: inline-block;
+    position: relative;
     width: calc(100% - 120px);
     height: calc(100vh - 64px);
     overflow: auto;

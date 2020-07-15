@@ -29,6 +29,9 @@ import '@/permission' // permission control
 import './utils/error-log'; // error log
 import './components/globalComponent'
 import request from './utils/request.js'
+import contentmenu from 'v-contextmenu'
+import 'v-contextmenu/dist/index.css'
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -40,6 +43,9 @@ import request from './utils/request.js'
 
 const { mockXHR } = require('../mock/localServer')
 mockXHR()
+
+
+Vue.use(contentmenu)
 
 // set ElementUI lang to EN
 Vue.use(HyfeUi)

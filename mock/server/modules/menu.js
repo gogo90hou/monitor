@@ -1,4 +1,44 @@
 const data = [{
+  'id': '66f644f5fbf248bb947b09c9f94012e7',
+  'menuName': '全站跟踪',
+  'menuType': 'url',
+  'menuValue': '/trace',
+  'pxNum': 1,
+  'icon': 'iconquanzhangenzong',
+  'memo': null,
+  'parent': {
+    'id': 'd17f488a0b184193bfd4a1c3477faf41',
+    'menuName': '监控',
+    'menuType': 'directory',
+    'menuValue': null,
+    'pxNum': 2,
+    'icon': null,
+    'memo': null,
+    'parent': null,
+    'appClientId': '2493ebd832074abbbeffbb06da88245c'
+  },
+  'appClientId': '2493ebd832074abbbeffbb06da88245c'
+}, {
+  'id': '11760a27157340b5921e178437065c8d',
+  'menuName': '全站跟踪',
+  'menuType': 'url',
+  'menuValue': '/iconquanzhangenzong',
+  'pxNum': 1,
+  'icon': null,
+  'memo': null,
+  'parent': {
+    'id': '66f644f5fbf248bb947b09c9f94012e7',
+    'menuName': '全站跟踪',
+    'menuType': 'url',
+    'menuValue': '/trace',
+    'pxNum': 1,
+    'icon': 'iconquanzhangenzong',
+    'memo': null,
+    'parent': null,
+    'appClientId': '2493ebd832074abbbeffbb06da88245c'
+  },
+  'appClientId': '2493ebd832074abbbeffbb06da88245c'
+}, {
   'id': '94b6a963efed42c3ac48cd2a1cc04671',
   'menuName': '应用软件详情',
   'menuType': 'url',

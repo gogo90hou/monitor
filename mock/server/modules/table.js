@@ -80,7 +80,7 @@ export default [
     url: '/V03R00C028B001/articleService/articles',
     type: 'get',
     response: config => {
-      const page = parseInt(config.query.page) || 1;
+      let page = parseInt(config.query.page) || 1;
       const row = parseInt(config.query.row) || 10;
       let items = [];
       const totalRows = data.items.length || 0;
@@ -89,7 +89,7 @@ export default [
         totalPages++;
       }
       let resp = {};
-      if (page === page && page > 0) {
+      if (page > 0) {
         if (page * row <= totalRows) {
           const startIndex = (page - 1) * row
           items = data.items.slice(startIndex, startIndex + row);
