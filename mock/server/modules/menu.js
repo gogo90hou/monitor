@@ -1,6 +1,6 @@
 const data = [{
   'id': '66f644f5fbf248bb947b09c9f94012e7',
-  'menuName': '全站跟踪',
+  'menuName': '全栈跟踪',
   'menuType': 'url',
   'menuValue': '/trace',
   'pxNum': 1,
@@ -20,7 +20,7 @@ const data = [{
   'appClientId': '2493ebd832074abbbeffbb06da88245c'
 }, {
   'id': '11760a27157340b5921e178437065c8d',
-  'menuName': '全站跟踪',
+  'menuName': '全栈跟踪',
   'menuType': 'url',
   'menuValue': '/iconquanzhangenzong',
   'pxNum': 1,
@@ -28,7 +28,7 @@ const data = [{
   'memo': null,
   'parent': {
     'id': '66f644f5fbf248bb947b09c9f94012e7',
-    'menuName': '全站跟踪',
+    'menuName': '全栈跟踪',
     'menuType': 'url',
     'menuValue': '/trace',
     'pxNum': 1,

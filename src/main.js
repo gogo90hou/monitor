@@ -44,7 +44,6 @@ import 'v-contextmenu/dist/index.css'
 const { mockXHR } = require('../mock/localServer')
 mockXHR()
 
-
 Vue.use(contentmenu)
 
 // set ElementUI lang to EN

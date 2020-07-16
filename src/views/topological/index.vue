@@ -16,11 +16,16 @@
           />
         </el-input>
       </div>
-      <tree-menu :menu="menu" @click="handleNodeClick" @formData="formDataHandle" @deleteTopo="deleteTopoHandle" />
+      <tree-menu
+        :menu="menu"
+        @click="handleNodeClick"
+        @formData="formDataHandle"
+        @deleteTopo="deleteTopoHandle"
+      />
     </div>
     <div class="right-panel">
       <div class="title-container">
-        <span class="title">{{ selectTopo.topoName || selectTopo.topoTypeName || "查询中" }}</span>
+        <span class="title">{{ selectTopo.topoName || selectTopo.topoTypeName || "一楼机房服务器拓扑图" }}</span>
         <el-button type="primary" class="edit-top" @click="editTopo">修改配置</el-button>
       </div>
       <G6Editor :mode="'view'" :data="topo" @deal="deal" />
@@ -270,7 +275,7 @@ export default {
         line-height: 56px;
       }
       span:before {
-        content: '';
+        content: "";
         display: inline-block;
         width: 5px;
         height: 16px;

@@ -1,7 +1,7 @@
 <template>
   <div class="trace-container">
     <div class="trace-title">
-      <span class="title">全站跟踪监控</span>
+      <span class="title">全栈跟踪监控</span>
     </div>
     <div class="topo-container">
       <div class="topo-bg">
@@ -30,10 +30,10 @@ export default {
   },
   methods: {
     config () {
-      this.$router.push({ path: '/edit_topo' });
+      this.$router.push({ path: '/itManage' });
     },
     property () {
-      window.open('http://localhost:8081/#/assetsDetail?id=1&assetsType=%E6%9C%BA%E6%9F%9C&name=%E6%A5%BC%E9%A1%B6%E6%9C%BA%E6%88%BF%E9%97%A8%E5%8F%A3');
+      window.open('http://http://192.168.0.209:36201/app/maintenance/templates/index.html#/qualification');
     },
     cmd () {
       this.dialogVisible = true;
