@@ -156,7 +156,30 @@
     padding-left: 5px;
   }
 }
-// Cover the .el-pagination style
+// Cover the .el-message-box style
+.el-message-box {
+  border: none;
+  border-radius: 8px;
+  .el-message-box__content .el-message-box__status.el-icon-warning {
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .el-message-box__status+.el-message-box__message {
+    padding: 0;
+  }
+  .el-button:not(.el-button--text) {
+    border: 1px solid #D4D8E6;
+  }
+  .el-button--primary {
+    border: none;
+    background-color: #5365DF;
+  }
+  .el-button--primary:hover,
+  .el-button--primary:active {
+    background-color: #3046dd;
+  }
+}
 
 // Cover the .el-dialog style
 // 添加弹出窗样式
