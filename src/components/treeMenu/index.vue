@@ -96,7 +96,7 @@ export default {
 </script>
 <style lang="scss">
 .TreeMenu {
-  $menu-height: 56px;
+  $menu-height: 48px;
   width: 100%;
   .el-tree--highlight-current {
     .el-tree-node {
@@ -132,7 +132,7 @@ export default {
         margin-left: 32px;
         position: relative;
         &::before {
-          content: '';
+          content: "";
           position: absolute;
           height: 100%;
           left: 0;
@@ -159,12 +159,12 @@ export default {
           position: absolute;
           right: 0px;
           font-size: 0;
-          background-image: url('../../assets/icon/add.png');
+          background-image: url("../../assets/icon/add.png");
           width: 10px;
           height: 10px;
           padding: 0;
           &.expanded {
-            background-image: url('../../assets/icon/reduce.png');
+            background-image: url("../../assets/icon/reduce.png");
             transform: rotate(0);
           }
         }

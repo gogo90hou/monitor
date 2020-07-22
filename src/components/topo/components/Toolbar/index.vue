@@ -308,7 +308,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
 .toolbar {
   display: flex;
   justify-content: flex-end;
@@ -332,10 +332,13 @@ export default {
   height: 27px;
   margin: 0px 6px;
   border-radius: 2px;
-  padding-left: 4px;
   display: inline-block;
   border: 1px solid rgba(2, 2, 2, 0);
   color: #333333;
+  text-align: center;
+  &::before {
+    line-height: 27px;
+  }
 }
 .toolbar .command:hover {
   cursor: pointer;
