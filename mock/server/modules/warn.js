@@ -59,7 +59,7 @@ function filterData (val) {
   }
 }
 const data = Mock.mock({
-  'items|30': [{
+  'items|100': [{
     id: '@increment',
     'num|+1': 100000,
     'source|1': ['刑罚执行系统', '行政楼大门-门禁', '锦江监狱-二楼楼梯报警设备', '锦江监狱数据备份服务器 ', '乐山监狱-大门门禁'],
@@ -73,7 +73,7 @@ const data = Mock.mock({
   }]
 })
 const data2 = Mock.mock({
-  'items|30': [{
+  'items|100': [{
     id: '@increment',
     'num|+1': 100000,
     'source|1': [{ nameId: 1, name: '新增IT设备' }, { nameId: 2, name: '告警清除' }, { nameId: 3, name: '修改告警声音提示' }],
@@ -85,7 +85,7 @@ const data2 = Mock.mock({
   }]
 })
 const data3 = Mock.mock({
-  'items|30': [{
+  'items|100': [{
     id: '@increment',
     'num|+1': 100000,
     'source|1': ['锦江监狱-大门门禁', '邑州监狱-大门门禁', '川西监狱-大门门禁', '川北监狱-大门门禁', '乐山监狱-大门门禁'],
@@ -99,7 +99,7 @@ const data3 = Mock.mock({
   }]
 })
 const data4 = Mock.mock({
-  'items|30': [{
+  'items|100': [{
     id: '@increment',
     'num|+1': 100000,
     'source|1': ['锦江监狱-大门门禁', '邑州监狱-大门门禁', '川西监狱-大门门禁', '川北监狱-大门门禁', '乐山监狱-大门门禁'],
